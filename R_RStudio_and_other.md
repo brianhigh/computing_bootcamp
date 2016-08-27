@@ -55,50 +55,15 @@ a    # This is a bad name for a variable.
 ## [1] 1
 ```
 
-The `#` symbol often is called:
+The `#` symbol has several names:
 
-* number sign
-* pound sign
-* hash (Popular with programmers.)
-* hashtag (Technically, this refers to a number sign and the text following it.)
-* octothorpe (This term originated at Bell Labs, possibly as a "joke".)
+* number sign (Shorthand for No.)
+* pound sign (Shorthand for lb.)
+* hash (Popular with programmers and in the UK and Ireland.)
+* hashtag (As used on social media sites like Twitter.)
+* octothorpe (Originated at Bell Labs, possibly as a joke.)
 
-## Data Types and Classes
-
-You can show the type of a value with `typeof()` or `class()`.
-
-
-```r
-typeof(1)      # double  (the more basic "primative" type)
-```
-
-```
-## [1] "double"
-```
-
-```r
-class(1)       # numeric (the more general "higher order" type)
-```
-
-```
-## [1] "numeric"
-```
-
-```r
-typeof('a')    # character
-```
-
-```
-## [1] "character"
-```
-
-```r
-class('a')     # character
-```
-
-```
-## [1] "character"
-```
+Since programmers generally call it a "hash", we will keep with this tradition.
 
 ## Data Types and Classes
 
@@ -156,13 +121,50 @@ typeof(a)
 ## [1] "double"
 ```
 
+## Data Types and Classes
+
+You can show the "higher order" type of a data object with `class()`.
+
+
+```r
+typeof(1)      # double  (the more basic "primative" type)
+```
+
+```
+## [1] "double"
+```
+
+```r
+class(1)       # numeric (the more general "higher order" type)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+typeof('a')    # character
+```
+
+```
+## [1] "character"
+```
+
+```r
+class('a')     # character
+```
+
+```
+## [1] "character"
+```
+
 ## Testing for Numeric Values
 
 You can test if a value is numeric using the `is.numeric()` function:
 
 
 ```r
-is.numeric(1)
+is.numeric(1)          # TRUE
 ```
 
 ```
@@ -170,7 +172,7 @@ is.numeric(1)
 ```
 
 ```r
-is.numeric(1L)
+is.numeric(1L)         # TRUE
 ```
 
 ```
@@ -178,7 +180,7 @@ is.numeric(1L)
 ```
 
 ```r
-is.numeric(1 + 2i)
+is.numeric(1 + 2i)     # FALSE
 ```
 
 ```
@@ -191,7 +193,7 @@ As before, we quote literal character strings but not variable names.
 
 
 ```r
-is.character('a')
+is.character('a')      # TRUE
 ```
 
 ```
@@ -200,7 +202,7 @@ is.character('a')
 
 ```r
 a <- 1
-is.character(a)
+is.character(a)        # FALSE
 ```
 
 ```
@@ -215,7 +217,9 @@ R has four basic data structures:
 * Matrix
 * Array
 * List
-* Dataframe
+
+However, the most commonly used data structure is the "Dataframe", based on 
+the "List". 
 
 ## Vector
 
@@ -271,7 +275,7 @@ c(1L, 2L, 3L, 4L)
 ```
 
 ```r
-seq(1:4)
+seq(1, 4)
 ```
 
 ```
@@ -317,9 +321,9 @@ c('a', 1L, 1.1, 1+1i)    # Coerced to "character"
 
 ## Matrix
 
-A Matrix is a two-dimensional structure of values, all of the same data type. It can
-be constructed from a Vector, as supplied by the "data" argument for the `matrix()`
-function.
+A Matrix is a two-dimensional structure of values, all of the same data type. 
+It can be constructed from a Vector, as supplied by the "data" argument for the 
+`matrix()` function.
 
 
 ```r
@@ -347,7 +351,7 @@ m
 ## [2,]    3    4
 ```
 
-## Underlying structure and "class"
+## Underlying Structure
 
 The `str()` function may be used to show the underlying data structure.
 
@@ -362,7 +366,7 @@ str(m)
 
 This shows that we have a 2x2 structure of the integers 1 through 4.
 
-We can also display the class with the `class()` function:
+As noted before, we can display the class with the `class()` function:
 
 
 ```r
@@ -373,7 +377,8 @@ class(m)
 ## [1] "matrix"
 ```
 
-So, the 2x2 structure is stored as a `matrix`.
+So, the 2x2 structure of integers is stored a higher order `matrix` data 
+structure.
 
 ## Array
 
@@ -480,7 +485,11 @@ class(x)
 ## Dataframe
 
 A Dataframe is a multi-dimensional structure of values, allowing multiple data
-types. It is implemented as a list.
+types. It is implemented as a list. A dataframe is used like a database table 
+to store and manipulate tabular data in rows ("observations") and columns 
+("variables"). You can think of the columns as vectors, since the values in a 
+column must be of the same type.
+
 
 
 ```r
