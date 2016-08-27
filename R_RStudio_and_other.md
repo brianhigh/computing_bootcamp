@@ -34,8 +34,8 @@ You can store data in memory by assigning values to variables.
 
 
 ```r
-a <- 1
-a
+val <- 1
+val
 ```
 
 ```
@@ -48,7 +48,7 @@ The `#` is used for comments. Everthing after the `#` will be ignored by R.
 
 
 ```r
-a    # This is a bad name for a variable.
+val    # This is a bad name for a variable because it is not very descriptive.
 ```
 
 ```
@@ -113,8 +113,8 @@ referring to a variable name.
 
 
 ```r
-a <- 1
-typeof(a)
+val <- 1
+typeof(val)
 ```
 
 ```
@@ -193,7 +193,7 @@ As before, we quote literal character strings but not variable names.
 
 
 ```r
-is.character('a')      # TRUE
+is.character('val')    # TRUE
 ```
 
 ```
@@ -201,8 +201,8 @@ is.character('a')      # TRUE
 ```
 
 ```r
-a <- 1
-is.character(a)        # FALSE
+val <- 1
+is.character(val)      # FALSE
 ```
 
 ```
@@ -224,20 +224,20 @@ the "List".
 ## Vector
 
 The default data structure is a Vector. A vector is a one-dimensional group 
-(collection) of one or more values (data elements), all of the same primative data 
-type.
+(collection) of one or more values (data elements), all of the same primative 
+data type.
 
 
 ```r
-a <- 1
+vec <- 1
 ```
 
 The `c()` function "concatenates" a collection of values into a vector.
 
 
 ```r
-a <- c(1, 2)
-a
+vec <- c(1, 2)
+vec
 ```
 
 ```
@@ -245,7 +245,7 @@ a
 ```
 
 ```r
-is.vector(a)
+is.vector(vec)
 ```
 
 ```
@@ -327,8 +327,8 @@ It can be constructed from a Vector, as supplied by the "data" argument for the
 
 
 ```r
-m <- matrix(data = 1:4, nrow = 2)
-m
+mat <- matrix(data = 1:4, nrow = 2)
+mat
 ```
 
 ```
@@ -341,8 +341,8 @@ You can also arrange the values by row instead of by column.
 
 
 ```r
-m <- matrix(data = 1:4, nrow = 2, byrow = TRUE)
-m
+mat <- matrix(data = 1:4, nrow = 2, byrow = TRUE)
+mat
 ```
 
 ```
@@ -357,7 +357,7 @@ The `str()` function may be used to show the underlying data structure.
 
 
 ```r
-str(m)
+str(mat)
 ```
 
 ```
@@ -366,19 +366,24 @@ str(m)
 
 This shows that we have a 2x2 structure of the integers 1 through 4.
 
-As noted before, we can display the class with the `class()` function:
+Let's compare this result with the `typeof()` and `class()` functions:
 
 
 ```r
-class(m)
+typeof(mat)   # integer (the data type of the primative elements)
+```
+
+```
+## [1] "integer"
+```
+
+```r
+class(mat)    # matrix (the higher order data structure)
 ```
 
 ```
 ## [1] "matrix"
 ```
-
-So, the 2x2 structure of integers is stored a higher order `matrix` data 
-structure.
 
 ## Array
 
@@ -386,8 +391,8 @@ An Array is a multi-dimensional structure of values, all of the same data type.
 
 
 ```r
-a <- array(data = 1:8, dim = c(2, 2, 2))
-a
+arr <- array(data = 1:8, dim = c(2, 2, 2))
+arr
 ```
 
 ```
@@ -404,11 +409,14 @@ a
 ## [2,]    6    8
 ```
 
+This array was built from a single vector, but split into three dimensions, each
+containing 2 elements.
+
 ## Array
 
 
 ```r
-typeof(a)
+typeof(arr)    # integer
 ```
 
 ```
@@ -416,7 +424,7 @@ typeof(a)
 ```
 
 ```r
-str(a)
+str(arr)
 ```
 
 ```
@@ -424,7 +432,7 @@ str(a)
 ```
 
 ```r
-class(a)
+class(arr)     # array
 ```
 
 ```
@@ -438,8 +446,8 @@ types in each of it's dimensions.
 
 
 ```r
-x <- list(a = 1:3, b = c('i', 'j', 'k'))
-x
+lst <- list(a = 1:3, b = c('i', 'j', 'k'))
+lst
 ```
 
 ```
@@ -450,11 +458,13 @@ x
 ## [1] "i" "j" "k"
 ```
 
+This list was built from two vectors, which were labeled "a" and "b".
+
 ## List
 
 
 ```r
-typeof(x)
+typeof(lst)    # list (does not show primative data type since it may vary)
 ```
 
 ```
@@ -462,7 +472,18 @@ typeof(x)
 ```
 
 ```r
-str(x)
+class(lst)     # list (same as result of typeof function)
+```
+
+```
+## [1] "list"
+```
+
+The "class" of the list is shown in the first line of `str()` output. 
+
+
+```r
+str(lst)
 ```
 
 ```
@@ -471,15 +492,33 @@ str(x)
 ##  $ b: chr [1:3] "i" "j" "k"
 ```
 
-The "class" of the list is shown in the first line of `str()` output. 
+## Naming Array Dimensions with a List
+
+Now that we know about lists, we can see one in action.
 
 
 ```r
-class(x)
+arr <- array(data = seq(5, 120, 5), dim = c(3, 4, 2), 
+             dimnames = list(x=1:3, y=letters[1:4], z=LETTERS[1:2]))
+arr
 ```
 
 ```
-## [1] "list"
+## , , z = A
+## 
+##    y
+## x    a  b  c  d
+##   1  5 20 35 50
+##   2 10 25 40 55
+##   3 15 30 45 60
+## 
+## , , z = B
+## 
+##    y
+## x    a  b   c   d
+##   1 65 80  95 110
+##   2 70 85 100 115
+##   3 75 90 105 120
 ```
 
 ## Dataframe
@@ -493,8 +532,8 @@ column must be of the same type.
 
 
 ```r
-y <- data.frame(a = 1:3, b = c('i', 'j', 'k'))
-y
+df <- data.frame(a = 1:3, b = c('i', 'j', 'k'))
+df
 ```
 
 ```
@@ -508,7 +547,7 @@ y
 
 
 ```r
-typeof(y)
+typeof(df)     # list
 ```
 
 ```
@@ -516,7 +555,7 @@ typeof(y)
 ```
 
 ```r
-str(y)
+str(df)
 ```
 
 ```
@@ -532,8 +571,8 @@ behavior with `stringsAsFactors = FALSE`.
 
 
 ```r
-y <- data.frame(a = 1:3, b = c('i', 'j', 'k'), stringsAsFactors = FALSE)
-y
+df <- data.frame(a = 1:3, b = c('i', 'j', 'k'), stringsAsFactors = FALSE)
+df
 ```
 
 ```
@@ -547,7 +586,7 @@ And we can hide the row numbers using `print()` with `row.names = FALSE`.
 
 
 ```r
-print(y, row.names = FALSE)
+print(df, row.names = FALSE)
 ```
 
 ```
@@ -561,7 +600,7 @@ print(y, row.names = FALSE)
 
 
 ```r
-typeof(y)
+typeof(df)    # list
 ```
 
 ```
@@ -569,7 +608,7 @@ typeof(y)
 ```
 
 ```r
-str(y)
+str(df)
 ```
 
 ```
@@ -580,11 +619,11 @@ str(y)
 
 ## Dataframe
 
-We can see that our list, `x`, has a different class than our dataframe, `y`.
+We can see that our list, `lst`, has a different class than our dataframe, `df`.
 
 
 ```r
-class(x)    # list
+class(lst)     # list
 ```
 
 ```
@@ -592,7 +631,7 @@ class(x)    # list
 ```
 
 ```r
-class(y)    # data.frame
+class(df)      # data.frame
 ```
 
 ```
