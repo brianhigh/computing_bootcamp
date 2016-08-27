@@ -15,7 +15,7 @@ output:
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
 ## R Language Basics
@@ -26,7 +26,12 @@ If you just enter a value, R will print it out:
 
 ```{r}
 1
-'a'
+```
+
+Or you can use the `print()` function instead:
+
+```{r}
+print('a')
 ```
 
 You can store data in memory by assigning values to variables.
@@ -52,7 +57,18 @@ The `#` symbol often is called:
 * hashtag (Technically, this refers to a number sign and the text following it.)
 * octothorpe (This term originated at Bell Labs, possibly as a "joke".)
 
-## Data Types
+## Data Types and Classes
+
+You can show the type of a value with `typeof()` or `class()`.
+
+```{r}
+typeof(1)      # double  (the more basic "primative" type)
+class(1)       # numeric (the more general "higher order" type)
+typeof('a')    # character
+class('a')     # character
+```
+
+## Data Types and Classes
 
 The most basic data types are `numeric` (`double` and `integer`), `complex`, 
 and `character`. You can view the type of a value with the `typeof()` function:
@@ -63,7 +79,7 @@ typeof(1L)      # "integer" -- "L" after one or more digits makes it an integer
 typeof(1 + 2i)  # "complex" -- a number with real and imaginary components
 ```
 
-## Character Data Type
+## Data Types and Classes
 
 Characters are entered with quotes around them (single or double quotes).
 
@@ -79,31 +95,6 @@ a <- 1
 typeof(a)
 ```
 
-## Displaying Data Type
-
-You can show the type of a value with typeof()
-
-```{r}
-typeof(1)
-typeof('a')
-```
-
-## Type Conversion
-
-You can change the type of a value:
-
-```{r}
-typeof(as.integer(1))
-```
-
-If you have several values of different types, some may be converted for you:
-
-```{r}
-a <- c('a', 'b', 1, 2)
-a
-typeof(a)
-```
-
 ## Testing for Numeric Values
 
 You can test if a value is numeric using the `is.numeric()` function:
@@ -114,7 +105,7 @@ is.numeric(1L)
 is.numeric(1 + 2i)
 ```
 
-## Testing for Numeric Values
+## Testing for Character Values
 
 As before, we quote literal character strings but not variable names.
 
@@ -136,14 +127,15 @@ R has four basic data structures:
 
 ## Vector
 
-The default data structure is a Vector. A vector is a two-dimensional group 
-(collection) of one or more values (data elements).
+The default data structure is a Vector. A vector is a one-dimensional group 
+(collection) of one or more values (data elements), all of the same primative data 
+type.
 
 ```{r}
 a <- 1
 ```
 
-The `c()` function "concatenates" values into a vector.
+The `c()` function "concatenates" a collection of values into a vector.
 
 ```{r}
 a <- c(1, 2)
@@ -152,16 +144,6 @@ is.vector(a)
 ```
 
 ## Vector
-
-Vectors may contain values of more than one data type.
-
-```{r}
-a <- c('a', 'b', 1, 2)
-a
-is.vector(a)
-```
-
-## Sequences of Integers
 
 We can save ourselves some typing when working with sequences of integers. 
 These are all ways to create equivalent vectors of the digits one through four:
@@ -172,9 +154,22 @@ c(1L, 2L, 3L, 4L)
 seq(1:4)
 ```
 
+## Vector
+
+R will try to "coerce" the values of a vector to a common data type, if necessary.
+
+```{r}
+c('a', 1)                # Coerced to "character"
+c(1L, 1.1)               # Coerced to "double"
+c(1L, 1.1, 1+1i)         # Coerced to "complex"
+c('a', 1L, 1.1, 1+1i)    # Coerced to "character"
+```
+
 ## Matrix
 
-A Matrix is a two-dimensional structure of values, all of the same data type.
+A Matrix is a two-dimensional structure of values, all of the same data type. It can
+be constructed from a Vector, as supplied by the "data" argument for the `matrix()`
+function.
 
 ```{r}
 m <- matrix(data = 1:4, nrow = 2)
@@ -225,8 +220,8 @@ class(a)
 
 ## List
 
-A List is a multi-dimensional structure of values, allowing multiple data
-types.
+A List is a multi-dimensional structure of values, allowing for different data
+types in each of it's dimensions.
 
 ```{r}
 x <- list(a = 1:3, b = c('i', 'j', 'k'))
@@ -266,11 +261,17 @@ str(y)
 ## Dataframe
 
 By default, "character" values are converted to "factors". We can change this
-behavior with the `stringsAsFactors` option.
+behavior with `stringsAsFactors = FALSE`.
 
 ```{r}
 y <- data.frame(a = 1:3, b = c('i', 'j', 'k'), stringsAsFactors = FALSE)
 y
+```
+
+And we can hide the row numbers using `print()` with `row.names = FALSE`.
+
+```{r}
+print(y, row.names = FALSE)
 ```
 
 ## Dataframe
@@ -285,10 +286,11 @@ str(y)
 We can see that our list, `x`, has a different class than our dataframe, `y`.
 
 ```{r}
-class(x)
-class(y)
+class(x)    # list
+class(y)    # data.frame
 ```
 
 Although a dataframe is implemented as a list, it has additional properties 
 which make it very useful for data analysis. Those properties are associated
-with the dataframe's "class".
+with the dataframe's "class". As before, `typeof()` shows the lower order 
+data type and `class()` shows the higher order data type.
