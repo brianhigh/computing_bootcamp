@@ -4,11 +4,23 @@ Brian High
 
 
 
-## R Language Basics
+## R Data Types and Structures
+
+### Learning objectives
+
+You will learn:
+
+* How to access and display data in R
+* How to make comments in R code
+* The basic "primitive" data types in R
+* The basic "higher order" data structures in R
+* The basics of R "data objects" and "classes"
+* How to inspect the properties of data objects
+* How to convert data objects to other types
 
 ## Accessing Data
 
-If you just enter a value, R will print it out:
+If you just enter a value at the R command prompt, R will print out the value:
 
 
 ```r
@@ -30,45 +42,46 @@ print('a')
 ## [1] "a"
 ```
 
-You can store data in memory by assigning values to variables.
+You can store data in memory by assigning values to variables (using `<-`).
 
 
 ```r
-val <- 1
+val <- 1234
 val
 ```
 
 ```
-## [1] 1
+## [1] 1234
 ```
 
-## Comments
+## Aside: Code Comments in R
 
 The `#` is used for comments. Everthing after the `#` will be ignored by R.
 
 
 ```r
+val <- 1234
 val    # This is a bad name for a variable because it is not very descriptive.
 ```
 
 ```
-## [1] 1
+## [1] 1234
 ```
 
 The `#` symbol has several names:
 
-* number sign (Shorthand for No.)
-* pound sign (Shorthand for lb.)
-* hash (Popular with programmers and in the UK and Ireland.)
-* hashtag (As used on social media sites like Twitter.)
-* octothorpe (Originated at Bell Labs, possibly as a joke.)
+* **number (numero) sign**: shorthand for &#8470; (No.)
+* **pound sign**: shorthand for &#8468; (lb.)
+* **hash**: popular with programmers and in the UK and Ireland
+* **hashtag**: as used on social media sites like Twitter
+* **octothorpe**: originated at Bell Labs, possibly as a joke
 
 Since programmers generally call it a "hash", we will keep with this tradition.
 
 ## Data Types and Classes
 
 The most basic data types are `numeric` (`double` and `integer`), `complex`, 
-and `character`. You can view the type of a value with the `typeof()` function:
+`logical` (boolean), and `character` (string).
 
 
 ```r
@@ -88,6 +101,14 @@ typeof(1L)      # "integer" -- "L" after one or more digits makes it an integer
 ```
 
 ```r
+typeof(TRUE)    # "logical" -- either TRUE or FALSE
+```
+
+```
+## [1] "logical"
+```
+
+```r
 typeof(1 + 2i)  # "complex" -- a number with real and imaginary components
 ```
 
@@ -101,7 +122,7 @@ Characters are entered with quotes around them (single or double quotes).
 
 
 ```r
-typeof('a')     # "character" -- a non-numeric "string" of text characters
+typeof('abcd')     # "character" -- a non-numeric "string" of text characters
 ```
 
 ```
@@ -113,7 +134,7 @@ referring to a variable name.
 
 
 ```r
-val <- 1
+val <- 1234
 typeof(val)
 ```
 
@@ -127,7 +148,7 @@ You can show the "higher order" type of a data object with `class()`.
 
 
 ```r
-typeof(1)      # double  (the more basic "primative" type)
+typeof(1234)      # double  (the more basic "primitive" type)
 ```
 
 ```
@@ -135,7 +156,7 @@ typeof(1)      # double  (the more basic "primative" type)
 ```
 
 ```r
-class(1)       # numeric (the more general "higher order" type)
+class(1234)       # numeric (the more general "higher order" type)
 ```
 
 ```
@@ -143,7 +164,7 @@ class(1)       # numeric (the more general "higher order" type)
 ```
 
 ```r
-typeof('a')    # character
+typeof('abcd')    # character
 ```
 
 ```
@@ -151,7 +172,7 @@ typeof('a')    # character
 ```
 
 ```r
-class('a')     # character
+class('abcd')     # character
 ```
 
 ```
@@ -164,7 +185,7 @@ You can test if a value is numeric using the `is.numeric()` function:
 
 
 ```r
-is.numeric(1)          # TRUE
+is.numeric(1234)          # TRUE
 ```
 
 ```
@@ -172,7 +193,7 @@ is.numeric(1)          # TRUE
 ```
 
 ```r
-is.numeric(1L)         # TRUE
+is.numeric(1234L)         # TRUE
 ```
 
 ```
@@ -180,7 +201,7 @@ is.numeric(1L)         # TRUE
 ```
 
 ```r
-is.numeric(1 + 2i)     # FALSE
+is.numeric(1234 + 5i)     # FALSE
 ```
 
 ```
@@ -201,7 +222,7 @@ is.character('val')    # TRUE
 ```
 
 ```r
-val <- 1
+val <- 1234
 is.character(val)      # FALSE
 ```
 
@@ -213,39 +234,61 @@ is.character(val)      # FALSE
 
 R has four basic data structures:
 
-* Vector
+* Vector (atomic vector)
 * Matrix
 * Array
-* List
+* List (non-atomic vector)
 
 However, the most commonly used data structure is the "Dataframe", based on 
 the "List". 
 
 ## Vector
 
-The default data structure is a Vector. A vector is a one-dimensional group 
-(collection) of one or more values (data elements), all of the same primative 
-data type.
+The default data structure in R is a Vector. A vector is a one-dimensional group 
+(collection) of one or more values (data elements), all of the same 
+("homogenous") primitive data type (i.e. "atomic").
 
 
 ```r
-vec <- 1
+vec <- 1234   # A vector containing a single value
 ```
 
-The `c()` function "concatenates" a collection of values into a vector.
+The `c()` function "combines" values into a vector.
 
 
 ```r
-vec <- c(1, 2)
+vec <- c(12, 34)
 vec
 ```
 
 ```
-## [1] 1 2
+## [1] 12 34
 ```
 
 ```r
 is.vector(vec)
+```
+
+```
+## [1] TRUE
+```
+
+## Vector
+
+Vectors in R are called "atomic vectors" because they are a "flat" structure 
+composed only of single-valued items.
+
+
+```r
+length(vec)
+```
+
+```
+## [1] 2
+```
+
+```r
+is.atomic(vec)
 ```
 
 ```
@@ -275,7 +318,7 @@ c(1L, 2L, 3L, 4L)
 ```
 
 ```r
-seq(1, 4)
+seq(1, 4)         # Type ?seq to find out how to make more complex sequences.
 ```
 
 ```
@@ -370,7 +413,7 @@ Let's compare this result with the `typeof()` and `class()` functions:
 
 
 ```r
-typeof(mat)   # integer (the data type of the primative elements)
+typeof(mat)   # integer (the data type of the primitive elements)
 ```
 
 ```
@@ -391,26 +434,29 @@ An Array is a multi-dimensional structure of values, all of the same data type.
 
 
 ```r
-arr <- array(data = 1:8, dim = c(2, 2, 2))
+arr_data <- seq(5, 120, 5)    # A vector of length 24
+arr_dim <- c(3, 4, 2)         # The product of the these three values is 24
+arr <- array(data = arr_data, dim = arr_dim)
 arr
 ```
 
 ```
 ## , , 1
 ## 
-##      [,1] [,2]
-## [1,]    1    3
-## [2,]    2    4
+##      [,1] [,2] [,3] [,4]
+## [1,]    5   20   35   50
+## [2,]   10   25   40   55
+## [3,]   15   30   45   60
 ## 
 ## , , 2
 ## 
-##      [,1] [,2]
-## [1,]    5    7
-## [2,]    6    8
+##      [,1] [,2] [,3] [,4]
+## [1,]   65   80   95  110
+## [2,]   70   85  100  115
+## [3,]   75   90  105  120
 ```
 
-This array was built from a single vector, but split into three dimensions, each
-containing 2 elements.
+This array was built from a single data vector, but split into three dimensions.
 
 ## Array
 
@@ -420,7 +466,7 @@ typeof(arr)    # integer
 ```
 
 ```
-## [1] "integer"
+## [1] "double"
 ```
 
 ```r
@@ -428,7 +474,7 @@ str(arr)
 ```
 
 ```
-##  int [1:2, 1:2, 1:2] 1 2 3 4 5 6 7 8
+##  num [1:3, 1:4, 1:2] 5 10 15 20 25 30 35 40 45 50 ...
 ```
 
 ```r
@@ -441,30 +487,40 @@ class(arr)     # array
 
 ## List
 
-A List is a multi-dimensional structure of values, allowing for different data
-types in each of it's dimensions.
+A list is a vector of data objects which may be heterogenous (non-atomic).
 
 
 ```r
-lst <- list(a = 1:3, b = c('i', 'j', 'k'))
+lst <- list(x=1:3, y=letters[1:4], z=LETTERS[1:2])
 lst
 ```
 
 ```
-## $a
+## $x
 ## [1] 1 2 3
 ## 
-## $b
-## [1] "i" "j" "k"
+## $y
+## [1] "a" "b" "c" "d"
+## 
+## $z
+## [1] "A" "B"
 ```
 
-This list was built from two vectors, which were labeled "a" and "b".
+```r
+is.atomic(lst)
+```
+
+```
+## [1] FALSE
+```
+
+This list was built from three vectors, which were labeled "x", "y", and "z". 
 
 ## List
 
 
 ```r
-typeof(lst)    # list (does not show primative data type since it may vary)
+typeof(lst)    # list (does not show primitive data type since it may vary)
 ```
 
 ```
@@ -487,9 +543,10 @@ str(lst)
 ```
 
 ```
-## List of 2
-##  $ a: int [1:3] 1 2 3
-##  $ b: chr [1:3] "i" "j" "k"
+## List of 3
+##  $ x: int [1:3] 1 2 3
+##  $ y: chr [1:4] "a" "b" "c" "d"
+##  $ z: chr [1:2] "A" "B"
 ```
 
 ## Naming Array Dimensions with a List
@@ -498,9 +555,8 @@ Now that we know about lists, we can see one in action.
 
 
 ```r
-arr <- array(data = seq(5, 120, 5), dim = c(3, 4, 2), 
-             dimnames = list(x=1:3, y=letters[1:4], z=LETTERS[1:2]))
-arr
+named_arr <- array(data = arr_data, dim = arr_dim, dimnames = lst)
+named_arr
 ```
 
 ```
@@ -521,6 +577,8 @@ arr
 ##   3 75 90 105 120
 ```
 
+We used our list to define the item names for each dimension of the array.
+
 ## Dataframe
 
 A Dataframe is a multi-dimensional structure of values, allowing multiple data
@@ -532,15 +590,16 @@ column must be of the same type.
 
 
 ```r
-df <- data.frame(a = 1:3, b = c('i', 'j', 'k'))
+df <- data.frame(number=1:4, letter=letters[1:4])
 df
 ```
 
 ```
-##   a b
-## 1 1 i
-## 2 2 j
-## 3 3 k
+##   number letter
+## 1      1      a
+## 2      2      b
+## 3      3      c
+## 4      4      d
 ```
 
 ## Dataframe
@@ -559,9 +618,9 @@ str(df)
 ```
 
 ```
-## 'data.frame':	3 obs. of  2 variables:
-##  $ a: int  1 2 3
-##  $ b: Factor w/ 3 levels "i","j","k": 1 2 3
+## 'data.frame':	4 obs. of  2 variables:
+##  $ number: int  1 2 3 4
+##  $ letter: Factor w/ 4 levels "a","b","c","d": 1 2 3 4
 ```
 
 ## Dataframe
@@ -571,15 +630,16 @@ behavior with `stringsAsFactors = FALSE`.
 
 
 ```r
-df <- data.frame(a = 1:3, b = c('i', 'j', 'k'), stringsAsFactors = FALSE)
+df <- data.frame(number=1:4, letter=letters[1:4], stringsAsFactors = FALSE)
 df
 ```
 
 ```
-##   a b
-## 1 1 i
-## 2 2 j
-## 3 3 k
+##   number letter
+## 1      1      a
+## 2      2      b
+## 3      3      c
+## 4      4      d
 ```
 
 And we can hide the row numbers using `print()` with `row.names = FALSE`.
@@ -590,10 +650,11 @@ print(df, row.names = FALSE)
 ```
 
 ```
-##  a b
-##  1 i
-##  2 j
-##  3 k
+##  number letter
+##       1      a
+##       2      b
+##       3      c
+##       4      d
 ```
 
 ## Dataframe
@@ -612,9 +673,9 @@ str(df)
 ```
 
 ```
-## 'data.frame':	3 obs. of  2 variables:
-##  $ a: int  1 2 3
-##  $ b: chr  "i" "j" "k"
+## 'data.frame':	4 obs. of  2 variables:
+##  $ number: int  1 2 3 4
+##  $ letter: chr  "a" "b" "c" "d"
 ```
 
 ## Dataframe
@@ -642,3 +703,13 @@ Although a dataframe is implemented as a list, it has additional properties
 which make it very useful for data analysis. Those properties are associated
 with the dataframe's "class". As before, `typeof()` shows the lower order 
 data type and `class()` shows the higher order data type.
+
+## Summary of Data Structures
+
+Dimension|Homogeneous|Heterogeneous
+---------|-----------|-------------
+1d|Atomic vector|List
+2d|Matrix|Data frame
+nd|Array|
+
+_Source_: [Advanced R: Data Structures](http://adv-r.had.co.nz/Data-structures.html)
