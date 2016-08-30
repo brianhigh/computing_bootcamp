@@ -1,0 +1,22 @@
+---
+title: "Query Tools"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Tools {.columns-2}
+
+**Graphical**
+
+- MySQL Workbench
+- Access
+- LibreOffice Base
+
+**Command Line**
+
+- R
+- Python
+- mysql/psql (builtin tool)
+
+## Questions?
