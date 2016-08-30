@@ -1,0 +1,43 @@
+---
+title: Computer Anatomy I
+  
+author: "Jim Hogan"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: no
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+## Anatomy, Three Core Elements
+
+While there can be many different bits of hardware associated with computers, three stand out as the "guts" of most computers and are the elements that will determine the performance of a computer and whether it is suited for a particular task. Nowadays, you have to add a 4th element: "Network".
+
+### Central Processing Unit
+
+### Random Access Memory
+
+### Persistent Storage
+
+### Network
+
+## Central Processing Unit, or "CPU"
+
+* Often used to refer to the actual box in which the CPU resides
+
+## Random Access Memory, or "RAM"
+
+## Persistent Storage
+
+* Likely more familar as a "disk" or "hard drive"
+
+## Network
