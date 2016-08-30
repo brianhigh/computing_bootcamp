@@ -16,6 +16,7 @@ You will learn:
 * The basic "higher order" data structures in R
 * The basics of R "data objects" and "classes"
 * How to inspect the properties of data objects
+* How to create categorical variables in R
 * How to convert data objects to other types
 
 ## Accessing Data
@@ -31,7 +32,7 @@ If you just enter a value at the R command prompt, R will print out the value:
 ## [1] 1
 ```
 
-Or you can use the `print()` function instead:
+Or you can use the `print()` function instead (to be explicit about it):
 
 
 ```r
@@ -70,11 +71,11 @@ val    # This is a bad name for a variable because it is not very descriptive.
 
 The `#` symbol has several names:
 
-* **number (numero) sign**: shorthand for &#8470; (No.)
-* **pound sign**: shorthand for &#8468; (lb.)
-* **hash**: popular with programmers and in the UK and Ireland
-* **hashtag**: as used on social media sites like Twitter
-* **octothorpe**: originated at Bell Labs, possibly as a joke
+* *__number sign__*: shorthand for &#8470; (*numero*, No.)
+* *__pound sign__*: shorthand for &#8468; (*libra pondo*, lb.)
+* *__hash__*: from "cross hatch"; popular with programmers (and also in the UK)
+* *__hashtag__*: as used on social media sites like Twitter for keyword searching
+* *__octothorpe__*: originated at Bell Labs for use with telephone keypads
 
 Since programmers generally call it a "hash", we will keep with this tradition.
 
@@ -144,7 +145,7 @@ typeof(val)
 
 ## Data Types and Classes
 
-You can show the "higher order" type of a data object with `class()`.
+You can show the "higher order" (if any) type of a data object with `class()`.
 
 
 ```r
@@ -230,17 +231,28 @@ is.character(val)      # FALSE
 ## [1] FALSE
 ```
 
-## Data Structures
+## Basic Data Structures
 
 R has four basic data structures:
 
-* Vector (atomic vector)
+* Vector (Atomic vector)
 * Matrix
 * Array
-* List (non-atomic vector)
+* List (Composite vector)
 
-However, the most commonly used data structure is the "Dataframe", based on 
+However, the most commonly used data structure is the "Data frame", based on 
 the "List". 
+
+## Summary of Basic Data Structures
+
+Dimension|Homogeneous|Heterogeneous
+---------|-----------|-------------
+1d|Atomic vector|List
+2d|Matrix|Data frame
+nd|Array|
+
+_Source_: [Advanced R: Data Structures](http://adv-r.had.co.nz/Data-structures.html), 
+&copy; Hadley Wickham. 
 
 ## Vector
 
@@ -394,26 +406,21 @@ mat
 ## [2,]    3    4
 ```
 
-## Underlying Structure
+## Underlying Data Structure
 
-The `str()` function may be used to show the underlying data structure.
+Several functions may be used to expose the underlying data structure.
 
 
 ```r
-str(mat)
+str(mat)         # int ...    (a 2x2 structure of the integers 1 through 4)
 ```
 
 ```
 ##  int [1:2, 1:2] 1 3 2 4
 ```
 
-This shows that we have a 2x2 structure of the integers 1 through 4.
-
-Let's compare this result with the `typeof()` and `class()` functions:
-
-
 ```r
-typeof(mat)   # integer (the data type of the primitive elements)
+typeof(mat)      # "integer"  (the data type of the primitive elements)
 ```
 
 ```
@@ -421,11 +428,20 @@ typeof(mat)   # integer (the data type of the primitive elements)
 ```
 
 ```r
-class(mat)    # matrix (the higher order data structure)
+class(mat)       # "matrix"   (the higher order data structure)
 ```
 
 ```
 ## [1] "matrix"
+```
+
+```r
+attributes(mat)  # $dim ...   (the metadata for the object, related to its class)
+```
+
+```
+## $dim
+## [1] 2 2
 ```
 
 ## Array
@@ -434,10 +450,10 @@ An Array is a multi-dimensional structure of values, all of the same data type.
 
 
 ```r
-arr_data <- seq(5, 120, 5)    # A vector of length 24
-arr_dim <- c(3, 4, 2)         # The product of the these three values is 24
-arr <- array(data = arr_data, dim = arr_dim)
-arr
+arr.data <- seq(5, 120, 5)    # A vector of length 24
+arr.dim <- c(3, 4, 2)         # The product of the these three values is 24
+arr3d <- array(data = arr.data, dim = arr.dim)
+arr3d
 ```
 
 ```
@@ -462,7 +478,7 @@ This array was built from a single data vector, but split into three dimensions.
 
 
 ```r
-typeof(arr)    # integer
+typeof(arr3d)      # "double"
 ```
 
 ```
@@ -470,7 +486,7 @@ typeof(arr)    # integer
 ```
 
 ```r
-str(arr)
+str(arr3d)         # num ...
 ```
 
 ```
@@ -478,11 +494,20 @@ str(arr)
 ```
 
 ```r
-class(arr)     # array
+class(arr3d)       # "array"
 ```
 
 ```
 ## [1] "array"
+```
+
+```r
+attributes(arr3d)  # $dim ...
+```
+
+```
+## $dim
+## [1] 3 4 2
 ```
 
 ## List
@@ -491,8 +516,8 @@ A list is a vector of data objects which may be heterogenous (non-atomic).
 
 
 ```r
-lst <- list(x=1:3, y=letters[1:4], z=LETTERS[1:2])
-lst
+lst3d <- list(x=1:3, y=letters[1:4], z=LETTERS[1:2])
+lst3d
 ```
 
 ```
@@ -507,7 +532,7 @@ lst
 ```
 
 ```r
-is.atomic(lst)
+is.atomic(lst3d)
 ```
 
 ```
@@ -520,7 +545,7 @@ This list was built from three vectors, which were labeled "x", "y", and "z".
 
 
 ```r
-typeof(lst)    # list (does not show primitive data type since it may vary)
+typeof(lst3d)    # list (does not show primitive data type since it may vary)
 ```
 
 ```
@@ -528,7 +553,7 @@ typeof(lst)    # list (does not show primitive data type since it may vary)
 ```
 
 ```r
-class(lst)     # list (same as result of typeof function)
+class(lst3d)     # list (same as result of typeof function)
 ```
 
 ```
@@ -539,7 +564,7 @@ The "class" of the list is shown in the first line of `str()` output.
 
 
 ```r
-str(lst)
+str(lst3d)
 ```
 
 ```
@@ -555,8 +580,8 @@ Now that we know about lists, we can see one in action.
 
 
 ```r
-named_arr <- array(data = arr_data, dim = arr_dim, dimnames = lst)
-named_arr
+arr3d.named <- array(data = arr.data, dim = arr.dim, dimnames = lst3d)
+arr3d.named
 ```
 
 ```
@@ -579,10 +604,10 @@ named_arr
 
 We used our list to define the item names for each dimension of the array.
 
-## Dataframe
+## Data frame
 
-A Dataframe is a multi-dimensional structure of values, allowing multiple data
-types. It is implemented as a list. A dataframe is used like a database table 
+A Data frame is a multi-dimensional structure of values, allowing multiple data
+types. It is implemented as a list. A data frame is used like a database table 
 to store and manipulate tabular data in rows ("observations") and columns 
 ("variables"). You can think of the columns as vectors, since the values in a 
 column must be of the same type.
@@ -602,7 +627,7 @@ df
 ## 4      4      d
 ```
 
-## Dataframe
+## Data frame
 
 
 ```r
@@ -623,10 +648,10 @@ str(df)
 ##  $ letter: Factor w/ 4 levels "a","b","c","d": 1 2 3 4
 ```
 
-## Dataframe
+## Data frame
 
-By default, "character" values are converted to "factors". We can change this
-behavior with `stringsAsFactors = FALSE`.
+By default, "character" values are converted to "factors" (categorical 
+variables). We can change this behavior with `stringsAsFactors = FALSE`.
 
 
 ```r
@@ -657,11 +682,11 @@ print(df, row.names = FALSE)
 ##       4      d
 ```
 
-## Dataframe
+## Data frame
 
 
 ```r
-typeof(df)    # list
+typeof(df)       # list
 ```
 
 ```
@@ -678,13 +703,28 @@ str(df)
 ##  $ letter: chr  "a" "b" "c" "d"
 ```
 
-## Dataframe
+```r
+attributes(df)
+```
 
-We can see that our list, `lst`, has a different class than our dataframe, `df`.
+```
+## $names
+## [1] "number" "letter"
+## 
+## $row.names
+## [1] 1 2 3 4
+## 
+## $class
+## [1] "data.frame"
+```
+
+## Data frame
+
+We can see that our list, `lst3d`, has a different class than our data frame, `df`.
 
 
 ```r
-class(lst)     # list
+class(lst3d)     # list
 ```
 
 ```
@@ -692,24 +732,203 @@ class(lst)     # list
 ```
 
 ```r
-class(df)      # data.frame
+class(df)        # data.frame
 ```
 
 ```
 ## [1] "data.frame"
 ```
 
-Although a dataframe is implemented as a list, it has additional properties 
+Although a data frame is implemented as a list, it has additional properties 
 which make it very useful for data analysis. Those properties are associated
-with the dataframe's "class". As before, `typeof()` shows the lower order 
+with the data frame's "class". As before, `typeof()` shows the lower order 
 data type and `class()` shows the higher order data type.
 
-## Summary of Data Structures
+## Factors
 
-Dimension|Homogeneous|Heterogeneous
----------|-----------|-------------
-1d|Atomic vector|List
-2d|Matrix|Data frame
-nd|Array|
+We stumbled upon the topic of "factors" (categorical variables) when we created 
+a data frame from a character vector. Let's create one and explore it's properties.
 
-_Source_: [Advanced R: Data Structures](http://adv-r.had.co.nz/Data-structures.html)
+
+```r
+gender <- factor(c('m', 'm', 'f', 'm', 'f', 'f'))
+gender
+```
+
+```
+## [1] m m f m f f
+## Levels: f m
+```
+
+```r
+class(gender)
+```
+
+```
+## [1] "factor"
+```
+
+This looks like a character vector with the additional attribute of "Levels", 
+where the levels are the unique values from the vector. But how is this implemented?
+
+## Factors
+
+
+```r
+typeof(gender)
+```
+
+```
+## [1] "integer"
+```
+
+```r
+str(gender)
+```
+
+```
+##  Factor w/ 2 levels "f","m": 2 2 1 2 1 1
+```
+
+```r
+attributes(gender)
+```
+
+```
+## $levels
+## [1] "f" "m"
+## 
+## $class
+## [1] "factor"
+```
+
+As we can see, a factor in R is an object of class "factor" composed of an 
+integer vector and a `$class` attribute and a `$levels` attribute containing a 
+character vector.
+
+## Factors
+
+Factors can also represent ordinal variables, but you need to be careful when 
+using ordered factors to make sure the order is correct.
+
+
+```r
+risk <- c('medium', 'high', 'low', 'low', 'medium', 'low', 'high')
+factor(risk, ordered = TRUE)                # Factors in alpha-numeric order
+```
+
+```
+## [1] medium high   low    low    medium low    high  
+## Levels: high < low < medium
+```
+
+```r
+severity <- c('low', 'medium', 'high')      # Factors by increasing severity
+risk <- factor(risk, ordered = TRUE, levels = severity)
+risk
+```
+
+```
+## [1] medium high   low    low    medium low    high  
+## Levels: low < medium < high
+```
+
+```r
+# Create a data frame using this risk factor variable
+risky <- data.frame(id = LETTERS[1:7], risk, stringsAsFactors = FALSE)
+```
+
+## Data Type Conversion
+
+We already saw how types can be automatically "coerced" to other types through 
+combination and other operations. R also has several "as" functions to 
+explicitly convert types and structures as well.
+
+
+```r
+as.integer('0')
+```
+
+```
+## [1] 0
+```
+
+```r
+as.character(0)
+```
+
+```
+## [1] "0"
+```
+
+```r
+as.logical(0)
+```
+
+```
+## [1] FALSE
+```
+
+## Data Structure Conversion
+
+We can create a matrix from two dimensions of a 3D array using the `matrix()`
+constructor we have used previously. However, it may not behave as you expect.
+
+
+```r
+arr2d.named <- arr3d.named[,,1]   # Subset before converting (just two dimensions)
+attributes(arr2d.named)           # A 3x4 array with dimension names
+```
+
+```
+## $dim
+## [1] 3 4
+## 
+## $dimnames
+## $dimnames$x
+## [1] "1" "2" "3"
+## 
+## $dimnames$y
+## [1] "a" "b" "c" "d"
+```
+
+```r
+m1 <- matrix(arr2d.named)         # Flattened. Same as:  matrix(as.vector(arr_2d))
+attributes(m1)                    # A 12x1 matrix without dimension names -- surprise!
+```
+
+```
+## $dim
+## [1] 12  1
+```
+
+## Data Structure Conversion
+
+We can also use "as" functions to convert higher order data structures.
+
+Let's use the `as.matrix()` converter to create the matrix from the array.
+
+
+```r
+m2 <- as.matrix(arr2d.named)      # Not flattened. Dimensions and names are retained.
+attributes(m2)
+```
+
+```
+## $dim
+## [1] 3 4
+## 
+## $dimnames
+## $dimnames$x
+## [1] "1" "2" "3"
+## 
+## $dimnames$y
+## [1] "a" "b" "c" "d"
+```
+
+Note the difference between the `matrix()` constructor and the `as.matrix()`
+converter. The dimension and name attributes have been retained when using
+the converter function. Which approach you choose will depend on whether or not
+you prefer to flatten or retain the structure and attributes of the original 
+object. It will also depend on the types of objects you are using. (Try 
+this with a data frame.)
