@@ -30,10 +30,19 @@
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
-                      },
+                        favIcon: '../images/logo_128.png',
+              },
 
       // Author information
       presenters: [
+            {
+        name:  'John Yocum' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
             ]
     };
   </script>
@@ -64,6 +73,21 @@
       opacity: 0;
     }
 
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(../images/logo_128.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
   </style>
 
 
@@ -75,15 +99,17 @@
 <slides>
 
   <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="data:image/png;base64,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"></aside>
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;"><img src="data:image/png;base64,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" title="fig:" alt="CC BY-SA 4.0" /></p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Examples of Remote Resources</h2></hgroup><article  id="examples-of-remote-resources">
+<slide class=''><hgroup><h2>Examples of Remote Resources</h2></hgroup><article  id="examples-of-remote-resources" class="smaller ">
 
 <ul>
 <li>Storage (file servers, cloud, etc)</li>
@@ -91,7 +117,7 @@
 <li>Databases</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Benefits</h2></hgroup><article  id="benefits">
+</article></slide><slide class=''><hgroup><h2>Benefits</h2></hgroup><article  id="benefits" class="smaller ">
 
 <ul>
 <li>Security (data is stored in a physically secure location)</li>
@@ -99,7 +125,7 @@
 <li>Portability (available anywhere you have internet access)</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Questions?</h2></hgroup><article  id="questions"></article></slide>
+</article></slide><slide class=''><hgroup><h2>Questions?</h2></hgroup><article  id="questions" class="smaller "></article></slide>
 
 
   <slide class="backdrop"></slide>
