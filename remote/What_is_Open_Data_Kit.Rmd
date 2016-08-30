@@ -1,0 +1,15 @@
+---
+title: "What is Open Data Kit?"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Open Data Kit
+
+- Gather data in the field
+- Data is aggregated remotely
+- Exportable as a CSV
+- Doesn't require full-time internet connection
+
+## Questions?

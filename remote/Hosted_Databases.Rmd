@@ -1,0 +1,20 @@
+---
+title: "Hosted Databases"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Benefits
+
+- Scalability
+- Secure (data isn't stored on a laptop or desktop)
+- Multiuser Access
+- Availability
+
+## Available Options
+
+- Shared MySQL on crud
+- Dedicated database servers (Mongo, Cassandra, etc.)
+
+## Questions?

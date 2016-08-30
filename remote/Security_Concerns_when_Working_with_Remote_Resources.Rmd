@@ -1,0 +1,15 @@
+---
+title: "Security Concerns when Working with Remote Resources"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Concerns
+
+- Securely Transferring Data
+- Public wireless security
+- Who has access to the data?
+- Where is your data (physically)?
+
+## Questions?

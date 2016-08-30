@@ -1,0 +1,20 @@
+---
+title: "Accessing Storage"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## FileZilla
+
+- Secure
+- Free (and Open Source)
+- Works both ON and OFF campus
+
+## Alternatives
+
+- WinSCP
+- CyberDuck
+- Remote Desktop
+
+## Questions?

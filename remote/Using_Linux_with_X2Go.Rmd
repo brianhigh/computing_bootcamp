@@ -1,0 +1,20 @@
+---
+title: "Using Linux with X2Go"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## X2Go
+
+- Remote Desktop (but for Linux servers)
+- Cross platform (clients for Mac, Windows, and Linux)
+- Works both ON and OFF campus
+
+## Benefits over SSH
+
+- Desktop Environment (access to graphical tools)
+- Simplifies Persistent Processes
+- 
+
+## Questions?

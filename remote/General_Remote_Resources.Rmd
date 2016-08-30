@@ -1,0 +1,20 @@
+---
+title: "General Remote Resources"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Examples of Remote Resources
+
+- Storage (file servers, cloud, etc)
+- Remote Desktop (remote computing)
+- Databases
+
+## Benefits
+
+- Security (data is stored in a physically secure location)
+- Scalability (compared to typical laptop and desktop computers)
+- Portability (available anywhere you have internet access)
+
+## Questions?
