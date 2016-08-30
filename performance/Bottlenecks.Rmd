@@ -1,0 +1,18 @@
+---
+title: "Bottlenecks"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## What's the hold up?
+
+- Insufficient system resources
+- Unable to fully utilize system resources
+
+## Identifying Improvements
+
+- Monitor resource utilization
+- Track time to completion
+
+## Questions?

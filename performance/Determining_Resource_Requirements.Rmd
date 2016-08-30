@@ -1,0 +1,24 @@
+---
+title: "Determining Resource Requirements"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Storage
+
+- Storage required for a single sample
+- How many samples are you taking?
+- Temporary data files
+
+## Memory (RAM)
+
+- Does your application work entirely from RAM?
+- Are you performing an operation which requires all the data?
+
+## CPU
+
+- Is your application single-threaded?
+- Does it have a per-core licensing cost?
+
+## Questions?

@@ -1,0 +1,24 @@
+---
+title: "Measuring Resource Usage & Solutions"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Tools
+
+- Task Manager
+- Resource Monitor
+
+## Better Hardware
+
+- Solid State Drive (SSD)
+- Increased number of CPU Cores
+- Faster CPU Clock Speed
+
+## Change the Environment
+
+- Laptop to Desktop
+- Desktop to Server
+
+## Questions?

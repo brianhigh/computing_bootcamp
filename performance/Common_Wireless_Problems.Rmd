@@ -1,0 +1,15 @@
+---
+title: "Common Wireless Problems"
+author: 
+date: 
+output: ioslides_presentation
+---
+
+## Common Problems
+
+- Public wifi blocking some ports or services
+- Poor signal strength
+- Slow, or sluggish network access
+- Connecting to the wrong network
+
+## Questions?
