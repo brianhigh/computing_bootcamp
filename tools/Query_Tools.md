@@ -19,7 +19,7 @@ John Yocum
 
 ![](images/Query_Tools_Report.png)
 
-## Command Line Tools { .columns-2 }
+## Command Line Tools {.columns-2}
 
 - R
 - Python

@@ -4,7 +4,9 @@ John Yocum
 
 
 
-## Flat File {.columns-2}
+# Flat File
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -12,14 +14,20 @@ John Yocum
 - Portable
 
 <br>
-<br>
 
 **Cons**
 
 - No builtin data validation
 - Performance goes down as it grows
 
-## Relational {.columns-2}
+## Software
+
+- Any text editor
+- Anything that can parse a CSV
+
+# Relational
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -32,7 +40,17 @@ John Yocum
 - Limited portability, each database engine has it's own quirks
 - Proper setup requires some planning
 
-## NoSQL {.columns-2}
+## Software
+
+- MySQL (Free, open source, cross platform)
+- PostgreSQL (Free, open source, cross platform)
+- Microsoft Access (Proprietary, Windows only)
+- SQLite (Free, open source, cross platform)
+- FileMaker (Proprietary, Windows and Mac)
+
+# NoSQL
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -49,5 +67,9 @@ John Yocum
 - Portability, each NoSQL database engine stores data differently
 - Database specific query language
 
+## Software
 
-## Questions?
+- Apache Cassandra (Free, open source, cross platform)
+- MongoDB (Free, open source, cross platform)
+
+# Questions?

@@ -4,7 +4,17 @@ John Yocum
 
 
 
-## Spreadsheets {.columns-2}
+# Spreadsheets
+
+## Software {.columns-2}
+
+- Microsoft Excel (Mac, Windows)
+- LibreOffice Calc (Mac, Windows, Linux)
+- Numbers (Mac)
+
+![](images/Spreadsheets_LibreOffice.png)
+
+## Pros and Cons {.columns-2}
 
 **Benefits**
 
@@ -13,7 +23,6 @@ John Yocum
 - Low resource requirements
 
 <br>
-<br>
 
 **Downsides**
 
@@ -21,7 +30,17 @@ John Yocum
 - Often stored in proprietary formats
 - Difficult for multiple people to edit
 
-## CSV Files {.columns-2}
+# CSV Files
+
+## Software {.columns-2}
+
+- Microsoft Excel (Mac, Windows)
+- LibreOffice Calc (Mac, Windows, Linux)
+- Any text editor
+
+![](images/Spreadsheets_CSV.png)
+
+## Pros and Cons {.columns-2}
 
 **Benefits**
 
@@ -34,4 +53,4 @@ John Yocum
 - No formatting or styling
 - No embedded formulas
 
-## Questions?
+# Questions?

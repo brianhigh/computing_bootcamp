@@ -18,7 +18,9 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
-## Flat File {.columns-2}
+# Flat File
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -26,14 +28,20 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Portable
 
 <br>
-<br>
 
 **Cons**
 
 - No builtin data validation
 - Performance goes down as it grows
 
-## Relational {.columns-2}
+## Software
+
+- Any text editor
+- Anything that can parse a CSV
+
+# Relational
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -46,7 +54,17 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Limited portability, each database engine has it's own quirks
 - Proper setup requires some planning
 
-## NoSQL {.columns-2}
+## Software
+
+- MySQL (Free, open source, cross platform)
+- PostgreSQL (Free, open source, cross platform)
+- Microsoft Access (Proprietary, Windows only)
+- SQLite (Free, open source, cross platform)
+- FileMaker (Proprietary, Windows and Mac)
+
+# NoSQL
+
+## Pros and Cons {.columns-2}
 
 **Pros**
 
@@ -63,5 +81,9 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Portability, each NoSQL database engine stores data differently
 - Database specific query language
 
+## Software
 
-## Questions?
+- Apache Cassandra (Free, open source, cross platform)
+- MongoDB (Free, open source, cross platform)
+
+# Questions?
