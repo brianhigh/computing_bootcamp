@@ -19,7 +19,7 @@ in a `function`, which is an R object which can perform a series of operations u
 
 
 ```r
-calcBMI <- function(weight.lb, height.in) { (weight.lb / height.in ^ 2) * 703 }
+calcBMI <- function(wt.lb, ht.in) (wt.lb / ht.in ^ 2) * 703
 ```
 
 Now we can use our function to perform this calculation whenever we need to.

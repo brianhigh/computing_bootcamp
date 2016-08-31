@@ -10,7 +10,10 @@ Brian High
 
 You will learn:
 
-* How to store, access and display data in R
+* How to access, assign and display data in R
+* How to call functions
+* How to use vectorized operations
+* How to store, load, and remove data
 * How to make comments in R code
 
 ## Accessing Data
@@ -27,7 +30,7 @@ to your screen:
 ## [1] 68.1
 ```
 
-Or you can use the `print()` function instead (to be explicit about it):
+Or you can call the `print()` function instead (to be explicit about it):
 
 
 ```r
@@ -79,7 +82,7 @@ outside of the function or after the function call is made.
 
 Since the `x` argument is the first argument expected by the function, we do
 not have to explicity assign our value to this argument, if we supply our
-value as the first (or only) argument to the function.
+value as the first (or only) argument.
 
 
 ```r
@@ -90,8 +93,12 @@ print(number)
 ## [1] 68.1
 ```
 
-Just remember: use `<-` for variable assignment and `=` for argument assignment 
-within function calls.
+## Assignment operators
+
+Just remember: 
+
+* use `<-` for variable assignment 
+* use `=` for argument assignment within function calls.
 
 ## Vectors
 
@@ -214,8 +221,13 @@ sqrt(2)
 ## Vectorized operations
 
 R allows you to perform calculations on all items in a vector or all rows of a 
-data frame at the same time. This is very convenient. Operations that allow this
-are called *vectorized* operations.
+data frame at the same time. 
+
+Operations that allow this are called *vectorized* operations. They are often 
+much faster than the alternatives. 
+
+Let's create a new vector, `bmi`, by [calculating](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
+the Body Mass Index (BMI), using two other vectors as input.
 
 
 ```r
@@ -226,6 +238,36 @@ bmi
 ```
 ## [1] 24.13260 23.68945 28.22018 26.84817
 ```
+
+You will want to make sure your input vectors have the same number of values 
+(elements).
+
+## Vectorized operations versus loops
+
+Alternatively, we could have used a loop to iterate through the input data. This
+approach would calculate a single BMI for each loop iteration. 
+
+We can implement this approach with a `for()` loop.
+
+
+```r
+bmi <- NULL
+for (i in 1:length(weight)) { bmi[i] <- (weight[i] / (height[i])^2) * 703 }
+bmi
+```
+
+```
+## [1] 24.13260 23.68945 28.22018 26.84817
+```
+
+Not only does this take more code it is also less efficient, since many more
+operations (function calls) have to be performed.
+
+## Vectorized operations with data frames
+
+We can also perform this operation on columns of a data frame to produce a new
+column.
+
 
 ```r
 df$bmi <- (df$weight / df$height^2) * 703
@@ -240,8 +282,7 @@ df
 ## 4  Sam   68.9  181.3 26.84817
 ```
 
-First we created a vector by [calculating](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
-the Body Mass Index (BMI) using two other vectors as input. Next, we performed 
+First  Next, we performed 
 the same calculation on the columns of a data frame, adding a new column for the BMI.
 
 ## Storing and loading data
