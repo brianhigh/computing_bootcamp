@@ -1,0 +1,109 @@
+# R Language Basics
+Brian High  
+![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
+
+
+
+## Modular Programming
+
+You will learn:
+
+* How to modularize your code
+* How to write functions in R
+* How to create and share your own R packages
+
+## User-defined functions
+
+We can store a [BMI calculation](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
+in a `function`, which is an R object which can perform a series of operations upon data.
+
+
+```r
+calcBMI <- function(weight.lb, height.in) { (weight.lb / height.in ^ 2) * 703 }
+```
+
+Now we can use our function to perform this calculation whenever we need to.
+
+
+```r
+weight <- c(159.2, 162.3, 203.5, 181.3)
+height <- c(68.1, 69.4, 71.2, 68.9)
+calcBMI(weight, height)
+```
+
+```
+## [1] 24.13260 23.68945 28.22018 26.84817
+```
+
+By placing commonly-used code in functions, we make our programs more modular,
+allowing for code reuse and cleaner, clearer, more maintainable code.
+
+Taking this a step further, we can also create our own *packages* to store and
+share functions, documentation, and example data.
+
+This approach is called *modular programming*.
+
+## Creating Packages
+
+It is not difficult to create our own packages and to share them. Here is the 
+absolute minimum of steps needed to create a very "bare bones" package.
+
+
+```r
+# Create the package name from the system username to minimize conflicts
+pkg.name <- paste(Sys.info()['user'], '.', 'bmi', sep = '')
+
+# Create the "bmi" package folder and the "R" subfolder
+dir.create(file.path(pkg.name, 'R'), showWarnings = FALSE, recursive = TRUE)
+
+# Create an R script containing just the function definition
+sink(file.path(pkg.name, 'R', 'calcBMI.R'))
+cat('calcBMI <- function(wt.lb, ht.in) (wt.lb / ht.in ^ 2) * 703', sep = '\n')
+sink()
+
+sink(file.path(pkg.name, 'DESCRIPTION'))    # Create a DESCRIPTION text file
+cat(paste('Package:', pkg.name), sep = '\n')
+cat('Version: 0.1', sep = '\n', append = TRUE)
+sink()
+
+sink(file.path(pkg.name, 'NAMESPACE'))      # Create a NAMESPACE text file
+cat('export(calcBMI)', sep = '\n')
+sink()
+
+library(devtools)
+build(pkg.name, quiet = TRUE)               # Build the package
+```
+
+## Creating Packages
+
+We can install the "bmi" package we just built and verify that it installed.
+
+
+```r
+install(pkg.name)                     # Install the package
+packageDescription(pkg.name)          # View package description to confirm
+```
+
+If we see a listing of the package description, then the package has been 
+installed okay. Now we can load the package and use the function it contains.
+
+
+```r
+library(pkg.name, character.only = TRUE)
+calcBMI(100, 50)                      # Expected result:  28.12
+```
+
+If we get the expected result then the package works okay.
+
+Now we can unload the package and uninstall it.
+
+
+```r
+detach(pos=grep(pkg.name, search()), unload = TRUE)
+remove.packages(pkg.name)             # Remove package when done with example
+```
+
+## Creating Packages
+
+We will expand on our BMI example by adding documentation (help files) to 
+provide a more complete picture of this process.

@@ -24,54 +24,35 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 You will learn:
 
-* How to access and display data in R
-* How to make comments in R code
+* The basics of R "data objects" and "classes"
 * The basic "primitive" data types in R
 * The basic "higher order" data structures in R
-* The basics of R "data objects" and "classes"
 * How to inspect the properties of data objects
 * How to create categorical variables in R
 * How to convert data objects to other types
 
-## Accessing Data
+## Data Objects
 
-If you just enter a value at the R command prompt, R will print out the value:
+Since R is an *object oriented* language, everything in R is an *object*. What 
+this means is that all of your data and code structures are stored in your 
+computer's memory using the same framework. 
 
-```{r}
-1
-```
+This provides a great deal of consistency in working with R because you can use 
+many of the same methods to interact with various components of R.
 
-Or you can use the `print()` function instead (to be explicit about it):
+There are a core set of basic object types and classes built into R. All other
+objects are built upon these.
 
-```{r}
-print('a')
-```
+*Data objects* are those structures which you use to store data. Objects can 
+also store functions, packages, connections, and other structures intended for 
+other uses. 
 
-You can store data in memory by assigning values to variables (using `<-`).
+In this module, we will focus entirely on data objects -- those which are used 
+primarily for data storage and manipulation in memory.
 
-```{r}
-val <- 1234
-val
-```
-
-## Aside: Code Comments in R
-
-The `#` is used for comments. Everthing after the `#` will be ignored by R.
-
-```{r}
-val <- 1234
-val    # This is a bad name for a variable because it is not very descriptive.
-```
-
-The `#` symbol has several names:
-
-* *__number sign__*: shorthand for &#8470; (*numero*, No.)
-* *__pound sign__*: shorthand for &#8468; (*libra pondo*, lb.)
-* *__hash__*: from "cross hatch"; popular with programmers (and also in the UK)
-* *__hashtag__*: as used on social media sites like Twitter for keyword searching
-* *__octothorpe__*: originated at Bell Labs for use with telephone keypads
-
-Since programmers generally call it a "hash", we will keep with this tradition.
+Like other objects, data objects have a *type* and a *class*. The type defines
+*how* the data are stored, while the class define *what* data are contained 
+within an object.
 
 ## Data Types and Classes
 
