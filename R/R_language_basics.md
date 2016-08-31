@@ -34,11 +34,11 @@ Or you can call the `print()` function instead (to be explicit about it):
 
 
 ```r
-print('Mary')
+print('A')
 ```
 
 ```
-## [1] "Mary"
+## [1] "A"
 ```
 
 ## Variable assignment with `<-`
@@ -55,17 +55,18 @@ number
 ## [1] 68.1
 ```
 
-This value will be stored in your computer's memory until for the duration of
-the current session, or until it is modified or deleted by you or your code.
+This value will be stored in your computer's memory for the duration of the 
+current session, or until it is modified or deleted by you, your code, or your
+environment (execution context).
 
-The `<-` operator is known as the assignment operator.
+The `<-` (arrow) symbol is used as the primary assignment operator in R.
 
 You can also use the `=` symbol for the assignment operator, but it is not 
 as commonly used in R, except for argument assignment in function calls.
 
 ## Argument assignment with `=`
 
-In this function call, we use the `=` operator to tell R that the expected 
+In this function call, we use the `=` symbol to tell R that the expected 
 argument (parameter) `x` should take the value of our `number` variable.
 
 
@@ -98,37 +99,107 @@ print(number)
 Just remember: 
 
 * use `<-` for variable assignment 
-* use `=` for argument assignment within function calls.
-
-## Vectors
-
-By default, unless you specify otherwise, R will try to store your data in a 
-vector. You can create a vector from a collection of data values using the 
-`c()` (combine) function.
 
 
 ```r
-name <- c('Mary', 'John', 'Fred', 'Sam')
+number <- 68.1
+```
+
+* use `=` for argument assignment within function calls
+
+
+```r
+print(x = number)
+```
+
+## Vectors
+
+In R, a vector is a group of values or variables. You can create a 
+vector from a collection of data values using the `c()` (combine) function.
+
+
+```r
+id <- c('A', 'B', 'C', 'D')
 height <- c(68.1, 69.4, 71.2, 68.9)
 weight <- c(159.2, 162.3, 203.5, 181.3)
 ```
 
-This is a collection of one or more individual values of the same data type. We 
-can view the data type with the `typeof()` function.
+Here, we created three vectors, which we may describe as follows:
+
+* `id` is a character vector containing alphabetic indentifiers
+* `height` is a numeric vector containing heights in inches
+* `weight` is a numeric vector containing weights in pounds
+
+More technically speaking, a vector is an ordered collection of one or more 
+individual values of the same data type. 
+
+In other computer languages this data structure would be called an array or a 
+list, but R uses those terms for other, more complex data structures.
+
+## Data types and classes
+
+We can view the (underlying) data type of an object by using the `typeof()` function.
 
 
 ```r
-typeof(name)
+typeof(id)
 ```
 
 ```
 ## [1] "character"
 ```
 
-In many other computer languages this data structure would be called an array 
-or a list, but R uses those terms for other, mosre complex data structures.
+We can find the (higher order) category of an object with `class()`.
 
-We will explore R data objects in depth in a later module.
+
+```r
+class(id)
+```
+
+```
+## [1] "character"
+```
+
+Both the type and class of a character vector is "character".
+
+
+```r
+is.vector(id)
+```
+
+```
+## [1] TRUE
+```
+
+We can see that our vector is indeed a vector even if the class is not.
+
+## Data types and classes
+
+
+```r
+typeof(weight)
+```
+
+```
+## [1] "double"
+```
+
+```r
+class(height)
+```
+
+```
+## [1] "numeric"
+```
+
+The type of a numeric vector may be "double" or "integer". The class is "numeric".
+
+The term "double" used above refers to data storage as a [double-precision 
+floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) 
+format (64 bit) number.
+
+We will explore the various R data objects and their properties in depth in a 
+later module.
 
 ## Data frames
 
@@ -138,16 +209,16 @@ from one or more vectors.
 
 
 ```r
-df <- data.frame(name, height, weight)
+df <- data.frame(id, height, weight)
 df
 ```
 
 ```
-##   name height weight
-## 1 Mary   68.1  159.2
-## 2 John   69.4  162.3
-## 3 Fred   71.2  203.5
-## 4  Sam   68.9  181.3
+##   id height weight
+## 1  A   68.1  159.2
+## 2  B   69.4  162.3
+## 3  C   71.2  203.5
+## 4  D   68.9  181.3
 ```
 
 The rows represent observations or cases and the columns represent variables.
@@ -218,6 +289,30 @@ sqrt(2)
 ## [1] 1.414214
 ```
 
+## Code Comments in R
+
+The `#` is used for comments. Everthing after the `#` will be ignored by R.
+
+
+```r
+val <- 1234
+val    # This is a bad name for a variable because it is not very descriptive.
+```
+
+```
+## [1] 1234
+```
+
+The `#` symbol has several names:
+
+* *__number sign__*: shorthand for &#8470; (*numero*, No.)
+* *__pound sign__*: shorthand for &#8468; (*libra pondo*, lb.)
+* *__hash__*: from "cross hatch"; popular with programmers (and also in the UK)
+* *__hashtag__*: as used on social media sites like Twitter for keyword searching
+* *__octothorpe__*: originated at Bell Labs for use with telephone keypads
+
+Since programmers generally call it a "hash", we will keep with this tradition.
+
 ## Vectorized operations
 
 R allows you to perform calculations on all items in a vector or all rows of a 
@@ -226,12 +321,12 @@ data frame at the same time.
 Operations that allow this are called *vectorized* operations. They are often 
 much faster than the alternatives. 
 
-Let's create a new vector, `bmi`, by [calculating](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
-the Body Mass Index (BMI), using two other vectors as input.
+Let's [calculate](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) the Body Mass Index (BMI), using our two vectors as input.
 
 
 ```r
-bmi <- (weight / height^2) * 703
+# Calculate BMI from vectors: weight (in pounds) and height (in inches)
+bmi <- weight / height^2 * 703
 bmi
 ```
 
@@ -239,8 +334,10 @@ bmi
 ## [1] 24.13260 23.68945 28.22018 26.84817
 ```
 
+This creates a new vector of results and prints the vector to the screen.
+
 You will want to make sure your input vectors have the same number of values 
-(elements).
+(elements). If they do not match, you may see strange results.
 
 ## Vectorized operations versus loops
 
@@ -251,8 +348,11 @@ We can implement this approach with a `for()` loop.
 
 
 ```r
+# Initialize vector before use in body of loop
 bmi <- NULL
-for (i in 1:length(weight)) { bmi[i] <- (weight[i] / (height[i])^2) * 703 }
+
+# Calculate BMI using loop from values: weight (in pounds) and height (in inches)
+for (i in 1:length(weight)) bmi[i] <- weight[i] / height[i]^2 * 703
 bmi
 ```
 
@@ -263,6 +363,41 @@ bmi
 Not only does this take more code it is also less efficient, since many more
 operations (function calls) have to be performed.
 
+## Vectorized operations versus loops
+
+For comparison, let's create two data vectors with 100,000 values in each, by
+randomly sampling from the normal distribution.
+
+
+```r
+set.seed(5)      # Start the random number generator reproducibly.
+wt100k <- rnorm(n = 100000, mean = 175, sd = 30)
+ht100k <- rnorm(n = 100000, mean = 65, sd = 3)
+```
+
+Then, time the two BMI calculation methods.
+
+
+```r
+system.time(bmi <- wt100k / ht100k^2 * 703)
+```
+
+```
+##    user  system elapsed 
+##   0.002   0.000   0.002
+```
+
+```r
+system.time(for (i in 1:length(wt100k)) bmi[i] <- wt100k[i] / ht100k[i]^2 * 703)
+```
+
+```
+##    user  system elapsed 
+##   0.238   0.008   0.246
+```
+
+Clearly, the loop approach takes longer to run than the vectorized approach.
+
 ## Vectorized operations with data frames
 
 We can also perform this operation on columns of a data frame to produce a new
@@ -270,20 +405,21 @@ column.
 
 
 ```r
-df$bmi <- (df$weight / df$height^2) * 703
+# Add a new column for BMI calculated from the weight and height columns
+df$bmi <- df$weight / df$height^2 * 703
 df
 ```
 
 ```
-##   name height weight      bmi
-## 1 Mary   68.1  159.2 24.13260
-## 2 John   69.4  162.3 23.68945
-## 3 Fred   71.2  203.5 28.22018
-## 4  Sam   68.9  181.3 26.84817
+##   id height weight      bmi
+## 1  A   68.1  159.2 24.13260
+## 2  B   69.4  162.3 23.68945
+## 3  C   71.2  203.5 28.22018
+## 4  D   68.9  181.3 26.84817
 ```
 
-First  Next, we performed 
-the same calculation on the columns of a data frame, adding a new column for the BMI.
+We performed the same BMI calculation as before, but this time on the columns 
+of a data frame, adding a new column for the BMI.
 
 ## Storing and loading data
 
@@ -309,11 +445,11 @@ df
 ```
 
 ```
-##   name height weight      bmi
-## 1 Mary   68.1  159.2 24.13260
-## 2 John   69.4  162.3 23.68945
-## 3 Fred   71.2  203.5 28.22018
-## 4  Sam   68.9  181.3 26.84817
+##   id height weight      bmi
+## 1  A   68.1  159.2 24.13260
+## 2  B   69.4  162.3 23.68945
+## 3  C   71.2  203.5 28.22018
+## 4  D   68.9  181.3 26.84817
 ```
 
 ## Removing data
@@ -331,27 +467,3 @@ You can remove a file with `unlink()`.
 ```r
 unlink("df.rda")
 ```
-
-## Code Comments in R
-
-The `#` is used for comments. Everthing after the `#` will be ignored by R.
-
-
-```r
-val <- 1234
-val    # This is a bad name for a variable because it is not very descriptive.
-```
-
-```
-## [1] 1234
-```
-
-The `#` symbol has several names:
-
-* *__number sign__*: shorthand for &#8470; (*numero*, No.)
-* *__pound sign__*: shorthand for &#8468; (*libra pondo*, lb.)
-* *__hash__*: from "cross hatch"; popular with programmers (and also in the UK)
-* *__hashtag__*: as used on social media sites like Twitter for keyword searching
-* *__octothorpe__*: originated at Bell Labs for use with telephone keypads
-
-Since programmers generally call it a "hash", we will keep with this tradition.
