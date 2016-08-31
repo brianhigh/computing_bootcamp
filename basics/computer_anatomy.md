@@ -3,12 +3,76 @@ Jim Hogan
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
 
+## What __is__ a Computer?
+
+Early on, term referred to a **person** who carried out calculations or computations. That usage carried through World War Two, when some staff at Bletchley Park (primarily women) bore the title of "computer".<br>
+
+![](../images/220px-Colossus.jpg)
+
+<br>Nowadays, a device that can be instructed to carry out an arbitrary set of arithmetic or logical operations. Programmable. Most of those that we'll talk about this week would be called "general purpose".
+
 ## Anatomy, Three Core Elements
 
-While there can be many different bits of hardware associated with computers, three stand out as the "guts" of most computers.
+While there can be many different bits of hardware associated with computers, three stand out as the "guts" of most computers and are the elements that will determine the performance of a computer and whether it is suited for a particular task. 
 
 ### Central Processing Unit
 
 ### Random Access Memory
 
 ### Persistent Storage
+<br>
+<p>Nowadays, you have to add a 4th element:
+</p>
+
+### Network
+
+## Central Processing Unit, or "CPU"
+
+### Characterized most often by its "clock speed".  Compare:
+
+  Year Processor   Speed                                    
+  ---- ----------- ----------
+  1982 Intel 80286 8 MHz or 8 Million Cycles per Second    
+  2016 Intel Xeon  4.4 GHz or 4.4 Billion Cycles per Second
+  
+
+### So, a 550-fold increase in frequency/speed since 1982.  
+### More recently a big focus has been on "multi-core" CPUs.
+ 
+## Multi-Core CPUs
+
+### What is it and what's the benefit?
+
+* This kind of CPU allows mutiple CPUs called "cores" to reside on the same physical CPU and socket.
+<br>
+* For a desktop or laptop computer, "multi-cores" improve multi-tasking and help keep the PC from getting bogged down by a single program.
+<br>
+* In a larger environment, this allows putting an amazing amount of computing power in a single physical box that can serve multiple tasks and mutliple people.
+<br>
+* Our "Waldo" has **40** cores.
+
+## Random Access Memory, or "RAM"
+
+* RAM is memory that is "volatile" -- that is cleared when the computer is powered off.
+
+* RAM is where your open programs and files  reside while you are working with them.  They are "in RAM".
+
+* If your programs exhaust your available RAM, many computers will take some of the programs and files that you are working with, move them from RAM, and temporarily write these to your hard drive.  This is called "swapping" and is not really desirable.
+
+
+
+## Persistent Storage
+
+### Likely more familiar as a "disk" or "hard drive".<br>
+
+### Can take different forms, like thumb drives or optical drives.
+
+## Network
+
+### While not strictly a part of a computer, it is a performance factor for most of the computing done nowadays, whether on a desktop PC, a laptop or a smart phone. 
+
+## More Lingo: Bottlenecks
+
+### **Example:**  If you like to keep a lot of programs open at the same time, but feel like that slows things down, your bottleneck **could** be insifficient RAM.  Could.<br><br>
+
+### **Example:** If you have opened a large file from a network folder (say your home folder on Pacific) and you find that working with that file is very slow, the network could be your bottleneck.
