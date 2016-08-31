@@ -13,7 +13,11 @@ John Yocum
 
 ## Available Options
 
-- Shared MySQL on crud
-- Dedicated database servers (Mongo, Cassandra, etc.)
+- Shared database servers
+    - MySQL (Crud)
+- Dedicated database servers
+    - MongoDB
+    - Apache Cassandra
+    - Others (FileMaker, etc)
 
-## Questions?
+# Questions?

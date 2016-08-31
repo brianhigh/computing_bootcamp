@@ -4,6 +4,8 @@ John Yocum
 
 
 
+# Software
+
 ## FileZilla
 
 - Secure
@@ -16,4 +18,21 @@ John Yocum
 - CyberDuck
 - Remote Desktop
 
-## Questions?
+# Connection Process
+
+## Off Campus
+
+**SFTP**
+
+1. Get whitelisted by visiting the DEOHS Portal
+2. Launch FileZilla 
+3. Connect to vector.deohs.washington.edu using SFTP
+
+## On Campus
+
+**SFTP**
+
+1. Launch FileZilla 
+2. Connect to vector.deohs.washington.edu using SFTP
+
+# Questions?

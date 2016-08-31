@@ -4,16 +4,26 @@ John Yocum
 
 
 
-## Examples of Remote Resources
+# Remote Resources
 
-- Storage (file servers, cloud, etc)
+## Examples
+
+- Storage
+    - File Servers (like pacific)
+    - Cloud
 - Remote Desktop (remote computing)
+    - X2Go
+    - Windows Remote Desktop
+    - SSH (more like remote computing)
 - Databases
+    - MySQL
+    - PostgreSQL
+    - FileMaker
 
 ## Benefits
 
-- Security (data is stored in a physically secure location)
-- Scalability (compared to typical laptop and desktop computers)
-- Portability (available anywhere you have internet access)
+- <font color=darkblue>Security</font> (data is stored in a physically secure location)
+- <font color=darkblue>Scalability</font> (compared to typical laptop and desktop computers)
+- <font color=darkblue>Portability</font> (available anywhere you have internet access)
 
-## Questions?
+# Questions?
