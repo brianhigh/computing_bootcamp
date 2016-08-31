@@ -18,8 +18,7 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
-
-## Why use one?
+## Benefits
 
 - Better handling of large numbers of references
 - Extracts reference information from documents

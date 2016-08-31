@@ -4,8 +4,7 @@ John Yocum
 
 
 
-
-## Why use one?
+## Benefits
 
 - Better handling of large numbers of references
 - Extracts reference information from documents
