@@ -5,11 +5,11 @@ Jim Hogan
 
 ## What __is__ a Computer?
 
-Early on, term referred to a **person** who carried out calculations or computations. That usage carried through World War Two, when some staff at Bletchley Park (primarily women) bore the title of "computer".<br>
+Early on, the term referred to a **person** who carried out calculations or computations. That usage carried through World War Two, when some staff at Bletchley Park (primarily women) bore the title of "computer".<br>
 
 ![](../images/220px-Colossus.jpg)
 
-<br>Nowadays, a device that can be instructed to carry out an arbitrary set of arithmetic or logical operations. Programmable. Most of those that we'll talk about this week would be called "general purpose".
+<br>A more common, contemporary definition would be a device that can be instructed to carry out an arbitrary set of arithmetic or logical operations. Programmable. Most of those that we'll talk about this week would be called "general purpose".
 
 ## Anatomy, Three Core Elements
 
