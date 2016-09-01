@@ -6,23 +6,21 @@ John Yocum
 
 ## General Issues
 
-- Performance (How long does data transfer take?)
-- Local Disk Usage (Files may be stored both on cloud and on each persons computer)
-- Security (Files may be automatically saved to several computers or mobile devices)
+- Performance
+    - How long does data transfer take?
+- Local Disk Usage
+    - Files may be stored both on cloud and on each persons computer
+- Security
+    - Files may be automatically saved to several computers or mobile devices
 
-## UW Offerings {.columns-2}
+# Options
+
+## UW Offerings
 
 **Options**
 
 - UW Google Drive
 - UW OneDrive for Business
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 **Benefits**
 
@@ -31,7 +29,7 @@ John Yocum
 - Security and compliance agreements exist
 - Integration with UW authentication
 
-## Alternatives {.columns-2}
+## Alternatives
 
 **Options**
 
@@ -42,6 +40,7 @@ John Yocum
 **Concerns**
 
 - Security & Compliance
-- Cost
+- Cost (per user)
+- Who will manage it?
 
-## Questions?
+# Questions?

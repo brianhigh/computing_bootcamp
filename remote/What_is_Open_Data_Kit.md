@@ -4,11 +4,25 @@ John Yocum
 
 
 
-## Open Data Kit
+# How does it work?
 
-- Gather data in the field
-- Data is aggregated remotely
-- Exportable as a CSV
-- Doesn't require full-time internet connection
+## On Campus
 
-## Questions?
+- Create forms for data collection
+- All data is aggregated on a server
+- Information can be exported
+    - CSV
+    - JSON
+    - Visualized (in browser)
+
+## In the Field
+
+- Data collection using mobile devices (Android)
+    - Mobile phones
+    - Tablets
+- A mobile data connection is not required
+    - Data is uploaded via wifi (or mobile) when convenient
+- Easy to use
+    - Step by step forms walk you through it
+
+# Questions?

@@ -12,8 +12,11 @@ John Yocum
 
 ## Benefits over SSH
 
-- Desktop Environment (access to graphical tools)
+- Desktop Environment
+    - Use of graphical software
 - Simplifies Persistent Processes
-- 
+    - Disconnecting will leave everything running
+- Builtin Tunneling
+    - Easier access to servers that are on private addresses
 
 ## Questions?

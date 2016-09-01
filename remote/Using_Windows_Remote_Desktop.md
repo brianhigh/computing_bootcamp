@@ -11,7 +11,7 @@ John Yocum
 - Works just like a normal Windows desktop
 - Cross platform (Macs and other systems can use it)
 
-## Applications {.columns-2}
+## Applications
 
 **Recommended**
 
@@ -26,9 +26,15 @@ John Yocum
 
 ## Common Complaints
 
-- Locked files (file in use or read only)
+- Locked files
+    - File in use
+    - Application is already running
 - Desktop is "different"
+    - Installed applications vary
+    - Files on "Desktop" aren't accessible
 - Connection problems
+    - IP address changes
+    - Poor wireless connection
 
 ## Tips for a Good Experience
 
@@ -36,4 +42,4 @@ John Yocum
 - Use Gatekeeper (Remote Desktop Gateway)
 - Save your work
 
-## Questions?
+# Questions?
