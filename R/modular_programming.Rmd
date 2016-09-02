@@ -216,7 +216,7 @@ in the R help system to display the `help()` and `example()` results.
 ```{r, eval = FALSE}
 setwd(pkg.name)
 document()
-setwd("..")
+setwd('..')
 ```
 
 ## Install Package and Test Help
