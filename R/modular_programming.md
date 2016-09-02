@@ -14,12 +14,12 @@ You will learn:
 
 ## User-defined functions
 
-We can store a [BMI calculation](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
+We can store an [BMI calculation for adults](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
 in a `function`, which is an R object which can perform a series of operations upon data.
 
 
 ```r
-calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
+adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 ```
 
 Now we can use our function to perform this calculation whenever we need to.
@@ -28,7 +28,7 @@ Now we can use our function to perform this calculation whenever we need to.
 ```r
 weight <- c(159.2, 162.3, 203.5, 181.3)
 height <- c(68.1, 69.4, 71.2, 68.9)
-calcBMI(weight, height)
+adultBMI(weight, height)
 ```
 
 ```
@@ -57,8 +57,8 @@ pkg.name <- paste(Sys.info()['user'], '.', 'bmi', sep = '')
 dir.create(file.path(pkg.name, 'R'), showWarnings = FALSE, recursive = TRUE)
 
 # Create an R script containing just the function definition
-sink(file.path(pkg.name, 'R', 'calcBMI.R'))
-cat('calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }', sep = '\n')
+sink(file.path(pkg.name, 'R', 'adultBMI.R'))
+cat('adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }', sep = '\n')
 sink()
 
 sink(file.path(pkg.name, 'DESCRIPTION'))    # Create a DESCRIPTION text file
@@ -67,7 +67,7 @@ cat('Version: 0.1', sep = '\n', append = TRUE)
 sink()
 
 sink(file.path(pkg.name, 'NAMESPACE'))      # Create a NAMESPACE text file
-cat('export(calcBMI)', sep = '\n')
+cat('export(adultBMI)', sep = '\n')
 sink()
 
 library(devtools)
@@ -91,7 +91,7 @@ installed okay. Now we can load the package and use the function it contains.
 
 ```r
 library(pkg.name, character.only = TRUE)
-calcBMI(150, 70)                      # Expected result:  21.52041
+adultBMI(150, 70)                      # Expected result:  21.52041
 ```
 
 If we get the expected result then the package works okay.
@@ -201,19 +201,19 @@ my.function <-
 #' @keywords bmi
 #' @export
 #' @examples
-#' calcBMI(150, 70)  # Expected result:  21.52041 
+#' adultBMI(150, 70)  # Expected result:  21.52041 
 
-calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
+adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 "
 
-sink(file.path(pkg.name, 'R', 'calcBMI.R'))
+sink(file.path(pkg.name, 'R', 'adultBMI.R'))
 cat(my.function)
 sink()
 ```
 
 ## Generate Documentation
 
-The `document()` function will create the `man/calcBMI.Rd` file, which is used
+The `document()` function will create the `man/adultBMI.Rd` file, which is used
 in the R help system to display the `help()` and `example()` results.
 
 
@@ -237,8 +237,8 @@ Now that we have documentation, we can test them with `help()` and `example()`.
 
 
 ```r
-help(calcBMI)
-example(calcBMI)
+help(adultBMI)
+example(adultBMI)
 ```
 
 ## Send the Package to Github
@@ -301,4 +301,30 @@ and the package from our system.
 detach(pos=grep(pkg.name, search()), unload = TRUE)
 remove.packages(pkg.name)             # Remove package when done with example
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
+```
+
+## Exercise
+
+Add another function to the `bmi` package. Include documentation for the 
+`help()` and `example()` functions.
+
+
+```r
+# Function: Categorize adult BMI values according to the CDC's levels.
+# See: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html
+catAdultBMI <- function(adult.bmi) { 
+    cut(x = adult.bmi, 
+        breaks = c(0, 18.5, 25, 30, Inf), 
+        right = FALSE,
+        labels = c('Underweight', 'Normal', 'Overweight', 'Obese'), 
+        ordered_result = TRUE)
+}
+
+# Example:
+catAdultBMI(c(20.8, 17.0, 18.5, 31.9, 25.0, 33.6))
+```
+
+```
+## [1] Normal      Underweight Normal      Obese       Overweight  Obese      
+## Levels: Underweight < Normal < Overweight < Obese
 ```
