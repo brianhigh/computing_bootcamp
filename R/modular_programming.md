@@ -253,7 +253,7 @@ git init
 echo 'high.bmi.Rproj' >> .gitignore
 git add .
 git commit -m 'First commit'
-git remote add origin https://github.com/brianhigh/high.bmi
+git remote add origin https://github.com/brianhigh/high.bmi.git
 git push -u origin master
 cd ..
 ```
@@ -268,6 +268,20 @@ library("devtools")
 install_github('brianhigh/high.bmi')
 library(high.bmi)
 ```
+
+## Publishing your Package on CRAN
+
+Sites like [CRAN](https://cran.r-project.org/) and [Bioconductor](https://www.bioconductor.org) 
+are the "big time". You will need to do additional work to include your package 
+in those repositories. 
+
+We don't have time to cover that topic today, so we will point you in the
+direction of some helpful resources:
+
+* [Releasing a package](http://r-pkgs.had.co.nz/release.html) by Hadley Wickham
+* [Getting your R package on CRAN](http://kbroman.org/pkg_primer/pages/cran.html) by Karl Broman
+* [Developing R packages](https://github.com/jtleek/rpackages) by Jeff Leek
+* [Bioconductor Package Submission](https://www.bioconductor.org/developers/package-submission/)
 
 ## Unload and Remove Package
 
