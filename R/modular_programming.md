@@ -91,7 +91,7 @@ installed okay. Now we can load the package and use the function it contains.
 
 ```r
 library(pkg.name, character.only = TRUE)
-adultBMI(150, 65)                    # Expected result:  24.95858
+adultBMI(150, 65)                     # Expected result:  24.95858
 ```
 
 If we get the expected result then the package works okay.
@@ -201,7 +201,7 @@ my.function <-
 #' @keywords bmi
 #' @export
 #' @examples
-#' adultBMI(150, 65)                    # Expected result:  24.95858 
+#' adultBMI(150, 65)                  # Expected result:  24.95858 
 
 adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 "
@@ -230,7 +230,7 @@ We install the package using `install()` and load with `library()` as before.
 
 ```r
 install(pkg.name)
-library(pkg.name)
+library(pkg.name, character.only = TRUE)
 ```
 
 Now that we have documentation, we can test them with `help()` and `example()`.
@@ -316,7 +316,7 @@ adultBMI <- function(weight, height, metric = FALSE) {
 }
 
 # Examples:
-adultBMI(150, 65)                    # Expected result:  24.95858
+adultBMI(150, 65)                     # Expected result:  24.95858
 ```
 
 ```
@@ -324,7 +324,7 @@ adultBMI(150, 65)                    # Expected result:  24.95858
 ```
 
 ```r
-adultBMI(68, 1.65, metric = TRUE)    # Expected result:  24.97704
+adultBMI(68, 1.65, metric = TRUE)     # Expected result:  24.97704
 ```
 
 ```
