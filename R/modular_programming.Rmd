@@ -176,7 +176,7 @@ with our own custom version. This could be done manually with a text editor.
 ```{r, eval = FALSE}
 description <- 
 "Title: BMI Calculator
-Description: Calculates the BMI given weight in pounds and height in inches
+Description: Calculates the Body Mass Index (BMI).
 Author: Your Name Here <your.name@example.com>
 Maintainer: Your Name Here <your.name@example.com>
 Depends: R (>= 3.3.1)
@@ -202,9 +202,9 @@ Again, we could do this manually, but have scripted it here for reproducibility.
 
 ```{r, eval = FALSE}
 my.function <- 
-"#' BMI Calculator
+"#' Adult BMI Calculator
 #'
-#' Calculates the BMI given weight in pounds and height in inches
+#' Calculates the adult BMI given weight in pounds and height in inches.
 #' @param wt.lbs Weight in pounds
 #' @param ht.in Height in inches
 #' @keywords bmi

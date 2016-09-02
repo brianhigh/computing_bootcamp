@@ -321,11 +321,11 @@ data frame at the same time.
 Operations that allow this are called *vectorized* operations. They are often 
 much faster than the alternatives. 
 
-Let's [calculate](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) the Body Mass Index (BMI), using our two vectors as input.
+Let's [calculate](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) the adult Body Mass Index (BMI), using our two vectors as input.
 
 
 ```r
-# Calculate BMI from vectors: weight (in pounds) and height (in inches)
+# Calculate adult BMI from vectors: weight (in pounds) and height (in inches)
 bmi <- (weight / height ^ 2) * 703
 bmi
 ```
@@ -342,7 +342,7 @@ You will want to make sure your input vectors have the same number of values
 ## Vectorized operations versus loops
 
 Alternatively, we could have used a loop to iterate through the input data. This
-approach would calculate a single BMI for each loop iteration. 
+approach would calculate a single adult BMI for each loop iteration. 
 
 We can implement this approach with a `for()` loop.
 
@@ -351,7 +351,7 @@ We can implement this approach with a `for()` loop.
 # Initialize vector before use in body of loop
 bmi <- NULL
 
-# Calculate BMI using loop from values: weight (in pounds) and height (in inches)
+# Calculate adult BMI using loop from values: weight (in pounds) and height (in inches)
 for (i in 1:length(weight)) bmi[i] <- (weight[i] / height[i] ^ 2) * 703
 bmi
 ```
@@ -375,7 +375,7 @@ wt100k <- rnorm(n = 100000, mean = 175, sd = 30)
 ht100k <- rnorm(n = 100000, mean = 65, sd = 3)
 ```
 
-Then, time the two BMI calculation methods.
+Then, time the two adult BMI calculation methods.
 
 
 ```r
@@ -384,7 +384,7 @@ system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 
 ```
 ##    user  system elapsed 
-##   0.000   0.004   0.002
+##   0.002   0.000   0.002
 ```
 
 ```r
@@ -405,7 +405,7 @@ column.
 
 
 ```r
-# Add a new column for BMI calculated from the weight and height columns
+# Add a new column for adult BMI calculated from the weight and height columns
 df$bmi <- (df$weight / df$height ^ 2) * 703
 df
 ```
