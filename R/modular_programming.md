@@ -12,6 +12,18 @@ You will learn:
 * How to write functions in R
 * How to create and share your own R packages
 
+## Example: Adult BMI Calculation
+
+![*Source*: CDC [About Adult BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+](images/aboutBMI.png)
+
+## Example: Adult BMI Calculator
+
+![*Source*: CDC [Adult BMI Calculator](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html)
+](images/adultBMI_calculator.png)
+
+We will be implementing this calculator in R as a `function`.
+
 ## User-defined functions
 
 We can store an [BMI calculation for adults](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html) 
