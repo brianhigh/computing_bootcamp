@@ -326,7 +326,7 @@ Let's [calculate](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/inde
 
 ```r
 # Calculate BMI from vectors: weight (in pounds) and height (in inches)
-bmi <- weight / height^2 * 703
+bmi <- (weight / height ^ 2) * 703
 bmi
 ```
 
@@ -352,7 +352,7 @@ We can implement this approach with a `for()` loop.
 bmi <- NULL
 
 # Calculate BMI using loop from values: weight (in pounds) and height (in inches)
-for (i in 1:length(weight)) bmi[i] <- weight[i] / height[i]^2 * 703
+for (i in 1:length(weight)) bmi[i] <- (weight[i] / height[i] ^ 2) * 703
 bmi
 ```
 
@@ -379,21 +379,21 @@ Then, time the two BMI calculation methods.
 
 
 ```r
-system.time(bmi <- wt100k / ht100k^2 * 703)
+system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 ```
 
 ```
 ##    user  system elapsed 
-##   0.002   0.001   0.002
+##   0.000   0.004   0.002
 ```
 
 ```r
-system.time(for (i in 1:length(wt100k)) bmi[i] <- wt100k[i] / ht100k[i]^2 * 703)
+system.time(for (i in 1:length(wt100k)) bmi[i] <- (wt100k[i] / ht100k[i] ^ 2) * 703)
 ```
 
 ```
 ##    user  system elapsed 
-##   0.226   0.004   0.230
+##   0.241   0.008   0.249
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.
@@ -406,7 +406,7 @@ column.
 
 ```r
 # Add a new column for BMI calculated from the weight and height columns
-df$bmi <- df$weight / df$height^2 * 703
+df$bmi <- (df$weight / df$height ^ 2) * 703
 df
 ```
 

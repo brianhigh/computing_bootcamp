@@ -1,10 +1,10 @@
-# R Language Basics
+# Modular Programming
 Brian High  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
 
 
-## Modular Programming
+## Modular Programming: Functions and Packages
 
 You will learn:
 
@@ -19,7 +19,7 @@ in a `function`, which is an R object which can perform a series of operations u
 
 
 ```r
-calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703
+calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 ```
 
 Now we can use our function to perform this calculation whenever we need to.
@@ -58,7 +58,7 @@ dir.create(file.path(pkg.name, 'R'), showWarnings = FALSE, recursive = TRUE)
 
 # Create an R script containing just the function definition
 sink(file.path(pkg.name, 'R', 'calcBMI.R'))
-cat('calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703', sep = '\n')
+cat('calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }', sep = '\n')
 sink()
 
 sink(file.path(pkg.name, 'DESCRIPTION'))    # Create a DESCRIPTION text file
@@ -203,7 +203,7 @@ my.function <-
 #' @examples
 #' calcBMI(150, 70)  # Expected result:  21.52041 
 
-calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703
+calcBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 "
 
 sink(file.path(pkg.name, 'R', 'calcBMI.R'))
@@ -246,6 +246,9 @@ example(calcBMI)
 If you have a Github account and have already created a repository (repo) for 
 this package, you can send the package to the repo for others to use.
 
+Here are commands to type at the Bash prompt to send a package to
+Github.
+
 
 ```bash
 cd high.bmi
@@ -257,6 +260,11 @@ git remote add origin https://github.com/brianhigh/high.bmi.git
 git push -u origin master
 cd ..
 ```
+
+Of course, you would replace `high.bmi` with your own package name and 
+`brianhigh` with your own Github account name.
+
+Note: The repository name must match the package name.
 
 ## Installing the Package from Github
 
