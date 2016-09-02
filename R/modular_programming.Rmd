@@ -190,7 +190,7 @@ Again, we could do this manually, but have scripted it here for reproducibility.
 
 ```{r, eval = FALSE}
 my.function <- 
-"#' BMI calculator
+"#' BMI Calculator
 #'
 #' Calculates the BMI given weight in pounds and height in inches
 #' @param wt.lbs Weight in pounds
