@@ -189,7 +189,7 @@ LazyData: true
 
 sink(file.path(pkg.name, 'DESCRIPTION'))
 cat(paste('Package:', pkg.name), sep = '\n')
-cat('Version: 0.1', sep = '\n', append = TRUE)
+cat('Version: 0.2', sep = '\n', append = TRUE)    # Update the version number!
 cat(paste('Date:', format(Sys.time(), "%Y-%m-%d")), sep = '\n', append = TRUE)
 cat(description)
 sink()
