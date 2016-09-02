@@ -10,7 +10,9 @@ You will learn:
 
 * How to modularize your code
 * How to write functions in R
-* How to create and share your own R packages
+* How to create your own R packages
+* How to share your own R packages on Github
+* How to install packages from Github
 
 ## Example: Adult BMI Calculation
 
@@ -83,12 +85,12 @@ cat('export(adultBMI)', sep = '\n')
 sink()
 
 library(devtools)
-build(pkg.name, quiet = TRUE)               # Build the package
+build(pkg.name, quiet = TRUE)               # Build the package (as a tarball)
 ```
 
 ## Creating Packages
 
-We can install the "bmi" package we just built and verify that it installed.
+We can install the *bmi* package we just built and verify that it installed.
 
 
 ```r
