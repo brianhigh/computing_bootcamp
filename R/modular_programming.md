@@ -152,7 +152,7 @@ We will construct our package name from our user name as before.
 pkg.name <- paste(Sys.info()['user'], '.', 'bmi', sep = '')
 ```
 
-Then will remove the temporary build folder, if it exists from previous work.
+Then we remove the temporary build folder, if it exists from our previous work.
 
 
 ```r
@@ -160,7 +160,7 @@ Then will remove the temporary build folder, if it exists from previous work.
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
 ```
 
-Then we can use the `create()` function to create the package directory and
+Then we use the `create()` function to create the package directory and
 file templates.
 
 
