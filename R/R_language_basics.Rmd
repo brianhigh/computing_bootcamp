@@ -224,7 +224,7 @@ The `#` symbol has several names:
 * *__hashtag__*: as used on social media sites like Twitter for keyword searching
 * *__octothorpe__*: originated at Bell Labs for use with telephone keypads
 
-Since programmers generally call it a "hash", we will keep with this tradition.
+In this tutorial, we will usually refer to it as a "hash" or "pound".
 
 ## Vectorized operations
 

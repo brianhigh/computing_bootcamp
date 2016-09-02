@@ -311,7 +311,7 @@ The `#` symbol has several names:
 * *__hashtag__*: as used on social media sites like Twitter for keyword searching
 * *__octothorpe__*: originated at Bell Labs for use with telephone keypads
 
-Since programmers generally call it a "hash", we will keep with this tradition.
+In this tutorial, we will usually refer to it as a "hash" or "pound".
 
 ## Vectorized operations
 
@@ -384,7 +384,7 @@ system.time(bmi <- wt100k / ht100k^2 * 703)
 
 ```
 ##    user  system elapsed 
-##   0.002   0.000   0.002
+##   0.002   0.001   0.002
 ```
 
 ```r
@@ -393,7 +393,7 @@ system.time(for (i in 1:length(wt100k)) bmi[i] <- wt100k[i] / ht100k[i]^2 * 703)
 
 ```
 ##    user  system elapsed 
-##   0.238   0.008   0.246
+##   0.226   0.004   0.230
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.

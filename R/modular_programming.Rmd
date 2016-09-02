@@ -32,7 +32,7 @@ We can store a [BMI calculation](https://www.cdc.gov/healthyweight/assessing/bmi
 in a `function`, which is an R object which can perform a series of operations upon data.
 
 ```{r}
-calcBMI <- function(wt.lb, ht.in) (wt.lb / ht.in ^ 2) * 703
+calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703
 ```
 
 Now we can use our function to perform this calculation whenever we need to.
@@ -65,7 +65,7 @@ dir.create(file.path(pkg.name, 'R'), showWarnings = FALSE, recursive = TRUE)
 
 # Create an R script containing just the function definition
 sink(file.path(pkg.name, 'R', 'calcBMI.R'))
-cat('calcBMI <- function(wt.lb, ht.in) (wt.lb / ht.in ^ 2) * 703', sep = '\n')
+cat('calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703', sep = '\n')
 sink()
 
 sink(file.path(pkg.name, 'DESCRIPTION'))    # Create a DESCRIPTION text file
@@ -87,6 +87,7 @@ We can install the "bmi" package we just built and verify that it installed.
 
 ```{r, eval = FALSE}
 install(pkg.name)                     # Install the package
+unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
 packageDescription(pkg.name)          # View package description to confirm
 ```
 
@@ -95,7 +96,7 @@ installed okay. Now we can load the package and use the function it contains.
 
 ```{r, eval = FALSE}
 library(pkg.name, character.only = TRUE)
-calcBMI(100, 50)                      # Expected result:  28.12
+calcBMI(150, 70)                      # Expected result:  21.52041
 ```
 
 If we get the expected result then the package works okay.
@@ -109,5 +110,164 @@ remove.packages(pkg.name)             # Remove package when done with example
 
 ## Creating Packages
 
-We will expand on our BMI example by adding documentation (help files) to 
+Next, we will expand on our BMI example by adding documentation (help files) to 
 provide a more complete picture of this process.
+
+## Creating Packages with Documentation
+
+We will be using some additional packages to make the task of generating 
+the package files and documentation easier.
+
+First, install the packages if you don't already have them.
+
+```{r, eval=FALSE}
+install.packages(c("devtools", "roxygen2", "knitr"))
+```
+
+Then load the packages.
+
+```{r, eval = FALSE}
+library("devtools")
+library("roxygen2")
+library("knitr")
+```
+
+## Create the Package Directory
+
+We will construct our package name from our user name as before.
+
+```{r, eval = FALSE}
+# Create the package name from the system username to minimize conflicts
+pkg.name <- paste(Sys.info()['user'], '.', 'bmi', sep = '')
+```
+
+Then will remove the temporary build folder, if it exists from previous work.
+
+```{r, eval = FALSE}
+# Remove the build folder if it exists
+unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
+```
+
+Then we can use the `create()` function to create the package directory and
+file templates.
+
+```{r, eval = FALSE}
+# Create the package directory and file templates
+create(pkg.name)
+```
+
+## Create Custom DESCRIPTION File
+
+While the `create()` has already created a DESCRIPTION file, we will replace it
+with our own custom version. This could be done manually with a text editor.
+
+```{r, eval = FALSE}
+description <- 
+"Title: BMI Calculator
+Description: Calculates the BMI given weight in pounds and height in inches
+Author: Your Name Here <your.name@example.com>
+Maintainer: Your Name Here <your.name@example.com>
+Depends: R (>= 3.3.1)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+"
+
+sink(file.path(pkg.name, 'DESCRIPTION'))
+cat(paste('Package:', pkg.name), sep = '\n')
+cat('Version: 0.1', sep = '\n', append = TRUE)
+cat(paste('Date:', format(Sys.time(), "%Y-%m-%d")), sep = '\n', append = TRUE)
+cat(description)
+sink()
+```
+
+## Create R Function Files
+
+With the *roxygen2* package, we can embed documention in our R script using
+the `#'` notation.
+
+Again, we could do this manually, but have scripted it here for reproducibility.
+
+```{r, eval = FALSE}
+my.function <- 
+"#' BMI calculator
+#'
+#' Calculates the BMI given weight in pounds and height in inches
+#' @param wt.lbs Weight in pounds
+#' @param ht.in Height in inches
+#' @keywords bmi
+#' @export
+#' @examples
+#' calcBMI(150, 70)  # Expected result:  21.52041 
+
+calcBMI <- function(wt.lb, ht.in) wt.lb / ht.in^2 * 703
+"
+
+sink(file.path(pkg.name, 'R', 'calcBMI.R'))
+cat(my.function)
+sink()
+```
+
+## Generate Documentation
+
+The `document()` function will create the `man/calcBMI.Rd` file, which is used
+in the R help system to display the `help()` and `example()` results.
+
+```{r, eval = FALSE}
+setwd(pkg.name)
+document()
+setwd("..")
+```
+
+## Install Package and Test Help
+
+We install the package using `install()` and load with `library()` as before.
+
+```{r, eval = FALSE}
+install(pkg.name)
+library(pkg.name)
+```
+
+Now that we have documentation, we can test them with `help()` and `example()`.
+
+```{r, eval = FALSE}
+help(calcBMI)
+example(calcBMI)
+```
+
+## Send the Package to Github
+
+If you have a Github account and have already created a repository (repo) for 
+this package, you can send the package to the repo for others to use.
+
+```{r, engine="bash", eval=FALSE}
+cd high.bmi
+git init
+echo 'high.bmi.Rproj' >> .gitignore
+git add .
+git commit -m 'First commit'
+git remote add origin https://github.com/brianhigh/high.bmi
+git push -u origin master
+cd ..
+```
+
+## Installing the Package from Github
+
+Now anyone with access to your Github repo can install your package.
+
+```{r, eval = FALSE}
+library("devtools")
+install_github('brianhigh/high.bmi')
+library(high.bmi)
+```
+
+## Unload and Remove Package
+
+Now that we are done with the package example, we can remove the build folder
+and the package from our system.
+
+```{r, eval = FALSE}
+detach(pos=grep(pkg.name, search()), unload = TRUE)
+remove.packages(pkg.name)             # Remove package when done with example
+unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
+```
