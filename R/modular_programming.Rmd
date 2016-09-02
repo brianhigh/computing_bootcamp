@@ -38,8 +38,8 @@ adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 Now we can use our function to perform this calculation whenever we need to.
 
 ```{r}
-weight <- c(159.2, 162.3, 203.5, 181.3)
-height <- c(68.1, 69.4, 71.2, 68.9)
+weight <- c(159.2, 162.3, 203.5, 181.3)     # Weight in pounds
+height <- c(68.1, 69.4, 71.2, 68.9)         # Height in inches
 adultBMI(weight, height)
 ```
 
@@ -96,7 +96,7 @@ installed okay. Now we can load the package and use the function it contains.
 
 ```{r, eval = FALSE}
 library(pkg.name, character.only = TRUE)
-adultBMI(150, 70)                      # Expected result:  21.52041
+adultBMI(150, 65)                    # Expected result:  24.95858
 ```
 
 If we get the expected result then the package works okay.
@@ -198,7 +198,7 @@ my.function <-
 #' @keywords bmi
 #' @export
 #' @examples
-#' adultBMI(150, 70)  # Expected result:  21.52041 
+#' adultBMI(150, 65)                    # Expected result:  24.95858 
 
 adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 "
@@ -294,9 +294,27 @@ remove.packages(pkg.name)             # Remove package when done with example
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
 ```
 
-## Exercise
+## Exercise #1
 
-Add another function to the `bmi` package. Include documentation for the 
+Modify the `adultBMI` function for calculating the BMI to allow metric weights 
+and heights. Modify the *bmi* package to use this new version of the function.
+
+```{r}
+# Function:
+adultBMI <- function(weight, height, metric = FALSE) {
+    (weight / height ^ 2) * ifelse(metric == FALSE, 703, 1)
+}
+
+# Examples:
+adultBMI(150, 65)                    # Expected result:  24.95858
+adultBMI(68, 1.65, metric = TRUE)    # Expected result:  24.97704
+```
+
+Include documentation for the `help()` and `example()` functions.
+
+## Exercise #2
+
+Add another function to the *bmi* package. Include documentation for the 
 `help()` and `example()` functions.
 
 ```{r}
@@ -313,3 +331,5 @@ catAdultBMI <- function(adult.bmi) {
 # Example:
 catAdultBMI(c(20.8, 17.0, 18.5, 31.9, 25.0, 33.6))
 ```
+
+What other functions might be useful?
