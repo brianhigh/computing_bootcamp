@@ -176,7 +176,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file538b169f3624.sqlite"
+## [1] "~/file64134e5bafb7.sqlite"
 ```
 
 ```r
@@ -498,3 +498,27 @@ R can connect to many types of SQL and other types if databases.
 For examples of using other databases from R, such as MySQL, see 
 our [Data Workshop](https://github.com/brianhigh/data-workshop/wiki/Embedded-SQL) 
 wiki page.
+
+## Excercises
+
+To gain some more practice with databases and R, you are encouraged to try these
+exercises.
+
+DEOHS account holders may use the server `plasmid` for these two exercises, 
+as it has SQLite and PostgreSQL installed on it. This server runs Linux and 
+can only be directly a ccessed from campus. The *Bash* shell can be accessed 
+through an SSH session. R can be accessed through RStudio Server running in 
+your web browser.
+
+* Bash (via SSH): plasmid.deohs.washington.edu
+* RStudio: https://plasmid.deohs.washington.edu
+
+Exercise #1:
+
+Create the `arrests` table in SQLite and query it as described in our PostgreSQL
+example. Extra credit: Run the top-ten ramking query from the `sqlite3` command-line utility. 
+
+Exercise #2:
+
+Create the `bmi` table in PostgreSQL and query it as described in our SQLite
+example. Extra credit: Run the calculation query from the `psql` command-line utility.
