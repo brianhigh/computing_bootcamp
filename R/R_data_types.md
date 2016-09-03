@@ -223,7 +223,7 @@ cat('It has been', format(since.midnight), 'since midnight.')
 ```
 
 ```
-## It has been 18.42624 hours since midnight.
+## It has been 18.51822 hours since midnight.
 ```
 
 ## Basic Single-Value (Scalar) Data Types
@@ -771,42 +771,6 @@ print(df, row.names = FALSE)
 ##       2      b
 ##       3      c
 ##       4      d
-```
-
-## Data frame
-
-
-```r
-typeof(df)       # list
-```
-
-```
-## [1] "list"
-```
-
-```r
-str(df)
-```
-
-```
-## 'data.frame':	4 obs. of  2 variables:
-##  $ number: int  1 2 3 4
-##  $ letter: chr  "a" "b" "c" "d"
-```
-
-```r
-attributes(df)
-```
-
-```
-## $names
-## [1] "number" "letter"
-## 
-## $row.names
-## [1] 1 2 3 4
-## 
-## $class
-## [1] "data.frame"
 ```
 
 ## Data frame

@@ -386,14 +386,6 @@ print(df, row.names = FALSE)
 
 ## Data frame
 
-```{r}
-typeof(df)       # list
-str(df)
-attributes(df)
-```
-
-## Data frame
-
 We can see that our list, `lst3d`, has a different class than our data frame, `df`.
 
 ```{r}
