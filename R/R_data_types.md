@@ -143,7 +143,8 @@ class('abcd')     # character
 
 ## Testing for Numeric Values
 
-You can test if a value is numeric using the `is.numeric()` function:
+You can test if the (storage) `mode` of a value is numeric using the 
+`is.numeric()` function:
 
 
 ```r
@@ -192,34 +193,89 @@ is.character(val)      # FALSE
 ## [1] FALSE
 ```
 
-## Basic Data Structures
+## Dates and Times
 
-R has four basic data structures:
+While R could store a dates and times as character strings, it actually has 
+special classes for these to allow for date/time arithmetic and formatting.
 
-* Vector (Atomic vector)
-* Matrix
-* Array
-* List (Composite vector)
 
-However, the most commonly used data structure is the "Data frame", based on 
-the "List". 
+```r
+# Class: "Date"
+cat('The date was', format(Sys.Date() - 7, '%Y-%m-%d'), 'a week ago.')
+```
+
+```
+## The date was 2016-08-26 a week ago.
+```
+
+```r
+cat('Halloween is on a', weekdays(as.Date('10-31', format='%m-%d')), 'this year.')
+```
+
+```
+## Halloween is on a Monday this year.
+```
+
+```r
+# Class: "POSIXct" (date, time, timezone, etc.) and "difftime"
+since.midnight <- Sys.time() - as.POSIXct('0', format='%H')
+cat('It has been', format(since.midnight), 'since midnight.')
+```
+
+```
+## It has been 18.42624 hours since midnight.
+```
+
+## Basic Single-Value (Scalar) Data Types
+
+Data types consisting of only a single value are also called "scalar" types.
+
+Example    | Type      | Class             | Storage Mode
+-----------|-----------|-------------------|-------------
+1L         | integer   | integer           | numeric
+1          | double    | numeric           | numeric
+'1'        | character | character         | character
+TRUE       | logical   | logical           | logical
+1+1i       | complex   | complex           | complex
+Sys.Date() | double    | Date              | numeric 
+Sys.time() | double    | POSIXct,  POSIXlt | numeric 
+
+There are other, more esoteric data types, which you can learn about with 
+`?typeof`. One of those is `list`, which we will cover next.
+
+## Basic Multi-Value (Composite) Structures
+
+R has four basic "composite" data structures for containing multiple data 
+values or objects:
+
+Name            | Dimension |Composition
+----------------|-----------|---------------------------------------------
+(Atomic) Vector | 1 | Made of scalar items of the same type (homogenous)
+Matrix          | 2 | Made from an atomic vector and the number of rows and columns
+Array           | n | Made from an atomic vector and a vector of dimension lengths
+List            | 1 | A vector made of scalar or composite items (heterogeneous)
+
+These are used in R to make more complex data objects.
+
+For example, the most commonly used data structure is the "Data frame", based on 
+the "List". Likewise, the "Data table" object is based on the "Data frame".
 
 ## Summary of Basic Data Structures
 
 Dimension|Homogeneous|Heterogeneous
 ---------|-----------|-------------
-1d|Atomic vector|List
-2d|Matrix|Data frame
-nd|Array|
+1|Atomic vector|List
+2|Matrix|Data frame, Data table
+n|Array|
 
 _Source_: [Advanced R: Data Structures](http://adv-r.had.co.nz/Data-structures.html), 
 &copy; Hadley Wickham. 
 
 ## Vector
 
-The default data structure in R is a Vector. A vector is a one-dimensional group 
-(collection) of one or more values (data elements), all of the same 
-("homogenous") primitive data type (i.e. "atomic").
+A vector is a one-dimensional group (collection) of one or more values 
+(data elements), all of the same ("homogenous") single-valued data type 
+(i.e. "atomic").
 
 
 ```r
@@ -447,6 +503,14 @@ typeof(arr3d)      # "double"
 ```
 
 ```r
+mode(arr3d)        # "numeric"
+```
+
+```
+## [1] "numeric"
+```
+
+```r
 str(arr3d)         # num ...
 ```
 
@@ -460,15 +524,6 @@ class(arr3d)       # "array"
 
 ```
 ## [1] "array"
-```
-
-```r
-attributes(arr3d)  # $dim ...
-```
-
-```
-## $dim
-## [1] 3 4 2
 ```
 
 ## List
@@ -506,7 +561,7 @@ This list was built from three vectors, which were labeled "x", "y", and "z".
 
 
 ```r
-typeof(lst3d)    # list (does not show primitive data type since it may vary)
+typeof(lst3d)    # list (does not show underlying data type since it may vary)
 ```
 
 ```
@@ -533,6 +588,70 @@ str(lst3d)
 ##  $ x: int [1:3] 1 2 3
 ##  $ y: chr [1:4] "a" "b" "c" "d"
 ##  $ z: chr [1:2] "A" "B"
+```
+
+## Lists and Dimensions
+
+Earlier, we said that a list is one dimensional. Then we created a 
+"multidimensional" list. What's going on here? Let's compare with our array.
+
+
+```r
+dim(arr3d)             # 3 4 2 (Array has three dimensions of these lengths.)
+```
+
+```
+## [1] 3 4 2
+```
+
+```r
+dim(lst3d)             # NULL (List is only one dimension -- as far as it knows.)
+```
+
+```
+## NULL
+```
+
+So, while we can store several layers of data representing several dimensions
+in a list, the list structure is merely a storage container. It does not
+provide the functionality of a `matrix` or `array` to allow for multidimensional
+operations on the data it contains. Think of a `list` as a one-dimensional 
+*container* allowing for a *nested* structure of varying depth.
+
+## Lists and Attributes
+
+If we compare the `attributes`, we see that the `array` stores a vector of
+dimension lengths. However, the `list` does not store any information about 
+the structure of it's elements.
+
+
+```r
+attributes(arr3d)      # $dim ... Array dimension lengths stored as an attribute.
+```
+
+```
+## $dim
+## [1] 3 4 2
+```
+
+```r
+attributes(lst3d)      # $names ... List item names stored as an attribute.
+```
+
+```
+## $names
+## [1] "x" "y" "z"
+```
+
+And a list does not need to have any attributes at all...
+
+
+```r
+attributes(list(1:4))  # NULL
+```
+
+```
+## NULL
 ```
 
 ## Naming Array Dimensions with a List
@@ -592,11 +711,19 @@ df
 
 
 ```r
-typeof(df)     # list
+typeof(df)     # list, same as mode(df)
 ```
 
 ```
 ## [1] "list"
+```
+
+```r
+dim(df)        # This "list" has multiple dimensions!
+```
+
+```
+## [1] 4 2
 ```
 
 ```r
@@ -608,6 +735,9 @@ str(df)
 ##  $ number: int  1 2 3 4
 ##  $ letter: Factor w/ 4 levels "a","b","c","d": 1 2 3 4
 ```
+
+We see that our data frame is stored as a list, but it's class has additional
+attributes which allow it to function as a two dimensional object.
 
 ## Data frame
 
