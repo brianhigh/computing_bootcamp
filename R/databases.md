@@ -176,7 +176,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file302d30b00fb3.sqlite"
+## [1] "~/file538b169f3624.sqlite"
 ```
 
 ```r
@@ -184,10 +184,9 @@ con <- dbConnect(drv, dbname = sqlfile)
 rs <- dbWriteTable(con, "bmi", bmi)
 ```
 
-## Table Schema
+## Table Structure
 
-We can query the database to see the schema (structure) of the table we have
-created.
+We can query the database to see the structure of the table we have created.
 
 
 ```r
@@ -203,7 +202,7 @@ cat(dbGetQuery(con, query)$sql)
 ## )
 ```
 
-The schema shows the SQL command that could be used to recreate the database 
+The result shows the SQL command that could be used to recreate the database 
 table structure. However, running this command would only create an empty table.
 
 ## Table Contents
@@ -341,6 +340,12 @@ con <- dbConnect(drv)
 
 ## Create `private` Schema
 
+In this example, we are using a `private` schema. The word *schema*, as used
+in the context of PostgreSQL, means a container for tables within the database.
+
+We could call this schema just about anything, but we will call it `private`
+for clarity and simplicity.
+
 If this is the first time you are using your database, you will need to create 
 your `private` schema. This is a place for you to work that only you can access.
 
@@ -364,6 +369,12 @@ sql <- 'DROP TABLE IF EXISTS private.arrests'
 rs <- dbSendQuery(con, sql)
 rs <- dbWriteTable(con, c("private", "arrests"), USArrests)
 ```
+
+If you did not specify the schema ("private"), the connection would default to
+the "public" schema, and other users of the database would have access to your
+table.
+
+For more information about schemas in PostgreSQL, see the [manual](https://www.postgresql.org/docs/9.5/static/ddl-schemas.html).
 
 ## SQL Query
 
