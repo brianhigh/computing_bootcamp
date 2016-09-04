@@ -1,4 +1,4 @@
-# Version Control with RStudio and Github
+# Version Control with RStudio and GitHub
 Brian High  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
@@ -10,8 +10,8 @@ You will learn:
 
 * What version control is and _why you should care_
 * The basic operations of the _Git_ version control system
-* How to use [Git](https://git-scm.com/) and [Github](https://github.com/) to _manage projects_
-* How to use Git and Github _from within RStudio_
+* How to use [Git](https://git-scm.com/) and [GitHub](https://github.com/) to _manage projects_
+* How to use Git and GitHub _from within RStudio_
 
 ## Version Control
 
@@ -24,6 +24,8 @@ The following is true of most modern version control systems:
 * Allows _multiple users_ to work with the same files _concurrently_
 * May also be called: _revision control systems_
 
+![Image: [Michael Ernst](https://homes.cs.washington.edu/~mernst/advice/version-control.html)](images/version-control-fig1.png)
+
 ## Version Control Features
 
 Most modern version control systems:
@@ -32,28 +34,33 @@ Most modern version control systems:
 * Allow you to _compare_ versions or _revert_ to past versions
 * Let you _share_ files and _merge changes_ from others
 * Handle merging for you, _transparently_ (in most cases)
-* Let you _collaborate_ through a _server_ or website like [Github](https://github.com/)
+* Let you _collaborate_ through a _server_ or website like [GitHub](https://github.com/)
 * _Sync_ changes with the server instead of ~~emailing files around~~
+
+![Image: [Michael Ernst](https://homes.cs.washington.edu/~mernst/advice/version-control.html)](images/version-control-fig2.png)
 
 ## Git: Distributed Version Control
 
 * Hugely popular, free, open source, and cross-platform
 * _Distributed_, decentralized design allows offline use
 * _Integrated_ with apps like _RStudio_ and MS Visual Studio _Code_
-* The version control "engine" behind sites like [Github](https://github.com/)
-* Created by _Linus Torvalds_, the creator of Linux
-* Designed for _large_ projects with many _remote_ contributors
+* The version control "engine" behind sites like [GitHub](https://github.com/)
 * Increasingly popular for _scientific research projects_
 
-## Github: Social Version Control
+![Image: [Michael Ernst](https://homes.cs.washington.edu/~mernst/advice/version-control.html)](images/version-control-fig3.png)
 
-* The most popular web-based (github.com) host of Git repositories
-* Free account for public repositories -- See also: education.github.com
+## GitHub: Social Coding
+
+* The most popular web-based ([github.com](http://github.com)) host of Git repositories
+* Free account for public repositories
+* Accounts for educational use ([education.github.com](http://education.github.com) and [classroom.github.com](http://classroom.github.com))
 * Repository browser with syntax highlighting and text editing
 * Integrated issue tracking, stats, and wiki
 * Offers "forking" and "pull requests" for collaboration workflow
-* Hosts Github Pages (github.io) and Github Gists (gist.github.com)
-* Provides Github Desktop (desktop.github.com) and Github Atom editor (atom.io)
+* Hosts GitHub Pages ([github.io](http://github.io)) and GitHub Gists ([gist.github.com](http://gist.github.com))
+* Provides GitHub Desktop ([desktop.github.com](http://desktop.github.com)) and GitHub Atom editor ([atom.io](http://atom.io))
+
+![](images/github_320x208.jpg)
 
 ## Installing Git
 
@@ -61,7 +68,7 @@ Most modern version control systems:
 * For Windows installer, _allow changes to the system PATH_
 * RStudio searches PATH to find "git", or manually configure
 * Git is _already installed_ on most of our departmental servers
-* Github Desktop is optional -- on Windows it includes the Gitbash shell
+* GitHub Desktop is optional -- on Windows it includes the Gitbash shell
 
 ## Configuring Git
 
@@ -91,14 +98,16 @@ you may be using. (Or you can just copy, paste, edit and run these commands.)
 
 NOTE:
 
-Github features like forking and pull requests are not currently implemented 
+GitHub features like forking and pull requests are not currently implemented 
 in RStudio's Git features.
 
-## Demo: Github Operations
+![](images/git_rstudio.png)
 
-We will demonstrate the following operations in Github:
+## Demo: GitHub Operations
 
-* Create a Github account
+We will demonstrate the following operations in GitHub:
+
+* Create a GitHub account
 * [Fork a repository](https://help.github.com/articles/fork-a-repo/)
 * [Create a new repository](https://help.github.com/articles/create-a-repo/) with a README and [LICENSE](https://help.github.com/articles/open-source-licensing/)
 * Create an Issue
@@ -113,7 +122,7 @@ We will demonstrate the following [Git operations in RStudio](https://support.rs
 * Create and edit files in RStudio
 * Add changed files to a Git commit
 * Commit the changes with a Git commit message
-* Push the commit to Github
+* Push the commit to GitHub
 
 ## Common Git Operations
 
@@ -137,30 +146,30 @@ We will demonstrate the following [Git operations in RStudio](https://support.rs
 - **Merge:** Merging takes the changes from one branch (in the same repository or from a fork), and applies them into another.
 - **Pull:** Pull refers to when you are fetching in changes and merging them.
 - **Pull Request:** Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository's collaborators
-- **Push:** Pushing refers to sending your committed changes to a remote repository such as Github.com
-- **Issue:** A Github feature/bug tracking "ticket" (and disucssion thread)
-- **Close:** To complete a Github Issue or Pull Request workflow
+- **Push:** Pushing refers to sending your committed changes to a remote repository such as GitHub.com
+- **Issue:** A GitHub feature/bug tracking "ticket" (and disucssion thread)
+- **Close:** To complete a GitHub Issue or Pull Request workflow
 
 [More details here](https://help.github.com/articles/github-glossary/)
 
 *Thanks to Raphael Gottardo for this slide from his Biostat-578
  [lecture](https://github.com/raphg/Biostat-578/blob/1352ca32c7f12ec8b43f8898cce5cae3831e7a43/Introduction_to_R.Rmd).*
  
-## Typical Git and Github Workflow
+## Typical Git and GitHub Workflow
 
 ### Project initialization
 
-1. Create a new, empty repo in Github
-2. `clone` to local system or `push` from existing local repo to Github
+1. Create a new, empty repo in GitHub
+2. `clone` to local system or `push` from existing local repo to GitHub
 3. Create `README`, `LICENSE`, and `.gitignore` files, then `push`/`pull` to sync
 
 ### Project continuation
 
-1. Add collaborators to Github repo if needed
+1. Add collaborators to GitHub repo if needed
 2. Always do a `pull` when you begin a work session and before a `commit`
 3. To `commit` changes, `add` changed files, `commit` with a message, and `push`
-4. Check your Github Issues" and resolve/close issues as separate commits
-5. Check your Github Pull Requests, review the code, merge (or not), and close
+4. Check your GitHub Issues" and resolve/close issues as separate commits
+5. Check your GitHub Pull Requests, review the code, merge (or not), and close
 
 ## Exercises
 
@@ -170,11 +179,11 @@ Clone a git repo into RStudio as a new project.
 
 ### Exercise #2
 
-Create a Github account (if you need to) and use your account to [fork a repo](https://help.github.com/articles/fork-a-repo/).
+Create a GitHub account (if you need to) and use your account to [fork a repo](https://help.github.com/articles/fork-a-repo/).
 
 ### Exercise #3
 
-Clone your fork from exercise #3 into RStudio, make an edit, push your edit to Github.
+Clone your fork from exercise #3 into RStudio, make an edit, push your edit to GitHub.
 
 ### Exercise #4 (Extra Credit)
 
