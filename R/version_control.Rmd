@@ -24,8 +24,8 @@ You will learn:
 
 * What version control is and _why you should care_
 * The basic operations of the _Git_ version control system
-* How to use Git and Github to _manage projects_
-* How to use Git and Githhub _from within RStudio_
+* How to use [Git](https://git-scm.com/) and [Github](https://github.com/) to _manage projects_
+* How to use Git and Github _from within RStudio_
 
 ## Version Control
 
@@ -61,19 +61,21 @@ Most modern version control systems:
 
 ## Github: Social Version Control
 
-* The most popular web-based host of Git repositories
+* The most popular web-based (github.com) host of Git repositories
+* Free account for public repositories -- See also: education.github.com
 * Repository browser with syntax highlighting and text editing
 * Integrated issue tracking, stats, and wiki
 * Offers "forking" and "pull requests" for collaboration workflow
 * Hosts Github Pages (github.io) and Github Gists (gist.github.com)
-* Provides Github Desktop for Mac and Windows and Github Atom editor
+* Provides Github Desktop (desktop.github.com) and Github Atom editor (atom.io)
 
 ## Installing Git
 
 * Installers available from: [https://git-scm.com/](https://git-scm.com/)
 * For Windows installer, _allow changes to the system PATH_
 * RStudio searches PATH to find "git", or manually configure
-* Git is _already installed_ on Phage
+* Git is _already installed_ on most of our departmental servers
+* Github Desktop is optional -- on Windows it includes the Gitbash shell
 
 ## Configuring Git
 
@@ -86,13 +88,13 @@ your username and email address.
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 git config --global color.ui true
-git config --global core.editor nano
+git config --global core.editor nano    # Or your favorite text editor
 ```
 
 Edit these commands as needed for your name, email, and preferred editor. 
 
 If you store them in a shell script, you may easily run them on other systems 
-you may be using. For now, copying, pasting, editing, and running will be fine.
+you may be using. (Or you can just copy, paste, edit and run these commands.)
 
 ## Git Integration in RStudio
 
@@ -100,6 +102,32 @@ you may be using. For now, copying, pasting, editing, and running will be fine.
 * RStudio can perform all _common_ operations from the GUI
     + From the menu: _Tools_ -> _Version Control_
     + From the _Git_ tab next to the _History_ tab
+
+NOTE:
+
+Github features like forking and pull requests are not currently implemented 
+in RStudio's Git features.
+
+## Demo: Github Operations
+
+We will demonstrate the following operations in Github:
+
+* Create a Github account
+* [Fork a repository](https://help.github.com/articles/fork-a-repo/)
+* [Create a new repository](https://help.github.com/articles/create-a-repo/) with a README and [LICENSE](https://help.github.com/articles/open-source-licensing/)
+* Create an Issue
+* Edit a file
+* [Close an Issue with a Commit](https://help.github.com/articles/closing-issues-via-commit-messages/)
+
+## Demo: Git Operations in RStudio
+
+We will demonstrate the following [Git operations in RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN):
+
+* Clone a Git repository into a new RStudio Project
+* Create and edit files in RStudio
+* Add changed files to a Git commit
+* Commit the changes with a Git commit message
+* Push the commit to Github
 
 ## Common Git Operations
 
@@ -123,7 +151,9 @@ you may be using. For now, copying, pasting, editing, and running will be fine.
 - **Merge:** Merging takes the changes from one branch (in the same repository or from a fork), and applies them into another.
 - **Pull:** Pull refers to when you are fetching in changes and merging them.
 - **Pull Request:** Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository's collaborators
-- **Push:** Pushing refers to sending your committed changes to a remote repository such as GitHub.com
+- **Push:** Pushing refers to sending your committed changes to a remote repository such as Github.com
+- **Issue:** A Github feature/bug tracking "ticket" (and disucssion thread)
+- **Close:** To complete a Github Issue or Pull Request workflow
 
 [More details here](https://help.github.com/articles/github-glossary/)
 
@@ -136,15 +166,15 @@ you may be using. For now, copying, pasting, editing, and running will be fine.
 
 1. Create a new, empty repo in Github
 2. `clone` to local system or `push` from existing local repo to Github
-3. Create README, LICENSE, and .gitignore files, then push/pull to sync
+3. Create `README`, `LICENSE`, and `.gitignore` files, then `push`/`pull` to sync
 
 ### Project continuation
 
 1. Add collaborators to Github repo if needed
-2. Always do a pull when you begin a work session and before a commit
-3. To commit changes, `add` changed files, `commit` with a message, and `push`
-4. Check your Github "Issues" and resolve issues as separate commits
-5. Check your pull requests, review the code, merge (or not), and close
+2. Always do a `pull` when you begin a work session and before a `commit`
+3. To `commit` changes, `add` changed files, `commit` with a message, and `push`
+4. Check your Github Issues" and resolve/close issues as separate commits
+5. Check your Github Pull Requests, review the code, merge (or not), and close
 
 ## Exercises
 
@@ -154,13 +184,12 @@ Clone a git repo into RStudio as a new project.
 
 ### Exercise #2
 
-Create a Github account (if you need to) and use your account to fork a repo.
+Create a Github account (if you need to) and use your account to [fork a repo](https://help.github.com/articles/fork-a-repo/).
 
 ### Exercise #3
 
 Clone your fork from exercise #3 into RStudio, make an edit, push your edit to Github.
 
-### Exercise #4
+### Exercise #4 (Extra Credit)
 
-Complete exercises #2 and #3 and then issue a pull request to the original 
-repo author for your changes to your fork.
+Complete exercises #2 and #3 and then [create a pull request](https://help.github.com/articles/creating-a-pull-request/).

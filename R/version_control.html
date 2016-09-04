@@ -116,8 +116,8 @@
 <ul>
 <li>What version control is and <em>why you should care</em></li>
 <li>The basic operations of the <em>Git</em> version control system</li>
-<li>How to use Git and Github to <em>manage projects</em></li>
-<li>How to use Git and Githhub <em>from within RStudio</em></li>
+<li>How to use <a href='https://git-scm.com/' title=''>Git</a> and <a href='https://github.com/' title=''>Github</a> to <em>manage projects</em></li>
+<li>How to use Git and Github <em>from within RStudio</em></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Version Control</h2></hgroup><article  id="version-control" class="smaller ">
@@ -161,12 +161,13 @@
 </article></slide><slide class=''><hgroup><h2>Github: Social Version Control</h2></hgroup><article  id="github-social-version-control" class="smaller ">
 
 <ul>
-<li>The most popular web-based host of Git repositories</li>
+<li>The most popular web-based (github.com) host of Git repositories</li>
+<li>Free account for public repositories &#8211; See also: education.github.com</li>
 <li>Repository browser with syntax highlighting and text editing</li>
 <li>Integrated issue tracking, stats, and wiki</li>
 <li>Offers &quot;forking&quot; and &quot;pull requests&quot; for collaboration workflow</li>
 <li>Hosts Github Pages (github.io) and Github Gists (gist.github.com)</li>
-<li>Provides Github Desktop for Mac and Windows and Github Atom editor</li>
+<li>Provides Github Desktop (desktop.github.com) and Github Atom editor (atom.io)</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Installing Git</h2></hgroup><article  id="installing-git" class="smaller ">
@@ -175,7 +176,8 @@
 <li>Installers available from: <a href='https://git-scm.com/' title=''>https://git-scm.com/</a></li>
 <li>For Windows installer, <em>allow changes to the system PATH</em></li>
 <li>RStudio searches PATH to find &quot;git&quot;, or manually configure</li>
-<li>Git is <em>already installed</em> on Phage</li>
+<li>Git is <em>already installed</em> on most of our departmental servers</li>
+<li>Github Desktop is optional &#8211; on Windows it includes the Gitbash shell</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Configuring Git</h2></hgroup><article  id="configuring-git" class="smaller ">
@@ -189,11 +191,11 @@
 <pre >git config --global user.name &quot;John Doe&quot;
 git config --global user.email johndoe@example.com
 git config --global color.ui true
-git config --global core.editor nano</pre>
+git config --global core.editor nano    # Or your favorite text editor</pre>
 
 <p>Edit these commands as needed for your name, email, and preferred editor.</p>
 
-<p>If you store them in a shell script, you may easily run them on other systems you may be using. For now, copying, pasting, editing, and running will be fine.</p>
+<p>If you store them in a shell script, you may easily run them on other systems you may be using. (Or you can just copy, paste, edit and run these commands.)</p>
 
 </article></slide><slide class=''><hgroup><h2>Git Integration in RStudio</h2></hgroup><article  id="git-integration-in-rstudio" class="smaller ">
 
@@ -205,6 +207,35 @@ git config --global core.editor nano</pre>
 <li>From the menu: <em>Tools</em> -&gt; <em>Version Control</em></li>
 <li>From the <em>Git</em> tab next to the <em>History</em> tab</li>
 </ul></li>
+</ul>
+
+<p>NOTE:</p>
+
+<p>Github features like forking and pull requests are not currently implemented in RStudio&#39;s Git features.</p>
+
+</article></slide><slide class=''><hgroup><h2>Demo: Github Operations</h2></hgroup><article  id="demo-github-operations" class="smaller ">
+
+<p>We will demonstrate the following operations in Github:</p>
+
+<ul>
+<li>Create a Github account</li>
+<li><a href='https://help.github.com/articles/fork-a-repo/' title=''>Fork a repository</a></li>
+<li><a href='https://help.github.com/articles/create-a-repo/' title=''>Create a new repository</a> with a README and <a href='https://help.github.com/articles/open-source-licensing/' title=''>LICENSE</a></li>
+<li>Create an Issue</li>
+<li>Edit a file</li>
+<li><a href='https://help.github.com/articles/closing-issues-via-commit-messages/' title=''>Close an Issue with a Commit</a></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Demo: Git Operations in RStudio</h2></hgroup><article  id="demo-git-operations-in-rstudio" class="smaller ">
+
+<p>We will demonstrate the following <a href='https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN' title=''>Git operations in RStudio</a>:</p>
+
+<ul>
+<li>Clone a Git repository into a new RStudio Project</li>
+<li>Create and edit files in RStudio</li>
+<li>Add changed files to a Git commit</li>
+<li>Commit the changes with a Git commit message</li>
+<li>Push the commit to Github</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Common Git Operations</h2></hgroup><article  id="common-git-operations" class="smaller ">
@@ -255,7 +286,9 @@ git config --global core.editor nano</pre>
 <li><strong>Merge:</strong> Merging takes the changes from one branch (in the same repository or from a fork), and applies them into another.</li>
 <li><strong>Pull:</strong> Pull refers to when you are fetching in changes and merging them.</li>
 <li><strong>Pull Request:</strong> Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository&#39;s collaborators</li>
-<li><strong>Push:</strong> Pushing refers to sending your committed changes to a remote repository such as GitHub.com</li>
+<li><strong>Push:</strong> Pushing refers to sending your committed changes to a remote repository such as Github.com</li>
+<li><strong>Issue:</strong> A Github feature/bug tracking &quot;ticket&quot; (and disucssion thread)</li>
+<li><strong>Close:</strong> To complete a Github Issue or Pull Request workflow</li>
 </ul>
 
 <p><a href='https://help.github.com/articles/github-glossary/' title=''>More details here</a></p>
@@ -269,17 +302,17 @@ git config --global core.editor nano</pre>
 <ol>
 <li>Create a new, empty repo in Github</li>
 <li><code>clone</code> to local system or <code>push</code> from existing local repo to Github</li>
-<li>Create README, LICENSE, and .gitignore files, then push/pull to sync</li>
+<li>Create <code>README</code>, <code>LICENSE</code>, and <code>.gitignore</code> files, then <code>push</code>/<code>pull</code> to sync</li>
 </ol>
 
 <h3>Project continuation</h3>
 
 <ol>
 <li>Add collaborators to Github repo if needed</li>
-<li>Always do a pull when you begin a work session and before a commit</li>
-<li>To commit changes, <code>add</code> changed files, <code>commit</code> with a message, and <code>push</code></li>
-<li>Check your Github &quot;Issues&quot; and resolve issues as separate commits</li>
-<li>Check your pull requests, review the code, merge (or not), and close</li>
+<li>Always do a <code>pull</code> when you begin a work session and before a <code>commit</code></li>
+<li>To <code>commit</code> changes, <code>add</code> changed files, <code>commit</code> with a message, and <code>push</code></li>
+<li>Check your Github Issues&quot; and resolve/close issues as separate commits</li>
+<li>Check your Github Pull Requests, review the code, merge (or not), and close</li>
 </ol>
 
 </article></slide><slide class=''><hgroup><h2>Exercises</h2></hgroup><article  id="exercises" class="smaller ">
@@ -290,15 +323,15 @@ git config --global core.editor nano</pre>
 
 <h3>Exercise #2</h3>
 
-<p>Create a Github account (if you need to) and use your account to fork a repo.</p>
+<p>Create a Github account (if you need to) and use your account to <a href='https://help.github.com/articles/fork-a-repo/' title=''>fork a repo</a>.</p>
 
 <h3>Exercise #3</h3>
 
 <p>Clone your fork from exercise #3 into RStudio, make an edit, push your edit to Github.</p>
 
-<h3>Exercise #4</h3>
+<h3>Exercise #4 (Extra Credit)</h3>
 
-<p>Complete exercises #2 and #3 and then issue a pull request to the original repo author for your changes to your fork.</p></article></slide>
+<p>Complete exercises #2 and #3 and then <a href='https://help.github.com/articles/creating-a-pull-request/' title=''>create a pull request</a>.</p></article></slide>
 
 
   <slide class="backdrop"></slide>
