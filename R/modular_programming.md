@@ -4,13 +4,14 @@ Brian High
 
 
 
-## Modular Programming: Functions and Packages
+## Learning Objectives
 
 You will learn:
 
 * How to modularize your code
 * How to write functions in R
 * How to create your own R packages
+* How to create package documentation
 * How to share your own R packages on Github
 * How to install packages from Github
 

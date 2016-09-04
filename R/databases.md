@@ -2,6 +2,8 @@
 Brian High  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
+
+
 ## Learning Objectives
 
 You will learn:
@@ -163,20 +165,13 @@ then store our `bmi` data frame into a new SQL table in our SQLite database.
 
 ```r
 library("RSQLite")
-```
-
-```
-## Loading required package: DBI
-```
-
-```r
 drv <- dbDriver("SQLite")
 sqlfile <- tempfile(tmpdir="~", fileext=".sqlite")
 sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file2f2c7049b808.sqlite"
+## [1] "~/filec3a7dccf75c.sqlite"
 ```
 
 ```r
@@ -547,17 +542,6 @@ extract <- select(arrests, State=row.names, Murder, Assault) %>%
 
 # Show the SQL command that dplyr will run
 show_query(extract)
-```
-
-```
-## <SQL>
-## SELECT *
-## FROM (SELECT *
-## FROM (SELECT "State", "Murder", "Assault", 100.0 * "Murder" / "Assault" AS "MurderAssaultRatio"
-## FROM (SELECT "row.names" AS "State", "Murder" AS "Murder", "Assault" AS "Assault"
-## FROM "arrests") "ebfzfppgro") "ccgmpljnji"
-## ORDER BY "MurderAssaultRatio" DESC) "zbrekwnylq"
-## LIMIT 10
 ```
 
 The SQL looks complicated from the use of nested `SELECT` statements, but it work.

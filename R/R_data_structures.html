@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Databases in R</title>
+  <title>R Data Structures</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Databases in R',
+                title: 'R Data Structures',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -114,456 +114,492 @@
 <p>You will learn:</p>
 
 <ul>
-<li>What databases are supported by R</li>
-<li>How to connect to databases in R</li>
-<li>How to create database tables from R data frames</li>
-<li>How to query databases with SQL</li>
-<li>How to store query results as R data frames</li>
+<li>The basic &quot;higher order&quot; data structures in R</li>
+<li>How to create categorical variables in R</li>
+<li>How to convert a data object from one structure to another</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>R&#39;s Database Support</h2></hgroup><article  id="rs-database-support" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Basic Multi-Value (Composite) Structures</h2></hgroup><article  id="basic-multi-value-composite-structures" class="smaller ">
 
-<p>R can can connect to many types if databases, either through specific packages or through the more generic RODBC and RJDBC packages.</p>
+<p>R has four basic &quot;composite&quot; data structures for containing multiple data values or objects:</p>
 
-<p>Here are some examples of database products you can connect to from R:</p>
+<table class = 'rmdtable'>
+<col width="23%" />
+<col width="16%" />
+<col width="63%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Dimension</th>
+<th align="left">Composition</th>
+</tr>
+<tr class="odd">
+<td align="left">(Atomic) Vector</td>
+<td align="left">1</td>
+<td align="left">Made of scalar items of the same type (homogenous)</td>
+</tr>
+<tr class="even">
+<td align="left">Matrix</td>
+<td align="left">2</td>
+<td align="left">Made from an atomic vector and the number of rows and columns</td>
+</tr>
+<tr class="odd">
+<td align="left">Array</td>
+<td align="left">n</td>
+<td align="left">Made from an atomic vector and a vector of dimension lengths</td>
+</tr>
+<tr class="even">
+<td align="left">List</td>
+<td align="left">1</td>
+<td align="left">A vector made of scalar or composite items (heterogeneous)</td>
+</tr>
+</table>
 
-<ul>
-<li>SQLite</li>
-<li>PostgreSQL</li>
-<li>MySQL and MariaDB</li>
-<li>Oracle Database</li>
-<li>Microsoft SQL Server</li>
-<li>Microsoft Access</li>
-<li>IBM DB2</li>
-<li>IBM Informix</li>
-<li>MongoDB</li>
-<li>Hadoop</li>
-</ul>
+<p>These are used in R to make more complex data objects.</p>
 
-</article></slide><slide class=''><hgroup><h2>SQLite and PostgreSQL</h2></hgroup><article  id="sqlite-and-postgresql" class="smaller ">
+<p>For example, the most commonly used data structure is the &quot;Data frame&quot;, based on the &quot;List&quot;. Likewise, the &quot;Data table&quot; object is based on the &quot;Data frame&quot;.</p>
 
-<p>In this module, we will learn how to use SQLite and PostgreSQL databases.</p>
+</article></slide><slide class=''><hgroup><h2>Summary of Basic Data Structures</h2></hgroup><article  id="summary-of-basic-data-structures" class="smaller ">
 
-<h3>SQLite</h3>
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Dimension</th>
+<th align="left">Homogeneous</th>
+<th align="left">Heterogeneous</th>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Atomic vector</td>
+<td align="left">List</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Matrix</td>
+<td align="left">Data frame, Data table</td>
+</tr>
+<tr class="odd">
+<td align="left">n</td>
+<td align="left">Array</td>
+</tr>
+</table>
 
-<p>SQLite is a very popular open-source database providing standard SQL language support and a file-based implementation. It is easy to install and to use, but lacks the performance of the server-based database systems.</p>
+<p><em>Source</em>: <a href='http://adv-r.had.co.nz/Data-structures.html' title=''>Advanced R: Data Structures</a>, © Hadley Wickham.</p>
 
-<h3>PostgreSQL</h3>
+</article></slide><slide class=''><hgroup><h2>Vector</h2></hgroup><article  id="vector" class="smaller ">
 
-<p>PostgreSQL is a popular open-source database providing high-end performance and features. Like SQLite, it also provides standard SQL language support, but it offers highly-scalable performance and enterprise features. It is server-based, making it harder to install for the casual user, but easier to offer in an enterprise (i.e. campus) environment.</p>
+<p>A vector is a one-dimensional group (collection) of one or more values (data elements), all of the same (&quot;homogenous&quot;) single-valued data type (i.e. &quot;atomic&quot;).</p>
 
-</article></slide><slide class=''><hgroup><h2>Benefits of a Server-Based Database</h2></hgroup><article  id="benefits-of-a-server-based-database" class="smaller ">
+<pre class = 'prettyprint lang-r'>vec &lt;- 1234   # A vector containing a single value</pre>
 
-<p>A server will be accessible by a team of collaborators so they can share the database without the need to copy files around.</p>
+<p>The <code>c()</code> function &quot;combines&quot; values into a vector.</p>
 
-<p>Users do not run the risk of the database being overwritten by a simple file transfer, as would be the case with a file-based database.</p>
+<pre class = 'prettyprint lang-r'>vec &lt;- c(12, 34)
+vec</pre>
 
-<p>Users can read and write data without completely locking others out of the entire database.</p>
+<pre >## [1] 12 34</pre>
 
-<p>A server-based database does not send the entire database over the network when it is accessed, just the data that was requested.</p>
-
-<p>A server will usually be more reliable and have a greater amount of resources &#8211; processing, memory, and storage &#8211; than your local computer.</p>
-
-<p>A server-based database will use internal query optimizers to make your query more efficient and run faster.</p>
-
-<p>A server is usually running 24/7 and can process your bigger queries during off-hours when the system load is lower.</p>
-
-</article></slide><slide class=''><hgroup><h2>The SQL Language</h2></hgroup><article  id="the-sql-language" class="smaller ">
-
-<p>Most traditional databases provide access through the standard SQL language. So if you learn this language, you can work with the vast majority of databases that you will encounter. Learning SQL is a very smart idea if you plan to work with data, especially with large datasets or in a collborative environment.</p>
-
-<p>SQL is designed to be similar in syntax to the English language. Here are some example commands:</p>
-
-<pre >CREATE TABLE bmi (&quot;id&quot; INTEGER, &quot;weight&quot; REAL, &quot;height&quot; REAL);
-INSERT INTO bmi VALUES (1, 159.2, 68.1);
-INSERT INTO bmi VALUES (2, 162.3, 69.4);
-INSERT INTO bmi VALUES (3, 203.5, 71.2);
-INSERT INTO bmi VALUES (4, 181.3, 68.9);
-SELECT &quot;id&quot;, &quot;weight&quot;, &quot;height&quot; FROM bmi;
-SELECT &quot;weight&quot; / (&quot;height&quot; * &quot;height&quot;) * 703 AS aBMI FROM bmi;</pre>
-
-<p>These commands will make a database table, store four records in it, display the records, calculate a value from the data for each record, and then display the results of the calculation.</p>
-
-</article></slide><slide class=''><hgroup><h2>Create Test Data</h2></hgroup><article  id="create-test-data" class="smaller ">
-
-<p>The equivalent to the above SQL commands in R would be:</p>
-
-<pre class = 'prettyprint lang-r'>id &lt;- 1:4
-weight &lt;- c(159.2, 162.3, 203.5, 181.3)        # Weight in pounds
-height &lt;- c(68.1, 69.4, 71.2, 68.9)            # Height in inches
-bmi &lt;- data.frame(id, weight, height, stringsAsFactors = FALSE)
-bmi</pre>
-
-<pre >##   id weight height
-## 1  1  159.2   68.1
-## 2  2  162.3   69.4
-## 3  3  203.5   71.2
-## 4  4  181.3   68.9</pre>
-
-<pre class = 'prettyprint lang-r'>aBMI &lt;- (bmi$weight / bmi$height ^ 2) * 703    # Adult BMI
-aBMI</pre>
-
-<pre >## [1] 24.13260 23.68945 28.22018 26.84817</pre>
-
-</article></slide><slide class=''><hgroup><h2>Install SQLite and R Package</h2></hgroup><article  id="install-sqlite-and-r-package" class="smaller ">
-
-<p>To use SQLite with R, you need to install <a href='https://www.sqlite.org/' title=''>SQLite</a> on your system and install the <code>RSQLite</code> R package.</p>
-
-<p>To install SQLite, get the <a href='https://www.sqlite.org/download.html' title=''>binary libraries and tools</a> from the <a href='https://www.sqlite.org/' title=''>SQLite</a> website. Extract the files and place them in your <a href='https://en.wikipedia.org/wiki/PATH_(variable)' title=''>system PATH</a>.</p>
-
-<p>This will allow you to run the <code>sqlite3</code> command-line utility and also to interact with SQLite from programming languages like R.</p>
-
-<p>To test that SQLite is installed okay on your system, run the command <code>sqlite3</code> from your system&#39;s Terminal (e.g. <em>Bash</em>, <em>PowerShell</em>, etc.).</p>
-
-<pre >$ sqlite3
-SQLite version 3.13.0 2016-05-18 10:57:30
-Enter &quot;.help&quot; for usage hints.
-Connected to a transient in-memory database.
-Use &quot;.open FILENAME&quot; to reopen on a persistent database.
-sqlite&gt; .q</pre>
-
-<p>Once SQLite installation is complete, you can install the <code>RSQLite</code> package:</p>
-
-<pre class = 'prettyprint lang-r'>install.packages(&quot;RSQLite&quot;)</pre>
-
-</article></slide><slide class=''><hgroup><h2>Store Data in SQLite</h2></hgroup><article  id="store-data-in-sqlite" class="smaller ">
-
-<p>We will load the <em>RSQLite</em> package, create a temporary database file, and then store our <code>bmi</code> data frame into a new SQL table in our SQLite database.</p>
-
-<pre class = 'prettyprint lang-r'>library(&quot;RSQLite&quot;)
-drv &lt;- dbDriver(&quot;SQLite&quot;)
-sqlfile &lt;- tempfile(tmpdir=&quot;~&quot;, fileext=&quot;.sqlite&quot;)
-sqlfile       # This will show the database filename.</pre>
-
-<pre >## [1] &quot;~/filec3a7dccf75c.sqlite&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>con &lt;- dbConnect(drv, dbname = sqlfile)
-rs &lt;- dbWriteTable(con, &quot;bmi&quot;, bmi)</pre>
-
-</article></slide><slide class=''><hgroup><h2>Table Structure</h2></hgroup><article  id="table-structure" class="smaller ">
-
-<p>We can query the database to see the structure of the table we have created.</p>
-
-<pre class = 'prettyprint lang-r'>query &lt;- &quot;SELECT sql from sqlite_master WHERE type=&#39;table&#39; and name = &#39;bmi&#39;;&quot;
-cat(dbGetQuery(con, query)$sql)</pre>
-
-<pre >## CREATE TABLE bmi 
-## ( &quot;id&quot; INTEGER,
-##  &quot;weight&quot; REAL,
-##  &quot;height&quot; REAL 
-## )</pre>
-
-<p>The result shows the SQL command that could be used to recreate the database table structure. However, running this command would only create an empty table.</p>
-
-</article></slide><slide class=''><hgroup><h2>Table Contents</h2></hgroup><article  id="table-contents" class="smaller ">
-
-<p>We can see the contents of the table with:</p>
-
-<pre class = 'prettyprint lang-r'>query &lt;- &quot;SELECT * from bmi;&quot;
-bmi.table &lt;- dbGetQuery(con, query)
-bmi.table</pre>
-
-<pre >##   id weight height
-## 1  1  159.2   68.1
-## 2  2  162.3   69.4
-## 3  3  203.5   71.2
-## 4  4  181.3   68.9</pre>
-
-<p>Here we have retrieved the result of the query and stored it in the data frame <code>bmi.table</code>. Then we displayed the contents of the data frame.</p>
-
-</article></slide><slide class=''><hgroup><h2>Performing a Calculation in SQLite</h2></hgroup><article  id="performing-a-calculation-in-sqlite" class="smaller ">
-
-<p>This is the result of the BMI calculation as performed by SQLite.</p>
-
-<pre class = 'prettyprint lang-r'>query &lt;- &#39;SELECT &quot;weight&quot; / (&quot;height&quot; * &quot;height&quot;) * 703 AS aBMI FROM bmi;&#39;
-aBMI.table &lt;- dbGetQuery(con, query)
-aBMI.table</pre>
-
-<pre >##       aBMI
-## 1 24.13260
-## 2 23.68945
-## 3 28.22018
-## 4 26.84817</pre>
-
-<p>Of course, this calculation is more easily done directly in R. We only see the benefits of using databases such as SQLite when we have more data that can fit in our systems memory (RAM).</p>
-
-</article></slide><slide class=''><hgroup><h2>Disconnect from the Database</h2></hgroup><article  id="disconnect-from-the-database" class="smaller ">
-
-<p>When you are done using the database, you will want to disconnect from it, so that you will no longer be locking the file.</p>
-
-<pre class = 'prettyprint lang-r'># Disconnect from the database
-dbDisconnect(con)</pre>
+<pre class = 'prettyprint lang-r'>is.vector(vec)</pre>
 
 <pre >## [1] TRUE</pre>
 
-<p>And, since this was just a temporary database that we no longer need, we will go ahead and remove the file.</p>
+</article></slide><slide class=''><hgroup><h2>Vector</h2></hgroup><article  id="vector-1" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>unlink(sqlfile) </pre>
+<p>Vectors in R are called &quot;atomic vectors&quot; because they are a &quot;flat&quot; structure composed only of single-valued items.</p>
 
-<p>Of course, you would not remove the file if you still needed it, so be careful when using this command.</p>
+<pre class = 'prettyprint lang-r'>length(vec)</pre>
 
-</article></slide><slide class=''><hgroup><h2>PostgreSQL</h2></hgroup><article  id="postgresql-1" class="smaller ">
+<pre >## [1] 2</pre>
 
-<p>We will now demonstrate how to use a server-based database system, PostgreSQL.</p>
+<pre class = 'prettyprint lang-r'>is.atomic(vec)</pre>
 
-<p>The same standard SQL language will be used to access data, but there are slight differences in the &quot;flavor&quot; of SQL used by PostgreSQL and SQLite. These lead to minor syntax differences. Also, PostgreSQL has many more features, but we only use the basic features in our demonstration.</p>
+<pre >## [1] TRUE</pre>
 
-<p>It is more complicated to install PostgreSQL, so you will likely need help from your system administrator to set up a working PostgreSQL server. You will also need a PostgreSQL account on your server, as well as a database to store your tables.</p>
+</article></slide><slide class=''><hgroup><h2>Vector</h2></hgroup><article  id="vector-2" class="smaller ">
 
-<p>We have set up PostgreSQL on a server for your use. If you would like to use it, let us know so we can create your account and database.</p>
+<p>We can save ourselves some typing when working with sequences of integers. These are all ways to create equivalent vectors of the digits one through four:</p>
 
-<p>Here is how we would set up your PostgreSQL account and database (from <em>Bash</em>):</p>
+<pre class = 'prettyprint lang-r'>c(1L, 2L, 3L, 4L)</pre>
 
-<pre ># sudo -u postgres createuser &lt;username&gt;
-# sudo -u postgres createdb -O &lt;username&gt; &lt;dbname&gt;</pre>
+<pre >## [1] 1 2 3 4</pre>
 
-<p>&#8230; where <code>&lt;username&gt;</code> and <code>&lt;dbname&gt;</code> would be replaced with actual names.</p>
+<pre class = 'prettyprint lang-r'>1:4</pre>
 
-</article></slide><slide class=''><hgroup><h2>US Arrests Dataset</h2></hgroup><article  id="us-arrests-dataset" class="smaller ">
+<pre >## [1] 1 2 3 4</pre>
 
-<p>For our PostgreSQL example, we will use the <a href='https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/USArrests.html' title=''>US Arrests</a> dataset* that comes with R.</p>
+<pre class = 'prettyprint lang-r'>seq(1, 4)         # Type ?seq to find out how to make more complex sequences.</pre>
 
-<pre class = 'prettyprint lang-r'>data(&quot;USArrests&quot;)
-str(USArrests)</pre>
+<pre >## [1] 1 2 3 4</pre>
 
-<pre >## &#39;data.frame&#39;:    50 obs. of  4 variables:
-##  $ Murder  : num  13.2 10 8.1 8.8 9 7.9 3.3 5.9 15.4 17.4 ...
-##  $ Assault : int  236 263 294 190 276 204 110 238 335 211 ...
-##  $ UrbanPop: int  58 48 80 50 91 78 77 72 80 60 ...
-##  $ Rape    : num  21.2 44.5 31 19.5 40.6 38.7 11.1 15.8 31.9 25.8 ...</pre>
+</article></slide><slide class=''><hgroup><h2>Vector</h2></hgroup><article  id="vector-3" class="smaller ">
 
-<p><code>*</code> McNeil, D. R. (1977) <em>Interactive Data Analysis</em>. New York: Wiley.</p>
+<p>R will try to &quot;coerce&quot; the values of a vector to a common data type, if necessary.</p>
 
-</article></slide><slide class=''><hgroup><h2>PostgreSQL Connection</h2></hgroup><article  id="postgresql-connection" class="smaller ">
+<pre class = 'prettyprint lang-r'>c(&#39;a&#39;, 1)                # Coerced to &quot;character&quot;</pre>
 
-<p>We start by loading the <code>RPostgreSQL</code> library and connecting to the PostgreSQL database.</p>
+<pre >## [1] &quot;a&quot; &quot;1&quot;</pre>
 
-<pre class = 'prettyprint lang-r'>#install.packages(&quot;RPostgreSQL&quot;, repos = &#39;http://cran.r-project.org&#39;)
-library(RPostgreSQL)
+<pre class = 'prettyprint lang-r'>c(1L, 1.1)               # Coerced to &quot;double&quot;</pre>
 
-drv &lt;- dbDriver(&quot;PostgreSQL&quot;)
-con &lt;- dbConnect(drv)</pre>
+<pre >## [1] 1.0 1.1</pre>
 
-</article></slide><slide class=''><hgroup><h2>Create <code>private</code> Schema</h2></hgroup><article  id="create-private-schema" class="smaller ">
+<pre class = 'prettyprint lang-r'>c(1L, 1.1, 1+1i)         # Coerced to &quot;complex&quot;</pre>
 
-<p>In this example, we are using a <code>private</code> schema. The word <em>schema</em>, as used in the context of PostgreSQL, means a container for tables within the database.</p>
+<pre >## [1] 1.0+0i 1.1+0i 1.0+1i</pre>
 
-<p>We could call this schema just about anything, but we will call it <code>private</code> for clarity and simplicity.</p>
+<pre class = 'prettyprint lang-r'>c(&#39;a&#39;, 1L, 1.1, 1+1i)    # Coerced to &quot;character&quot;</pre>
 
-<p>If this is the first time you are using your database, you will need to create your <code>private</code> schema. This is a place for you to work that only you can access.</p>
+<pre >## [1] &quot;a&quot;    &quot;1&quot;    &quot;1.1&quot;  &quot;1+1i&quot;</pre>
 
-<pre class = 'prettyprint lang-r'>sql &lt;- &#39;CREATE SCHEMA private AUTHORIZATION &lt;username&gt;;&#39;
-rs &lt;- dbSendQuery(con, sql)</pre>
+</article></slide><slide class=''><hgroup><h2>Matrix</h2></hgroup><article  id="matrix" class="smaller ">
 
-<p>&#8230; where <code>&lt;username&gt;</code> should be repaced by your actual username.</p>
+<p>A Matrix is a two-dimensional structure of values, all of the same data type. It can be constructed from a Vector, as supplied by the &quot;data&quot; argument for the <code>matrix()</code> function.</p>
 
-<p>This only needs to be done once.</p>
+<pre class = 'prettyprint lang-r'>mat &lt;- matrix(data = 1:4, nrow = 2)
+mat</pre>
 
-</article></slide><slide class=''><hgroup><h2>Write Table</h2></hgroup><article  id="write-table" class="smaller ">
+<pre >##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</pre>
 
-<p>Now we can write the <code>USArrests</code> data frame to a SQL table.</p>
+<p>You can also arrange the values by row instead of by column.</p>
 
-<pre class = 'prettyprint lang-r'>sql &lt;- &#39;DROP TABLE IF EXISTS private.arrests&#39;
-rs &lt;- dbSendQuery(con, sql)
-rs &lt;- dbWriteTable(con, c(&quot;private&quot;, &quot;arrests&quot;), USArrests)</pre>
+<pre class = 'prettyprint lang-r'>mat &lt;- matrix(data = 1:4, nrow = 2, byrow = TRUE)
+mat</pre>
 
-<p>If you did not specify the schema (&quot;private&quot;), the connection would default to the &quot;public&quot; schema, and other users of the database would have access to your table.</p>
+<pre >##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4</pre>
 
-<p>For more information about schemas in PostgreSQL, see the <a href='https://www.postgresql.org/docs/9.5/static/ddl-schemas.html' title=''>manual</a>.</p>
+</article></slide><slide class=''><hgroup><h2>Underlying Data Structure</h2></hgroup><article  id="underlying-data-structure" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>SQL Query</h2></hgroup><article  id="sql-query" class="smaller ">
+<p>Several functions may be used to expose the underlying data structure.</p>
 
-<p>Next, we run this SQL query on our database:</p>
+<pre class = 'prettyprint lang-r'>str(mat)         # int ...    (a 2x2 structure of the integers 1 through 4)</pre>
 
-<pre >SELECT &quot;row.names&quot; AS &quot;State&quot;, &quot;Murder&quot;, &quot;Assault&quot;, 
-   ROUND(CAST(100 * &quot;Murder&quot; / &quot;Assault&quot; AS NUMERIC), 1) AS &quot;MurderAssaultRatio&quot; 
-FROM private.arrests 
-ORDER BY &quot;MurderAssaultRatio&quot; DESC 
-LIMIT 10</pre>
+<pre >##  int [1:2, 1:2] 1 3 2 4</pre>
 
-<p>Our query will <code>SELECT</code> the top-ten states having the highest ratio of murders to assaults, which we will report as a percentage.</p>
+<pre class = 'prettyprint lang-r'>typeof(mat)      # &quot;integer&quot;  (the data type of the primitive elements)</pre>
 
-<p>Since the query is executing on the SQL server, not on our local system, the query will be optimized for speed and will use minimal network bandwidth.</p>
+<pre >## [1] &quot;integer&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Running the Query</h2></hgroup><article  id="running-the-query" class="smaller ">
+<pre class = 'prettyprint lang-r'>class(mat)       # &quot;matrix&quot;   (the higher order data structure)</pre>
 
-<p>This is how we run the SQL query from R:</p>
+<pre >## [1] &quot;matrix&quot;</pre>
 
-<pre class = 'prettyprint lang-r'>sql &lt;- 
-&#39;SELECT &quot;row.names&quot; AS &quot;State&quot;, &quot;Murder&quot;, &quot;Assault&quot;, 
-    ROUND(CAST(100 * &quot;Murder&quot; / &quot;Assault&quot; AS NUMERIC), 1) AS &quot;MurderAssaultRatio&quot; 
-FROM private.arrests 
-ORDER BY &quot;MurderAssaultRatio&quot; DESC 
-LIMIT 10&#39;
+<pre class = 'prettyprint lang-r'>attributes(mat)  # $dim ...   (the metadata for the object, related to its class)</pre>
 
-rs &lt;- dbSendQuery(con, sql)
-df &lt;- fetch(rs, n = 10)
+<pre >## $dim
+## [1] 2 2</pre>
+
+</article></slide><slide class=''><hgroup><h2>Array</h2></hgroup><article  id="array" class="smaller ">
+
+<p>An Array is a multi-dimensional structure of values, all of the same data type.</p>
+
+<pre class = 'prettyprint lang-r'>arr.data &lt;- seq(5, 120, 5)    # A vector of length 24
+arr.dim &lt;- c(3, 4, 2)         # The product of the these three values is 24
+arr3d &lt;- array(data = arr.data, dim = arr.dim)
+arr3d</pre>
+
+<pre >## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    5   20   35   50
+## [2,]   10   25   40   55
+## [3,]   15   30   45   60
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   65   80   95  110
+## [2,]   70   85  100  115
+## [3,]   75   90  105  120</pre>
+
+<p>This array was built from a single data vector, but split into three dimensions.</p>
+
+</article></slide><slide class=''><hgroup><h2>Array</h2></hgroup><article  id="array-1" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>typeof(arr3d)      # &quot;double&quot;</pre>
+
+<pre >## [1] &quot;double&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>mode(arr3d)        # &quot;numeric&quot;</pre>
+
+<pre >## [1] &quot;numeric&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>str(arr3d)         # num ...</pre>
+
+<pre >##  num [1:3, 1:4, 1:2] 5 10 15 20 25 30 35 40 45 50 ...</pre>
+
+<pre class = 'prettyprint lang-r'>class(arr3d)       # &quot;array&quot;</pre>
+
+<pre >## [1] &quot;array&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>List</h2></hgroup><article  id="list" class="smaller ">
+
+<p>A list is a vector of data objects which may be heterogenous (non-atomic).</p>
+
+<pre class = 'prettyprint lang-r'>lst3d &lt;- list(x=1:3, y=letters[1:4], z=LETTERS[1:2])
+lst3d</pre>
+
+<pre >## $x
+## [1] 1 2 3
+## 
+## $y
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;
+## 
+## $z
+## [1] &quot;A&quot; &quot;B&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>is.atomic(lst3d)</pre>
+
+<pre >## [1] FALSE</pre>
+
+<p>This list was built from three vectors, which were labeled &quot;x&quot;, &quot;y&quot;, and &quot;z&quot;.</p>
+
+</article></slide><slide class=''><hgroup><h2>List</h2></hgroup><article  id="list-1" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>typeof(lst3d)    # list (does not show underlying data type since it may vary)</pre>
+
+<pre >## [1] &quot;list&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>class(lst3d)     # list (same as result of typeof function)</pre>
+
+<pre >## [1] &quot;list&quot;</pre>
+
+<p>The &quot;class&quot; of the list is shown in the first line of <code>str()</code> output.</p>
+
+<pre class = 'prettyprint lang-r'>str(lst3d)</pre>
+
+<pre >## List of 3
+##  $ x: int [1:3] 1 2 3
+##  $ y: chr [1:4] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;
+##  $ z: chr [1:2] &quot;A&quot; &quot;B&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Lists and Dimensions</h2></hgroup><article  id="lists-and-dimensions" class="smaller ">
+
+<p>Earlier, we said that a list is one dimensional. Then we created a &quot;multidimensional&quot; list. What&#39;s going on here? Let&#39;s compare with our array.</p>
+
+<pre class = 'prettyprint lang-r'>dim(arr3d)             # 3 4 2 (Array has three dimensions of these lengths.)</pre>
+
+<pre >## [1] 3 4 2</pre>
+
+<pre class = 'prettyprint lang-r'>dim(lst3d)             # NULL (List is only one dimension -- as far as it knows.)</pre>
+
+<pre >## NULL</pre>
+
+<p>So, while we can store several layers of data representing several dimensions in a list, the list structure is merely a storage container. It does not provide the functionality of a <code>matrix</code> or <code>array</code> to allow for multidimensional operations on the data it contains. Think of a <code>list</code> as a one-dimensional <em>container</em> allowing for a <em>nested</em> structure of varying depth.</p>
+
+</article></slide><slide class=''><hgroup><h2>Lists and Attributes</h2></hgroup><article  id="lists-and-attributes" class="smaller ">
+
+<p>If we compare the <code>attributes</code>, we see that the <code>array</code> stores a vector of dimension lengths. However, the <code>list</code> does not store any information about the structure of it&#39;s elements.</p>
+
+<pre class = 'prettyprint lang-r'>attributes(arr3d)      # $dim ... Array dimension lengths stored as an attribute.</pre>
+
+<pre >## $dim
+## [1] 3 4 2</pre>
+
+<pre class = 'prettyprint lang-r'>attributes(lst3d)      # $names ... List item names stored as an attribute.</pre>
+
+<pre >## $names
+## [1] &quot;x&quot; &quot;y&quot; &quot;z&quot;</pre>
+
+<p>And a list does not need to have any attributes at all&#8230;</p>
+
+<pre class = 'prettyprint lang-r'>attributes(list(1:4))  # NULL</pre>
+
+<pre >## NULL</pre>
+
+</article></slide><slide class=''><hgroup><h2>Naming Array Dimensions with a List</h2></hgroup><article  id="naming-array-dimensions-with-a-list" class="smaller ">
+
+<p>Now that we know about lists, we can see one in action.</p>
+
+<pre class = 'prettyprint lang-r'>arr3d.named &lt;- array(data = arr.data, dim = arr.dim, dimnames = lst3d)
+arr3d.named</pre>
+
+<pre >## , , z = A
+## 
+##    y
+## x    a  b  c  d
+##   1  5 20 35 50
+##   2 10 25 40 55
+##   3 15 30 45 60
+## 
+## , , z = B
+## 
+##    y
+## x    a  b   c   d
+##   1 65 80  95 110
+##   2 70 85 100 115
+##   3 75 90 105 120</pre>
+
+<p>We used our list to define the item names for each dimension of the array.</p>
+
+</article></slide><slide class=''><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame" class="smaller ">
+
+<p>A Data frame is a multi-dimensional structure of values, allowing multiple data types. It is implemented as a list. A data frame is used like a database table to store and manipulate tabular data in rows (&quot;observations&quot;) and columns (&quot;variables&quot;). You can think of the columns as vectors, since the values in a column must be of the same type.</p>
+
+<pre class = 'prettyprint lang-r'>df &lt;- data.frame(number=1:4, letter=letters[1:4])
 df</pre>
 
-<pre >##            State Murder Assault MurderAssaultRatio
-## 1         Hawaii    5.3      46               11.5
-## 2       Kentucky    9.7     109                8.9
-## 3        Georgia   17.4     211                8.2
-## 4  West Virginia    5.7      81                7.0
-## 5      Tennessee   13.2     188                7.0
-## 6        Indiana    7.2     113                6.4
-## 7          Texas   12.7     201                6.3
-## 8      Louisiana   15.4     249                6.2
-## 9    Mississippi   16.1     259                6.2
-## 10          Ohio    7.3     120                6.1</pre>
+<pre >##   number letter
+## 1      1      a
+## 2      2      b
+## 3      3      c
+## 4      4      d</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using <code>psql</code></h2></hgroup><article  id="using-psql" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame-1" class="smaller ">
 
-<p>While you can access your database from R, sometimes it is easier to interact with it from the <code>psql</code> command-line utility.</p>
+<pre class = 'prettyprint lang-r'>typeof(df)     # list, same as mode(df)</pre>
 
-<p>Here is an example of using <code>psql</code> from a <em>Bash</em> terminal. The Bash prompt is shown as <code>$</code>.</p>
+<pre >## [1] &quot;list&quot;</pre>
 
-<pre >$ psql &quot;sslmode=require&quot;
-psql (9.5.4)
-Type &quot;help&quot; for help.</pre>
+<pre class = 'prettyprint lang-r'>dim(df)        # This &quot;list&quot; has multiple dimensions!</pre>
 
-</article></slide><slide class=''><hgroup><h2>Listing Tables with <code>\dt</code></h2></hgroup><article  id="listing-tables-with-dt" class="smaller ">
+<pre >## [1] 4 2</pre>
 
-<p>The <code>psql</code> prompt is shown below as <code>DB=&gt;</code>, where DB would be replaced with your actual database name.</p>
+<pre class = 'prettyprint lang-r'>str(df)</pre>
 
-<pre >DB=&gt;</pre>
+<pre >## &#39;data.frame&#39;:    4 obs. of  2 variables:
+##  $ number: int  1 2 3 4
+##  $ letter: Factor w/ 4 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;: 1 2 3 4</pre>
 
-<p>To see tables in the <code>private</code> schema, you will need to set your <code>search_path</code>.</p>
+<p>We see that our data frame is stored as a list, but it&#39;s class has additional attributes which allow it to function as a two dimensional object.</p>
 
-<pre >DB=&gt; SET search_path TO private, public;
-SET</pre>
+</article></slide><slide class=''><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame-2" class="smaller ">
 
-<p><code>psql</code> responds with <code>SET</code>. Now you can list the tables (relations) with <code>\dt</code>.</p>
+<p>By default, &quot;character&quot; values are converted to &quot;factors&quot; (categorical variables). We can change this behavior with <code>stringsAsFactors = FALSE</code>.</p>
 
-<pre >DB=&gt; \dt
-         List of relations
- Schema  |  Name   | Type  | Owner 
----------+---------+-------+-------
- private | arrests | table | &lt;username&gt;
-(1 row)</pre>
+<pre class = 'prettyprint lang-r'>df &lt;- data.frame(number=1:4, letter=letters[1:4], stringsAsFactors = FALSE)
+df</pre>
 
-<p>&#8230; where <code>&lt;username&gt;</code> would be replaced with your actual username.</p>
+<pre >##   number letter
+## 1      1      a
+## 2      2      b
+## 3      3      c
+## 4      4      d</pre>
 
-</article></slide><slide class=''><hgroup><h2>Using SELECT from <code>psql</code></h2></hgroup><article  id="using-select-from-psql" class="smaller ">
+<p>And we can hide the row numbers using <code>print()</code> with <code>row.names = FALSE</code>.</p>
 
-<p>You can enter SQL queries at the <code>psql</code> prompt.</p>
+<pre class = 'prettyprint lang-r'>print(df, row.names = FALSE)</pre>
 
-<pre >DB=&gt; SELECT * FROM private.arrests LIMIT 5;
- row.names  | Murder | Assault | UrbanPop | Rape 
-------------+--------+---------+----------+------
- Alabama    |   13.2 |     236 |       58 | 21.2
- Alaska     |     10 |     263 |       48 | 44.5
- Arizona    |    8.1 |     294 |       80 |   31
- Arkansas   |    8.8 |     190 |       50 | 19.5
- California |      9 |     276 |       91 | 40.6
-(5 rows)</pre>
+<pre >##  number letter
+##       1      a
+##       2      b
+##       3      c
+##       4      d</pre>
 
-<p>Quit the <code>psql</code> session with <code>\q</code>.</p>
+</article></slide><slide class=''><hgroup><h2>Data frame</h2></hgroup><article  id="data-frame-3" class="smaller ">
 
-<pre >DB=&gt; \q</pre>
+<p>We can see that our list, <code>lst3d</code>, has a different class than our data frame, <code>df</code>.</p>
 
-</article></slide><slide class=''><hgroup><h2>Accessing PostgreSQL with <em>dplyr</em></h2></hgroup><article  id="accessing-postgresql-with-dplyr" class="smaller ">
+<pre class = 'prettyprint lang-r'>class(lst3d)     # list</pre>
 
-<p>What if you don&#39;t know SQL and don&#39;t have time to learn it?</p>
+<pre >## [1] &quot;list&quot;</pre>
 
-<p>You can use the <em>dplyr</em> package to convert R code into SQL to run on a SQL database. SQLite, PostgreSQL, and MySQL are supported by <em>dplyr</em>.</p>
+<pre class = 'prettyprint lang-r'>class(df)        # data.frame</pre>
 
-<p><em>dplyr</em> is a &quot;data wrangling&quot; package by <a href='http://hadley.nz/' title=''>Hadley Wickham</a>. You can use <em>dplyr</em> functions and the mathematical operators and functions of base R to create SQL queries which extract subsets of data from your database.</p>
+<pre >## [1] &quot;data.frame&quot;</pre>
 
-<p>We will use <em>dplyr</em> with our <code>arrests</code> database and base our example on <a href='ttps://github.com/rstudio/webinars/tree/master/14-Work-with-big-data' title=''>code</a> from an RStudio <a href='https://www.rstudio.com/resources/webinars/working-with-big-data-in-r/' title=''>webinar</a>.</p>
+<p>Although a data frame is implemented as a list, it has additional properties which make it very useful for data analysis. Those properties are associated with the data frame&#39;s &quot;class&quot;. As before, <code>typeof()</code> shows the lower order data type and <code>class()</code> shows the higher order data type.</p>
 
-<p>For a detailed example using SQLite, see <a href='https://www.r-bloggers.com/working-with-databases-in-r/' title=''>Working with databases in R</a> by Fisseha Berhane.</p>
+</article></slide><slide class=''><hgroup><h2>Factors</h2></hgroup><article  id="factors" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Accessing <code>arrests</code> with <em>dplyr</em></h2></hgroup><article  id="accessing-arrests-with-dplyr" class="smaller ">
+<p>We stumbled upon the topic of &quot;factors&quot; (categorical variables) when we created a data frame from a character vector. Let&#39;s create one and explore it&#39;s properties.</p>
 
-<p>First, we will connect to the database and view the available tables.</p>
+<pre class = 'prettyprint lang-r'>gender &lt;- factor(c(&#39;m&#39;, &#39;m&#39;, &#39;f&#39;, &#39;m&#39;, &#39;f&#39;, &#39;f&#39;))
+gender</pre>
 
-<pre class = 'prettyprint lang-r'>suppressMessages(library(dplyr))
+<pre >## [1] m m f m f f
+## Levels: f m</pre>
 
-dbname &lt;- Sys.info()[&#39;user&#39;]   # My database is named after my username
-db &lt;- src_postgres(dbname = dbname, 
-                   options=&quot;-c search_path=private&quot;)
+<pre class = 'prettyprint lang-r'>class(gender)</pre>
 
-# List table names
-src_tbls(db)</pre>
+<pre >## [1] &quot;factor&quot;</pre>
 
-<pre >## [1] &quot;arrests&quot;</pre>
+<p>This looks like a character vector with the additional attribute of &quot;Levels&quot;, where the levels are the unique values from the vector. But how is this implemented?</p>
 
-<pre class = 'prettyprint lang-r'># Create a table reference with tbl()
-arrests &lt;- tbl(db, &quot;arrests&quot;)</pre>
+</article></slide><slide class=''><hgroup><h2>Factors</h2></hgroup><article  id="factors-1" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Accessing <code>arrests</code> with <em>dplyr</em></h2></hgroup><article  id="accessing-arrests-with-dplyr-1" class="smaller ">
+<pre class = 'prettyprint lang-r'>typeof(gender)</pre>
 
-<p>Next, we will create a SQL query from some <em>dplyr</em> functions.</p>
+<pre >## [1] &quot;integer&quot;</pre>
 
-<pre class = 'prettyprint lang-r'># Manipulate the reference as if it were the actual table
-extract &lt;- select(arrests, State=row.names, Murder, Assault) %&gt;% 
-           mutate(MurderAssaultRatio=100*Murder/Assault) %&gt;%
-           arrange(desc(MurderAssaultRatio)) %&gt;% head(10)
+<pre class = 'prettyprint lang-r'>str(gender)</pre>
 
-# Show the SQL command that dplyr will run
-show_query(extract)</pre>
+<pre >##  Factor w/ 2 levels &quot;f&quot;,&quot;m&quot;: 2 2 1 2 1 1</pre>
 
-<p>The SQL looks complicated from the use of nested <code>SELECT</code> statements, but it work.</p>
+<pre class = 'prettyprint lang-r'>attributes(gender)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Accessing <code>arrests</code> with <em>dplyr</em></h2></hgroup><article  id="accessing-arrests-with-dplyr-2" class="smaller ">
+<pre >## $levels
+## [1] &quot;f&quot; &quot;m&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</pre>
 
-<p>Run the query and view the structure of the results.</p>
+<p>As we can see, a factor in R is an object of class &quot;factor&quot; composed of an integer vector and a <code>$class</code> attribute and a <code>$levels</code> attribute containing a character vector.</p>
 
-<pre class = 'prettyprint lang-r'># Save the result of this query as a local data structure with collect()
-extracted &lt;- extract %&gt;% collect()
-str(extracted)      # A tbl_df, based on a data frame</pre>
+</article></slide><slide class=''><hgroup><h2>Factors</h2></hgroup><article  id="factors-2" class="smaller ">
 
-<pre >## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    10 obs. of  4 variables:
-##  $ State             : chr  &quot;Hawaii&quot; &quot;Kentucky&quot; &quot;Georgia&quot; &quot;West Virginia&quot; ...
-##  $ Murder            : num  5.3 9.7 17.4 5.7 13.2 7.2 12.7 16.1 15.4 7.3
-##  $ Assault           : int  46 109 211 81 188 113 201 259 249 120
-##  $ MurderAssaultRatio: num  11.52 8.9 8.25 7.04 7.02 ...</pre>
+<p>Factors can also represent ordinal variables, but you need to be careful when using ordered factors to make sure the order is correct.</p>
 
-</article></slide><slide class=''><hgroup><h2>Accessing <code>arrests</code> with <em>dplyr</em></h2></hgroup><article  id="accessing-arrests-with-dplyr-3" class="smaller ">
+<pre class = 'prettyprint lang-r'>risk &lt;- c(&#39;medium&#39;, &#39;high&#39;, &#39;low&#39;, &#39;low&#39;, &#39;medium&#39;, &#39;low&#39;, &#39;high&#39;)
+factor(risk, ordered = TRUE)                # Factors in alpha-numeric order</pre>
 
-<p>Finally, display the results. We see that the object is now called a <a href='https://blog.rstudio.org/2016/03/24/tibble-1-0-0/' title=''>tibble</a> (tbl_df).</p>
+<pre >## [1] medium high   low    low    medium low    high  
+## Levels: high &lt; low &lt; medium</pre>
 
-<pre class = 'prettyprint lang-r'>extracted</pre>
+<pre class = 'prettyprint lang-r'>severity &lt;- c(&#39;low&#39;, &#39;medium&#39;, &#39;high&#39;)      # Factors by increasing severity
+risk &lt;- factor(risk, ordered = TRUE, levels = severity)
+risk</pre>
 
-<pre >## # A tibble: 10 × 4
-##            State Murder Assault MurderAssaultRatio
-## *          &lt;chr&gt;  &lt;dbl&gt;   &lt;int&gt;              &lt;dbl&gt;
-## 1         Hawaii    5.3      46          11.521739
-## 2       Kentucky    9.7     109           8.899083
-## 3        Georgia   17.4     211           8.246445
-## 4  West Virginia    5.7      81           7.037037
-## 5      Tennessee   13.2     188           7.021277
-## 6        Indiana    7.2     113           6.371681
-## 7          Texas   12.7     201           6.318408
-## 8    Mississippi   16.1     259           6.216216
-## 9      Louisiana   15.4     249           6.184739
-## 10          Ohio    7.3     120           6.083333</pre>
+<pre >## [1] medium high   low    low    medium low    high  
+## Levels: low &lt; medium &lt; high</pre>
 
-</article></slide><slide class=''><hgroup><h2>Other Databases</h2></hgroup><article  id="other-databases" class="smaller ">
+<pre class = 'prettyprint lang-r'># Create a data frame using this risk factor variable
+risky &lt;- data.frame(id = LETTERS[1:7], risk, stringsAsFactors = FALSE)</pre>
 
-<p>R can connect to many types of SQL and other types if databases.</p>
+</article></slide><slide class=''><hgroup><h2>Data Structure Conversion</h2></hgroup><article  id="data-structure-conversion" class="smaller ">
 
-<p>For examples of using other databases from R, such as MySQL, see our <a href='https://github.com/brianhigh/data-workshop/wiki/Embedded-SQL' title=''>Data Workshop</a> wiki page.</p>
+<p>We can create a matrix from two dimensions of a 3D array using the <code>matrix()</code> constructor we have used previously. However, it may not behave as you expect.</p>
 
-</article></slide><slide class=''><hgroup><h2>Excercises</h2></hgroup><article  id="excercises" class="smaller ">
+<pre class = 'prettyprint lang-r'>arr2d.named &lt;- arr3d.named[,,1]   # Subset before converting (just two dimensions)
+attributes(arr2d.named)           # A 3x4 array with dimension names</pre>
 
-<p>To gain some more practice with databases and R, you are encouraged to try these exercises. You may complete the exercises using SQL or <em>dplyr</em> queries.</p>
+<pre >## $dim
+## [1] 3 4
+## 
+## $dimnames
+## $dimnames$x
+## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+## 
+## $dimnames$y
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</pre>
 
-<p>DEOHS account holders may use the server <code>plasmid</code> for these two exercises, as it has SQLite and PostgreSQL installed on it. This server runs Linux and can only be directly a ccessed from campus. The <em>Bash</em> shell can be accessed through an SSH session. R can be accessed through RStudio Server running in your web browser.</p>
+<pre class = 'prettyprint lang-r'>m1 &lt;- matrix(arr2d.named)         # Flattened. Same as:  matrix(as.vector(arr_2d))
+attributes(m1)                    # A 12x1 matrix without dimension names -- surprise!</pre>
 
-<ul>
-<li>Bash (via SSH): plasmid.deohs.washington.edu</li>
-<li>RStudio: <a href='https://plasmid.deohs.washington.edu' title=''>https://plasmid.deohs.washington.edu</a></li>
-</ul>
+<pre >## $dim
+## [1] 12  1</pre>
 
-<p>Exercise #1:</p>
+</article></slide><slide class=''><hgroup><h2>Data Structure Conversion</h2></hgroup><article  id="data-structure-conversion-1" class="smaller ">
 
-<p>Create the <code>arrests</code> table in SQLite and query it as described in our PostgreSQL example. Extra credit: Run the top-ten ranking query from the <code>sqlite3</code> command-line utility.</p>
+<p>We can also use &quot;as&quot; functions to convert higher order data structures.</p>
 
-<p>Exercise #2:</p>
+<p>Let&#39;s use the <code>as.matrix()</code> converter to create the matrix from the array.</p>
 
-<p>Create the <code>bmi</code> table in PostgreSQL and query it as described in our SQLite example. Extra credit: Run the calculation query from the <code>psql</code> command-line utility.</p></article></slide>
+<pre class = 'prettyprint lang-r'>m2 &lt;- as.matrix(arr2d.named)      # Not flattened. Dimensions and names are retained.
+attributes(m2)</pre>
+
+<pre >## $dim
+## [1] 3 4
+## 
+## $dimnames
+## $dimnames$x
+## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+## 
+## $dimnames$y
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</pre>
+
+<p>Note the difference between the <code>matrix()</code> constructor and the <code>as.matrix()</code> converter. The dimension and name attributes have been retained when using the converter function. Which approach you choose will depend on whether or not you prefer to flatten or retain the structure and attributes of the original object. It will also depend on the types of objects you are using. (Try this with a data frame.)</p></article></slide>
 
 
   <slide class="backdrop"></slide>

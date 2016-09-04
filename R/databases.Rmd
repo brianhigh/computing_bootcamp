@@ -13,6 +13,11 @@ output:
     logo: ../images/logo_128.png
 ---
 
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+
 ## Learning Objectives
 
 You will learn:
