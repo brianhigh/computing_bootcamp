@@ -176,7 +176,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file64134e5bafb7.sqlite"
+## [1] "~/file2f2c7049b808.sqlite"
 ```
 
 ```r
@@ -491,6 +491,122 @@ Quit the `psql` session with `\q`.
 DB=> \q
 ```
 
+## Accessing PostgreSQL with *dplyr*
+
+What if you don't know SQL and don't have time to learn it?
+
+You can use the *dplyr* package to convert R code into SQL to run on a SQL 
+database. SQLite, PostgreSQL, and MySQL are supported by *dplyr*.
+
+*dplyr* is a "data wrangling" package by [Hadley Wickham](http://hadley.nz/).
+You can use *dplyr* functions and the mathematical operators and functions of
+base R to create SQL queries which extract subsets of data from your database.
+
+We will use *dplyr* with our `arrests` database and base our example on [code](ttps://github.com/rstudio/webinars/tree/master/14-Work-with-big-data) 
+from an RStudio [webinar](https://www.rstudio.com/resources/webinars/working-with-big-data-in-r/).
+
+For a detailed example using SQLite, see 
+[Working with databases in R](https://www.r-bloggers.com/working-with-databases-in-r/) 
+by Fisseha Berhane.
+
+## Accessing `arrests` with *dplyr*
+
+First, we will connect to the database and view the available tables.
+
+
+```r
+suppressMessages(library(dplyr))
+
+dbname <- Sys.info()['user']   # My database is named after my username
+db <- src_postgres(dbname = dbname, 
+                   options="-c search_path=private")
+
+# List table names
+src_tbls(db)
+```
+
+```
+## [1] "arrests"
+```
+
+```r
+# Create a table reference with tbl()
+arrests <- tbl(db, "arrests")
+```
+
+## Accessing `arrests` with *dplyr*
+
+Next, we will create a SQL query from some *dplyr* functions.
+
+
+```r
+# Manipulate the reference as if it were the actual table
+extract <- select(arrests, State=row.names, Murder, Assault) %>% 
+           mutate(MurderAssaultRatio=100*Murder/Assault) %>%
+           arrange(desc(MurderAssaultRatio)) %>% head(10)
+
+# Show the SQL command that dplyr will run
+show_query(extract)
+```
+
+```
+## <SQL>
+## SELECT *
+## FROM (SELECT *
+## FROM (SELECT "State", "Murder", "Assault", 100.0 * "Murder" / "Assault" AS "MurderAssaultRatio"
+## FROM (SELECT "row.names" AS "State", "Murder" AS "Murder", "Assault" AS "Assault"
+## FROM "arrests") "ebfzfppgro") "ccgmpljnji"
+## ORDER BY "MurderAssaultRatio" DESC) "zbrekwnylq"
+## LIMIT 10
+```
+
+The SQL looks complicated from the use of nested `SELECT` statements, but it work.
+
+## Accessing `arrests` with *dplyr*
+
+Run the query and view the structure of the results.
+
+
+```r
+# Save the result of this query as a local data structure with collect()
+extracted <- extract %>% collect()
+str(extracted)      # A tbl_df, based on a data frame
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	10 obs. of  4 variables:
+##  $ State             : chr  "Hawaii" "Kentucky" "Georgia" "West Virginia" ...
+##  $ Murder            : num  5.3 9.7 17.4 5.7 13.2 7.2 12.7 16.1 15.4 7.3
+##  $ Assault           : int  46 109 211 81 188 113 201 259 249 120
+##  $ MurderAssaultRatio: num  11.52 8.9 8.25 7.04 7.02 ...
+```
+
+## Accessing `arrests` with *dplyr*
+
+Finally, display the results. We see that the object is now called a 
+[tibble](https://blog.rstudio.org/2016/03/24/tibble-1-0-0/) (tbl_df).
+
+
+```r
+extracted
+```
+
+```
+## # A tibble: 10 × 4
+##            State Murder Assault MurderAssaultRatio
+## *          <chr>  <dbl>   <int>              <dbl>
+## 1         Hawaii    5.3      46          11.521739
+## 2       Kentucky    9.7     109           8.899083
+## 3        Georgia   17.4     211           8.246445
+## 4  West Virginia    5.7      81           7.037037
+## 5      Tennessee   13.2     188           7.021277
+## 6        Indiana    7.2     113           6.371681
+## 7          Texas   12.7     201           6.318408
+## 8    Mississippi   16.1     259           6.216216
+## 9      Louisiana   15.4     249           6.184739
+## 10          Ohio    7.3     120           6.083333
+```
+
 ## Other Databases
 
 R can connect to many types of SQL and other types if databases.
@@ -502,7 +618,7 @@ wiki page.
 ## Excercises
 
 To gain some more practice with databases and R, you are encouraged to try these
-exercises.
+exercises. You may complete the exercises using SQL or *dplyr* queries.
 
 DEOHS account holders may use the server `plasmid` for these two exercises, 
 as it has SQLite and PostgreSQL installed on it. This server runs Linux and 
@@ -516,7 +632,7 @@ your web browser.
 Exercise #1:
 
 Create the `arrests` table in SQLite and query it as described in our PostgreSQL
-example. Extra credit: Run the top-ten ramking query from the `sqlite3` command-line utility. 
+example. Extra credit: Run the top-ten ranking query from the `sqlite3` command-line utility. 
 
 Exercise #2:
 
