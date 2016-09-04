@@ -82,7 +82,10 @@ Most modern version control systems:
 * For Windows installer, _allow changes to the system PATH_
 * RStudio searches PATH to find "git", or manually configure
 * Git is _already installed_ on most of our departmental servers
-* GitHub Desktop is optional -- on Windows it includes the Gitbash shell
+* [Git for Windows](https://git-for-windows.github.io/) provides a *Bash* shell
+* [GitHub Desktop](https://desktop.github.com/) is optional
+
+![On Windows, allow Git to change your PATH](images/install_git.png)
 
 ## Configuring Git
 
@@ -110,12 +113,12 @@ you may be using. (Or you can just copy, paste, edit and run these commands.)
     + From the menu: _Tools_ -> _Version Control_
     + From the _Git_ tab next to the _History_ tab
 
+![](images/git_rstudio.png)
+
 NOTE:
 
 GitHub features like forking and pull requests are not currently implemented 
 in RStudio's Git features.
-
-![](images/git_rstudio.png)
 
 ## Demo: GitHub Operations
 
