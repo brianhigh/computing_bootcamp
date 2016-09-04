@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>R Data Types</title>
+  <title>R Language Basics</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'R Data Types',
+                title: 'R Language Basics',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -109,206 +109,314 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Learning Objectives</h2></hgroup><article  id="learning-objectives" class="smaller ">
+<slide class=''><hgroup><h2>R Language Basics</h2></hgroup><article  id="r-language-basics" class="smaller ">
+
+<h3>Learning objectives</h3>
 
 <p>You will learn:</p>
 
 <ul>
-<li>The basics of R &quot;data objects&quot; and &quot;classes&quot;</li>
-<li>The basic &quot;primitive&quot; data types in R</li>
-<li>How to inspect the properties of data objects</li>
-<li>How to convert data objects to other types</li>
+<li>How to access, assign and display data in R</li>
+<li>How to call functions</li>
+<li>How to use vectorized operations</li>
+<li>How to store, load, and remove data</li>
+<li>How to make comments in R code</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Data Objects</h2></hgroup><article  id="data-objects" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Accessing Data</h2></hgroup><article  id="accessing-data" class="smaller ">
 
-<p>Since R is an <em>object oriented</em> language, everything in R is an <em>object</em>. What this means is that all of your data and code structures are stored in your computer&#39;s memory using the same framework.</p>
+<p>If you just enter a value at the R command prompt, R will print out the value to your screen:</p>
 
-<p>This provides a great deal of consistency in working with R because you can use many of the same methods to interact with various components of R.</p>
+<pre class = 'prettyprint lang-r'>68.1</pre>
 
-<p>There are a core set of basic object types and classes built into R. All other objects are built upon these.</p>
+<pre >## [1] 68.1</pre>
 
-<p><em>Data objects</em> are those structures which you use to store data. Objects can also store functions, packages, connections, and other structures intended for other uses.</p>
+<p>Or you can call the <code>print()</code> function instead (to be explicit about it):</p>
 
-<p>In this module, we will focus entirely on data objects &#8211; those which are used primarily for data storage and manipulation in memory.</p>
+<pre class = 'prettyprint lang-r'>print(&#39;A&#39;)</pre>
 
-<p>Like other objects, data objects have a <em>type</em> and a <em>class</em>. The type defines <em>how</em> the data are stored, while the class define <em>what</em> data are contained within an object.</p>
+<pre >## [1] &quot;A&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Variable assignment with <code>&lt;-</code></h2></hgroup><article  id="variable-assignment-with--" class="smaller ">
 
-<p>The most basic data types are <code>numeric</code> (<code>double</code> and <code>integer</code>), <code>complex</code>, <code>logical</code> (boolean), and <code>character</code> (string).</p>
+<p>You can store data in memory by <em>assigning</em> values to variables (using <code>&lt;-</code>).</p>
 
-<pre class = 'prettyprint lang-r'>typeof(1)       # &quot;double&quot; -- double precision floating point number</pre>
+<pre class = 'prettyprint lang-r'>number &lt;- 68.1
+number</pre>
 
-<pre >## [1] &quot;double&quot;</pre>
+<pre >## [1] 68.1</pre>
 
-<pre class = 'prettyprint lang-r'>typeof(1L)      # &quot;integer&quot; -- &quot;L&quot; after one or more digits makes it an integer</pre>
+<p>This value will be stored in your computer&#39;s memory for the duration of the current session, or until it is modified or deleted by you, your code, or your environment (execution context).</p>
 
-<pre >## [1] &quot;integer&quot;</pre>
+<p>The <code>&lt;-</code> (arrow) symbol is used as the primary assignment operator in R.</p>
 
-<pre class = 'prettyprint lang-r'>typeof(TRUE)    # &quot;logical&quot; -- either TRUE or FALSE</pre>
+<p>You can also use the <code>=</code> symbol for the assignment operator, but it is not as commonly used in R, except for argument assignment in function calls.</p>
 
-<pre >## [1] &quot;logical&quot;</pre>
+</article></slide><slide class=''><hgroup><h2>Argument assignment with <code>=</code></h2></hgroup><article  id="argument-assignment-with" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>typeof(1 + 2i)  # &quot;complex&quot; -- a number with real and imaginary components</pre>
+<p>In this function call, we use the <code>=</code> symbol to tell R that the expected argument (parameter) <code>x</code> should take the value of our <code>number</code> variable.</p>
 
-<pre >## [1] &quot;complex&quot;</pre>
+<pre class = 'prettyprint lang-r'>print(x = number)</pre>
 
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes-1" class="smaller ">
+<pre >## [1] 68.1</pre>
 
-<p>Characters are entered with quotes around them (single or double quotes).</p>
+<p>This assignment takes place within the function call and is not available outside of the function or after the function call is made.</p>
 
-<pre class = 'prettyprint lang-r'>typeof(&#39;abcd&#39;)     # &quot;character&quot; -- a non-numeric &quot;string&quot; of text characters</pre>
+<p>Since the <code>x</code> argument is the first argument expected by the function, we do not have to explicity assign our value to this argument, if we supply our value as the first (or only) argument.</p>
+
+<pre class = 'prettyprint lang-r'>print(number)</pre>
+
+<pre >## [1] 68.1</pre>
+
+</article></slide><slide class=''><hgroup><h2>Assignment operators</h2></hgroup><article  id="assignment-operators" class="smaller ">
+
+<p>Just remember:</p>
+
+<ul>
+<li>use <code>&lt;-</code> for variable assignment</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>number &lt;- 68.1</pre>
+
+<ul>
+<li>use <code>=</code> for argument assignment within function calls</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>print(x = number)</pre>
+
+</article></slide><slide class=''><hgroup><h2>Vectors</h2></hgroup><article  id="vectors" class="smaller ">
+
+<p>In R, a vector is a group of values or variables. You can create a vector from a collection of data values using the <code>c()</code> (combine) function.</p>
+
+<pre class = 'prettyprint lang-r'>id &lt;- c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;)
+height &lt;- c(68.1, 69.4, 71.2, 68.9)
+weight &lt;- c(159.2, 162.3, 203.5, 181.3)</pre>
+
+<p>Here, we created three vectors, which we may describe as follows:</p>
+
+<ul>
+<li><code>id</code> is a character vector containing alphabetic indentifiers</li>
+<li><code>height</code> is a numeric vector containing heights in inches</li>
+<li><code>weight</code> is a numeric vector containing weights in pounds</li>
+</ul>
+
+<p>More technically speaking, a vector is an ordered collection of one or more individual values of the same data type.</p>
+
+<p>In other computer languages this data structure would be called an array or a list, but R uses those terms for other, more complex data structures.</p>
+
+</article></slide><slide class=''><hgroup><h2>Data types and classes</h2></hgroup><article  id="data-types-and-classes" class="smaller ">
+
+<p>We can view the (underlying) data type of an object by using the <code>typeof()</code> function.</p>
+
+<pre class = 'prettyprint lang-r'>typeof(id)</pre>
 
 <pre >## [1] &quot;character&quot;</pre>
 
-<p>If you omit the quotes of an alphanumeric string, R will assume you are referring to a variable name.</p>
+<p>We can find the (higher order) category of an object with <code>class()</code>.</p>
 
-<pre class = 'prettyprint lang-r'>val &lt;- 1234
-typeof(val)</pre>
+<pre class = 'prettyprint lang-r'>class(id)</pre>
+
+<pre >## [1] &quot;character&quot;</pre>
+
+<p>Both the type and class of a character vector is &quot;character&quot;.</p>
+
+<pre class = 'prettyprint lang-r'>is.vector(id)</pre>
+
+<pre >## [1] TRUE</pre>
+
+<p>We can see that our vector is indeed a vector even if the class is not.</p>
+
+</article></slide><slide class=''><hgroup><h2>Data types and classes</h2></hgroup><article  id="data-types-and-classes-1" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>typeof(weight)</pre>
 
 <pre >## [1] &quot;double&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes-2" class="smaller ">
-
-<p>You can show the &quot;higher order&quot; (if any) type of a data object with <code>class()</code>.</p>
-
-<pre class = 'prettyprint lang-r'>typeof(1234)      # double  (the more basic &quot;primitive&quot; type)</pre>
-
-<pre >## [1] &quot;double&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>class(1234)       # numeric (the more general &quot;higher order&quot; type)</pre>
+<pre class = 'prettyprint lang-r'>class(height)</pre>
 
 <pre >## [1] &quot;numeric&quot;</pre>
 
-<pre class = 'prettyprint lang-r'>typeof(&#39;abcd&#39;)    # character</pre>
+<p>The type of a numeric vector may be &quot;double&quot; or &quot;integer&quot;. The class is &quot;numeric&quot;.</p>
 
-<pre >## [1] &quot;character&quot;</pre>
+<p>The term &quot;double&quot; used above refers to data storage as a <a href='https://en.wikipedia.org/wiki/Double-precision_floating-point_format' title=''>double-precision floating point</a> format (64 bit) number.</p>
 
-<pre class = 'prettyprint lang-r'>class(&#39;abcd&#39;)     # character</pre>
+<p>We will explore the various R data objects and their properties in depth in a later module.</p>
 
-<pre >## [1] &quot;character&quot;</pre>
+</article></slide><slide class=''><hgroup><h2>Data frames</h2></hgroup><article  id="data-frames" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Testing for Numeric Values</h2></hgroup><article  id="testing-for-numeric-values" class="smaller ">
+<p>You can store a two dimensional matrix of data (a &quot;table&quot;) as a data frame. This is the most common way to work with data in R. A data frame is often constructed from one or more vectors.</p>
 
-<p>You can test if the (storage) <code>mode</code> of a value is numeric using the <code>is.numeric()</code> function:</p>
+<pre class = 'prettyprint lang-r'>df &lt;- data.frame(id, height, weight)
+df</pre>
 
-<pre class = 'prettyprint lang-r'>is.numeric(1234)          # TRUE</pre>
+<pre >##   id height weight
+## 1  A   68.1  159.2
+## 2  B   69.4  162.3
+## 3  C   71.2  203.5
+## 4  D   68.9  181.3</pre>
 
-<pre >## [1] TRUE</pre>
+<p>The rows represent observations or cases and the columns represent variables.</p>
 
-<pre class = 'prettyprint lang-r'>is.numeric(1234L)         # TRUE</pre>
+<p>We can see that our data frame, <code>df</code>, is a data frame by using the <code>class()</code> function.</p>
 
-<pre >## [1] TRUE</pre>
+<pre class = 'prettyprint lang-r'>class(df)</pre>
 
-<pre class = 'prettyprint lang-r'>is.numeric(1234 + 5i)     # FALSE</pre>
+<pre >## [1] &quot;data.frame&quot;</pre>
 
-<pre >## [1] FALSE</pre>
+</article></slide><slide class=''><hgroup><h2>Viewing data</h2></hgroup><article  id="viewing-data" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Testing for Character Values</h2></hgroup><article  id="testing-for-character-values" class="smaller ">
+<p>You can see your data frame in a grid format by using the <code>View()</code> function.</p>
 
-<p>As before, we quote literal character strings but not variable names.</p>
+<pre class = 'prettyprint lang-r'>View(df)</pre>
 
-<pre class = 'prettyprint lang-r'>is.character(&#39;val&#39;)    # TRUE</pre>
+<p>This will open the data frame in a new window or tab and display it like a spreadsheet.</p>
 
-<pre >## [1] TRUE</pre>
+<img src='data:image/png;base64,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' title='fig:'/>
+
+<p>However, unlike a spreadsheet, you will not be able to manipulate your data in this display.</p>
+
+</article></slide><slide class=''><hgroup><h2>Performing calculations</h2></hgroup><article  id="performing-calculations" class="smaller ">
+
+<p>R is basically a calculator. You can use many built-in operators and functions.</p>
+
+<pre class = 'prettyprint lang-r'>2*2</pre>
+
+<pre >## [1] 4</pre>
+
+<pre class = 'prettyprint lang-r'>2/2</pre>
+
+<pre >## [1] 1</pre>
+
+<pre class = 'prettyprint lang-r'>2^2</pre>
+
+<pre >## [1] 4</pre>
+
+<pre class = 'prettyprint lang-r'>sqrt(2)</pre>
+
+<pre >## [1] 1.414214</pre>
+
+</article></slide><slide class=''><hgroup><h2>Code Comments in R</h2></hgroup><article  id="code-comments-in-r" class="smaller ">
+
+<p>The <code>#</code> is used for comments. Everthing after the <code>#</code> will be ignored by R.</p>
 
 <pre class = 'prettyprint lang-r'>val &lt;- 1234
-is.character(val)      # FALSE</pre>
+val    # This is a bad name for a variable because it is not very descriptive.</pre>
 
-<pre >## [1] FALSE</pre>
+<pre >## [1] 1234</pre>
 
-</article></slide><slide class=''><hgroup><h2>Dates and Times</h2></hgroup><article  id="dates-and-times" class="smaller ">
+<p>The <code>#</code> symbol has several names:</p>
 
-<p>While R could store a dates and times as character strings, it actually has special classes for these to allow for date/time arithmetic and formatting.</p>
+<ul>
+<li><em><strong>number sign</strong></em>: shorthand for № (<em>numero</em>, No.)</li>
+<li><em><strong>pound sign</strong></em>: shorthand for ℔ (<em>libra pondo</em>, lb.)</li>
+<li><em><strong>hash</strong></em>: from &quot;cross hatch&quot;; popular with programmers (and also in the UK)</li>
+<li><em><strong>hashtag</strong></em>: as used on social media sites like Twitter for keyword searching</li>
+<li><em><strong>octothorpe</strong></em>: originated at Bell Labs for use with telephone keypads</li>
+</ul>
 
-<pre class = 'prettyprint lang-r'># Class: &quot;Date&quot;
-cat(&#39;The date was&#39;, format(Sys.Date() - 7, &#39;%Y-%m-%d&#39;), &#39;a week ago.&#39;)</pre>
+<p>In this tutorial, we will usually refer to it as a &quot;hash&quot; or &quot;pound&quot;.</p>
 
-<pre >## The date was 2016-08-28 a week ago.</pre>
+</article></slide><slide class=''><hgroup><h2>Vectorized operations</h2></hgroup><article  id="vectorized-operations" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>cat(&#39;Halloween is on a&#39;, weekdays(as.Date(&#39;10-31&#39;, format=&#39;%m-%d&#39;)), &#39;this year.&#39;)</pre>
+<p>R allows you to perform calculations on all items in a vector or all rows of a data frame at the same time.</p>
 
-<pre >## Halloween is on a Monday this year.</pre>
+<p>Operations that allow this are called <em>vectorized</em> operations. They are often much faster than the alternatives.</p>
 
-<pre class = 'prettyprint lang-r'># Class: &quot;POSIXct&quot; (date, time, timezone, etc.) and &quot;difftime&quot;
-since.midnight &lt;- Sys.time() - as.POSIXct(&#39;0&#39;, format=&#39;%H&#39;)
-cat(&#39;It has been&#39;, format(since.midnight), &#39;since midnight.&#39;)</pre>
+<p>Let&#39;s <a href='https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html' title=''>calculate</a> the adult Body Mass Index (BMI), using our two vectors as input.</p>
 
-<pre >## It has been 11.12979 hours since midnight.</pre>
+<pre class = 'prettyprint lang-r'># Calculate adult BMI from vectors: weight (in pounds) and height (in inches)
+bmi &lt;- (weight / height ^ 2) * 703
+bmi</pre>
 
-</article></slide><slide class=''><hgroup><h2>Basic Single-Value (Scalar) Data Types</h2></hgroup><article  id="basic-single-value-scalar-data-types" class="smaller ">
+<pre >## [1] 24.13260 23.68945 28.22018 26.84817</pre>
 
-<p>Data types consisting of only a single value are also called &quot;scalar&quot; types.</p>
+<p>This creates a new vector of results and prints the vector to the screen.</p>
 
-<table class = 'rmdtable'>
-<tr class="header">
-<th align="left">Example</th>
-<th align="left">Type</th>
-<th align="left">Class</th>
-<th align="left">Storage Mode</th>
-</tr>
-<tr class="odd">
-<td align="left">1L</td>
-<td align="left">integer</td>
-<td align="left">integer</td>
-<td align="left">numeric</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">double</td>
-<td align="left">numeric</td>
-<td align="left">numeric</td>
-</tr>
-<tr class="odd">
-<td align="left">&#39;1&#39;</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left">character</td>
-</tr>
-<tr class="even">
-<td align="left">TRUE</td>
-<td align="left">logical</td>
-<td align="left">logical</td>
-<td align="left">logical</td>
-</tr>
-<tr class="odd">
-<td align="left">1+1i</td>
-<td align="left">complex</td>
-<td align="left">complex</td>
-<td align="left">complex</td>
-</tr>
-<tr class="even">
-<td align="left">Sys.Date()</td>
-<td align="left">double</td>
-<td align="left">Date</td>
-<td align="left">numeric</td>
-</tr>
-<tr class="odd">
-<td align="left">Sys.time()</td>
-<td align="left">double</td>
-<td align="left">POSIXct, POSIXlt</td>
-<td align="left">numeric</td>
-</tr>
-</table>
+<p>You will want to make sure your input vectors have the same number of values (elements). If they do not match, you may see strange results.</p>
 
-<p>There are other, more esoteric data types, which you can learn about with <code>?typeof</code>. One of those is <code>list</code>, which we will cover next.</p>
+</article></slide><slide class=''><hgroup><h2>Vectorized operations versus loops</h2></hgroup><article  id="vectorized-operations-versus-loops" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Data Type Conversion</h2></hgroup><article  id="data-type-conversion" class="smaller ">
+<p>Alternatively, we could have used a loop to iterate through the input data. This approach would calculate a single adult BMI for each loop iteration.</p>
 
-<p>We already saw how types can be automatically &quot;coerced&quot; to other types through combination and other operations. R also has several &quot;as&quot; functions to explicitly convert types and structures as well.</p>
+<p>We can implement this approach with a <code>for()</code> loop.</p>
 
-<pre class = 'prettyprint lang-r'>as.integer(&#39;0&#39;)</pre>
+<pre class = 'prettyprint lang-r'># Initialize vector before use in body of loop
+bmi &lt;- NULL
 
-<pre >## [1] 0</pre>
+# Calculate adult BMI using loop from values: weight (in pounds) and height (in inches)
+for (i in 1:length(weight)) bmi[i] &lt;- (weight[i] / height[i] ^ 2) * 703
+bmi</pre>
 
-<pre class = 'prettyprint lang-r'>as.character(0)</pre>
+<pre >## [1] 24.13260 23.68945 28.22018 26.84817</pre>
 
-<pre >## [1] &quot;0&quot;</pre>
+<p>Not only does this take more code it is also less efficient, since many more operations (function calls) have to be performed.</p>
 
-<pre class = 'prettyprint lang-r'>as.logical(0)</pre>
+</article></slide><slide class=''><hgroup><h2>Vectorized operations versus loops</h2></hgroup><article  id="vectorized-operations-versus-loops-1" class="smaller ">
 
-<pre >## [1] FALSE</pre></article></slide>
+<p>For comparison, let&#39;s create two data vectors with 100,000 values in each, by randomly sampling from the normal distribution.</p>
+
+<pre class = 'prettyprint lang-r'>set.seed(5)      # Start the random number generator reproducibly.
+wt100k &lt;- rnorm(n = 100000, mean = 175, sd = 30)
+ht100k &lt;- rnorm(n = 100000, mean = 65, sd = 3)</pre>
+
+<p>Then, time the two adult BMI calculation methods.</p>
+
+<pre class = 'prettyprint lang-r'>system.time(bmi &lt;- (wt100k / ht100k ^ 2) * 703)</pre>
+
+<pre >##    user  system elapsed 
+##   0.002   0.000   0.002</pre>
+
+<pre class = 'prettyprint lang-r'>system.time(for (i in 1:length(wt100k)) bmi[i] &lt;- (wt100k[i] / ht100k[i] ^ 2) * 703)</pre>
+
+<pre >##    user  system elapsed 
+##   0.241   0.008   0.249</pre>
+
+<p>Clearly, the loop approach takes longer to run than the vectorized approach.</p>
+
+</article></slide><slide class=''><hgroup><h2>Vectorized operations with data frames</h2></hgroup><article  id="vectorized-operations-with-data-frames" class="smaller ">
+
+<p>We can also perform this operation on columns of a data frame to produce a new column.</p>
+
+<pre class = 'prettyprint lang-r'># Add a new column for adult BMI calculated from the weight and height columns
+df$bmi &lt;- (df$weight / df$height ^ 2) * 703
+df</pre>
+
+<pre >##   id height weight      bmi
+## 1  A   68.1  159.2 24.13260
+## 2  B   69.4  162.3 23.68945
+## 3  C   71.2  203.5 28.22018
+## 4  D   68.9  181.3 26.84817</pre>
+
+<p>We performed the same BMI calculation as before, but this time on the columns of a data frame, adding a new column for the BMI.</p>
+
+</article></slide><slide class=''><hgroup><h2>Storing and loading data</h2></hgroup><article  id="storing-and-loading-data" class="smaller ">
+
+<p>While we have seen how to create data objects using the assignment operator, <code>&lt;-</code>, these objects only reside is our computer&#39;s volatile memory. Much of the time, this is all we need to do in order to perform calculations on our data.</p>
+
+<p>Sometimes we want to store our data on our disk drive or our network for long-term storage or for sharing with collaborators. We can do this by saving the data as a file using the <code>save()</code> function.</p>
+
+<pre class = 'prettyprint lang-r'>save(df, file=&quot;df.rda&quot;)</pre>
+
+<p>You can read a data file and load it&#39;s contents in memory with <code>load()</code>.</p>
+
+<pre class = 'prettyprint lang-r'>load(&quot;df.rda&quot;)
+df</pre>
+
+<pre >##   id height weight      bmi
+## 1  A   68.1  159.2 24.13260
+## 2  B   69.4  162.3 23.68945
+## 3  C   71.2  203.5 28.22018
+## 4  D   68.9  181.3 26.84817</pre>
+
+</article></slide><slide class=''><hgroup><h2>Removing data</h2></hgroup><article  id="removing-data" class="smaller ">
+
+<p>You can remove a data object from your working (volatile) memory with <code>rm()</code>.</p>
+
+<pre class = 'prettyprint lang-r'>rm(df)</pre>
+
+<p>You can remove a file with <code>unlink()</code>.</p>
+
+<pre class = 'prettyprint lang-r'>unlink(&quot;df.rda&quot;)</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

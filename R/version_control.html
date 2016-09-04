@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>R Data Types</title>
+  <title>Version Control with RStudio and Github</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'R Data Types',
+                title: 'Version Control with RStudio and Github',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -114,201 +114,191 @@
 <p>You will learn:</p>
 
 <ul>
-<li>The basics of R &quot;data objects&quot; and &quot;classes&quot;</li>
-<li>The basic &quot;primitive&quot; data types in R</li>
-<li>How to inspect the properties of data objects</li>
-<li>How to convert data objects to other types</li>
+<li>What version control is and <em>why you should care</em></li>
+<li>The basic operations of the <em>Git</em> version control system</li>
+<li>How to use Git and Github to <em>manage projects</em></li>
+<li>How to use Git and Githhub <em>from within RStudio</em></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Data Objects</h2></hgroup><article  id="data-objects" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Version Control</h2></hgroup><article  id="version-control" class="smaller ">
 
-<p>Since R is an <em>object oriented</em> language, everything in R is an <em>object</em>. What this means is that all of your data and code structures are stored in your computer&#39;s memory using the same framework.</p>
+<p>The following is true of most modern version control systems:</p>
 
-<p>This provides a great deal of consistency in working with R because you can use many of the same methods to interact with various components of R.</p>
+<ul>
+<li>A method for <em>tracking changes</em> to one or more <em>files</em></li>
+<li>Like Apple Time Machine with &quot;Track Changes&quot; of MS-Word</li>
+<li>Makes changes to one or more files as a <em>single</em> &quot;commit&quot;</li>
+<li>Works with <em>any type of file</em>, especially plain-text and &quot;code&quot;</li>
+<li>Allows <em>multiple users</em> to work with the same files <em>concurrently</em></li>
+<li>May also be called: <em>revision control systems</em></li>
+</ul>
 
-<p>There are a core set of basic object types and classes built into R. All other objects are built upon these.</p>
+</article></slide><slide class=''><hgroup><h2>Version Control Features</h2></hgroup><article  id="version-control-features" class="smaller ">
 
-<p><em>Data objects</em> are those structures which you use to store data. Objects can also store functions, packages, connections, and other structures intended for other uses.</p>
+<p>Most modern version control systems:</p>
 
-<p>In this module, we will focus entirely on data objects &#8211; those which are used primarily for data storage and manipulation in memory.</p>
+<ul>
+<li>Provide <em>logging</em> and <em>status reports</em> for ease of tracking</li>
+<li>Allow you to <em>compare</em> versions or <em>revert</em> to past versions</li>
+<li>Let you <em>share</em> files and <em>merge changes</em> from others</li>
+<li>Handle merging for you, <em>transparently</em> (in most cases)</li>
+<li>Let you <em>collaborate</em> through a <em>server</em> or website like <a href='https://github.com/' title=''>Github</a></li>
+<li><em>Sync</em> changes with the server instead of <del>emailing files around</del></li>
+</ul>
 
-<p>Like other objects, data objects have a <em>type</em> and a <em>class</em>. The type defines <em>how</em> the data are stored, while the class define <em>what</em> data are contained within an object.</p>
+</article></slide><slide class=''><hgroup><h2>Git: Distributed Version Control</h2></hgroup><article  id="git-distributed-version-control" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes" class="smaller ">
+<ul>
+<li>Hugely popular, free, open source, and cross-platform</li>
+<li><em>Distributed</em>, decentralized design allows offline use</li>
+<li><em>Integrated</em> with apps like <em>RStudio</em> and MS Visual Studio <em>Code</em></li>
+<li>The version control &quot;engine&quot; behind sites like <a href='https://github.com/' title=''>Github</a></li>
+<li>Created by <em>Linus Torvalds</em>, the creator of Linux</li>
+<li>Designed for <em>large</em> projects with many <em>remote</em> contributors</li>
+<li>Increasingly popular for <em>scientific research projects</em></li>
+</ul>
 
-<p>The most basic data types are <code>numeric</code> (<code>double</code> and <code>integer</code>), <code>complex</code>, <code>logical</code> (boolean), and <code>character</code> (string).</p>
+</article></slide><slide class=''><hgroup><h2>Github: Social Version Control</h2></hgroup><article  id="github-social-version-control" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>typeof(1)       # &quot;double&quot; -- double precision floating point number</pre>
+<ul>
+<li>The most popular web-based host of Git repositories</li>
+<li>Repository browser with syntax highlighting and text editing</li>
+<li>Integrated issue tracking, stats, and wiki</li>
+<li>Offers &quot;forking&quot; and &quot;pull requests&quot; for collaboration workflow</li>
+<li>Hosts Github Pages (github.io) and Github Gists (gist.github.com)</li>
+<li>Provides Github Desktop for Mac and Windows and Github Atom editor</li>
+</ul>
 
-<pre >## [1] &quot;double&quot;</pre>
+</article></slide><slide class=''><hgroup><h2>Installing Git</h2></hgroup><article  id="installing-git" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>typeof(1L)      # &quot;integer&quot; -- &quot;L&quot; after one or more digits makes it an integer</pre>
+<ul>
+<li>Installers available from: <a href='https://git-scm.com/' title=''>https://git-scm.com/</a></li>
+<li>For Windows installer, <em>allow changes to the system PATH</em></li>
+<li>RStudio searches PATH to find &quot;git&quot;, or manually configure</li>
+<li>Git is <em>already installed</em> on Phage</li>
+</ul>
 
-<pre >## [1] &quot;integer&quot;</pre>
+</article></slide><slide class=''><hgroup><h2>Configuring Git</h2></hgroup><article  id="configuring-git" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>typeof(TRUE)    # &quot;logical&quot; -- either TRUE or FALSE</pre>
+<ul>
+<li>You need to <a href='https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup' title=''>configure</a> your username and email address.</li>
+<li>Configuring for default editor and color support is nice, too.</li>
+<li>Run these commands from the &quot;shell&quot; (Bash, DOS, etc.).</li>
+</ul>
 
-<pre >## [1] &quot;logical&quot;</pre>
+<pre >git config --global user.name &quot;John Doe&quot;
+git config --global user.email johndoe@example.com
+git config --global color.ui true
+git config --global core.editor nano</pre>
 
-<pre class = 'prettyprint lang-r'>typeof(1 + 2i)  # &quot;complex&quot; -- a number with real and imaginary components</pre>
+<p>Edit these commands as needed for your name, email, and preferred editor.</p>
 
-<pre >## [1] &quot;complex&quot;</pre>
+<p>If you store them in a shell script, you may easily run them on other systems you may be using. For now, copying, pasting, editing, and running will be fine.</p>
 
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes-1" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Git Integration in RStudio</h2></hgroup><article  id="git-integration-in-rstudio" class="smaller ">
 
-<p>Characters are entered with quotes around them (single or double quotes).</p>
+<ul>
+<li>RStudio can import (<code>clone</code>) a git project from a server</li>
+<li>RStudio can perform all <em>common</em> operations from the GUI
 
-<pre class = 'prettyprint lang-r'>typeof(&#39;abcd&#39;)     # &quot;character&quot; -- a non-numeric &quot;string&quot; of text characters</pre>
+<ul>
+<li>From the menu: <em>Tools</em> -&gt; <em>Version Control</em></li>
+<li>From the <em>Git</em> tab next to the <em>History</em> tab</li>
+</ul></li>
+</ul>
 
-<pre >## [1] &quot;character&quot;</pre>
-
-<p>If you omit the quotes of an alphanumeric string, R will assume you are referring to a variable name.</p>
-
-<pre class = 'prettyprint lang-r'>val &lt;- 1234
-typeof(val)</pre>
-
-<pre >## [1] &quot;double&quot;</pre>
-
-</article></slide><slide class=''><hgroup><h2>Data Types and Classes</h2></hgroup><article  id="data-types-and-classes-2" class="smaller ">
-
-<p>You can show the &quot;higher order&quot; (if any) type of a data object with <code>class()</code>.</p>
-
-<pre class = 'prettyprint lang-r'>typeof(1234)      # double  (the more basic &quot;primitive&quot; type)</pre>
-
-<pre >## [1] &quot;double&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>class(1234)       # numeric (the more general &quot;higher order&quot; type)</pre>
-
-<pre >## [1] &quot;numeric&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>typeof(&#39;abcd&#39;)    # character</pre>
-
-<pre >## [1] &quot;character&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>class(&#39;abcd&#39;)     # character</pre>
-
-<pre >## [1] &quot;character&quot;</pre>
-
-</article></slide><slide class=''><hgroup><h2>Testing for Numeric Values</h2></hgroup><article  id="testing-for-numeric-values" class="smaller ">
-
-<p>You can test if the (storage) <code>mode</code> of a value is numeric using the <code>is.numeric()</code> function:</p>
-
-<pre class = 'prettyprint lang-r'>is.numeric(1234)          # TRUE</pre>
-
-<pre >## [1] TRUE</pre>
-
-<pre class = 'prettyprint lang-r'>is.numeric(1234L)         # TRUE</pre>
-
-<pre >## [1] TRUE</pre>
-
-<pre class = 'prettyprint lang-r'>is.numeric(1234 + 5i)     # FALSE</pre>
-
-<pre >## [1] FALSE</pre>
-
-</article></slide><slide class=''><hgroup><h2>Testing for Character Values</h2></hgroup><article  id="testing-for-character-values" class="smaller ">
-
-<p>As before, we quote literal character strings but not variable names.</p>
-
-<pre class = 'prettyprint lang-r'>is.character(&#39;val&#39;)    # TRUE</pre>
-
-<pre >## [1] TRUE</pre>
-
-<pre class = 'prettyprint lang-r'>val &lt;- 1234
-is.character(val)      # FALSE</pre>
-
-<pre >## [1] FALSE</pre>
-
-</article></slide><slide class=''><hgroup><h2>Dates and Times</h2></hgroup><article  id="dates-and-times" class="smaller ">
-
-<p>While R could store a dates and times as character strings, it actually has special classes for these to allow for date/time arithmetic and formatting.</p>
-
-<pre class = 'prettyprint lang-r'># Class: &quot;Date&quot;
-cat(&#39;The date was&#39;, format(Sys.Date() - 7, &#39;%Y-%m-%d&#39;), &#39;a week ago.&#39;)</pre>
-
-<pre >## The date was 2016-08-28 a week ago.</pre>
-
-<pre class = 'prettyprint lang-r'>cat(&#39;Halloween is on a&#39;, weekdays(as.Date(&#39;10-31&#39;, format=&#39;%m-%d&#39;)), &#39;this year.&#39;)</pre>
-
-<pre >## Halloween is on a Monday this year.</pre>
-
-<pre class = 'prettyprint lang-r'># Class: &quot;POSIXct&quot; (date, time, timezone, etc.) and &quot;difftime&quot;
-since.midnight &lt;- Sys.time() - as.POSIXct(&#39;0&#39;, format=&#39;%H&#39;)
-cat(&#39;It has been&#39;, format(since.midnight), &#39;since midnight.&#39;)</pre>
-
-<pre >## It has been 11.12979 hours since midnight.</pre>
-
-</article></slide><slide class=''><hgroup><h2>Basic Single-Value (Scalar) Data Types</h2></hgroup><article  id="basic-single-value-scalar-data-types" class="smaller ">
-
-<p>Data types consisting of only a single value are also called &quot;scalar&quot; types.</p>
+</article></slide><slide class=''><hgroup><h2>Common Git Operations</h2></hgroup><article  id="common-git-operations" class="smaller ">
 
 <table class = 'rmdtable'>
 <tr class="header">
-<th align="left">Example</th>
-<th align="left">Type</th>
-<th align="left">Class</th>
-<th align="left">Storage Mode</th>
+<th align="left">Command</th>
+<th align="left">What it does</th>
 </tr>
 <tr class="odd">
-<td align="left">1L</td>
-<td align="left">integer</td>
-<td align="left">integer</td>
-<td align="left">numeric</td>
+<td align="left"><code>clone</code></td>
+<td align="left">Copy a repository into a new folder</td>
 </tr>
 <tr class="even">
-<td align="left">1</td>
-<td align="left">double</td>
-<td align="left">numeric</td>
-<td align="left">numeric</td>
+<td align="left"><code>pull</code></td>
+<td align="left">Fetch and integrate changes</td>
 </tr>
 <tr class="odd">
-<td align="left">&#39;1&#39;</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left">character</td>
+<td align="left"><code>commit</code></td>
+<td align="left">Record changes to the repository</td>
 </tr>
 <tr class="even">
-<td align="left">TRUE</td>
-<td align="left">logical</td>
-<td align="left">logical</td>
-<td align="left">logical</td>
+<td align="left"><code>push</code></td>
+<td align="left">Send changes to remote repository (server)</td>
 </tr>
 <tr class="odd">
-<td align="left">1+1i</td>
-<td align="left">complex</td>
-<td align="left">complex</td>
-<td align="left">complex</td>
+<td align="left"><code>diff</code></td>
+<td align="left">Show changes between commits</td>
 </tr>
 <tr class="even">
-<td align="left">Sys.Date()</td>
-<td align="left">double</td>
-<td align="left">Date</td>
-<td align="left">numeric</td>
+<td align="left"><code>log</code></td>
+<td align="left">Show commit logs</td>
 </tr>
 <tr class="odd">
-<td align="left">Sys.time()</td>
-<td align="left">double</td>
-<td align="left">POSIXct, POSIXlt</td>
-<td align="left">numeric</td>
+<td align="left"><code>status</code></td>
+<td align="left">Show the current status of files and changes</td>
 </tr>
 </table>
 
-<p>There are other, more esoteric data types, which you can learn about with <code>?typeof</code>. One of those is <code>list</code>, which we will cover next.</p>
+</article></slide><slide class=''><hgroup><h2>Git and GitHub Glossary</h2></hgroup><article  id="git-and-github-glossary" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Data Type Conversion</h2></hgroup><article  id="data-type-conversion" class="smaller ">
+<ul>
+<li><strong>Repository (repo):</strong> A repository is the most basic element of GitHub. They&#39;re easiest to imagine as a project&#39;s folder.</li>
+<li><strong>Branch:</strong> A parallel version of a repository</li>
+<li><strong>Clone:</strong> Local copy of the repository</li>
+<li><strong>Commit:</strong> An individual change to a file (or set of files). Commits usually contain a commit message.</li>
+<li><strong>Fork:</strong> A personal copy of another user&#39;s repository that lives on your account</li>
+<li><strong>Merge:</strong> Merging takes the changes from one branch (in the same repository or from a fork), and applies them into another.</li>
+<li><strong>Pull:</strong> Pull refers to when you are fetching in changes and merging them.</li>
+<li><strong>Pull Request:</strong> Pull requests are proposed changes to a repository submitted by a user and accepted or rejected by a repository&#39;s collaborators</li>
+<li><strong>Push:</strong> Pushing refers to sending your committed changes to a remote repository such as GitHub.com</li>
+</ul>
 
-<p>We already saw how types can be automatically &quot;coerced&quot; to other types through combination and other operations. R also has several &quot;as&quot; functions to explicitly convert types and structures as well.</p>
+<p><a href='https://help.github.com/articles/github-glossary/' title=''>More details here</a></p>
 
-<pre class = 'prettyprint lang-r'>as.integer(&#39;0&#39;)</pre>
+<p><em>Thanks to Raphael Gottardo for this slide from his Biostat-578 <a href='https://github.com/raphg/Biostat-578/blob/1352ca32c7f12ec8b43f8898cce5cae3831e7a43/Introduction_to_R.Rmd' title=''>lecture</a>.</em></p>
 
-<pre >## [1] 0</pre>
+</article></slide><slide class=''><hgroup><h2>Typical Git and Github Workflow</h2></hgroup><article  id="typical-git-and-github-workflow" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>as.character(0)</pre>
+<h3>Project initialization</h3>
 
-<pre >## [1] &quot;0&quot;</pre>
+<ol>
+<li>Create a new, empty repo in Github</li>
+<li><code>clone</code> to local system or <code>push</code> from existing local repo to Github</li>
+<li>Create README, LICENSE, and .gitignore files, then push/pull to sync</li>
+</ol>
 
-<pre class = 'prettyprint lang-r'>as.logical(0)</pre>
+<h3>Project continuation</h3>
 
-<pre >## [1] FALSE</pre></article></slide>
+<ol>
+<li>Add collaborators to Github repo if needed</li>
+<li>Always do a pull when you begin a work session and before a commit</li>
+<li>To commit changes, <code>add</code> changed files, <code>commit</code> with a message, and <code>push</code></li>
+<li>Check your Github &quot;Issues&quot; and resolve issues as separate commits</li>
+<li>Check your pull requests, review the code, merge (or not), and close</li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Exercises</h2></hgroup><article  id="exercises" class="smaller ">
+
+<h3>Exercise #1</h3>
+
+<p>Clone a git repo into RStudio as a new project.</p>
+
+<h3>Exercise #2</h3>
+
+<p>Create a Github account (if you need to) and use your account to fork a repo.</p>
+
+<h3>Exercise #3</h3>
+
+<p>Clone your fork from exercise #3 into RStudio, make an edit, push your edit to Github.</p>
+
+<h3>Exercise #4</h3>
+
+<p>Complete exercises #2 and #3 and then issue a pull request to the original repo author for your changes to your fork.</p></article></slide>
 
 
   <slide class="backdrop"></slide>

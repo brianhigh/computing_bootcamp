@@ -219,7 +219,7 @@ cat('It has been', format(since.midnight), 'since midnight.')
 ```
 
 ```
-## It has been 9.797661 hours since midnight.
+## It has been 11.12979 hours since midnight.
 ```
 
 ## Basic Single-Value (Scalar) Data Types
