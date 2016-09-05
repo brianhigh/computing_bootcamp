@@ -202,7 +202,9 @@ This opens a configuration settings window with navigation on the side.
 Here are some recommended settings:
 
 * Code -> (Editing) -> [x] Insert spaces for tab, Tab width 4
+    - ![](images/insert_spaces_for_tab.png)
 * Code -> (Display) -> [x] Show margin, Margin column 80
+    - ![](images/show_margin.png)
 
 These settings will help you write more readable code. (More on this later.)
 
