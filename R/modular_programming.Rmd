@@ -366,11 +366,11 @@ trim <- function(x) ltrim(rtrim(x))
 ```
 
 Include documentation for each function including *Description*, *Usage*, 
-*Arguments*, *Details*, *See Also*, and *Examples* sections. The *See Also* 
-section should refer to the `trimws()` function of the *base* package. The 
-*Details* section should briefly explain how the functions in this package 
-differs from the `trimws()` function with respect to the types of characters
-which are removed.
+*Arguments*, *Value*, *Details*, *See Also*, and *Examples* sections. The 
+*See Also* section should refer to the `trimws()` function of the *base* 
+package. The *Details* section should briefly explain how the functions in 
+this package differs from the `trimws()` function with respect to the types 
+of characters which are removed. Karl Broman's [Writing documentation with Roxygen2](http://kbroman.org/pkg_primer/pages/docs.html) may serve as a guide.
 
 Post this package on Github and include `README.md` and `LICENSE` files in the
 package repository.
