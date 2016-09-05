@@ -45,6 +45,7 @@ You will learn:
 * You would like support from a very helpful community of thousands of users 
 * You would like to use code or packages which are only available in R
 * You would like to generate quality graphics for publication
+* You would like to use a system which supports data analysis "best practices"
 * You would an end-to-end solution for reproducible data analysis
 * You would like work with "Big Data" and your current tools are not sufficient
 
