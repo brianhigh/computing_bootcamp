@@ -197,7 +197,9 @@
 git config --global user.email johndoe@example.com
 git config --global color.ui true
 git config --global core.editor nano         # Or your favorite text editor
-git config --global credential.helper cache  # Optional: cache password for 15 min. </pre>
+
+git config --global credential.helper cache  # Optional: cache password for 15 min. 
+git config --global credential.helper &#39;cache --timeout=3600&#39; # 1 hr timeout</pre>
 
 <p>Edit these commands as needed for your name, email, and preferred editor.</p>
 
