@@ -389,7 +389,23 @@ catAdultBMI(c(20.8, 17.0, 18.5, 31.9, 25.0, 33.6))</pre>
 <pre >## [1] Normal      Underweight Normal      Obese       Overweight  Obese      
 ## Levels: Underweight &lt; Normal &lt; Overweight &lt; Obese</pre>
 
-<p>What other functions might be useful?</p></article></slide>
+<p>What other functions might be useful?</p>
+
+</article></slide><slide class=''><hgroup><h2>Exercise #3</h2></hgroup><article  id="exercise-3" class="smaller ">
+
+<p>Data often include strings, and these strings often contain extra whitespace. Leading and trailing whitespace is a common cause of errors, as it is hard to detect visually.</p>
+
+<p>Create a package called <em>trimmer</em> which provides three functions to trim whitespace or other characters from the beginning and ending of text strings.</p>
+
+<pre class = 'prettyprint lang-r'>ltrim &lt;- function(x, pattern = &#39;^[[:space:]]+&#39;) sub(pattern, &#39;&#39;, x)
+rtrim &lt;- function(x, pattern = &#39;[[:space:]]+$&#39;) sub(pattern, &#39;&#39;, x)
+trim &lt;- function(x) ltrim(rtrim(x))</pre>
+
+<p>Include documentation for each function including <em>Description</em>, <em>Usage</em>, <em>Arguments</em>, <em>Details</em>, <em>See Also</em>, and <em>Examples</em> sections. The <em>See Also</em> section should refer to the <code>trimws()</code> function of the <em>base</em> package. The <em>Details</em> section should briefly explain how the functions in this package differs from the <code>trimws()</code> function with respect to the types of characters which are removed.</p>
+
+<p>Post this package on Github and include <code>README.md</code> and <code>LICENSE</code> files in the package repository.</p>
+
+<p>NOTE: The <em>stringr</em> and <em>stringi</em> packages also contain string trimming functions.</p></article></slide>
 
 
   <slide class="backdrop"></slide>

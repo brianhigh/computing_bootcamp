@@ -376,3 +376,32 @@ catAdultBMI(c(20.8, 17.0, 18.5, 31.9, 25.0, 33.6))
 ```
 
 What other functions might be useful?
+
+## Exercise #3
+
+Data often include strings, and these strings often contain extra whitespace. 
+Leading and trailing whitespace is a common cause of errors, as it is hard to
+detect visually.
+
+Create a package called *trimmer* which provides three functions to trim 
+whitespace or other characters from the beginning and ending of text strings.
+
+
+```r
+ltrim <- function(x, pattern = '^[[:space:]]+') sub(pattern, '', x)
+rtrim <- function(x, pattern = '[[:space:]]+$') sub(pattern, '', x)
+trim <- function(x) ltrim(rtrim(x))
+```
+
+Include documentation for each function including *Description*, *Usage*, 
+*Arguments*, *Details*, *See Also*, and *Examples* sections. The *See Also* 
+section should refer to the `trimws()` function of the *base* package. The 
+*Details* section should briefly explain how the functions in this package 
+differs from the `trimws()` function with respect to the types of characters
+which are removed.
+
+Post this package on Github and include `README.md` and `LICENSE` files in the
+package repository.
+
+NOTE: The *stringr* and *stringi* packages also contain string trimming
+functions.
