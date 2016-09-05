@@ -23,6 +23,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 You will learn:
 
 * What RStudio is and isn't
+* Reasons to use RStudio
 * How to get RStudio
     - Download from Internet (free)
     - Use on departmental server through web browser (free)
@@ -49,6 +50,19 @@ You will learn:
 * A point-and-click GUI application like a spreadsheet program
 * A text-only command-line utility
 * An R language interpreter
+
+## Why use RStudio?
+
+* It is a user-friendly way to use R
+    - The interface feels familiar to many people (similar to other IDEs)
+    - It integrates operations common to many data analysis workflows
+* You can use it for free on most computer systems
+* It is very popular, so your collaborators may already be using it
+* Very few alternatives (R-GUI, Rcmdr, JGR, RKWard) are as full-featured
+* It performs well, is designed well, and is backed by a respected company
+
+Of course, feel free to use any R application that works best for you. Some
+people even prefer the standard R console that comes with R. (It's simpler.)
 
 ## How to get RStudio
 
