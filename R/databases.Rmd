@@ -42,7 +42,7 @@ Here are some examples of database products you can connect to from R:
 * Microsoft SQL Server
 * Microsoft Access
 * IBM DB2
-* IBM Informix
+* Google BigQuery
 * MongoDB
 * Hadoop
 

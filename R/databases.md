@@ -28,7 +28,7 @@ Here are some examples of database products you can connect to from R:
 * Microsoft SQL Server
 * Microsoft Access
 * IBM DB2
-* IBM Informix
+* Google BigQuery
 * MongoDB
 * Hadoop
 
@@ -171,7 +171,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/filec3a7dccf75c.sqlite"
+## [1] "~/file273955613d9d.sqlite"
 ```
 
 ```r
