@@ -98,7 +98,8 @@ your username and email address.
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 git config --global color.ui true
-git config --global core.editor nano    # Or your favorite text editor
+git config --global core.editor nano         # Or your favorite text editor
+git config --global credential.helper cache  # Optional: cache password for 15 min. 
 ```
 
 Edit these commands as needed for your name, email, and preferred editor. 
