@@ -66,8 +66,9 @@ Example: [tidyr package index](https://cran.r-project.org/web/packages/tidyr/ind
 
 ## Support through Online Forums
 
-If you have searched (the online documentation and the web in general) and still 
-can't solve your problem, you can request help by posting to an online forum.
+If you have searched [R Seek](http://rseek.org/), the online documentation, and 
+the web in general) and still can't solve your problem, you can request help by 
+posting to an online forum.
 
 ### Help Forums
 
