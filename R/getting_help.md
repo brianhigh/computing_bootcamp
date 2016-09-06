@@ -50,7 +50,7 @@ A package will usually have documentation containing one or more of the followin
 * index
 * a DESCRIPTION file
 * guides for functions (with examples), classes, and data
-* vignettes, perhaps including tutorials and a FAQ
+* vignettes, including tutorials and FAQs
 * demos
 * a NEWS file
 
@@ -100,19 +100,19 @@ Basically, when posting questions:
 
 ### Roger Peng on YouTube (free)
 
-Beginners may want to start with [Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) by Roger Peng. See also: The non-free [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
+[Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx). See: [his books](https://leanpub.com/u/rdpeng). See also: The non-free [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo.
 
 ### Barton Poulson on Lynda.com (free with SPL library card)
 
-[Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html) by Barton Poulson offers about 2-1/2 hours of instruction for beginners. Login to Lynda.com [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) using your SPL [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card) to gain free access. See also: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html), also by Barton Poulson (6 hours). 
+[Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html), (2-1/2 hours). Login [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) using your SPL [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card) to gain free access. See: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html), (6 hours). 
 
 ### Annika Salzberg on DataCamp (free with registration)
 
-If R scares you, watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg (2 hrs.). Very gentle.
+If R scares you, watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated), (2 hours). Very gentle.
 
 ### Rafael Irizarry and Michael Love on edX (free)
 
-edX offers an entire 8-course series on bioinformatics for free, starting with [Statistics and R for the Life Sciences](https://www.edx.org/course/statistics-r-life-sciences-harvardx-ph525-1x) by Rafael Irizarry and Michael Love.
+An entire 8-course series, starting with [Statistics and R for the Life Sciences](https://www.edx.org/course/statistics-r-life-sciences-harvardx-ph525-1x).
 
 ## Our Favorite Free Online R Tutorials
 
@@ -140,10 +140,10 @@ staff, or faculty. The links we have provided (for the title text) are to the
 UW-licenced copy. There are many more R books available through the UW, but these
 are some of our favorites.
 
-- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451) by Manas A. Pathak (View online or download.) Intended for readers who have previously learned at least one other programming language.
-- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451)  by Nicholas J. Horton and Ken Kleinman. A reference of short examples of how you might do various tasks (like a cookbook), with longer case studies at the end.
-- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451) by Gregg Hartvigsen. Takes a much slower and thorough tour of R and its use for data analysis -- for absolute beginners.
-- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler, M.Eng. This is an excellent reference, especially for those with a background in programming. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
+- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451) by Manas A. Pathak. (View online or download.) For readers who already know one other programming language.
+- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451) by Gregg Hartvigsen. For absolute beginners: a slower and more thorough tour of R.
+- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451)  by Nicholas J. Horton and Ken Kleinman. A reference of short examples, with longer case studies at the end.
+- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler, M.Eng. An excellent reference, especially for those with a background in programming. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
 - [Introduction to data analysis and graphical presentation in biostatistics with R : statistics in the large](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71197447610001451) by Thomas W. MacFarland. (View online or download.)
 - [Introductory statistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71130982630001451) by Peter Dalgaard. (View online or download.)
 
@@ -162,5 +162,5 @@ has been linked to the publisher's website for each book.
     - by Norman Matloff ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1593273843/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&Submit=Search) )
 * [Reproducible Research with R and R Studio](https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379)
     - by Christopher Gandrud ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Reproducible+Research+with+R+and+R+Studio%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1466572841/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Reproducible+Research+with+R+and+R+Studio%22&Submit=Search) )
-* [Data Science in R: A Case Studies Approach to Computational Reasoning and Problem Solving](https://www.crcpress.com/Data-Science-in-R-A-Case-Studies-Approach-to-Computational-Reasoning-and/Nolan-Lang/p/book/9781482234817)
+* [Data Science in R](https://www.crcpress.com/Data-Science-in-R-A-Case-Studies-Approach-to-Computational-Reasoning-and/Nolan-Lang/p/book/9781482234817)
     - by Deborah Nolan ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1482234815/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&Submit=Search) )
