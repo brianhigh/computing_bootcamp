@@ -235,7 +235,7 @@ drv &lt;- dbDriver(&quot;SQLite&quot;)
 sqlfile &lt;- tempfile(tmpdir=&quot;~&quot;, fileext=&quot;.sqlite&quot;)
 sqlfile       # This will show the database filename.</pre>
 
-<pre >## [1] &quot;~/filef71725e7c5c.sqlite&quot;</pre>
+<pre >## [1] &quot;~/file148529a0cb9e.sqlite&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>con &lt;- dbConnect(drv, dbname = sqlfile)
 rs &lt;- dbWriteTable(con, &quot;bmi&quot;, bmi)</pre>
@@ -308,7 +308,7 @@ dbDisconnect(con)</pre>
 
 <pre class = 'prettyprint lang-r'>library(RSQLite)
 ffhist &lt;- dbConnect(SQLite(), &#39;places.sqlite&#39;)   # Copy this file from &quot;Profiles&quot;
-hits &lt;- dbGetQuery(ffhist, &#39;SELECT url from moz_places where url like &quot;http%&quot;&#39;)
+hits &lt;- dbGetQuery(ffhist, &#39;SELECT url FROM moz_places WHERE url LIKE &quot;http%&quot;&#39;)
 
 library(urltools)
 domains &lt;- suffix_extract(domain(hits$url))

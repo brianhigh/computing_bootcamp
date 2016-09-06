@@ -234,7 +234,7 @@ Your Firefox browsing history is stored in a SQLite database, `places.sqlite`.
 ```{r, eval=FALSE}
 library(RSQLite)
 ffhist <- dbConnect(SQLite(), 'places.sqlite')   # Copy this file from "Profiles"
-hits <- dbGetQuery(ffhist, 'SELECT url from moz_places where url like "http%"')
+hits <- dbGetQuery(ffhist, 'SELECT url FROM moz_places WHERE url LIKE "http%"')
 
 library(urltools)
 domains <- suffix_extract(domain(hits$url))
