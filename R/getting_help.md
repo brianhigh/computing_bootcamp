@@ -18,13 +18,13 @@ You will learn about:
 
 For those who have not used R before and would like an excellent introduction to R by Roger Peng. These [videos](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) are from a 2012 online course _Introduction to Data Science with R_. See also: [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
 
-### Barton Poulson on Lynda.com
+### Barton Poulson on Lynda.com (free with SPL library card)
 
 You might prefer to watch (the somewhat gentler and more polished) Lynda.com course: [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html). Appropriate for total beginners to programming and to R. About 2-1/2 hours of video. You can watch for free through Seattle Public Library (SPL) if have a [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card). Login to Lynda.com [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) to gain access. See also: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html), also by Barton Poulson (6 hours). 
 
-### DataCamp (free with registration)
+### Annika Salzberg on DataCamp (free with registration)
 
-Free 2-hour course: [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg.
+Watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg, if R scares you. Very gentle.
 
 ## Our Favorite Online R Tutorials
 
