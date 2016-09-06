@@ -227,6 +227,37 @@ unlink(sqlfile)
 Of course, you would not remove the file if you still needed it, so be careful
 when using this command.
 
+## SQLite Example: Firefox History
+
+You Firefox web browsing history is stored in a SQLite database, `places.sqlite`.
+
+```{r, eval=FALSE}
+library(RSQLite)
+ffhist <- dbConnect(SQLite(), 'places.sqlite')   # Copy this file from "Profiles"
+hits <- dbGetQuery(ffhist, 'SELECT url from moz_places where url like "http%"')
+
+library(urltools)
+domains <- suffix_extract(domain(hits$url))
+
+library(dplyr)
+domains %<>% group_by(domain) %>% summarise(count=n()) %>% arrange(desc(count))
+domains$domain <- factor(domains$domain, as.character(domains$domain))
+domains
+
+library(ggplot2)
+ggplot(head(domains, 10), aes(x=domain, y=count)) +
+  geom_bar(stat="identity", colour="darkblue", fill="darkblue") +  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  ggtitle("Top Ten Sites in Firefox History") +
+  labs(x="Site", y="Frequency")
+
+res <- dbDisconnect(ffhist)
+```
+
+## SQLite Example: Firefox History
+
+![](images/top_ten_sites.png)
+
 ## PostgreSQL
 
 We will now demonstrate how to use a server-based database system, PostgreSQL.
