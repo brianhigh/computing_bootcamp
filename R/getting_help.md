@@ -12,11 +12,11 @@ You will learn about:
 * Free Online R Tutorials
 * Free R Books
 
-## Our Favorite Online R Courses
+## Our Favorite Free Online R Courses
 
 ### Roger Peng on YouTube (free)
 
-Beginners may want to start with [Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) by Roger Peng. See also: The 10-course [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
+Beginners may want to start with [Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) by Roger Peng. See also: The non-free [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
 
 ### Barton Poulson on Lynda.com (free with SPL library card)
 
@@ -30,7 +30,7 @@ If R scares you, watch [R for the Intimidated](https://www.datacamp.com/courses/
 
 edX offers an entire 8-course series on bioinformatics for free, starting with [Statistics and R for the Life Sciences](https://www.edx.org/course/statistics-r-life-sciences-harvardx-ph525-1x) by Rafael Irizarry and Michael Love.
 
-## Our Favorite Online R Tutorials
+## Our Favorite Free Online R Tutorials
 
 ### CodeSchool's Try-R
 
@@ -49,7 +49,7 @@ install_from_swirl("R Programming Alt")
 swirl()
 ```
 
-## R Books: UW-licensed eBooks
+## R Books: "Free" (UW-licensed) eBooks
 
 These are available at no cost to [UW](https://www.lib.washington.edu/) students, 
 staff, or faculty. The links we have provided (for the title text) are to the 
@@ -65,18 +65,18 @@ are some of our favorites.
 
 ## More of Our Favorite R Books
 
-The [UW](https://www.lib.washington.edu/) has all of these (in print editions) and the Seattle Public Library ([SPL](http://www.spl.org/))
+You can access these for "free" also. The [UW](https://www.lib.washington.edu/) has all of these (in print editions) and the Seattle Public Library ([SPL](http://www.spl.org/))
 has two of these as eBooks through O'Reilly's Safari website. Seattle residents
 may obtain a free SPL [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card) to gain access to these eBooks. The title text
 has been linked to the publisher's website for each book.
 
-* [R for Everyone: Advanced Analytics and Graphics](http://www.jaredlander.com/r-for-everyone/) by Jared P. Lander 
-    - ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22R+for+Everyone%3A+Advanced+Analytics+and+Graphics%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/0321888030/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22R+for+Everyone%3A+Advanced+Analytics+and+Graphics%22&Submit=Search) )
-* [R in Action: Data Analysis and Graphics with R](https://www.manning.com/books/r-in-action-second-edition) by Robert Kabacoff 
-    - ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1617291382/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&Submit=Search) )
-* [The Art of R Programming: A Tour of Statistical Software Design](https://www.nostarch.com/artofr.htm) by Norman Matloff 
-    - ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1593273843/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&Submit=Search) )
-* [Reproducible Research with R and R Studio](https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379) by Christopher Gandrud 
-    - ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Reproducible+Research+with+R+and+R+Studio%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1466572841/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Reproducible+Research+with+R+and+R+Studio%22&Submit=Search) )
-* [Data Science in R: A Case Studies Approach to Computational Reasoning and Problem Solving](https://www.crcpress.com/Data-Science-in-R-A-Case-Studies-Approach-to-Computational-Reasoning-and/Nolan-Lang/p/book/9781482234817) by Deborah Nolan 
-    - ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1482234815/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&Submit=Search) )
+* [R for Everyone: Advanced Analytics and Graphics](http://www.jaredlander.com/r-for-everyone/)
+    - by Jared P. Lander ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22R+for+Everyone%3A+Advanced+Analytics+and+Graphics%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/0321888030/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22R+for+Everyone%3A+Advanced+Analytics+and+Graphics%22&Submit=Search) )
+* [R in Action: Data Analysis and Graphics with R](https://www.manning.com/books/r-in-action-second-edition) 
+    - by Robert Kabacoff ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1617291382/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22R+in+Action%3A+Data+Analysis+and+Graphics+with+R%22&Submit=Search) )
+* [The Art of R Programming: A Tour of Statistical Software Design](https://www.nostarch.com/artofr.htm) 
+    - by Norman Matloff ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1593273843/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design%22&Submit=Search) )
+* [Reproducible Research with R and R Studio](https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379)
+    - by Christopher Gandrud ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Reproducible+Research+with+R+and+R+Studio%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1466572841/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Reproducible+Research+with+R+and+R+Studio%22&Submit=Search) )
+* [Data Science in R: A Case Studies Approach to Computational Reasoning and Problem Solving](https://www.crcpress.com/Data-Science-in-R-A-Case-Studies-Approach-to-Computational-Reasoning-and/Nolan-Lang/p/book/9781482234817)
+    - by Deborah Nolan ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1482234815/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&Submit=Search) )
