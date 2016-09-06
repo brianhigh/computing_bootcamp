@@ -127,12 +127,15 @@
 
 <p>You can access R&#39;s internal documentation with functions like:</p>
 
-<pre class = 'prettyprint lang-r'>help.start()                            # Open the top-level help index
+<pre class = 'prettyprint lang-r'># Example                               # Description
+# ------------------------------------- # --------------------------------------
+help.start()                            # Open the top-level help index
 help(vector)                            # Search the help system by topic
 ?matrix                                 # (same as above)
 help.search(&quot;RNA&quot;)                      # Search the help system by string
 ??hookworm                              # (same as above)
 apropos(&quot;array&quot;)                        # Find objects by partial name
+args(read.table)                        # Shows the arguments for a function
 example(data.frame)                     # Run the example code from the package
 vignette(package = &quot;data.table&quot;)        # Show list of vignettes for this package
 vignette(&quot;datatable-intro-vignette&quot;)    # Open this vignette in the help viewer

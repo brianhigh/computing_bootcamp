@@ -35,12 +35,15 @@ You will learn about:
 You can access R's internal documentation with functions like:
 
 ```{r, eval=FALSE}
+# Example                               # Description
+# ------------------------------------- # --------------------------------------
 help.start()                            # Open the top-level help index
 help(vector)                            # Search the help system by topic
 ?matrix                                 # (same as above)
 help.search("RNA")                      # Search the help system by string
 ??hookworm                              # (same as above)
 apropos("array")                        # Find objects by partial name
+args(read.table)                        # Shows the arguments for a function
 example(data.frame)                     # Run the example code from the package
 vignette(package = "data.table")        # Show list of vignettes for this package
 vignette("datatable-intro-vignette")    # Open this vignette in the help viewer
