@@ -32,15 +32,28 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 **Builtin Options:**
 
-- Bash (or any other shell)
-- Batch File
-- Powershell
+- Bash (or any other shell on Linux or OS X)
+- Batch File (Windows)
+- Powershell (Windows)
 
 **Other Options:**
 
 - R
 - Python
 - Perl
+
+## Tips
+
+- Use an editor that offers syntax high-lighting
+- Use soft tabs instead of hard tabs
+    - Most editors have an option to set TAB to be 4 spaces
+    - Code will appear consistent between editors and operating systems
+- Logically name variables and functions
+    - Names like "DATA_IN" and "DATA_OUT" instead of "FILE1", "FILE2", etc
+- Be consistent in your naming convention
+- Put comments in your scripts
+    - Explain why you are doing something isn't obvious
+    - Explain how something works if the code isn't clear
 
 # Automation
 
