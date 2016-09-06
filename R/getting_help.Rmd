@@ -32,13 +32,13 @@ You will learn about:
 
 For those who have not used R before and would like an excellent introduction to R by Roger Peng. These [videos](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) are from a 2012 online course _Introduction to Data Science with R_. See also: [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
 
-### Lynda.com (free for SPL library card holders)
+### Barton Poulson on Lynda.com
 
-You might prefer to watch (the somewhat gentler and more polished) Lynda.com course: [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html). This course is especially appropriate for total beginners to programming and to R. Watching all of the videos in this course will take you about 2-1/2 hours. It will be slightly harder to access, as you will need to have a Seattle Public Library (SPL) [card](http://www.spl.org/using-the-library/get-started/get-a-library-card) in order to watch it for free. (The course is not offered on YouTube.) 
+You might prefer to watch (the somewhat gentler and more polished) Lynda.com course: [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html). Appropriate for total beginners to programming and to R. About 2-1/2 hours of video. You can watch for free through Seattle Public Library (SPL) if have a [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card). Login to Lynda.com [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) to gain access. Lynda.com has several other courses on R and other data science topics.
 
 ### DataCamp (free with registration)
 
-Free 2-hour course: [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated).
+Free 2-hour course: [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg.
 
 ## Our Favorite Online R Tutorials
 
