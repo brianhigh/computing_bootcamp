@@ -1,0 +1,46 @@
+---
+title: "Basic Hardware and Network Troubleshooting"
+author: "Jim Hogan"
+date: "9/6/2016"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: no
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+
+## First, the Important Role of "Voodoo"
+
+We use this term to describe actions we commonly take that don't have a very scientific basis, but which oftentimes have a positive effect and that can save a lot of time.
+
+### Application Voodoo
+
+* Is one specific program working poorly?  Close and restart the application.
+
+### System Voodoo
+
+* Are many things not working or computer not usable?  Shutdown the computer and restart/reboot.
+
+## Second, rule out some basics
+
+### Are the computer and monitor getting power?  Check for loose power connections.
+<br>
+### No video? Check video cable.
+<br>
+### Suspect something like bad mouse of keyboard? Borrow a different one and try that.
+<br>
+### Did you recently plug in a new device or peripheral. Disconnect it.
+
+
+## Reducins the Problem Space
+
+### Does the problem follow *you* or the computer?

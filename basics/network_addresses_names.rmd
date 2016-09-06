@@ -1,0 +1,67 @@
+---
+title: "Network Addresses and Names"
+author: "Jim Hogan"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+## First an Example Network (Ours):
+
+![](../images/network_layout_600x460.png)
+
+## A Farther Look with Some Terms:
+
+![](../images/network_layout_400x360.png)<br><br>
+
+* **LAN**, or **Local**-Area Network<br><br>
+* **WAN**, or **Wide**-Area Network<br><br>
+* **Subnet**, a broader term describing logical subdivisions of a network
+
+
+
+
+## Some Important Addresses
+
+Your computer has various addresses to allow routing of network traffic to and from your computer.
+
+### Hardware (MAC) address 
+* A non-routable numeric hardware/physical address assigned to your "network interface card" or "NIC"
+* an example: 26:a5:b7:20:f0:35
+
+### Internet (IP) Address  
+* the routable numeric Internet (logical) address assigned to your NIC.
+* an example: 128.95.230.32
+* This form shows the address under Internet Protocol version 4
+* A newer version -- IPv6 -- is slowly supplanting version 4, but this should not concern you.
+
+## More about IP Addresses
+
+* This form (128.95.230.32) shows the address under Internet Protocol version 4 (IPv4).
+* A newer version -- IPv6 -- is slowly supplanting version 4, but this should not concern you.
+
+## Mapping Internet Names to Numbers
+
+### Host Name ("hostname") 
+* the character-based name assigned to your numeric Internet (IP) address
+* often used in short form, like "phage" 
+* effective use in networking relies on the "fully qualified" name. example: phage.deohs.washington.edu
+
+### This Depends on what is perhaps the world's largest phonebook:  The Domain Name System
+
+### (Insert DNS slideshow here)
+
+
+
+

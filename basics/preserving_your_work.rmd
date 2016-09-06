@@ -1,0 +1,31 @@
+---
+title: "Preserving Your Work"
+author: "Jim Hogan"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+
+## A Show of Hands:
+
+### Who of us has **never** lost hours of work on some project involving a computer?
+
+## A list of some common hazards:
+
+* Files sent as email attachments.
+* Files stored on portable devices like USB thumb drives.
+* Files overwritten or deleted by accident.
+* Files shared with other parties.
+* Files stored on a 3rd-party service.
