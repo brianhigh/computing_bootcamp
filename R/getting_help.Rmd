@@ -109,6 +109,8 @@ Basically, when posting questions:
 * Do you homework carefully
 * Be clear, specific, and thorough
 * Be respectful and mature
+    - I.e., be courteous (but not annoyingly so, sarcastic, or passive-aggressive)
+* Provide a [reproducible example](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example%20) of your problem
 
 ## Our Favorite Free Online R Courses
 
