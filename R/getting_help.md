@@ -8,9 +8,93 @@ Brian High
 
 You will learn about:
 
+* R's Internal Help Features
+* R Package Documentation
+* Support through Online Forums
+* How to Ask for Help
 * Free Online R Courses
 * Free Online R Tutorials
 * Free R Books
+
+## R's Internal Help Features
+
+You can access R's internal documentation with functions like:
+
+
+```r
+help.start()                            # Open the top-level help index
+help(vector)                            # Search the help system by topic
+?matrix                                 # (same as above)
+help.search("RNA")                      # Search the help system by string
+??hookworm                              # (same as above)
+apropos("array")                        # Find objects by partial name
+example(data.frame)                     # Run the example code from the package
+vignette(package = "data.table")        # Show list of vignettes for this package
+vignette("datatable-intro-vignette")    # Open this vignette in the help viewer
+RSiteSearch("tibble")                   # Search http://search.r-project.org
+demo(graphics)                          # Run the demo script for this package
+```
+
+As shown above, some help functions expect the argument to be quoted.
+
+The first link provided by `help.start()` goes to [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html). 
+
+See also: [R FAQ](https://cran.r-project.org/doc/FAQ/R-FAQ.html), 
+[Getting Help with R](https://www.r-project.org/help.html) (R Project), 
+and [Getting Help with R](https://support.rstudio.com/hc/en-us/articles/200552336-Getting-Help-with-R) (RStudio).
+
+## R Package Documentation
+
+A package will usually have documentation containing one or more of the following:
+
+* index
+* a DESCRIPTION file
+* guides for functions (with examples), classes, and data
+* vignettes, perhaps including tutorials and a FAQ
+* demos
+* a NEWS file
+
+The index for CRAN packages can be found using a URL like:
+
+```
+https://cran.r-project.org/web/packages/PACKAGE/index.html
+```
+
+... where PACKAGE would be replaced with the actual package name.
+
+Example: [tidyr package index](https://cran.r-project.org/web/packages/tidyr/index.html)
+
+## Support through Online Forums
+
+If you have searched (the online documentation and the web in general) and still 
+can't solve your problem, you can request help by posting to an online forum.
+
+### Help Forums
+
+* [r-help](https://stat.ethz.ch/mailman/listinfo/r-help) - primary support mailing list
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/r) - programming questions
+* [Cross Validated](http://stats.stackexchange.com/questions/tagged/r) - stats questions
+
+### General Discussion Forums
+
+* Reddit [R language](https://www.reddit.com/r/Rlanguage/)
+* Quora [R programming language](https://www.quora.com/topic/R-programming-language)
+
+## How to Ask for Help
+
+There are several guides to asking for help in a way which will not annoy the
+support forum.
+
+* [How to ask for R help](http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html)
+* [Three tips for posting good questions to R-help and Stack Overflow](https://www.r-bloggers.com/three-tips-for-posting-good-questions-to-r-help-and-stack-overflow/)
+* [Seeking Help](http://r-bio.github.io/seeking-help/)
+* [How to Get Help](https://www.youtube.com/watch?v=ZFaWxxzouCY) (Youtube video by Roger Peng)
+
+Basically, when posting questions:
+
+* Do you homework carefully
+* Be clear, specific, and thorough
+* Be respectful and mature
 
 ## Our Favorite Free Online R Courses
 

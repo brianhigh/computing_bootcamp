@@ -114,9 +114,94 @@
 <p>You will learn about:</p>
 
 <ul>
+<li>R&#39;s Internal Help Features</li>
+<li>R Package Documentation</li>
+<li>Support through Online Forums</li>
+<li>How to Ask for Help</li>
 <li>Free Online R Courses</li>
 <li>Free Online R Tutorials</li>
 <li>Free R Books</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>R&#39;s Internal Help Features</h2></hgroup><article  id="rs-internal-help-features" class="smaller ">
+
+<p>You can access R&#39;s internal documentation with functions like:</p>
+
+<pre class = 'prettyprint lang-r'>help.start()                            # Open the top-level help index
+help(vector)                            # Search the help system by topic
+?matrix                                 # (same as above)
+help.search(&quot;RNA&quot;)                      # Search the help system by string
+??hookworm                              # (same as above)
+apropos(&quot;array&quot;)                        # Find objects by partial name
+example(data.frame)                     # Run the example code from the package
+vignette(package = &quot;data.table&quot;)        # Show list of vignettes for this package
+vignette(&quot;datatable-intro-vignette&quot;)    # Open this vignette in the help viewer
+RSiteSearch(&quot;tibble&quot;)                   # Search http://search.r-project.org
+demo(graphics)                          # Run the demo script for this package</pre>
+
+<p>As shown above, some help functions expect the argument to be quoted.</p>
+
+<p>The first link provided by <code>help.start()</code> goes to <a href='https://cran.r-project.org/doc/manuals/r-release/R-intro.html' title=''>An Introduction to R</a>.</p>
+
+<p>See also: <a href='https://cran.r-project.org/doc/FAQ/R-FAQ.html' title=''>R FAQ</a>, <a href='https://www.r-project.org/help.html' title=''>Getting Help with R</a> (R Project), and <a href='https://support.rstudio.com/hc/en-us/articles/200552336-Getting-Help-with-R' title=''>Getting Help with R</a> (RStudio).</p>
+
+</article></slide><slide class=''><hgroup><h2>R Package Documentation</h2></hgroup><article  id="r-package-documentation" class="smaller ">
+
+<p>A package will usually have documentation containing one or more of the following:</p>
+
+<ul>
+<li>index</li>
+<li>a DESCRIPTION file</li>
+<li>guides for functions (with examples), classes, and data</li>
+<li>vignettes, perhaps including tutorials and a FAQ</li>
+<li>demos</li>
+<li>a NEWS file</li>
+</ul>
+
+<p>The index for CRAN packages can be found using a URL like:</p>
+
+<pre >https://cran.r-project.org/web/packages/PACKAGE/index.html</pre>
+
+<p>&#8230; where PACKAGE would be replaced with the actual package name.</p>
+
+<p>Example: <a href='https://cran.r-project.org/web/packages/tidyr/index.html' title=''>tidyr package index</a></p>
+
+</article></slide><slide class=''><hgroup><h2>Support through Online Forums</h2></hgroup><article  id="support-through-online-forums" class="smaller ">
+
+<p>If you have searched (the online documentation and the web in general) and still can&#39;t solve your problem, you can request help by posting to an online forum.</p>
+
+<h3>Help Forums</h3>
+
+<ul>
+<li><a href='https://stat.ethz.ch/mailman/listinfo/r-help' title=''>r-help</a> - primary support mailing list</li>
+<li><a href='http://stackoverflow.com/questions/tagged/r' title=''>Stack Overflow</a> - programming questions</li>
+<li><a href='http://stats.stackexchange.com/questions/tagged/r' title=''>Cross Validated</a> - stats questions</li>
+</ul>
+
+<h3>General Discussion Forums</h3>
+
+<ul>
+<li>Reddit <a href='https://www.reddit.com/r/Rlanguage/' title=''>R language</a></li>
+<li>Quora <a href='https://www.quora.com/topic/R-programming-language' title=''>R programming language</a></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>How to Ask for Help</h2></hgroup><article  id="how-to-ask-for-help" class="smaller ">
+
+<p>There are several guides to asking for help in a way which will not annoy the support forum.</p>
+
+<ul>
+<li><a href='http://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html' title=''>How to ask for R help</a></li>
+<li><a href='https://www.r-bloggers.com/three-tips-for-posting-good-questions-to-r-help-and-stack-overflow/' title=''>Three tips for posting good questions to R-help and Stack Overflow</a></li>
+<li><a href='http://r-bio.github.io/seeking-help/' title=''>Seeking Help</a></li>
+<li><a href='https://www.youtube.com/watch?v=ZFaWxxzouCY' title=''>How to Get Help</a> (Youtube video by Roger Peng)</li>
+</ul>
+
+<p>Basically, when posting questions:</p>
+
+<ul>
+<li>Do you homework carefully</li>
+<li>Be clear, specific, and thorough</li>
+<li>Be respectful and mature</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Our Favorite Free Online R Courses</h2></hgroup><article  id="our-favorite-free-online-r-courses" class="smaller ">
