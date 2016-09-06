@@ -157,7 +157,7 @@ The "Viewer" pane is where you can view and manipulate:
 
 There is a tab for each of these.
 
-## Orientation: Console
+## Orientation: Console Pane
 
 The Console is where you can type (or paste) commands at an interactive R 
 prompt.
