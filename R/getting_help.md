@@ -153,6 +153,7 @@ are some of our favorites.
 - [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler, M.Eng. An excellent reference, especially for those with a background in programming. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
 - [Introduction to data analysis and graphical presentation in biostatistics with R : statistics in the large](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71197447610001451) by Thomas W. MacFarland. (View online or download.)
 - [Introductory statistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71130982630001451) by Peter Dalgaard. (View online or download.)
+- [Biostatistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71176255050001451) by Babak Shahbaba. (View online or download.)
 
 ## More of Our Favorite R Books
 
