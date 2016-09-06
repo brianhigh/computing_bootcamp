@@ -229,7 +229,7 @@ when using this command.
 
 ## SQLite Example: Firefox History
 
-You Firefox web browsing history is stored in a SQLite database, `places.sqlite`.
+Your Firefox browsing history is stored in a SQLite database, `places.sqlite`.
 
 ```{r, eval=FALSE}
 library(RSQLite)

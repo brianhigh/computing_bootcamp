@@ -235,7 +235,7 @@ drv &lt;- dbDriver(&quot;SQLite&quot;)
 sqlfile &lt;- tempfile(tmpdir=&quot;~&quot;, fileext=&quot;.sqlite&quot;)
 sqlfile       # This will show the database filename.</pre>
 
-<pre >## [1] &quot;~/file60948911e7a.sqlite&quot;</pre>
+<pre >## [1] &quot;~/filef71725e7c5c.sqlite&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>con &lt;- dbConnect(drv, dbname = sqlfile)
 rs &lt;- dbWriteTable(con, &quot;bmi&quot;, bmi)</pre>
@@ -304,7 +304,7 @@ dbDisconnect(con)</pre>
 
 </article></slide><slide class=''><hgroup><h2>SQLite Example: Firefox History</h2></hgroup><article  id="sqlite-example-firefox-history" class="smaller ">
 
-<p>You Firefox web browsing history is stored in a SQLite database, <code>places.sqlite</code>.</p>
+<p>Your Firefox browsing history is stored in a SQLite database, <code>places.sqlite</code>.</p>
 
 <pre class = 'prettyprint lang-r'>library(RSQLite)
 ffhist &lt;- dbConnect(SQLite(), &#39;places.sqlite&#39;)   # Copy this file from &quot;Profiles&quot;

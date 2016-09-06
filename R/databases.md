@@ -171,7 +171,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file60948911e7a.sqlite"
+## [1] "~/filef71725e7c5c.sqlite"
 ```
 
 ```r
@@ -273,7 +273,7 @@ when using this command.
 
 ## SQLite Example: Firefox History
 
-You Firefox web browsing history is stored in a SQLite database, `places.sqlite`.
+Your Firefox browsing history is stored in a SQLite database, `places.sqlite`.
 
 
 ```r
