@@ -44,7 +44,7 @@ You will learn:
     - It integrates operations common to many data analysis workflows
 * You can use it for free on most computer systems
 * It is very popular, so your collaborators may already be using it
-* Very few alternatives (R-GUI, Rcmdr, JGR, RKWard) are as full-featured
+* Very few alternatives (R-GUI, Rcmdr, JGR, Visual Studio) are as full-featured
 * It performs well, is designed well, and is backed by a respected company
 
 Of course, feel free to use any R application that works best for you. Some
