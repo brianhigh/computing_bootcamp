@@ -34,7 +34,7 @@ For those who have not used R before and would like an excellent introduction to
 
 ### Barton Poulson on Lynda.com
 
-You might prefer to watch (the somewhat gentler and more polished) Lynda.com course: [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html). Appropriate for total beginners to programming and to R. About 2-1/2 hours of video. You can watch for free through Seattle Public Library (SPL) if have a [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card). Login to Lynda.com [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) to gain access. Lynda.com has several other courses on R and other data science topics.
+You might prefer to watch (the somewhat gentler and more polished) Lynda.com course: [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html). Appropriate for total beginners to programming and to R. About 2-1/2 hours of video. You can watch for free through Seattle Public Library (SPL) if have a [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card). Login to Lynda.com [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) to gain access. See also: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html), also by Barton Poulson (6 hours). 
 
 ### DataCamp (free with registration)
 
