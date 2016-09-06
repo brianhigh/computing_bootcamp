@@ -13,8 +13,20 @@ John Yocum
 
 ## Popular Choices
 
-- Zotero (free, and open source)
-- EndNote ($79 per user)
-- Mendeley (free)
+- Zotero 
+    - Free, and open source
+    - Windows, Mac, and Linux
+- EndNote
+    - $79 per user
+    - Windows and Mac
+- Mendeley
+    - Free
+    - Windows, Mac, and Linux
+    
+## Which to choose?
+
+- What are other members of your group using?
+- Does it support the software or operating system you use?
+- Try them out, and see what feels best to you
 
 ## Questions?

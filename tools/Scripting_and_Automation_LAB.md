@@ -22,6 +22,17 @@ SET IRFANVIEW="C:\Program Files (x86)\IrfanView\i_view32.exe"
 
 ## Basic Elements: Logic
 
+- Basic If-Else logic
+    - No builtin If-Else-If (modern languages have this)
+
+```
+IF EXIST %FILE% (
+  echo "file found"
+) ELSE (
+  echo "file not found""
+)
+```
+
 ## Basic Elements: Loops
 
 - Batch files support the common FOR loop
