@@ -24,7 +24,7 @@ You might prefer to watch (the somewhat gentler and more polished) Lynda.com cou
 
 ### Annika Salzberg on DataCamp (free with registration)
 
-Watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg, if R scares you. Very gentle.
+Watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) by Annika Salzberg (2 hrs.), if R scares you. Very gentle.
 
 ## Our Favorite Online R Tutorials
 
