@@ -147,10 +147,11 @@ staff, or faculty. The links we have provided (for the title text) are to the
 UW-licenced copy. There are many more R books available through the UW, but these
 are some of our favorites.
 
-- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451) by Manas A. Pathak. (View online or download.) For readers who already know one other programming language.
-- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451) by Gregg Hartvigsen. For absolute beginners: a slower and more thorough tour of R.
-- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451)  by Nicholas J. Horton and Ken Kleinman. A reference of short examples, with longer case studies at the end.
-- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler, M.Eng. An excellent reference, especially for those with a background in programming. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
+- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451) by Manas A. Pathak. (View online or download.)
+- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451) by Gregg Hartvigsen.
+- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451) by Nicholas J. Horton and Ken Kleinman.
+- [R for Stata Users](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71161669170001451) by Robert A. Muenchen and Joseph Hilbe. (View online or download.)
+- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler and M.Eng. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
 - [Introduction to data analysis and graphical presentation in biostatistics with R : statistics in the large](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71197447610001451) by Thomas W. MacFarland. (View online or download.)
 - [Introductory statistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71130982630001451) by Peter Dalgaard. (View online or download.)
 - [Biostatistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71176255050001451) by Babak Shahbaba. (View online or download.)
