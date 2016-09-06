@@ -18,14 +18,60 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
-## What's the hold up?
+## Where can bottlenecks exist?
 
-- Insufficient system resources
-- Unable to fully utilize system resources
+- Human (User)
+- Software
+- Computing Resources
+
+## How are they slowing you down?
+
+**Human**
+
+- Insufficient Training
+- Not enough people to do the task
+- Task may be limited to one person, and they're as fast as possible
+
+**Software**
+
+- Unoptimized code
+- Poor usability (slowing down user)
+- Wrong tool for the job
+
+**Computing Resources**
+
+- Insufficient CPU
+- Lack of memory (RAM)
+- Slow storage
+
+## What can be done about them?
+
+**Human**
+
+- Improve training or education
+- Hire more people
+- Find a faster person
+
+**Software**
+
+- Improve usability (macros, physical interface, etc)
+- Select a different tool
+- If using in-house code, review and optimize where possible
+
+**Computing Resources**
+
+- Upgrade CPU (faster clock speed or more cores)
+- Increase RAM (or memory availability)
+- Faster storage (Solid State Disk)
 
 ## Identifying Improvements
 
-- Monitor resource utilization
+- Ask users if usability has improved
 - Track time to completion
+    - Overall
+    - Each stage or process
+- Monitor resource utilization
+    - CPU, Memory, and Storage
+
 
 ## Questions?
