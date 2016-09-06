@@ -25,6 +25,7 @@ You will learn:
 * What R is (and isn't)
 * Why you might choose R over the alternatives
 * How to use R
+* How to Avoid R while Using R
 
 ## What is R?
 
@@ -64,3 +65,16 @@ You will learn:
 * Import data, process it with R commands, produce plots, and save results
 * Get online help
 * Learn how to do more with R
+
+## How to Avoid R while Using R
+
+If you would like to use R (by using a point-and-click GUI application) and 
+would also like to minimize or avoid writing R code, try one of these:
+
+* [R-Commander](http://www.rcommander.com/) ([Rcmdr](http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/))
+* [Deducer](www.deducer.org)
+* [Rattle](http://rattle.togaware.com/)
+* [R AnalyticFlow](http://r.analyticflow.com/en/)
+* [GraphR](https://cran.r-project.org/web/packages/GrapheR/index.html)
+
+We will not be spending any time with these in this course, however. Sorry.
