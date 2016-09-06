@@ -171,7 +171,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file148529a0cb9e.sqlite"
+## [1] "~/file1c4a40a951f3.sqlite"
 ```
 
 ```r
@@ -287,7 +287,6 @@ domains <- suffix_extract(domain(hits$url))
 library(dplyr)
 domains %<>% group_by(domain) %>% summarise(count=n()) %>% arrange(desc(count))
 domains$domain <- factor(domains$domain, as.character(domains$domain))
-domains
 
 library(ggplot2)
 ggplot(head(domains, 10), aes(x=domain, y=count)) +

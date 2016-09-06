@@ -235,7 +235,7 @@ drv &lt;- dbDriver(&quot;SQLite&quot;)
 sqlfile &lt;- tempfile(tmpdir=&quot;~&quot;, fileext=&quot;.sqlite&quot;)
 sqlfile       # This will show the database filename.</pre>
 
-<pre >## [1] &quot;~/file148529a0cb9e.sqlite&quot;</pre>
+<pre >## [1] &quot;~/file1c4a40a951f3.sqlite&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>con &lt;- dbConnect(drv, dbname = sqlfile)
 rs &lt;- dbWriteTable(con, &quot;bmi&quot;, bmi)</pre>
@@ -316,7 +316,6 @@ domains &lt;- suffix_extract(domain(hits$url))
 library(dplyr)
 domains %&lt;&gt;% group_by(domain) %&gt;% summarise(count=n()) %&gt;% arrange(desc(count))
 domains$domain &lt;- factor(domains$domain, as.character(domains$domain))
-domains
 
 library(ggplot2)
 ggplot(head(domains, 10), aes(x=domain, y=count)) +
