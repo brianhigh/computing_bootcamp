@@ -30,7 +30,7 @@ You will learn about:
 
 ### Roger Peng on YouTube (free)
 
-For those who have not used R before and would like an excellent introduction to R by Roger Peng. These [videos](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) are from Roger's 2012 online course Introduction to Data Science with R and can be watched on YouTube without enrolling in the course. See also: [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) based on R, with Roger Peng, Jeff Leek, and Brian Caffo. Roger wrote the book [R Programming for Data Science](https://leanpub.com/rprogramming).
+For those who have not used R before and would like an excellent introduction to R by Roger Peng. These [videos](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx) are from a 2012 online course _Introduction to Data Science with R_. See also: [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo. And: [R Programming for Data Science](https://leanpub.com/rprogramming) by Roger Peng.
 
 ### Lynda.com (free for SPL library card holders)
 
