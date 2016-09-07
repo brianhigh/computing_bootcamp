@@ -47,6 +47,7 @@ args(read.table)                        # Shows the arguments for a function
 example(data.frame)                     # Run the example code from the package
 vignette(package = "data.table")        # Show list of vignettes for this package
 vignette("datatable-intro-vignette")    # Open this vignette in the help viewer
+browseVignettes("grid")                 # Show an HTML page of vignettes for a topic
 RSiteSearch("tibble")                   # Search http://search.r-project.org
 demo(graphics)                          # Run the demo script for this package
 ```
