@@ -105,21 +105,20 @@ Basically, when posting questions:
 
 ## Our Favorite Free Online R Courses
 
-### Roger Peng on YouTube (free)
-
-[Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx). See: [his books](https://leanpub.com/u/rdpeng). See also: The non-free [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science) with Roger Peng, Jeff Leek, and Brian Caffo.
-
-### Barton Poulson on Lynda.com (free with SPL library card)
-
-[Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html), (2-1/2 hours). Login [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org) using your SPL [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card) to gain free access. See: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html), (6 hours). 
-
-### Annika Salzberg on DataCamp (free with registration)
-
-If R scares you, watch [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated), (2 hours). Very gentle.
-
-### Rafael Irizarry and Michael Love on edX (free)
-
-An entire 8-course series, starting with [Statistics and R for the Life Sciences](https://www.edx.org/course/statistics-r-life-sciences-harvardx-ph525-1x).
+* [Introduction to Data Science with R](https://www.youtube.com/watch?v=EiKxy5IecUw&list=PLycnP7USbo1XGmTeFAAzr79e8V7zr7Ccx)
+    - By Roger Peng - YouTube - **free**
+    - See: [his books](https://leanpub.com/u/rdpeng)
+    - See also: The non-free [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science)
+* [Up and Running with R](http://www.lynda.com/R-tutorials/Up-Running-R/120612-2.html) (2-1/2 hours)
+    - By Barton Poulson - Lynda.com - **free with SPL library card**
+    - Login [through SPL](https://ezproxy.spl.org/login?url=http://lynda.com/portal/sip?org=spl.org)
+    - using your SPL [library card](http://www.spl.org/using-the-library/get-started/get-a-library-card) to gain free access.
+    - See: [R Statistics Essential Training](https://www.lynda.com/R-tutorials/R-Statistics-Essential-Training/142447-2.html) (6 hours)
+* [R for the Intimidated](https://www.datacamp.com/courses/r-for-the-intimidated) (2 hours)
+    - By Annika Salzberg - DataCamp - **free with registration**
+* [Statistics and R for the Life Sciences](https://www.edx.org/course/statistics-r-life-sciences-harvardx-ph525-1x)
+    - By Rafael Irizarry and Michael Love - edX - **free with registration**
+    - Part of an entire 8-course series
 
 ## Our Favorite Free Online R Tutorials
 
