@@ -21,17 +21,46 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ## Benefits
 
 - Scalability
-- Secure (data isn't stored on a laptop or desktop)
+    - Unlike desktop database engines, hosted solutions are designed for 100s to 1000s of users
+- Secure
+    - Data isn't stored on a laptop or desktop which could be stolen
 - Multiuser Access
+    - Multiple people can access the same database at the same time
 - Availability
+    - Access isn't dependent on a desktop being powered on
 
-## Available Options
+## Available Options within DEOHS
 
-- Shared database servers
-    - MySQL (Crud)
-- Dedicated database servers
+**Shared Database Servers**
+    - MySQL
+    - PostgreSQL
+
+**Dedicated Database Servers**
     - MongoDB
     - Apache Cassandra
-    - Others (FileMaker, etc)
+    - FileMaker
+    - And, more..
+
+## Available Options outside of DEOHS
+
+**Cloud Services**
+
+- Amazon Relational Database Service
+- Azure SQL Database
+
+**On Campus**
+
+- SQLShare
+
+## Recommendations
+
+**DEOHS Hosted Database**
+
+- Most usage will be from computers within the department
+- Performing large numbers of queries that return lots of data
+
+**Outside of DEOHS**
+
+- Performing computation in the cloud
 
 # Questions?
