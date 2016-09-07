@@ -18,15 +18,34 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
-## Really, what is it?
+## Defining Aspects
 
-- Velocity (new data coming in at a high rate)
-- Volume (100s to 1000s of gigabytes)
+- Velocity
+    - New data coming in at a high rate
+- Volume
+    - 100s to 1000s of gigabytes
 
-## What does it require?
+## Requirements
 
-- More computing resources (storage, CPU, and memory)
-- New tools
+- More computing resources
+    - Storage
+    - CPU
+    - Memory (RAM)
+- New tools and techniques to manage or process data
+    - Distributed databases
+    - Parallelization of processes (a single CPU is likely to be a bottleneck)
 - New challenges with existing tools
+    - Loading entire dataset into memory no longer possible
+    
+## Example Tools
+
+**Distributed Databases**
+
+- Apache Cassandra
+- MongoDB
+
+**Job Control**
+
+- GNU Parallel
 
 ## Questions?
