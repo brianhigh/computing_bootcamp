@@ -50,6 +50,27 @@ John Yocum
 - Does the software vendor recommend a particular CPU brand?
     - Both AMD and Intel have special optmizations in their CPUs. Software in some cases is tune to perform best on a particular brand or generation.
 
+# Recommendations and Tips
+
+## Recommendations
+
+**Stata**
+
+- [Hardware Requirements](http://www.stata.com/support/faqs/windows/hardware-requirements/)
+- Minimum
+    - 1GB RAM
+    - 1GB Disk Space
+
+
+**ArcGIS**
+
+- [Hardware Requirements](http://desktop.arcgis.com/en/system-requirements/latest/arcgis-desktop-system-requirements.htm#ESRI_SECTION1_4D839759F08146819E273A6DDD01DCBB)
+- Minimum
+    - 2.2Ghz CPU
+    - 2GB RAM
+    - 2.8GB Disk Space
+    - Video Card with 64MB RAM
+
 ## Closing Tips
 
 - Check with your software vendor (if using commercial software)
