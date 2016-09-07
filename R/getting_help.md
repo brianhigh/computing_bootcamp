@@ -147,14 +147,18 @@ staff, or faculty. The links we have provided (for the title text) are to the
 UW-licenced copy. There are many more R books available through the UW, but these
 are some of our favorites.
 
-- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451) by Manas A. Pathak. (View online or download.)
-- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451) by Gregg Hartvigsen.
-- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451) by Nicholas J. Horton and Ken Kleinman.
-- [R for Stata Users](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71161669170001451) by Robert A. Muenchen and Joseph Hilbe. (View online or download.)
-- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) by Joseph Adler and M.Eng. There is a [second edition out](http://shop.oreilly.com/product/0636920022008.do) now, but the UW does not have access to it.
-- [Introduction to data analysis and graphical presentation in biostatistics with R : statistics in the large](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71197447610001451) by Thomas W. MacFarland. (View online or download.)
-- [Introductory statistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71130982630001451) by Peter Dalgaard. (View online or download.)
-- [Biostatistics with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71176255050001451) by Babak Shahbaba. (View online or download.)
+- [Beginning Data Science with R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71215329450001451)
+    - by Manas A. Pathak
+- [A Primer in Biological Data Analysis and Visualization Using R](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71204319410001451)
+    - by Gregg Hartvigsen
+- [Using R and RStudio for data management, statistical analysis, and graphics](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71226299210001451)
+    - by Nicholas J. Horton and Ken Kleinman
+- [R for Stata Users](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71161669170001451)
+    - by Robert A. Muenchen and Joseph Hilbe
+- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) First Edition (The UW does not currently have the [second edition](http://shop.oreilly.com/product/0636920022008.do).)
+    - by Joseph Adler and M. Eng
+- [R by example](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71109296790001451)
+    - by Jim Albert and Maria L. Rizzo
 
 ## More of Our Favorite R Books
 
