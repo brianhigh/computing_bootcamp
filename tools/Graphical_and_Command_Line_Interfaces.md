@@ -50,4 +50,25 @@ John Yocum
 - Steeper learning curve
 - Typically more difficult to "discover" commands and features
 
-# Questions
+# Final Thoughts and Questions
+
+## Making the right choice
+
+**Questions to Ask Yourself**
+
+- Will I be performing this same task more than once?
+    - If you are, a command line tool may be better, due to simpler automation
+- Are you more visually oriented?
+    - If you are, a graphical application may provide a better experience
+- Will I be working on this remotely a lot (running application on a server)?
+    - If you are, a command line tool typically provides a smoother experience
+
+## Conclusion
+
+- There is no single correct interface type
+    - Pick what works best for your needs
+    - But, also consider the tools others in your group are using
+- If you want to automate everything, go command line interface
+- Graphical tools tend to be better at interactive tasks, like email, web browsing
+
+## Questions
