@@ -71,7 +71,9 @@ Our Sharp and Ricoh MFPs (Imaging Units), do:
 
 - Requires a printing budget, and costs the same as printing
 - If you have a Husky Card, you can link it to your account
-    - Just swipe the card, and follow the prompts
+    - Just swipe the card (reader is on the right-side), and follow the prompts
+
+![](images/Printing_Copier_Login.png)
 
 ## Scanning
 
