@@ -279,7 +279,84 @@ str(diversity)
 ```
 
 If we were not reading a `CSV` file, but perhaps a tab-delimited file, we could
-use the same sort of syntax, but with the `read.table()` function.
+use the same syntax, but with the `read.table()` function and a different `sep`
+character.
+
+## Saving our work
+
+We can, and should, script all transformation we do on our data, and keep
+those scripts and the intermediate data files we create.
+
+How could we save our changes to `diversity` to make it easier to use the 
+data later?
+
+
+```r
+# Save our data frame for later
+write.csv(diversity, "diversity.csv", row.names = FALSE)
+
+# Read 'diversity.csv' into a new data frame
+diversity <- read.csv('diversity.csv', colClasses = c('id' = 'character'))
+```
+
+When re-reading the file, we are able to use a simpler `read.csv` command, since
+much of the data transformation had already been done before the file was saved,
+or is done by default by the `read.csv` command. 
+
+For example, `read.csv` will label the columns and figure out which data types 
+to use, though we need to tell it not to make `id` a factor, which it would by 
+default. These behaviors may be turned off. See `help(read.table)` for more 
+information about`read.csv` and `read.table`.
+
+## Other ways to do it: `read_delim`
+
+Newer R packages offer more computationally efficient functions for doing
+common tasks like importing data files. 
+
+Here is how you could perform the same import with `read_delim` from the 
+*readr* package.
+
+
+```r
+# install.packages("readr", repos = 'http://cran.r-project.org')
+library(readr)
+
+diversity <- read_delim('prepped.csv', delim = ',', skip = 1, na = c('', 'no_data'),
+                        col_names = c('id', 'diet', 'lat', 'lon', 'nz', 'site'))
+
+diversity$diet <- as.factor(diversity$diet)
+diversity$site <- as.factor(diversity$site)
+```
+
+`read_delim()` will read the file into a `tbl_df` object. `read_delim` will
+not convert character strings to factors by default. In fact, if you want 
+factors, you have create tham after the import. The *readr* package and its
+functions and data types are recent innovations and promise to offer enhanced
+functionality and higher performance.
+
+## Other ways to do it: `fread`
+
+And here is how you might try this with `fread` from the *data.table* package.
+
+
+```r
+# install.packages("data.table", repos = 'http://cran.r-project.org')
+library(data.table)
+
+diversity <- fread('prepped.csv', header = FALSE, skip = 1, sep = ',',
+                   na.strings = c('', 'no_data'), stringsAsFactors = FALSE,
+                   col.names = c('id', 'diet', 'lat', 'lon', 'nz', 'site'))
+
+factor.cols <- c('diet', 'site')
+diversity[, (factor.cols) := lapply(.SD, as.factor), .SDcols = factor.cols]
+```
+
+`data.table` offers an enhanced bracket-notation for subsetting, filtering, 
+and modifying data. It also offersing indexing for fast sorting and joins, 
+much like a database.
+
+`fread()` will return a `data.table`. Both `fread` and `data.table` are highly 
+optimized, and will run much faster when used with large data files.
 
 ## What is this data good for?
 
@@ -298,7 +375,7 @@ ggmap(usa) + geom_point(aes(x = lon, y = lat, color = nz), data = diversity) +
 
 ## ETL in a single function
 
-With only `read.csv()` (or `read.table()`) we were able to:
+With only `read.csv()` or `read.table()` we were able to:
 
 * **extract** the data we wanted (all except the first line) from the raw data file
 * **transform** it to the proper data types (classes) and properly identify `NA` values

@@ -337,7 +337,58 @@ str(diversity)</pre>
 ##  $ nz  : int  481 181 296 139 398 91 834 565 267 620 ...
 ##  $ site: Factor w/ 9 levels &quot;UBERON:feces&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</pre>
 
-<p>If we were not reading a <code>CSV</code> file, but perhaps a tab-delimited file, we could use the same sort of syntax, but with the <code>read.table()</code> function.</p>
+<p>If we were not reading a <code>CSV</code> file, but perhaps a tab-delimited file, we could use the same syntax, but with the <code>read.table()</code> function and a different <code>sep</code> character.</p>
+
+</article></slide><slide class=''><hgroup><h2>Saving our work</h2></hgroup><article  id="saving-our-work" class="smaller ">
+
+<p>We can, and should, script all transformation we do on our data, and keep those scripts and the intermediate data files we create.</p>
+
+<p>How could we save our changes to <code>diversity</code> to make it easier to use the data later?</p>
+
+<pre class = 'prettyprint lang-r'># Save our data frame for later
+write.csv(diversity, &quot;diversity.csv&quot;, row.names = FALSE)
+
+# Read &#39;diversity.csv&#39; into a new data frame
+diversity &lt;- read.csv(&#39;diversity.csv&#39;, colClasses = c(&#39;id&#39; = &#39;character&#39;))</pre>
+
+<p>When re-reading the file, we are able to use a simpler <code>read.csv</code> command, since much of the data transformation had already been done before the file was saved, or is done by default by the <code>read.csv</code> command.</p>
+
+<p>For example, <code>read.csv</code> will label the columns and figure out which data types to use, though we need to tell it not to make <code>id</code> a factor, which it would by default. These behaviors may be turned off. See <code>help(read.table)</code> for more information about<code>read.csv</code> and <code>read.table</code>.</p>
+
+</article></slide><slide class=''><hgroup><h2>Other ways to do it: <code>read_delim</code></h2></hgroup><article  id="other-ways-to-do-it-read_delim" class="smaller ">
+
+<p>Newer R packages offer more computationally efficient functions for doing common tasks like importing data files.</p>
+
+<p>Here is how you could perform the same import with <code>read_delim</code> from the <em>readr</em> package.</p>
+
+<pre class = 'prettyprint lang-r'># install.packages(&quot;readr&quot;, repos = &#39;http://cran.r-project.org&#39;)
+library(readr)
+
+diversity &lt;- read_delim(&#39;prepped.csv&#39;, delim = &#39;,&#39;, skip = 1, na = c(&#39;&#39;, &#39;no_data&#39;),
+                        col_names = c(&#39;id&#39;, &#39;diet&#39;, &#39;lat&#39;, &#39;lon&#39;, &#39;nz&#39;, &#39;site&#39;))
+
+diversity$diet &lt;- as.factor(diversity$diet)
+diversity$site &lt;- as.factor(diversity$site)</pre>
+
+<p><code>read_delim()</code> will read the file into a <code>tbl_df</code> object. <code>read_delim</code> will not convert character strings to factors by default. In fact, if you want factors, you have create tham after the import. The <em>readr</em> package and its functions and data types are recent innovations and promise to offer enhanced functionality and higher performance.</p>
+
+</article></slide><slide class=''><hgroup><h2>Other ways to do it: <code>fread</code></h2></hgroup><article  id="other-ways-to-do-it-fread" class="smaller ">
+
+<p>And here is how you might try this with <code>fread</code> from the <em>data.table</em> package.</p>
+
+<pre class = 'prettyprint lang-r'># install.packages(&quot;data.table&quot;, repos = &#39;http://cran.r-project.org&#39;)
+library(data.table)
+
+diversity &lt;- fread(&#39;prepped.csv&#39;, header = FALSE, skip = 1, sep = &#39;,&#39;,
+                   na.strings = c(&#39;&#39;, &#39;no_data&#39;), stringsAsFactors = FALSE,
+                   col.names = c(&#39;id&#39;, &#39;diet&#39;, &#39;lat&#39;, &#39;lon&#39;, &#39;nz&#39;, &#39;site&#39;))
+
+factor.cols &lt;- c(&#39;diet&#39;, &#39;site&#39;)
+diversity[, (factor.cols) := lapply(.SD, as.factor), .SDcols = factor.cols]</pre>
+
+<p><code>data.table</code> offers an enhanced bracket-notation for subsetting, filtering, and modifying data. It also offersing indexing for fast sorting and joins, much like a database.</p>
+
+<p><code>fread()</code> will return a <code>data.table</code>. Both <code>fread</code> and <code>data.table</code> are highly optimized, and will run much faster when used with large data files.</p>
 
 </article></slide><slide class=''><hgroup><h2>What is this data good for?</h2></hgroup><article  id="what-is-this-data-good-for" class="smaller ">
 
@@ -353,7 +404,7 @@ ggmap(usa) + geom_point(aes(x = lon, y = lat, color = nz), data = diversity) +
 
 </article></slide><slide class=''><hgroup><h2>ETL in a single function</h2></hgroup><article  id="etl-in-a-single-function" class="smaller ">
 
-<p>With only <code>read.csv()</code> (or <code>read.table()</code>) we were able to:</p>
+<p>With only <code>read.csv()</code> or <code>read.table()</code> we were able to:</p>
 
 <ul>
 <li><strong>extract</strong> the data we wanted (all except the first line) from the raw data file</li>
