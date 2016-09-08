@@ -203,7 +203,7 @@ use the same sort of syntax, but with the `read.table()` function.
 
 ## What is this data good for?
 
-```{r, warning=FALSE}
+```{r diversity_map, warning=FALSE}
 # install.packages(c("ggplot2", "ggmap"), repos = 'http://cran.r-project.org')
 library(ggplot2); library(ggmap)
 
