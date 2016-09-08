@@ -72,8 +72,6 @@ We will often use the terms "import", "read", "load", etc. interchangeably.
 
 We can use data that comes with packages by using the `data()` function.
 
-Example:
-
 ```{r}
 # Load the data from the package and show the first few rows
 data(airquality)
@@ -83,7 +81,8 @@ head(airquality)
 The `data()` function loads the dataset supplied into the current workspace
 envinronment (memory) so that you can work with it like an object you created.
 You can look at the structure of the object with `str()` and you can learn about
-the dataset with `help()`.
+the dataset with `help()`. List the many datasets that come with R's *datasets* 
+package with `library(help = "datasets")`. The *MASS* package offers many more.
 
 ## Enter data manually
 
@@ -235,9 +234,10 @@ in the data analysis world.
 
 Here is a short list of some of the popular data wrangling functions.
 
-* `base` R functions: `names()`, `subset()`, `merge()`, `match()`, `gsub()`, `unique()`
-* `dplyr` functions: `arrange()`, `select()`, `rename()`, `mutate()`, `summarize()`
-* `tidyr` functions: `gather()`, `separate()`, `unite()`, `spread()`
+* `base` functions: `names`, `subset`, `merge`, `match`, `gsub`, `unique`, `sort`
+* `stats` functions: `aggregate`, `reshape`
+* `dplyr` functions: `select`, `filter`, `group_by`, `summarize`, `arrange`, `join`, `mutate`
+* `tidyr` functions: `gather`, `separate`, `unite`, `spread`
 
 We will spend more time with these packages and functions in a later module.
 
