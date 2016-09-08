@@ -24,8 +24,6 @@ You will learn:
 
 * What data management is
 * Common data management tasks in R
-* Packages and functions used to manage data in R
-* How to use these tools to perform data management tasks
 
 ## What is data management?
 
