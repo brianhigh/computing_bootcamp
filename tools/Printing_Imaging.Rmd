@@ -34,6 +34,8 @@ Our Sharp and Ricoh MFPs (Imaging Units), do:
 
 - A DEOHS computer account, and a password
 - A printing budget assigned to you
+    - Confirm with your supervisor what budgets to use
+    - Submit a ticket via RT with your budget numbers 
 
 **When Printing**
 
@@ -49,6 +51,8 @@ Our Sharp and Ricoh MFPs (Imaging Units), do:
 
 1) Click on the Imaging-Roo, or Imaging-MHSC icon on your desktop
 2) Double-click on the printer you wish to add
+
+![](images/Printing_Icon.png)
 
 **Apple Desktops**
 
