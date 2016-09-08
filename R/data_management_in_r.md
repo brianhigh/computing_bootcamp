@@ -395,7 +395,7 @@ in the data analysis world.
 Here is a short list of some of the popular data wrangling functions.
 
 * `base` functions: `names`, `subset`, `merge`, `match`, `gsub`, `unique`, `sort`
-* `stats` functions: `aggregate`, `reshape`
+* `stats` functions: `aggregate`, `reshape`, `na.omit`
 * `dplyr` functions: `select`, `filter`, `group_by`, `summarize`, `arrange`, `join`, `mutate`
 * `tidyr` functions: `gather`, `separate`, `unite`, `spread`
 
