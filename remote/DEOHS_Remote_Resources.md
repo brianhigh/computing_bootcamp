@@ -6,19 +6,64 @@ John Yocum
 
 ## Storage
 
-- Multiple Access Methods (RD, SFTP, etc.)
+- Multiple Access Methods
+    - Remote Desktop
+    - SFTP
 - Scalable
-- Secure (physically, and virtually)
+- Secure
+    - Data is stored in a secure server room, and in UW operated data centers
+- Reliable
+    - Data is backed up both on and off site
+    - Disk redundancy
+    - Power redundancy
 
 ## Remote Computing
 
-- Windows Remote Desktop (Waldo, HAL, etc)
-- Linux via X2Go (Plasmid, Phage, etc)
-- SSH (and other protocols)
+- Windows Remote Desktop
+    - Waldo
+    - HAL
+- Linux via X2Go
+    - Plasmid
+    - Phage
+- SSH
+    - Plasmid
+    - Phage
+
+## Remote Computing (Windows)
+
+**Applications**
+
+- R
+- Microsoft Office
+- Notepad++
+- Thunderbird
+- And, much more.
+    - Most common apps installed on Windows desktops are available.
+
+## Remote Computing (Linux)
+
+**Applications**
+
+- Vim
+- R
+- LibreOffice
+- RStudio
+- Firefox
+- And, much more.
 
 ## Databases
 
-- MySQL (Crud)
-- Flexible
+**Shared Database Servers**
+
+- MySQL
+- PostgreSQL
+
+**Dedicated Database Servers**
+
+- Flexible options, we've setup several different kinds
+    - FileMaker
+    - Cassandra
+    - KairosDB
+    - MongoDB
 
 ## Questions?
