@@ -52,6 +52,51 @@ Here is a short list of some of the more popular data wrangling (or munging) fun
 
 *Data munging is one of [the three sexy skills of data geeks](http://medriscoll.com/post/4740157098/the-three-sexy-skills-of-data-geeks). -- @medriscoll*
 
+## Quick Example: Iris Dataset
+
+We can do data wrangling and plotting in a single command. First let's look at a 
+dataset.
+
+
+```r
+library(datasets)
+data(iris)
+str(iris)
+```
+
+```
+## 'data.frame':	150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+```
+
+## Quick Example: Pipe to `ggplot`
+
+We can "pipe" data directly to `ggplot`.
+
+
+```r
+library(dplyr); library(ggplot2)
+iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
+```
+
+![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
+
+## Quick Example: Mutation on the Fly
+
+Therefore, we can also pipe to `mutate` and then to `ggplot`.
+
+
+```r
+iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
+         ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
+```
+
+![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
+
 ## Example: Wrangling "Malaria Cases"
 
 Search the World Bank database using the *WDI* package to find cases of Malaria 
@@ -84,7 +129,7 @@ str(Malaria)                              # Show the structure of the dataset
 ##  $ year       : num  2011 2010 2009 2008 2007 ...
 ```
 
-## Example: Wrangling "Malaria Cases"
+## Getting 2-Letter Country Codes
 
 Get the 2-letter country codes (ISO 3166) for Central America. A search for 
 various terms in `WDI` does not turn up the list we need. Get this list elsewhere.
@@ -113,9 +158,9 @@ if (! file.exists(iso2c.file)) {
 }
 ```
 
-## Example: Wrangling "Malaria Cases"
+## Importing Country Codes
 
-Import the CSV file and clean up the data using the *dplyr* package:
+Import the CSV file and then clean up the data using the *dplyr* package:
 
 * read the CSV file with `read.csv`
 * filter for Central American countries with `filter`
@@ -123,7 +168,6 @@ Import the CSV file and clean up the data using the *dplyr* package:
 
 
 ```r
-library(dplyr)
 codes <- read.csv(iso2c.file, header=TRUE, stringsAsFactors = FALSE)
 codesCA <- codes %>% filter(sub.region == 'Central America') %>% 
     select(c(name, iso2c = alpha.2)) %>% arrange(iso2c)
@@ -142,7 +186,7 @@ codesCA
 ## 8 El Salvador    SV
 ```
 
-## Example: Wrangling "Malaria Cases"
+## Wrangling "Malaria Cases" Dataset
 
 Using the *dplyr* package (and a few others), clean up the data:
 
@@ -169,62 +213,17 @@ head(MalariaCA)
 ## 6    BZ  Belize   150 2010
 ```
 
-## Example: Wrangling "Malaria Cases"
+## Plotting Malaria Cases by Year
 
 Make a stacked-bar plot of Malaria cases by year and colored by country.
 
 
 ```r
-library(ggplot2)
 ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity") + 
     ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
 ```
 
 ![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
-
-## Quick Example: `mutate` and `ggplot`
-
-We can do data wrangling and plotting in a single command. First let's look at a 
-dataset.
-
-
-```r
-library(datasets)
-data(iris)
-str(iris)
-```
-
-```
-## 'data.frame':	150 obs. of  5 variables:
-##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
-##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
-##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
-##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
-##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
-```
-
-## Quick Example: `mutate` and `ggplot`
-
-We can "pipe" data directly to `ggplot`.
-
-
-```r
-iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
-```
-
-![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
-
-## Quick Example: `mutate` and `ggplot`
-
-Therefore, we can also pipe to `mutate` and then to `ggplot`.
-
-
-```r
-iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
-         ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
-```
-
-![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
 
 ## So what about "tidy data"?
 
@@ -288,7 +287,7 @@ See how the columns are named? What tidy data requirement has been violated?
 * Each observation forms a row.
 * Each type of observational unit forms a table.
 
-## Plot with facets
+## qplot: Plot with facets
 
 
 ```r
@@ -298,7 +297,7 @@ qplot(x=Sepal.Width, y=Sepal.Length, data=iris, geom=c("point"),
 
 ![](data_wrangling_in_r_files/figure-html/facet-1-1.png)
 
-## Tidy Data Example: Iris
+## Iris Data Wrangling
 
 How would we facet on flower part **and** `Species` (in a single plot)?
 
@@ -410,7 +409,7 @@ This is now a tidy dataset because each each variable forms a column
 and no column (name) contains any other kind of information. Now  we can facet
 on both `flower_part` **_and_** `Species`.
 
-## Plot with facets
+## qplot: Plot with more facets
 
 
 ```r
@@ -420,7 +419,7 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
 
 ![](data_wrangling_in_r_files/figure-html/facet-2-1.png)
 
-## Plot with facets
+## ggplot: Plot with more facets
 
 
 ```r
@@ -430,23 +429,6 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
 ```
 
 ![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
-
-## More Data Wrangling
-
-If you have time and interest, you may continue with 
-[more data wrangling](https://github.com/brianhigh/research-computing/blob/master/lab/Data_Wrangling.md), 
-courtesy of Noah Simon and Ali Shojaie.
-
-Or you might want to try the Swirl tutorials for [Getting and Cleaning Data](https://github.com/swirldev/swirl_courses/tree/master/Getting_and_Cleaning_Data). 
-
-
-```r
-library(swirl)
-install_from_swirl("Getting and Cleaning Data")
-swirl()
-```
-
-We also have one more example...
 
 ## Example: Malaria Prevalence
 
@@ -472,7 +454,7 @@ MalCA <- MalPop %>% mutate(prev = 100000 * SH.STA.MALR/SP.POP.TOTL) %>%
     na.omit() %>% filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
 ```
 
-## Example: Malaria Prevalence
+## Malaria Prevalence Bar Plot
 
 
 ```r
@@ -482,42 +464,124 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
 
 ![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)
 
-## Example: Malaria Prevalence
+## Malaria Prevalence Line Plot
 
 Let's try a line plot to show the trends for each country more clearly.
 
 
 ```r
-# Make a line plot with various colors and line types (by country)
-g <- ggplot(MalCA, aes(x=year, y=prev, color=country, linetype=country)) + 
+g <- ggplot(MalCA, aes(x = year, y = prev, color = country, linetype = country)) + 
      geom_line()
-     
-# Set plot title and axis labels and set theme (light)
-g <- g + ggtitle(paste("Malaria Prevalence in Central America", "\n", 
-         "by Year (Source: World Bank)", sep="")) + 
-     labs(x="Year", y="log( Malaria cases per 100,000 people )") + theme_light()
+g
+```
 
-# Use a log transform and add appropriate y-axis ticks and breaks
-g <- g + scale_y_continuous(trans="log", 
-             breaks=c(0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500))
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-1-1.png)
 
-# Add line labels to right of plot, widen the canvas area, and remove the legend
-g <- g + geom_text(data = subset(MalCA, year==2011), hjust = -0.1, 
-               aes(label = country, colour = country, x = Inf, y = prev)) +
-      theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
-      theme(legend.position="none")
-     
-# Disable clipping to allow line labels to appear outside of the plot area
+## Y-Axis Scale Log Transform
+
+Log transform the y-axis to spread out the lines in lower end of the range.
+
+
+```r
+g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500))
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)
+
+## Add Title, Axis Labels, and Caption
+
+Add a plot title, axis labels and a caption.
+
+
+```r
+g <- g + ggtitle("Malaria Prevalence in Central America") + 
+     labs(x = "Year", y = "log ( Malaria cases per 100,000 people )",
+          caption = "Source: World Development Indicators (WDI), World Bank")
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-3-1.png)
+
+## Define Custom Plot Theme
+
+Define a custom theme to set the text options, margins, and remove the legend.
+
+
+```r
+text.color <- "#25383C"        # Dark Slate Grey
+my.theme <- theme(plot.caption=element_text(margin=margin(t=15), face = "italic", 
+                                            size = 8, hjust = 0.5, color=text.color),
+                  axis.title.x = element_text(colour = text.color), 
+                  axis.title.y = element_text(colour = text.color),
+                  axis.text.x = element_text(colour = text.color),
+                  axis.text.y = element_text(colour = text.color),
+                  plot.title = element_text(hjust = 0.5, color=text.color),
+                  plot.margin = unit(c(.2, 3.5, .2, .2), "lines"), 
+                  legend.position = "none")
+```
+
+## Apply Theme and Set Color Hue
+
+Apply the "minimal" theme, add the custom theme, and adjust the color hue for 
+the plotted lines and their labels.
+
+
+```r
+g <- g + theme_minimal() + my.theme + scale_color_hue(c=120, l=50)
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-4-1.png)
+
+## Add Line Labels
+
+And add line labels to right of plot.
+
+
+```r
+g <- g + geom_text(data = subset(MalCA, year == 2011), hjust = 0, size = 3,
+               aes(label = country, colour = country, x = Inf, y = prev)) 
+```
+
+To do this, we need to disable clipping to allow the labels to appear outside 
+of the plot area. And for this, we need to create a grid graphical object ("grob").
+
+
+```r
 gt <- ggplotGrob(g)
 gt$layout$clip[gt$layout$name == "panel"] <- "off"
 ```
 
-## Example: Malaria Prevalence
+To plot this object, we will need to load the *grid* package.
 
 
 ```r
 library(grid)
+```
+
+And now to display the the final plot ...
+
+## Malaria Prevalence
+
+
+```r
 grid.draw(gt)
 ```
 
 ![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)
+
+## More Data Wrangling
+
+If you have time and interest, you may continue with 
+[more data wrangling](https://github.com/brianhigh/research-computing/blob/master/lab/Data_Wrangling.md), 
+courtesy of Noah Simon and Ali Shojaie.
+
+Or you might want to try the Swirl tutorials for [Getting and Cleaning Data](https://github.com/swirldev/swirl_courses/tree/master/Getting_and_Cleaning_Data). 
+
+
+```r
+library(swirl)
+install_from_swirl("Getting and Cleaning Data")
+swirl()
+```
