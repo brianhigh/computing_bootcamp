@@ -415,6 +415,17 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
 
 ![](data_wrangling_in_r_files/figure-html/facet-2-1.png)<!-- -->
 
+## Plot with facets
+
+
+```r
+ggplot(data=iris_spread, aes(x=Width, y=Length)) + 
+    geom_point(size=I(0.5)) + facet_grid(Species~flower_part, scale="free") +
+    geom_smooth(method="lm") + theme_bw(base_size=16)
+```
+
+![](data_wrangling_in_r_files/figure-html/facet-3-1.png)<!-- -->
+
 ## More Data Wrangling
 
 If you have time and interest, you may continue with 
