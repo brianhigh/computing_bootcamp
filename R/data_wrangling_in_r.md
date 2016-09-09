@@ -250,14 +250,13 @@ and many other popular packages, has also given us the [tidyr](https://cran.r-pr
 From `library(help="tidyr")`, we will find some of the most important functions
 in this package:
 
-```
-gather                  Gather columns into key-value pairs.
-spread                  Spread a key-value pair across multiple columns.
-
-extract                 Extract one column into multiple columns.
-separate                Separate one column into multiple columns.
-unite                   Unite multiple columns into one.
-```
+| Function    | Description
+| ----------- | -----------
+| gather      | Gather columns into key-value pairs.
+| spread      | Spread a key-value pair across multiple columns.
+| extract     | Extract one column into multiple columns.
+| separate    | Separate one column into multiple columns.
+| unite       | Unite multiple columns into one.
 
 Let's see some of these in action with an example...
 
@@ -282,6 +281,10 @@ str(iris)
 ```
 
 See how the columns are named? What tidy data requirement has been violated?
+
+* Each variable forms a column.
+* Each observation forms a row.
+* Each type of observational unit forms a table.
 
 ## Plot with facets
 
@@ -492,7 +495,7 @@ g <- ggplot(MalCA, aes(x=year, y=prev, color=country, linetype=country)) +
                aes(label = country, colour = country, x = Inf, y = prev)) +
      theme(legend.position="none") + 
      theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
-     scale_y_continuous(breaks=c(0.2, 0.5, 1, 2, 5, 10, 25, 50, 100, 200, 500), 
+     scale_y_continuous(breaks=c(0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500), 
                         trans="log")
 
 gt <- ggplotGrob(g)
