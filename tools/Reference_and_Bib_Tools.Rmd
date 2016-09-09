@@ -20,8 +20,8 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ## Benefits
 
-- Better handling of large numbers of references
-- Extracts reference information from documents
+- Better handling of large numbers of references compared to builtin tools
+- Imports reference information from documents and journals
 - Maintain a database of references for future papers
 - Ability to share references with peers
 
@@ -31,7 +31,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
     - Free, and open source
     - Windows, Mac, and Linux
 - EndNote
-    - $79 per user
+    - $70 per user
     - Windows and Mac
 - Mendeley
     - Free
@@ -40,7 +40,9 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ## Which to choose?
 
 - What are other members of your group using?
+    - Using the same software will improve data sharing
 - Does it support the software or operating system you use?
 - Try them out, and see what feels best to you
+    - There is no one best choice, each has strenghts and weaknesses
 
 ## Questions?

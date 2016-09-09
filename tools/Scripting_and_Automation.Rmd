@@ -54,6 +54,11 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Put comments in your scripts
     - Explain why you are doing something isn't obvious
     - Explain how something works if the code isn't clear
+- Use version control software
+    - Track code changes
+    - Simplify life when multiple people are working on the same scripts
+- Don't reinvent the wheel
+    - Use packages or libraries when possible
 
 # Automation
 
@@ -61,6 +66,19 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 - Depends on scripting
 - Consistent environment (software and data format)
+- Planning
+    - Do a dry-run of the processes before automating them
+    - Confirm you'll have enough time and resources for everything to finish
+    - What will go wrong if the automated process fails
+    
+## Tips
+
+- Document it
+    - What does it do
+    - What does it depend on
+    - Which computer is it running on (for tasks run on a scheduler)
+- Don't reinvent the wheel
+    - Check to make sure no one else has already come up with a solution
 
 ## Examples
 
