@@ -36,7 +36,16 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Mendeley
     - Free
     - Windows, Mac, and Linux
-    
+
+## Issues
+
+- Web browser (Firefox, Chrome, etc) no longer shows my reference manager
+    - Check to see if the browser addon is still enabled
+- Word no longer shows my reference manager
+    - When a Word addin crashes, it can become disabled
+- Zotero running slowly
+    - Huge libraries of PDFs (several GB) appear to slow it down
+
 ## Which to choose?
 
 - What are other members of your group using?
