@@ -178,7 +178,7 @@ ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity"
     ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)<!-- -->
 
 ## Quick Example: `mutate` and `ggplot`
 
@@ -210,7 +210,7 @@ We can "pipe" data directly to `ggplot`.
 iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)<!-- -->
 
 ## Quick Example: `mutate` and `ggplot`
 
@@ -222,7 +222,7 @@ iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
          ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)<!-- -->
 
 ## So what about "tidy data"?
 
@@ -291,7 +291,7 @@ qplot(x=Sepal.Width, y=Sepal.Length, data=iris, geom=c("point"),
       color=Species, facets=Species~.)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-1-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-1-1.png)<!-- -->
 
 ## Tidy Data Example: Iris
 
@@ -413,7 +413,7 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
       color=Species, facets=flower_part~Species)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-2-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-2-1.png)<!-- -->
 
 ## Plot with facets
 
@@ -424,7 +424,7 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
     geom_smooth(method="lm") + theme_bw(base_size=16)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-3-1.png)<!-- -->
 
 ## More Data Wrangling
 
@@ -440,3 +440,81 @@ library(swirl)
 install_from_swirl("Getting and Cleaning Data")
 swirl()
 ```
+
+We also have one more example...
+
+## Example: Malaria Prevalence
+
+Let's calculate the Malaria prevalence as the count of Malaria cases per 100,000
+people for each of the countries of Central America and Mexico. We will need
+to know the total population for each contry for each year.
+
+
+```r
+WDIsearch("population, total")          # Search database for indicator
+```
+
+```
+##           indicator                name 
+##       "SP.POP.TOTL" "Population, total"
+```
+
+```r
+Pop <- WDI(indicator='SP.POP.TOTL')     # Fetch dataset by indicator
+MalPop <- inner_join(Malaria, Pop, by = c("country", "iso2c", "year"))
+
+MalCA <- MalPop %>% mutate(prev = 100000 * SH.STA.MALR/SP.POP.TOTL) %>%
+    na.omit() %>% filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
+```
+
+## Example: Malaria Prevalence
+
+
+```r
+g <- ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
+     ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)")
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)<!-- -->
+
+## Example: Malaria Prevalence
+
+We can improve the plot a little. Let's use a colorblnd-friendly pallette and
+reverse the order of the countries in the legend.
+
+
+```r
+# Convert to a factor so we can reverse the levels and the order in the legend
+MalCA$country <- as.factor(MalCA$country)
+MalCA$country <- factor(MalCA$country, levels = rev(levels(MalCA$country)))
+
+# Define a color-blind-friendly pallette for plotting 10 colors. 
+# See: http://www.cookbook-r.com/Graphs/Colors_%28ggplot2%29/
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", 
+               "#0072B2", "#D55E00", "#CC79A7", "#996633", 
+               "#999999", "#000000")
+```
+
+## Example: Malaria Prevalence
+
+
+```r
+g <- ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
+     ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)") +
+     scale_fill_manual(values=cbPalette)
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-2-1.png)<!-- -->
+
+## Example: Malaria Prevalence
+
+
+```r
+g <- g + labs(x="Year", y="Malaria cases per 100,000 people") + 
+     guides(fill=guide_legend(title="Country"))
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-3-1.png)<!-- -->
