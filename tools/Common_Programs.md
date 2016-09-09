@@ -21,7 +21,11 @@ Elliot Norwood
 ## Thunderbird
 
 - Local Folders
-    - Not on mail server, not accessible anywhere
+    - Not on mail server, not accessible everywhere
+    
+- Opening attachments
+    - Opening directly may but the file in a temporary directory
+    - Save files to a known location first to avoid losing work
 
 ## Office
 
@@ -41,19 +45,18 @@ Elliot Norwood
     - Otherwise it can be enabled for a document in the options
 
 
-
 ## 7-zip
-- encryption
+
+- You can right-click any file and get a 7-zip option
+- When you "add a file to archive" it gives several settings, including password protection (encryption)
 
 
 ## Cloud storage
+
 - Dropbox
     - Folder is in user profile by default, DEOHS profiles have a 1 GB quota
     - Can move folder in options, best place is in User Local directory
 
-- Google Drive
-- OneDrive
-    - HIPAA Compliant
-
-** Both have UW Branded options
-** More complient with sesitive data 
+- OneDrive & Google Drive
+    - Both have UW Branded options
+    - More complient with sesitive data
