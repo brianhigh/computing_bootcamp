@@ -50,6 +50,20 @@ John Yocum
 - Steeper learning curve
 - Typically more difficult to "discover" commands and features
 
+## The Pipeline
+
+- Chain the output from one application to another application's input
+- Many utilities can be chained to form a long pipeline
+- Information is passed in memory, not via disk
+
+**Sorting output from ls (directory listing)**
+
+![](images/Graphical_Command_Line_Pipeline_ls.png)
+
+And, sorted in reverse order:
+
+![](images/Graphical_Command_Line_Pipeline_sort.png)
+
 # Final Thoughts and Questions
 
 ## Making the right choice
