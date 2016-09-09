@@ -1,0 +1,70 @@
+---
+title: "Common Programs and Issues"
+author: "Elliot Norwood"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```    
+
+
+## Web Browsers
+
+- Built-in PDF readers
+   - Do not always render complex PDFs well or work with forms
+   - Can switch browsers to use Adobe plugin, or download PDFs and open in Adobe apps
+  
+- Tabs
+   - Tabs are very useful but take up resources
+   - Especially on intensive pages with Flash or Javascript
+  
+- Private browsing and clearing cache
+
+
+## Thunderbird
+
+- Local Folders
+    - Not on mail server, not accessible anywhere
+
+## Office
+
+- Corrupt documents
+    - Copying contents to new document sometimes works
+    - Or open in LibreOffice:
+
+- LibreOffice
+    - Open Source Office alternative
+    - Can open standard Office files, and save to Office formats
+
+
+## Acrobat / Reader
+
+- Enabling Javascript for forms
+    - A pop-up often shows up when JavaScript needs to be enabled
+    - Otherwise it can be enabled for a document in the options
+
+
+
+## 7-zip
+- encryption
+
+
+## Cloud storage
+- Dropbox
+    - Folder is in user profile by default, DEOHS profiles have a 1 GB quota
+    - Can move folder in options, best place is in User Local directory
+
+- OneDrive & Google Drive
+    - Both have UW Branded options
+    - More complient with sesitive data
