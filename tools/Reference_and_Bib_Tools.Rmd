@@ -31,7 +31,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
     - Free, and open source
     - Windows, Mac, and Linux
 - EndNote
-    - $70 per user
+    - $70 per computer
     - Windows and Mac
 - Mendeley
     - Free
