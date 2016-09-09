@@ -4,6 +4,8 @@ Brian High
 
 
 
+
+
 ## Learning Objectives
 
 You will learn:
@@ -12,6 +14,7 @@ You will learn:
 * What "tidy data" is and how to achieve it
 * Packages and functions used to tidy and wrangle data in R
 * How to tidy and wrangle data with R
+* How to create and customize plots with `qplot` and `ggplot`
 
 ## What is "data wrangling"?
 
@@ -97,135 +100,7 @@ iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
 
 ![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
 
-## Example: Wrangling "Malaria Cases"
-
-Search the World Bank database using the *WDI* package to find cases of Malaria 
-in Central America (and Mexico) and plot the count of cases by country and year.
-
-Start by searching the database for the term "malaria cases".
-
-
-```r
-library(WDI)
-WDIsearch("malaria cases")                # Search by (partial) report name
-```
-
-```
-##      indicator          name                                     
-## [1,] "SH.MLR.CSES.TOTL" "Reported clinical malaria cases (total)"
-## [2,] "SH.STA.MALR"      "Malaria cases reported"
-```
-
-```r
-Malaria <- WDI(indicator='SH.STA.MALR')   # Fetch dataset by indicator
-str(Malaria)                              # Show the structure of the dataset
-```
-
-```
-## 'data.frame':	1806 obs. of  4 variables:
-##  $ iso2c      : chr  "1A" "1A" "1A" "1A" ...
-##  $ country    : chr  "Arab World" "Arab World" "Arab World" "Arab World" ...
-##  $ SH.STA.MALR: num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ year       : num  2011 2010 2009 2008 2007 ...
-```
-
-## Getting 2-Letter Country Codes
-
-Get the 2-letter country codes (ISO 3166) for Central America. A search for 
-various terms in `WDI` does not turn up the list we need. Get this list elsewhere.
-
-There is a *ISOcodes* package, but its `ISO_3166_2` dataset does not include 
-the sub-region names. See: `library(help="ISOcodes")` 
-
-The list, with sub-region names, was found by searching (Googling) for these terms:
-
-`"iso 3166" "sub-region" filetype:csv`
-
-
-```r
-data.folder <- 'data'
-dir.create(data.folder, showWarnings = FALSE)   # Create data folder if needed
-
-iso2c.file <- file.path(data.folder, 'iso2c.csv')
-
-# Only download the file if it does not already exist
-if (! file.exists(iso2c.file)) {
-    # Split URL into several variables so the line doesn't wrap :p
-    site <- 'https://raw.githubusercontent.com'
-    repo <- 'lukes/ISO-3166-Countries-with-Regional-Codes'
-    file <- 'master/all/all.csv'
-    download.file(paste(site, repo, file, sep='/'), iso2c.file)
-}
-```
-
-## Importing Country Codes
-
-Import the CSV file and then clean up the data using the *dplyr* package:
-
-* read the CSV file with `read.csv`
-* filter for Central American countries with `filter`
-* select the only the two columns we need with `select`
-
-
-```r
-codes <- read.csv(iso2c.file, header=TRUE, stringsAsFactors = FALSE)
-codesCA <- codes %>% filter(sub.region == 'Central America') %>% 
-    select(c(name, iso2c = alpha.2)) %>% arrange(iso2c)
-codesCA
-```
-
-```
-##          name iso2c
-## 1      Belize    BZ
-## 2  Costa Rica    CR
-## 3   Guatemala    GT
-## 4    Honduras    HN
-## 5      Mexico    MX
-## 6   Nicaragua    NI
-## 7      Panama    PA
-## 8 El Salvador    SV
-```
-
-## Wrangling "Malaria Cases" Dataset
-
-Using the *dplyr* package (and a few others), clean up the data:
-
-* "Pipe" data between operations using `%>%` (from the *magrittr* package)
-* rename columns with the `rename` function
-* remove NAs with the `na.omit` function (from the *stats* package)
-* filter by country with `filter` using the `%in%` (match) operator
-* sort by 2-letter country code and year with `arrange`
-
-
-```r
-MalariaCA <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
-    filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
-head(MalariaCA)
-```
-
-```
-##   iso2c country cases year
-## 1    BZ  Belize  1549 2005
-## 2    BZ  Belize   844 2006
-## 3    BZ  Belize   845 2007
-## 4    BZ  Belize   540 2008
-## 5    BZ  Belize   256 2009
-## 6    BZ  Belize   150 2010
-```
-
-## Plotting Malaria Cases by Year
-
-Make a stacked-bar plot of Malaria cases by year and colored by country.
-
-
-```r
-ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity") + 
-    ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
-```
-
-![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
-
-## So what about "tidy data"?
+## Tidy Data
 
 *[data tidying](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html): structuring datasets to facilitate analysis -- @hadleywickham*
 
@@ -239,7 +114,7 @@ So far, our datasets have all come with this basic structure.
 
 Let's look at some "untidy" data...
 
-## Untidy data: Aaargh!!
+## Untidy Data: Aaargh!!
 
 ![](images/spreadsheet.jpg)
 
@@ -430,6 +305,134 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
 
 ![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
 
+## Example: Wrangling Malaria Cases
+
+Search the World Bank database using the *WDI* package to find cases of Malaria 
+in Central America (and Mexico) and plot the count of cases by country and year.
+
+
+```r
+library(WDI)
+WDIsearch("malaria cases")                # Search by (partial) report name
+```
+
+```
+##      indicator          name                                     
+## [1,] "SH.MLR.CSES.TOTL" "Reported clinical malaria cases (total)"
+## [2,] "SH.STA.MALR"      "Malaria cases reported"
+```
+
+```r
+Malaria <- WDI(indicator='SH.STA.MALR')   # Fetch dataset by indicator
+str(Malaria)                              # Show the structure of the dataset
+```
+
+```
+## 'data.frame':	1806 obs. of  4 variables:
+##  $ iso2c      : chr  "1A" "1A" "1A" "1A" ...
+##  $ country    : chr  "Arab World" "Arab World" "Arab World" "Arab World" ...
+##  $ SH.STA.MALR: num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ year       : num  2011 2010 2009 2008 2007 ...
+```
+
+NOTE: The default year range for a `WDI()` query is: 2005 - 2011.
+
+## Getting 2-Letter Country Codes
+
+Get the 2-letter country codes (ISO 3166) for Central America. A search for 
+various terms in `WDI` does not turn up the list we need. Get this list elsewhere.
+
+There is a *ISOcodes* package, but its `ISO_3166_2` dataset does not include 
+the sub-region names. See: `library(help="ISOcodes")` 
+
+The list, with sub-region names, was found by searching (Googling) for these terms:
+
+`"iso 3166" "sub-region" filetype:csv`
+
+
+```r
+data.folder <- 'data'
+dir.create(data.folder, showWarnings = FALSE)   # Create data folder if needed
+
+iso2c.file <- file.path(data.folder, 'iso2c.csv')
+
+# Only download the file if it does not already exist
+if (! file.exists(iso2c.file)) {
+    # Split URL into several variables so the line doesn't wrap :p
+    site <- 'https://raw.githubusercontent.com'
+    repo <- 'lukes/ISO-3166-Countries-with-Regional-Codes'
+    file <- 'master/all/all.csv'
+    download.file(paste(site, repo, file, sep='/'), iso2c.file)
+}
+```
+
+## Wrangling Country Codes
+
+Import the CSV file and then clean up the data using the *dplyr* package:
+
+* read the CSV file with `read.csv`
+* filter for Central American countries with `filter`
+* select the only the two columns we need with `select`
+
+
+```r
+codes <- read.csv(iso2c.file, header=TRUE, stringsAsFactors = FALSE)
+codesCA <- codes %>% filter(sub.region == 'Central America') %>% 
+    select(c(name, iso2c = alpha.2)) %>% arrange(iso2c)
+codesCA
+```
+
+```
+##          name iso2c
+## 1      Belize    BZ
+## 2  Costa Rica    CR
+## 3   Guatemala    GT
+## 4    Honduras    HN
+## 5      Mexico    MX
+## 6   Nicaragua    NI
+## 7      Panama    PA
+## 8 El Salvador    SV
+```
+
+## Wrangling Malaria Cases
+
+Using the *dplyr* package (and a few others), clean up the data:
+
+* "Pipe" data between operations using `%>%` (from the *magrittr* package)
+* rename columns with the `rename` function
+* remove NAs with the `na.omit` function (from the *stats* package)
+* filter by country with `filter` using the `%in%` (match) operator
+* sort by 2-letter country code and year with `arrange`
+
+
+```r
+MalariaCA <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
+    filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
+head(MalariaCA)
+```
+
+```
+##   iso2c country cases year
+## 1    BZ  Belize  1549 2005
+## 2    BZ  Belize   844 2006
+## 3    BZ  Belize   845 2007
+## 4    BZ  Belize   540 2008
+## 5    BZ  Belize   256 2009
+## 6    BZ  Belize   150 2010
+```
+
+## Plotting Malaria Cases by Year
+
+Make a stacked-bar plot of Malaria cases by year and colored by country.
+
+
+```r
+ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity") + 
+    ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
+
 ## Example: Malaria Prevalence
 
 Let's calculate the Malaria prevalence as the count of Malaria cases per 100,000
@@ -495,8 +498,10 @@ Add a plot title, axis labels and a caption.
 
 
 ```r
-g <- g + ggtitle("Malaria Prevalence in Central America") + 
-     labs(x = "Year", y = "log ( Malaria cases per 100,000 people )",
+g <- g + ggtitle("Malaria Prevalence in Central America", 
+                 subtitle = paste('Reported cases per 100,000 people (',
+                   min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
+     labs(x = "Year", y = "log ( Malaria Prevalence )",
           caption = "Source: World Development Indicators (WDI), World Bank")
 g
 ```
@@ -510,15 +515,17 @@ Define a custom theme to set the text options, margins, and remove the legend.
 
 ```r
 text.color <- "#25383C"        # Dark Slate Grey
-my.theme <- theme(plot.caption=element_text(margin=margin(t=15), face = "italic", 
-                                            size = 8, hjust = 0.5, color=text.color),
-                  axis.title.x = element_text(colour = text.color), 
-                  axis.title.y = element_text(colour = text.color),
-                  axis.text.x = element_text(colour = text.color),
-                  axis.text.y = element_text(colour = text.color),
-                  plot.title = element_text(hjust = 0.5, color=text.color),
+
+my.title <- element_text(hjust = 0.5, color=text.color)
+my.text <- element_text(colour = text.color)
+my.caption <- element_text(margin=margin(t=15), face = "italic", 
+                           size = 8, hjust = 0.5, color=text.color)
+
+my.theme <- theme(axis.title.x = my.title, axis.title.y = my.title,
+                  axis.text.x = my.text, axis.text.y = my.text,
+                  plot.title = my.title, plot.subtitle = my.title,
                   plot.margin = unit(c(.2, 3.5, .2, .2), "lines"), 
-                  legend.position = "none")
+                  plot.caption = my.caption, legend.position = "none")
 ```
 
 ## Apply Theme and Set Color Hue
@@ -540,7 +547,7 @@ And add line labels to right of plot.
 
 
 ```r
-g <- g + geom_text(data = subset(MalCA, year == 2011), hjust = 0, size = 3,
+g <- g + geom_text(data = subset(MalCA, year == max(MalCA$year)), hjust = 0, size = 3,
                aes(label = country, colour = country, x = Inf, y = prev)) 
 ```
 
