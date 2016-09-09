@@ -197,7 +197,7 @@ Let's look at some "untidy" data...
 ## Tidying data
 
 [Hadley Wickham](https://github.com/hadley), creator of the *ggplot2*, *dplyr*, 
-and may other popular packages, has also given us the [tidyr](https://cran.r-project.org/web/packages/tidyr/index.html) package.
+and many other popular packages, has also given us the [tidyr](https://cran.r-project.org/web/packages/tidyr/index.html) package.
 
 From `library(help="tidyr")`, we will find some of the most important functions
 in this package:
