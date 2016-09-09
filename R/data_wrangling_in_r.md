@@ -178,7 +178,7 @@ ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity"
     ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
 
 ## Quick Example: `mutate` and `ggplot`
 
@@ -210,7 +210,7 @@ We can "pipe" data directly to `ggplot`.
 iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
 
 ## Quick Example: `mutate` and `ggplot`
 
@@ -222,7 +222,7 @@ iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
          ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
 
 ## So what about "tidy data"?
 
@@ -291,7 +291,7 @@ qplot(x=Sepal.Width, y=Sepal.Length, data=iris, geom=c("point"),
       color=Species, facets=Species~.)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-1-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/facet-1-1.png)
 
 ## Tidy Data Example: Iris
 
@@ -413,7 +413,7 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
       color=Species, facets=flower_part~Species)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-2-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/facet-2-1.png)
 
 ## Plot with facets
 
@@ -424,7 +424,7 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
     geom_smooth(method="lm") + theme_bw(base_size=16)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-3-1.png)<!-- -->
+![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
 
 ## More Data Wrangling
 
