@@ -372,11 +372,11 @@ g <- g + ggtitle(paste("Malaria Prevalence in Central America", "\n",
          "by Year (Source: World Bank)", sep="")) + 
      labs(x="Year", y="log( Malaria cases per 100,000 people )") + theme_light()
 
-# Use a log transform and add appropriate y-axis ticks and labels
+# Use a log transform and add appropriate y-axis ticks and breaks
 g <- g + scale_y_continuous(trans="log", 
              breaks=c(0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500))
 
-# Add line labels to left of plot, widen canvas area, and remove legend
+# Add line labels to right of plot, widen the canvas area, and remove the legend
 g <- g + geom_text(data = subset(MalCA, year==2011), hjust = -0.1, 
                aes(label = country, colour = country, x = Inf, y = prev)) +
       theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
