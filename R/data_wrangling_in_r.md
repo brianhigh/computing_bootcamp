@@ -471,50 +471,40 @@ MalCA <- MalPop %>% mutate(prev = 100000 * SH.STA.MALR/SP.POP.TOTL) %>%
 
 
 ```r
-g <- ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
+ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
      ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)")
-g
 ```
 
 ![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)
 
 ## Example: Malaria Prevalence
 
-We can improve the plot a little. Let's use a colorblnd-friendly pallette and
-reverse the order of the countries in the legend.
+Let's try a line plot (with a lot of customizations) ...
 
 
 ```r
-# Convert to a factor so we can reverse the levels and the order in the legend
-MalCA$country <- as.factor(MalCA$country)
-MalCA$country <- factor(MalCA$country, levels = rev(levels(MalCA$country)))
+g <- ggplot(MalCA, aes(x=year, y=prev, color=country, linetype=country)) + 
+     geom_line() +
+     ggtitle(paste("Malaria Prevalence in Central America", "\n", 
+         "by Year (Source: World Bank)", sep="")) +
+     labs(x="Year", y="log( Malaria cases per 100,000 people )") + theme_light() +
+     geom_text(data = subset(MalCA, year==2011), hjust = -0.1, 
+               aes(label = country, colour = country, x = Inf, y = prev)) +
+     theme(legend.position="none") + 
+     theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
+     scale_y_continuous(breaks=c(0.2, 0.5, 1, 2, 5, 10, 25, 50, 100, 200, 500), 
+                        trans="log")
 
-# Define a color-blind-friendly pallette for plotting 10 colors. 
-# See: http://www.cookbook-r.com/Graphs/Colors_%28ggplot2%29/
-cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", 
-               "#0072B2", "#D55E00", "#CC79A7", "#996633", 
-               "#999999", "#000000")
+gt <- ggplotGrob(g)
+gt$layout$clip[gt$layout$name == "panel"] <- "off"
 ```
 
 ## Example: Malaria Prevalence
 
 
 ```r
-g <- ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
-     ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)") +
-     scale_fill_manual(values=cbPalette)
-g
+library(grid)
+grid.draw(gt)
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-2-1.png)
-
-## Example: Malaria Prevalence
-
-
-```r
-g <- g + labs(x="Year", y="Malaria cases per 100,000 people") + 
-     guides(fill=guide_legend(title="Country"))
-g
-```
-
-![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-3-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)
