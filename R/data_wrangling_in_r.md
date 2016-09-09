@@ -43,10 +43,12 @@ world.
 
 Here is a short list of some of the more popular data wrangling (or munging) functions in R.
 
-* *base* functions: `names`, `subset`, `merge`, `match`, `gsub`, `unique`, `sort`
-* *stats* functions: `aggregate`, `reshape`, `na.omit`
-* *dplyr* functions: `select`, `filter`, `group_by`, `summarize`, `arrange`, `join`, `mutate`
-* *tidyr* functions: `gather`, `separate`, `unite`, `spread`
+| Package | Functions
+| ------- | ---------
+| base    | names, subset, merge, match, gsub, unique, sort
+| stats   | aggregate, reshape, na.omit
+| dplyr   | select, filter, group_by, summarize, arrange, join, mutate
+| tidyr   | gather, separate, unite, spread
 
 *Data munging is one of [the three sexy skills of data geeks](http://medriscoll.com/post/4740157098/the-three-sexy-skills-of-data-geeks). -- @medriscoll*
 
@@ -482,22 +484,30 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
 
 ## Example: Malaria Prevalence
 
-Let's try a line plot (with a lot of customizations) ...
+Let's try a line plot to show the trends for each country more clearly.
 
 
 ```r
+# Make a line plot with various colors and line types (by country)
 g <- ggplot(MalCA, aes(x=year, y=prev, color=country, linetype=country)) + 
-     geom_line() +
-     ggtitle(paste("Malaria Prevalence in Central America", "\n", 
-         "by Year (Source: World Bank)", sep="")) +
-     labs(x="Year", y="log( Malaria cases per 100,000 people )") + theme_light() +
-     geom_text(data = subset(MalCA, year==2011), hjust = -0.1, 
-               aes(label = country, colour = country, x = Inf, y = prev)) +
-     theme(legend.position="none") + 
-     theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
-     scale_y_continuous(breaks=c(0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500), 
-                        trans="log")
+     geom_line()
+     
+# Set plot title and axis labels and set theme (light)
+g <- g + ggtitle(paste("Malaria Prevalence in Central America", "\n", 
+         "by Year (Source: World Bank)", sep="")) + 
+     labs(x="Year", y="log( Malaria cases per 100,000 people )") + theme_light()
 
+# Use a log transform and add appropriate y-axis ticks and labels
+g <- g + scale_y_continuous(trans="log", 
+             breaks=c(0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500))
+
+# Add line labels to left of plot, widen canvas area, and remove legend
+g <- g + geom_text(data = subset(MalCA, year==2011), hjust = -0.1, 
+               aes(label = country, colour = country, x = Inf, y = prev)) +
+      theme(plot.margin = unit(c(1, 5, 1, 1), "lines")) + 
+      theme(legend.position="none")
+     
+# Disable clipping to allow line labels to appear outside of the plot area
 gt <- ggplotGrob(g)
 gt$layout$clip[gt$layout$name == "panel"] <- "off"
 ```
