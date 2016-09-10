@@ -86,7 +86,7 @@ library(dplyr); library(ggplot2)
 iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)<!-- -->
 
 ## Quick Example: Mutation on the Fly
 
@@ -98,7 +98,7 @@ iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
          ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)<!-- -->
 
 ## Tidy Data
 
@@ -170,7 +170,7 @@ qplot(x=Sepal.Width, y=Sepal.Length, data=iris, geom=c("point"),
       color=Species, facets=Species~.)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-1-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-1-1.png)<!-- -->
 
 ## Iris Data Wrangling
 
@@ -292,7 +292,7 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
       color=Species, facets=flower_part~Species)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-2-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-2-1.png)<!-- -->
 
 ## ggplot: Plot with more facets
 
@@ -303,7 +303,7 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
     geom_smooth(method="lm") + theme_bw(base_size=16)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-3-1.png)<!-- -->
 
 ## Example: Wrangling Malaria Cases
 
@@ -338,17 +338,18 @@ str(Malaria)                              # Show the structure of the dataset
 
 NOTE: The default year range for a `WDI()` query is: 2005 - 2011.
 
-## Getting 2-Letter Country Codes
+## Wrangling Country Codes and Regions
 
-Get the 2-letter country codes (ISO 3166) for Central America. A search for 
-various terms in `WDI` does not turn up the list we need. Get this list elsewhere.
+What countries are in Central America? Our dataset does not show region 
+or subregion. We need a dataset that shows country, region, and subregion.
 
+A search for various terms in `WDI` does not turn up the list we need. 
+Get this list elsewhere. Perhaps there is a list of ISO country codes?
 There is a *ISOcodes* package, but its `ISO_3166_2` dataset does not include 
-the sub-region names. See: `library(help="ISOcodes")` 
+the sub-region names.
 
-The list, with sub-region names, was found by searching (Googling) for these terms:
-
-`"iso 3166" "sub-region" filetype:csv`
+An ISO country code 
+[CSV](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv), with subregion names, was found by a Google [search](https://www.google.com/search?q=iso+3166+sub-region+filetype%3Acsv).
 
 
 ```r
@@ -368,7 +369,7 @@ if (! file.exists(iso2c.file)) {
 }
 ```
 
-## Wrangling Country Codes
+## Wrangling Country Codes and Regions
 
 Import the CSV file and then clean up the data using the *dplyr* package:
 
@@ -380,7 +381,7 @@ Import the CSV file and then clean up the data using the *dplyr* package:
 ```r
 codes <- read.csv(iso2c.file, header=TRUE, stringsAsFactors = FALSE)
 codesCA <- codes %>% filter(sub.region == 'Central America') %>% 
-    select(c(name, iso2c = alpha.2)) %>% arrange(iso2c)
+    select(c(name, iso2c = alpha.2))
 codesCA
 ```
 
@@ -388,12 +389,12 @@ codesCA
 ##          name iso2c
 ## 1      Belize    BZ
 ## 2  Costa Rica    CR
-## 3   Guatemala    GT
-## 4    Honduras    HN
-## 5      Mexico    MX
-## 6   Nicaragua    NI
-## 7      Panama    PA
-## 8 El Salvador    SV
+## 3 El Salvador    SV
+## 4   Guatemala    GT
+## 5    Honduras    HN
+## 6      Mexico    MX
+## 7   Nicaragua    NI
+## 8      Panama    PA
 ```
 
 ## Wrangling Malaria Cases
@@ -404,23 +405,23 @@ Using the *dplyr* package (and a few others), clean up the data:
 * rename columns with the `rename` function
 * remove NAs with the `na.omit` function (from the *stats* package)
 * filter by country with `filter` using the `%in%` (match) operator
-* sort by 2-letter country code and year with `arrange`
+* sort country name and year with `arrange`
+* `select` just the columns we need (country, year, cases)
 
 
 ```r
-MalariaCA <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
-    filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
-head(MalariaCA)
+MalWDI <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
+          filter(country %in% codesCA$name) %>% arrange(country, year) %>%
+          select(country, year, cases)
+head(MalWDI, 4)
 ```
 
 ```
-##   iso2c country cases year
-## 1    BZ  Belize  1549 2005
-## 2    BZ  Belize   844 2006
-## 3    BZ  Belize   845 2007
-## 4    BZ  Belize   540 2008
-## 5    BZ  Belize   256 2009
-## 6    BZ  Belize   150 2010
+##   country year cases
+## 1  Belize 2005  1549
+## 2  Belize 2006   844
+## 3  Belize 2007   845
+## 4  Belize 2008   540
 ```
 
 ## Plotting Malaria Cases by Year
@@ -429,11 +430,72 @@ Make a stacked-bar plot of Malaria cases by year and colored by country.
 
 
 ```r
-ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity") + 
-    ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
+pltWDI <- ggplot(MalWDI, aes(x=year, y=cases, fill=country)) + 
+          geom_bar(stat="identity") + labs(x = "year", y = "cases", 
+          title = "Malaria Cases in Central America\nby Year (Source: WDI)")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
+## Plotting Malaria Cases by Year
+
+
+```r
+pltWDI
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)<!-- -->
+
+## Compare Data Sources: WHO
+
+We can [search](https://www.google.com/search?q=who+"WHS3_48") the 
+database of the World Health Organization (WHO) and we can find the same 
+[dataset](http://apps.who.int/gho/data/view.main.14110). It is titled, 
+"Reported confirmed cases (Microscopy slides/RDTs positive) Data by country" 
+on the WHO website. 
+
+Let's fetch and wrangle this dataset for comparison.
+
+
+```r
+#install.packages("WHO")
+library(WHO)
+codes <- get_codes()
+
+code <- filter(codes, display == 'Malaria - number of reported confirmed cases')
+df <- get_data(code$label)
+
+MalWHO <- df %>% 
+          filter(country %in% codesCA$name, year %in% 2005:2011) %>%
+          mutate(cases = as.integer(gsub(" ", "", value, fixed=TRUE))) %>%
+          group_by(country, year) %>% summarise(cases = sum(cases)) %>%
+          arrange(country, year)
+
+# Are the two datasets (WDI and WHO) equal?
+all.equal(MalWDI, MalWHO, check.attributes=FALSE)
+```
+
+```
+## [1] TRUE
+```
+
+## Compare Data Sources: WHO
+
+Make a stacked-bar plot of Malaria cases by year and colored by country.
+
+
+```r
+pltWHO <- ggplot(aes(x=year, y=cases, fill=country), data = MalWHO) + 
+          geom_bar(stat="identity") + labs(x = "year", y = "cases", 
+          title = "Malaria Cases in Central America\nby Year (Source: WHO)")
+```
+
+## Compare Data Sources: WHO
+
+
+```r
+pltWHO
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-who-stacked-bar-1.png)<!-- -->
 
 ## Example: Malaria Prevalence
 
@@ -469,7 +531,7 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
      ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)<!-- -->
 
 ## Malaria Prevalence Wrangling
 
@@ -537,7 +599,7 @@ ggplot(MalCASum, aes(x = year, y = logprev)) + geom_point() +
     geom_smooth(method="lm")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-0-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-0-1.png)<!-- -->
 
 ## Malaria Prevalence Line Plot
 
@@ -550,7 +612,7 @@ g <- ggplot(MalCA, aes(x = year, y = prev, color = country, linetype = country))
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-1-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-1-1.png)<!-- -->
 
 ## Y-Axis Scale Log Transform
 
@@ -562,7 +624,7 @@ g <- g + scale_y_continuous(trans = "log", breaks = c(1, 10, 100, 1000))
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)<!-- -->
 
 ## Add Summarized Points and Smoother
 
@@ -577,7 +639,7 @@ g <- g + geom_point(data = MalCASum, inherit.aes = FALSE,
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2a-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2a-1.png)<!-- -->
 
 ## Add Title, Axis Labels, and Caption
 
@@ -593,7 +655,7 @@ g <- g + ggtitle("Malaria Prevalence in Central America",
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-3-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-3-1.png)<!-- -->
 
 ## Define Custom Plot Theme
 
@@ -626,7 +688,7 @@ g <- g + theme_minimal() + my.theme + scale_color_hue(c=120, l=50)
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-4-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-4-1.png)<!-- -->
 
 ## Add Line Labels
 
@@ -660,7 +722,7 @@ And now to display the the final plot ...
 grid.draw(gt)
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)<!-- -->
 
 ## More Data Wrangling
 

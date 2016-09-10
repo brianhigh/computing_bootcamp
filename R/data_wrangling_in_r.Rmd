@@ -15,7 +15,7 @@ output:
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
 ```
 
 ```{r load_packages, echo=FALSE}
@@ -30,7 +30,7 @@ load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
   })
 }
 
-pkgs <- c("datasets", "dplyr", "ggplot2", "tidyr", "WDI", "grid", "pacman")
+pkgs <- c("dplyr", "ggplot2", "tidyr", "WDI", "WHO", "grid", "pacman")
 load.pkgs(pkgs)
 
 p_load_gh("hadley/ggplot2@2.1.0.9000", install = TRUE)  # To support subtitles
@@ -271,17 +271,18 @@ str(Malaria)                              # Show the structure of the dataset
 
 NOTE: The default year range for a `WDI()` query is: 2005 - 2011.
 
-## Getting 2-Letter Country Codes
+## Wrangling Country Codes and Regions
 
-Get the 2-letter country codes (ISO 3166) for Central America. A search for 
-various terms in `WDI` does not turn up the list we need. Get this list elsewhere.
+What countries are in Central America? Our dataset does not show region 
+or subregion. We need a dataset that shows country, region, and subregion.
 
+A search for various terms in `WDI` does not turn up the list we need. 
+Get this list elsewhere. Perhaps there is a list of ISO country codes?
 There is a *ISOcodes* package, but its `ISO_3166_2` dataset does not include 
-the sub-region names. See: `library(help="ISOcodes")` 
+the sub-region names.
 
-The list, with sub-region names, was found by searching (Googling) for these terms:
-
-`"iso 3166" "sub-region" filetype:csv`
+An ISO country code 
+[CSV](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv), with subregion names, was found by a Google [search](https://www.google.com/search?q=iso+3166+sub-region+filetype%3Acsv).
 
 ```{r}
 data.folder <- 'data'
@@ -300,7 +301,7 @@ if (! file.exists(iso2c.file)) {
 }
 ```
 
-## Wrangling Country Codes
+## Wrangling Country Codes and Regions
 
 Import the CSV file and then clean up the data using the *dplyr* package:
 
@@ -311,7 +312,7 @@ Import the CSV file and then clean up the data using the *dplyr* package:
 ```{r}
 codes <- read.csv(iso2c.file, header=TRUE, stringsAsFactors = FALSE)
 codesCA <- codes %>% filter(sub.region == 'Central America') %>% 
-    select(c(name, iso2c = alpha.2)) %>% arrange(iso2c)
+    select(c(name, iso2c = alpha.2))
 codesCA
 ```
 
@@ -323,21 +324,74 @@ Using the *dplyr* package (and a few others), clean up the data:
 * rename columns with the `rename` function
 * remove NAs with the `na.omit` function (from the *stats* package)
 * filter by country with `filter` using the `%in%` (match) operator
-* sort by 2-letter country code and year with `arrange`
+* sort country name and year with `arrange`
+* `select` just the columns we need (country, year, cases)
 
 ```{r, message=FALSE}
-MalariaCA <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
-    filter(iso2c %in% codesCA[,'iso2c']) %>% arrange(iso2c, year)
-head(MalariaCA)
+MalWDI <- Malaria %>% rename(cases = SH.STA.MALR) %>% na.omit() %>% 
+          filter(country %in% codesCA$name) %>% arrange(country, year) %>%
+          select(country, year, cases)
+head(MalWDI, 4)
 ```
 
 ## Plotting Malaria Cases by Year
 
 Make a stacked-bar plot of Malaria cases by year and colored by country.
 
+```{r}
+pltWDI <- ggplot(MalWDI, aes(x=year, y=cases, fill=country)) + 
+          geom_bar(stat="identity") + labs(x = "year", y = "cases", 
+          title = "Malaria Cases in Central America\nby Year (Source: WDI)")
+```
+
+## Plotting Malaria Cases by Year
+
 ```{r malaria-ggplot}
-ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity") + 
-    ggtitle("Malaria Cases in Central America\nby Year (Source: World Bank)")
+pltWDI
+```
+
+## Compare Data Sources: WHO
+
+We can [search](https://www.google.com/search?q=who+"WHS3_48") the 
+database of the World Health Organization (WHO) and we can find the same 
+[dataset](http://apps.who.int/gho/data/view.main.14110). It is titled, 
+"Reported confirmed cases (Microscopy slides/RDTs positive) Data by country" 
+on the WHO website. 
+
+Let's fetch and wrangle this dataset for comparison.
+
+```{r}
+#install.packages("WHO")
+library(WHO)
+codes <- get_codes()
+
+code <- filter(codes, display == 'Malaria - number of reported confirmed cases')
+df <- get_data(code$label)
+
+MalWHO <- df %>% 
+          filter(country %in% codesCA$name, year %in% 2005:2011) %>%
+          mutate(cases = as.integer(gsub(" ", "", value, fixed=TRUE))) %>%
+          group_by(country, year) %>% summarise(cases = sum(cases)) %>%
+          arrange(country, year)
+
+# Are the two datasets (WDI and WHO) equal?
+all.equal(MalWDI, MalWHO, check.attributes=FALSE)
+```
+
+## Compare Data Sources: WHO
+
+Make a stacked-bar plot of Malaria cases by year and colored by country.
+
+```{r}
+pltWHO <- ggplot(aes(x=year, y=cases, fill=country), data = MalWHO) + 
+          geom_bar(stat="identity") + labs(x = "year", y = "cases", 
+          title = "Malaria Cases in Central America\nby Year (Source: WHO)")
+```
+
+## Compare Data Sources: WHO
+
+```{r malaria-who-stacked-bar}
+pltWHO
 ```
 
 ## Example: Malaria Prevalence
