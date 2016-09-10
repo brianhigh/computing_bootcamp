@@ -565,7 +565,7 @@ g
 
 ## Add Summarized Points and Smoother
 
-Add the points and smooth line from the summarized dataframe. Remove the legend.
+Add the points and smooth line from the summarized dataframe. Hide the legend.
 
 
 ```r
@@ -596,7 +596,7 @@ g
 
 ## Define Custom Plot Theme
 
-Define a custom theme to set the text options and margins.
+Define a custom theme to set the text options, margins, and remove the legend.
 
 
 ```r
@@ -611,7 +611,7 @@ my.theme <- theme(axis.title.x = my.title, axis.title.y = my.title,
                   axis.text.x = my.text, axis.text.y = my.text,
                   plot.title = my.title, plot.subtitle = my.title,
                   plot.margin = unit(c(.2, 4, .2, .2), "lines"), 
-                  plot.caption = my.caption)
+                  plot.caption = my.caption, legend.position = "none")
 ```
 
 ## Apply Theme and Set Color Hue
