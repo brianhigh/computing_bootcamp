@@ -565,12 +565,14 @@ g
 
 ## Add Summarized Points and Smoother
 
-Add the points and smooth line from the summarized dataframe.
+Add the points and smooth line from the summarized dataframe. Remove the legend.
 
 
 ```r
-g <- g + geom_point(data = MalCASum, inherit.aes = FALSE, aes(x = year, y = prev)) +
-    geom_smooth(data = MalCASum, method = 'lm', inherit.aes = FALSE, aes(x = year, y = prev))
+g <- g + geom_point(data = MalCASum, inherit.aes = FALSE, 
+                    aes(x = year, y = prev, color = '')) +
+    geom_smooth(data = MalCASum, method = 'lm', inherit.aes = FALSE, 
+                aes(x = year, y = prev)) + theme(legend.position = "none")
 g
 ```
 
@@ -594,7 +596,7 @@ g
 
 ## Define Custom Plot Theme
 
-Define a custom theme to set the text options, margins, and remove the legend.
+Define a custom theme to set the text options and margins.
 
 
 ```r
@@ -608,8 +610,8 @@ my.caption <- element_text(margin=margin(t=15), face = "italic",
 my.theme <- theme(axis.title.x = my.title, axis.title.y = my.title,
                   axis.text.x = my.text, axis.text.y = my.text,
                   plot.title = my.title, plot.subtitle = my.title,
-                  plot.margin = unit(c(.2, 3.5, .2, .2), "lines"), 
-                  plot.caption = my.caption, legend.position = "none")
+                  plot.margin = unit(c(.2, 4, .2, .2), "lines"), 
+                  plot.caption = my.caption)
 ```
 
 ## Apply Theme and Set Color Hue
@@ -631,8 +633,11 @@ And add line labels to right of plot.
 
 
 ```r
-g <- g + geom_text(data = subset(MalCA, year == max(MalCA$year)), hjust = 0, size = 3,
-               aes(label = country, colour = country, x = Inf, y = prev)) 
+g <- g + geom_text(data = subset(MalCA, year == max(MalCA$year)), hjust = 0,
+               aes(label = country, colour = country, x = Inf, y = prev), size = 3) +
+         geom_text(data = subset(MalCASum, year == max(MalCASum$year)), hjust = 0, 
+               inherit.aes = FALSE, aes(label = "C. America", color = '', x = Inf, 
+                                        y = prev), size = 4) 
 ```
 
 To do this, we need to disable clipping to allow the labels to appear outside 
@@ -640,15 +645,9 @@ of the plot area. And for this, we need to create a grid graphical object ("grob
 
 
 ```r
+library(grid)
 gt <- ggplotGrob(g)
 gt$layout$clip[gt$layout$name == "panel"] <- "off"
-```
-
-To plot this object, we will need to load the *grid* package.
-
-
-```r
-library(grid)
 ```
 
 And now to display the the final plot ...
