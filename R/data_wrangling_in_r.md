@@ -447,7 +447,8 @@ pltWDI
 ## Compare Data Sources: WHO and WDI
 
 We can [search](https://www.google.com/search?q=who+"WHS3_48") the 
-database of the World Health Organization (WHO) and we can find the same 
+[database](http://gamapserver.who.int/gho/interactive_charts/malaria/cases/atlas.html) 
+of the World Health Organization ([WHO]) and we can find the same 
 [dataset](http://apps.who.int/gho/data/view.main.14110). It is titled, 
 "Reported confirmed cases (Microscopy slides/RDTs positive) Data by country" 
 on the WHO website. 
@@ -497,6 +498,18 @@ grid.arrange(pltWDI, pltWHO, ncol=2)
 ```
 
 ![](data_wrangling_in_r_files/figure-html/malaria-who-stacked-bar-1.png)
+
+## Compare Data Sources: WEF
+
+A [Google Public Data Explorer Search](https://www.google.com/publicdata/explore?ds=z6409butolt8la_&ctype=l&met_y=mi#!ctype=l&strail=false&bcs=d&nselm=h&met_y=mi&scale_y=lin&ind_y=false&rdim=world&idim=country:BLZ:CRI:GTM:HND:MEX:NIC:PAN:SLV&ifdim=world&hl=en_US&dl=en_US&ind=false) revealed another data source: "Malaria incidence per 100,000 people" (World Economic Forum). What's different?
+
+![](images/wef_malaria_sm.png)
+
+## Compare Data Sources: WEF
+
+Here we have selected a log scale for the y-axis. How can we make a similar plot?
+
+![](images/mal_wef_log.png)
 
 ## Example: Malaria Prevalence
 
@@ -724,6 +737,14 @@ grid.draw(gt)
 ```
 
 ![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)
+
+## Cases Reported versus Estimated
+
+Why does our plot show a decreasing prevalence, while the WEF shows the opposite?
+
+![](images/who_report.png)
+
+Maybe we are plotting a trend in decreased reporting? (See [World Malaria Report](https://books.google.com/books?id=KNW8BPoyurEC&lpg=PA12&dq=malaria%20reported%20versus%20estimated&pg=PA12#v=onepage&q=malaria%20reported%20versus%20estimated&f=false).)
 
 ## More Data Wrangling
 
