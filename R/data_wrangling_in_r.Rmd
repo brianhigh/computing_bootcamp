@@ -33,7 +33,7 @@ load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
 pkgs <- c("datasets", "dplyr", "ggplot2", "tidyr", "WDI", "grid", "pacman")
 load.pkgs(pkgs)
 
-p_load_gh("hadley/ggplot2@2.1.0.9000")  # Development version needed for subtitles
+p_load_gh("hadley/ggplot2@2.1.0.9000", install = TRUE)  # To support subtitles
 ```
 
 ## Learning Objectives
@@ -295,7 +295,8 @@ if (! file.exists(iso2c.file)) {
     site <- 'https://raw.githubusercontent.com'
     repo <- 'lukes/ISO-3166-Countries-with-Regional-Codes'
     file <- 'master/all/all.csv'
-    download.file(paste(site, repo, file, sep='/'), iso2c.file)
+    method <- ifelse(.Platform$OS.type == 'windows', 'wininet', 'curl')
+    download.file(paste(site, repo, file, sep='/'), iso2c.file, method)
 }
 ```
 
@@ -448,8 +449,6 @@ my.text <- element_text(colour = text.color)
 my.caption <- element_text(margin=margin(t=15), face = "italic", 
                            size = 8, hjust = 0.5, color=text.color)
 
-# If you get an error below, you may need the development version of ggplot2
-#devtools::install_github("hadley/ggplot2")
 my.theme <- theme(axis.title.x = my.title, axis.title.y = my.title,
                   axis.text.x = my.text, axis.text.y = my.text,
                   plot.title = my.title, plot.subtitle = my.title,
