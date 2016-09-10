@@ -15,7 +15,7 @@ output:
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
 ```{r load_packages, echo=FALSE}
@@ -30,7 +30,7 @@ load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
   })
 }
 
-pkgs <- c("dplyr", "ggplot2", "tidyr", "WDI", "WHO", "grid", "pacman")
+pkgs <- c("dplyr", "ggplot2", "tidyr", "WDI", "WHO", "grid", "gridExtra", "pacman")
 load.pkgs(pkgs)
 
 p_load_gh("hadley/ggplot2@2.1.0.9000", install = TRUE)  # To support subtitles
@@ -350,7 +350,7 @@ pltWDI <- ggplot(MalWDI, aes(x=year, y=cases, fill=country)) +
 pltWDI
 ```
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
 We can [search](https://www.google.com/search?q=who+"WHS3_48") the 
 database of the World Health Organization (WHO) and we can find the same 
@@ -378,7 +378,7 @@ MalWHO <- df %>%
 all.equal(MalWDI, MalWHO, check.attributes=FALSE)
 ```
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
 Make a stacked-bar plot of Malaria cases by year and colored by country.
 
@@ -388,10 +388,11 @@ pltWHO <- ggplot(aes(x=year, y=cases, fill=country), data = MalWHO) +
           title = "Malaria Cases in Central America\nby Year (Source: WHO)")
 ```
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
-```{r malaria-who-stacked-bar}
-pltWHO
+```{r malaria-who-stacked-bar, fig.height=4, fig.width=8}
+library(grid); library(gridExtra)
+grid.arrange(pltWDI, pltWHO, ncol=2)
 ```
 
 ## Example: Malaria Prevalence
@@ -484,8 +485,8 @@ Add a plot title, axis labels and a caption.
 
 ```{r, malaria-line-plot-pre-3, fig.height=3}
 g <- g + ggtitle("Malaria Prevalence in Central America", 
-                 subtitle = paste('Reported cases per 100,000 people (',
-                   min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
+                 subtitle = paste('Reported confirmed cases per 100,000 people (',
+                     min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
      labs(x = "Year", y = "log Prevalence",
           caption = "Source: World Development Indicators (WDI), World Bank")
 g

@@ -86,7 +86,7 @@ library(dplyr); library(ggplot2)
 iris %>% ggplot(., aes(x=Petal.Width, y=Petal.Length, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-1-1.png)<!-- -->
 
 ## Quick Example: Mutation on the Fly
 
@@ -98,7 +98,7 @@ iris %>% mutate(ratio.sep = Sepal.Width/Sepal.Length) %>%
          ggplot(., aes(x=Petal.Width, y=ratio.sep, color=Species)) + geom_point()
 ```
 
-![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)
+![](data_wrangling_in_r_files/figure-html/no-facets-2-1.png)<!-- -->
 
 ## Tidy Data
 
@@ -170,7 +170,7 @@ qplot(x=Sepal.Width, y=Sepal.Length, data=iris, geom=c("point"),
       color=Species, facets=Species~.)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-1-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-1-1.png)<!-- -->
 
 ## Iris Data Wrangling
 
@@ -292,7 +292,7 @@ qplot(x=Width, y=Length, data=iris_spread, geom=c("point"), size=I(0.3),
       color=Species, facets=flower_part~Species)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-2-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-2-1.png)<!-- -->
 
 ## ggplot: Plot with more facets
 
@@ -303,7 +303,7 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
     geom_smooth(method="lm") + theme_bw(base_size=16)
 ```
 
-![](data_wrangling_in_r_files/figure-html/facet-3-1.png)
+![](data_wrangling_in_r_files/figure-html/facet-3-1.png)<!-- -->
 
 ## Example: Wrangling Malaria Cases
 
@@ -442,9 +442,9 @@ pltWDI <- ggplot(MalWDI, aes(x=year, y=cases, fill=country)) +
 pltWDI
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-ggplot-1.png)<!-- -->
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
 We can [search](https://www.google.com/search?q=who+"WHS3_48") the 
 database of the World Health Organization (WHO) and we can find the same 
@@ -477,7 +477,7 @@ all.equal(MalWDI, MalWHO, check.attributes=FALSE)
 ## [1] TRUE
 ```
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
 Make a stacked-bar plot of Malaria cases by year and colored by country.
 
@@ -488,14 +488,15 @@ pltWHO <- ggplot(aes(x=year, y=cases, fill=country), data = MalWHO) +
           title = "Malaria Cases in Central America\nby Year (Source: WHO)")
 ```
 
-## Compare Data Sources: WHO
+## Compare Data Sources: WHO and WDI
 
 
 ```r
-pltWHO
+library(grid); library(gridExtra)
+grid.arrange(pltWDI, pltWHO, ncol=2)
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-who-stacked-bar-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-who-stacked-bar-1.png)<!-- -->
 
 ## Example: Malaria Prevalence
 
@@ -531,7 +532,7 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
      ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)<!-- -->
 
 ## Malaria Prevalence Wrangling
 
@@ -599,7 +600,7 @@ ggplot(MalCASum, aes(x = year, y = logprev)) + geom_point() +
     geom_smooth(method="lm")
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-0-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-0-1.png)<!-- -->
 
 ## Malaria Prevalence Line Plot
 
@@ -612,7 +613,7 @@ g <- ggplot(MalCA, aes(x = year, y = prev, color = country, linetype = country))
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-1-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-1-1.png)<!-- -->
 
 ## Y-Axis Scale Log Transform
 
@@ -624,7 +625,7 @@ g <- g + scale_y_continuous(trans = "log", breaks = c(1, 10, 100, 1000))
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)<!-- -->
 
 ## Add Summarized Points and Smoother
 
@@ -639,7 +640,7 @@ g <- g + geom_point(data = MalCASum, inherit.aes = FALSE,
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2a-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2a-1.png)<!-- -->
 
 ## Add Title, Axis Labels, and Caption
 
@@ -648,14 +649,14 @@ Add a plot title, axis labels and a caption.
 
 ```r
 g <- g + ggtitle("Malaria Prevalence in Central America", 
-                 subtitle = paste('Reported cases per 100,000 people (',
-                   min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
+                 subtitle = paste('Reported confirmed cases per 100,000 people (',
+                     min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
      labs(x = "Year", y = "log Prevalence",
           caption = "Source: World Development Indicators (WDI), World Bank")
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-3-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-3-1.png)<!-- -->
 
 ## Define Custom Plot Theme
 
@@ -688,7 +689,7 @@ g <- g + theme_minimal() + my.theme + scale_color_hue(c=120, l=50)
 g
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-4-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-4-1.png)<!-- -->
 
 ## Add Line Labels
 
@@ -722,7 +723,7 @@ And now to display the the final plot ...
 grid.draw(gt)
 ```
 
-![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-1.png)<!-- -->
 
 ## More Data Wrangling
 
