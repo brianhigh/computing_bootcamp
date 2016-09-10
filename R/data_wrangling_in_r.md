@@ -307,7 +307,8 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
 
 ## Example: Wrangling Malaria Cases
 
-Search the World Bank database using the *WDI* package to find cases of Malaria 
+Search the World Bank database using the *WDI* package to find cases of 
+[Malaria](http://worldbank.270a.info/classification/indicator/SH.STA.MALR.html) 
 in Central America (and Mexico) and plot the count of cases by country and year.
 
 
@@ -437,7 +438,9 @@ ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity"
 
 Let's calculate the Malaria prevalence as the count of Malaria cases per 100,000
 people for each of the countries of Central America and Mexico. We will need
-to know the total population for each contry for each year.
+to know the total 
+[population](http://worldbank.270a.info/classification/indicator/SP.POP.TOTL.html) 
+for each contry for each year.
 
 
 ```r
@@ -467,9 +470,77 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
 
 ![](data_wrangling_in_r_files/figure-html/malaria-prevalance-ggplot-1-1.png)
 
+## Malaria Prevalence Wrangling
+
+It looks like prevalence is decreasing exponentially over time. Calculate the
+sum of the prevalences by year to get group totals, then log transform the totals.
+
+
+```r
+MalCASum <- MalCA %>% group_by(year) %>% summarize(prev=sum(prev)) %>% 
+    mutate(logprev=log(prev))
+MalCASum
+```
+
+```
+## # A tibble: 7 × 3
+##    year      prev  logprev
+##   <dbl>     <dbl>    <dbl>
+## 1  2005 1399.8274 7.244104
+## 2  2006  868.0805 6.766284
+## 3  2007  634.5694 6.452947
+## 4  2008  401.9646 5.996364
+## 5  2009  297.8987 5.696754
+## 6  2010  253.2026 5.534190
+## 7  2011  191.9583 5.257278
+```
+
+## Malaria Prevalence Linear Model Fit
+
+Check the fit of a linear model with the log prevalence as the response and 
+year as the predictor.
+
+
+```r
+summary(lm(logprev ~ year, MalCASum))
+```
+
+```
+## 
+## Call:
+## lm(formula = logprev ~ year, data = MalCASum)
+## 
+## Residuals:
+##        1        2        3        4        5        6        7 
+##  0.12502 -0.02491 -0.01036 -0.13905 -0.11078  0.05455  0.10552 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 664.53420   42.28282   15.72 1.90e-05 ***
+## year         -0.32789    0.02106  -15.57 1.98e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1114 on 5 degrees of freedom
+## Multiple R-squared:  0.9798,	Adjusted R-squared:  0.9758 
+## F-statistic: 242.5 on 1 and 5 DF,  p-value: 1.985e-05
+```
+
+## Malaria Prevalence Scatter Plot
+
+Make a scatter plot of log prevalence per year with a linear regression line.
+
+
+```r
+ggplot(MalCASum, aes(x = year, y = logprev)) + geom_point() + 
+    geom_smooth(method="lm")
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-0-1.png)
+
 ## Malaria Prevalence Line Plot
 
-Let's try a line plot to show the trends for each country more clearly.
+Let's make a line plot by country to show the trends for each country more clearly.
 
 
 ```r
@@ -492,6 +563,19 @@ g
 
 ![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2-1.png)
 
+## Add Summarized Points and Smoother
+
+Add the points and smooth line from the summarized dataframe.
+
+
+```r
+g <- g + geom_point(data = MalCASum, inherit.aes = FALSE, aes(x = year, y = prev)) +
+    geom_smooth(data = MalCASum, method = 'lm', inherit.aes = FALSE, aes(x = year, y = prev))
+g
+```
+
+![](data_wrangling_in_r_files/figure-html/malaria-line-plot-pre-2a-1.png)
+
 ## Add Title, Axis Labels, and Caption
 
 Add a plot title, axis labels and a caption.
@@ -501,7 +585,7 @@ Add a plot title, axis labels and a caption.
 g <- g + ggtitle("Malaria Prevalence in Central America", 
                  subtitle = paste('Reported cases per 100,000 people (',
                    min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
-     labs(x = "Year", y = "log ( Malaria Prevalence )",
+     labs(x = "Year", y = "log Prevalence",
           caption = "Source: World Development Indicators (WDI), World Bank")
 g
 ```

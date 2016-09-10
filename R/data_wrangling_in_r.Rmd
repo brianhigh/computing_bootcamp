@@ -256,7 +256,8 @@ ggplot(data=iris_spread, aes(x=Width, y=Length)) +
 
 ## Example: Wrangling Malaria Cases
 
-Search the World Bank database using the *WDI* package to find cases of Malaria 
+Search the World Bank database using the *WDI* package to find cases of 
+[Malaria](http://worldbank.270a.info/classification/indicator/SH.STA.MALR.html) 
 in Central America (and Mexico) and plot the count of cases by country and year.
 
 ```{r, message=FALSE}
@@ -340,7 +341,9 @@ ggplot(MalariaCA, aes(x=year, y=cases, fill=country)) + geom_bar(stat="identity"
 
 Let's calculate the Malaria prevalence as the count of Malaria cases per 100,000
 people for each of the countries of Central America and Mexico. We will need
-to know the total population for each contry for each year.
+to know the total 
+[population](http://worldbank.270a.info/classification/indicator/SP.POP.TOTL.html) 
+for each contry for each year.
 
 ```{r}
 WDIsearch("population, total")          # Search database for indicator
@@ -358,9 +361,38 @@ ggplot(MalCA, aes(x=year, y=prev, fill=country)) + geom_bar(stat="identity") +
      ggtitle("Malaria Prevalence in Central America\nby Year (Source: World Bank)")
 ```
 
+## Malaria Prevalence Wrangling
+
+It looks like prevalence is decreasing exponentially over time. Calculate the
+sum of the prevalences by year to get group totals, then log transform the totals.
+
+```{r}
+MalCASum <- MalCA %>% group_by(year) %>% summarize(prev=sum(prev)) %>% 
+    mutate(logprev=log(prev))
+MalCASum
+```
+
+## Malaria Prevalence Linear Model Fit
+
+Check the fit of a linear model with the log prevalence as the response and 
+year as the predictor.
+
+```{r}
+summary(lm(logprev ~ year, MalCASum))
+```
+
+## Malaria Prevalence Scatter Plot
+
+Make a scatter plot of log prevalence per year with a linear regression line.
+
+```{r, malaria-line-plot-pre-0, fig.height=3}
+ggplot(MalCASum, aes(x = year, y = logprev)) + geom_point() + 
+    geom_smooth(method="lm")
+```
+
 ## Malaria Prevalence Line Plot
 
-Let's try a line plot to show the trends for each country more clearly.
+Let's make a line plot by country to show the trends for each country more clearly.
 
 ```{r, malaria-line-plot-pre-1, fig.height=3}
 g <- ggplot(MalCA, aes(x = year, y = prev, color = country, linetype = country)) + 
@@ -377,6 +409,16 @@ g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500))
 g
 ```
 
+## Add Summarized Points and Smoother
+
+Add the points and smooth line from the summarized dataframe.
+
+```{r malaria-line-plot-pre-2a, fig.height=3}
+g <- g + geom_point(data = MalCASum, inherit.aes = FALSE, aes(x = year, y = prev)) +
+    geom_smooth(data = MalCASum, method = 'lm', inherit.aes = FALSE, aes(x = year, y = prev))
+g
+```
+
 ## Add Title, Axis Labels, and Caption
 
 Add a plot title, axis labels and a caption.
@@ -385,7 +427,7 @@ Add a plot title, axis labels and a caption.
 g <- g + ggtitle("Malaria Prevalence in Central America", 
                  subtitle = paste('Reported cases per 100,000 people (',
                    min(MalCA$year), ' - ', max(MalCA$year), ')', sep = '')) + 
-     labs(x = "Year", y = "log ( Malaria Prevalence )",
+     labs(x = "Year", y = "log Prevalence",
           caption = "Source: World Development Indicators (WDI), World Bank")
 g
 ```
