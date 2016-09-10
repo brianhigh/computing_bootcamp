@@ -557,7 +557,7 @@ Log transform the y-axis to spread out the lines in lower end of the range.
 
 
 ```r
-g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500))
+g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500, 1000))
 g
 ```
 

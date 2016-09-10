@@ -405,7 +405,7 @@ g
 Log transform the y-axis to spread out the lines in lower end of the range.
 
 ```{r, malaria-line-plot-pre-2, fig.height=3}
-g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500))
+g <- g + scale_y_continuous(trans = "log", breaks = c(1, 5, 10, 50, 100, 500, 1000))
 g
 ```
 
