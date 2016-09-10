@@ -30,8 +30,10 @@ load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
   })
 }
 
-pkgs <- c("datasets", "dplyr", "ggplot2", "tidyr", "WDI", "grid")
+pkgs <- c("datasets", "dplyr", "ggplot2", "tidyr", "WDI", "grid", "pacman")
 load.pkgs(pkgs)
+
+p_load_gh("hadley/ggplot2@2.1.0.9000")  # Development version needed for subtitles
 ```
 
 ## Learning Objectives
@@ -446,6 +448,8 @@ my.text <- element_text(colour = text.color)
 my.caption <- element_text(margin=margin(t=15), face = "italic", 
                            size = 8, hjust = 0.5, color=text.color)
 
+# If you get an error below, you may need the development version of ggplot2
+#devtools::install_github("hadley/ggplot2")
 my.theme <- theme(axis.title.x = my.title, axis.title.y = my.title,
                   axis.text.x = my.text, axis.text.y = my.text,
                   plot.title = my.title, plot.subtitle = my.title,
