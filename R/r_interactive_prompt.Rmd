@@ -26,6 +26,7 @@ You will learn:
 * How the prompt works
 * How to use the output
 * Keyboard Shortcuts
+* Convenience and Customization Features
 * How to Restart R
 
 ## The Prompt is in the Console
@@ -43,6 +44,9 @@ The interactive R prompt is usually found or starting within a "console".
 * You type a command at the prompt and press *Enter* (or *Return*)
 * R will parse your commands and try follow them
 * R will either show an error, show results, or silently complete the task
+* R will display the prompt with a `>` character (by default)
+* R will display a `+` prompt if it expects more from you than you provided
+* R will display output below the command, with `[#]` often preceeding data
 
 ## How to use the output
 
@@ -75,6 +79,21 @@ It pays to know keyboard shortcuts to minimize use of the mouse.
 * Scrolling up and down through the Console screen: *PgUp* and *PgDn*
 
 There are a [bunch more](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) of these. Over time, the savings in effort add up!
+
+## Convenience and Customization
+
+To make working with the prompt easier and more productive, your R prompt may provide:
+
+* Syntax-highlighting (color)
+* Tab-completion
+* Pop-up tool-tips
+* Pop-up pick-lists
+
+You can also configure the look and feel of the console to better suit your
+preferences. The degree of customization available will depend upon the console
+application you are using. RStudio's console may configures in the menu:
+
+* Tools-> Global Options -> Appearance
 
 ## Restarting R
 
