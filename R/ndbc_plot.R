@@ -7,6 +7,9 @@
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 # -----------------------------------------------------------------------------
 
+# Clear the workspace
+rm(list=ls())
+
 # Configuration
 stn.id   <- '46087'      # ID List: http://www.ndbc.noaa.gov/to_station.shtml
 stn.name <- 'Neah Bay'   # https://www.google.com/search?q=ndbc+neah+bay
