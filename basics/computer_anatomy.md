@@ -5,7 +5,7 @@ Jim Hogan
 
 ## What __is__ a Computer?
 
-Early on, the term referred to a **person** who carried out calculations or computations. That usage carried through World War Two, when some staff at Bletchley Park (primarily women) bore the title of "computer".<br>
+Early on, the term referred to a **person** who carried out calculations or computations. That usage carried through World War Two, when some staff at Bletchley Park (primarily women) bore the job title of "computer".<br>
 
 ![](../images/220px-Colossus.jpg)
 
@@ -27,6 +27,8 @@ While there can be many different bits of hardware associated with computers, th
 ### Network
 
 ## Central Processing Unit, or "CPU"
+
+### The CPU does the actual calculation and computing.
 
 ### Characterized most often by its "clock speed".  Compare:
 
@@ -76,3 +78,5 @@ While there can be many different bits of hardware associated with computers, th
 ### **Example:**  If you like to keep a lot of programs open at the same time, but feel like that slows things down, your bottleneck **could** be insifficient RAM.  Could.<br><br>
 
 ### **Example:** If you have opened a large file from a network folder (say your home folder on Pacific) and you find that working with that file is very slow, the network could be your bottleneck.
+
+## Questions?

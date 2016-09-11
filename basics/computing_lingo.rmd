@@ -17,6 +17,10 @@ output:
 suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
+## First, the User Interface
+* May be referred to as "UI"
+* Add a G for "GUI" to indicate a Graphical User Interface
+
 ## Lingo: a bit about “auth”
 
 ### Authentication:
@@ -45,7 +49,7 @@ This is when you authenticate to a computer	system using your "credentials" (mos
 
 ### What's Happening?
 	
-This is when you terminate your authenticated "session" on a computer	system.
+This is when you terminate your authenticated "session" on a computer	system. This is most commonly done with a button in the GUI, but on some systems is achieved by entering a command like "exit".
 
 
 ## Lingo: "Boot" (and "Reboot")
@@ -59,12 +63,12 @@ This is when you terminate your authenticated "session" on a computer	system.
 ## Lingo: "Shut Down"
 
 ### Also Known as :
-* *Power Down"
+* "Power Down"
 * "Power Off"
 
 ### What's Happening?
 
-* These synonymous terms refer to when you tell the computer to turn off, most frequently from a shutdown button on the computer screen.  Always best if possible to shut down in this way (through the operating systsm's interface) so as to achieve an "orderly" or "safe" shutdown.
+* These synonymous terms refer to when you tell the computer to turn off, most frequently from a shutdown button on the computer screen.  Always best if possible to shut down in this way (through the operating system's user interface) so as to achieve an "orderly" or "safe" shutdown.
 
 ## Lingo: "Depower" (rare)
 
@@ -77,6 +81,8 @@ This is when you terminate your authenticated "session" on a computer	system.
 ## Lingo: "Disconnect"
 
 * Some computers, mainly multi-user servers like our Waldo and HAL, allow a user to disconnect from a remote computer without terminating your authenticated session.  These computers will ask you to re-authenticate when you Reconnect
+
+## Questions?
 
 
 

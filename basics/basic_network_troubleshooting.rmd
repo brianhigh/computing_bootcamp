@@ -1,0 +1,53 @@
+---
+title: "Basic Hardware and Network Troubleshooting"
+author: "Jim Hogan"
+date: "9/6/2016"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: no
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+
+## First, Consider Subscribing to eOutage
+
+eOutage is a very low traffic UW Mailman list read *mostly* by technical staff, but which provides pretty clear information when any major campus-wide service is having problems, whether it is network problems or problems with a major application like Office365/Outlook.  Follow the "Join" link at:
+
+### http://www.washington.edu/cac/outages/
+
+## Second, rule out some basics 
+<br>
+### Is yellow patch cord plugged in to wall?
+<br>
+### If connected through new "VoIP" phone, is the phone working?
+<br>
+### Start checking at the computer,  then work your way out.
+
+
+## Further characterize the problem
+
+### If in the office, are neighbors having the same problem?
+This will be key for EHIT to know ASAP
+
+### Does the problem manifest mostly through your browswer?
+Try closiny that browser and opening a different one.
+
+
+
+
+### Does the problem follow *you* or the computer?
+
+## But you say you are using __wireless__?
+
+## The "Browser Factor"
+
+

@@ -29,3 +29,11 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 * Files overwritten or deleted by accident.
 * Files shared with other parties.
 * Files stored on a 3rd-party service.
+
+### Are files really hazards?  No.  They are just what is at risk
+
+## Hazard: A file sent as an email attachment
+
+### Example: a file is opened by double-clicking, worked on for 4-5 hours and then completely lost.
+
+### What Happened? The file was never **really** saved, even though the editor hit "Save"

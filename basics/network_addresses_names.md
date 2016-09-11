@@ -32,13 +32,10 @@ Your computer has various addresses to allow routing of network traffic to and f
 * This form shows the address under Internet Protocol version 4
 * A newer version -- IPv6 -- is slowly supplanting version 4, but this should not concern you.
 
-## More aboout IP Addresses
+## More about IP Addresses
 
 * This form (128.95.230.32) shows the address under Internet Protocol version 4 (IPv4).
 * A newer version -- IPv6 -- is slowly supplanting version 4, but this should not concern you.
-* IP addresses can be either static or dynamic.  Each have different suitabilities.
-* The end-to-end use of IP addresses is what allows "routers" to route
-* You likely have a router at home.
 
 ## Mapping Internet Names to Numbers
 
@@ -47,9 +44,14 @@ Your computer has various addresses to allow routing of network traffic to and f
 * often used in short form, like "phage" 
 * effective use in networking relies on the "fully qualified" name. example: phage.deohs.washington.edu
 
-### This Depends on what is perhaps the world's largest phonebook:  The Domain Name System
+### This Depends on what is perhaps the world's largest phonebook:  **The Domain Name System**
 
-### (Insert DNS slideshow here)
+<br>
+<br>
+
+### (Cue the Canine....)
+
+## Questions?
 
 
 
