@@ -1,6 +1,8 @@
 # -----------------------------------------------------------------------------
 # Plot NDBC Historical Data
 #
+# Formatted report based on this script: https://rpubs.com/brianhigh/108765
+#
 # Last updated by Brian High (https://github.com/brianhigh) on Sept. 11, 2016
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 # -----------------------------------------------------------------------------
