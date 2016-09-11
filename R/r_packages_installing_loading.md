@@ -144,7 +144,8 @@ Otherwise, packages will be removed from the first library listed with `.libPath
 
 ## 
 
-<span style="color:purple;background-color:gold"><pre>
+
+<pre style="color: purple; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">
                                                                                         
                                                   ,,                                    
   .g8""8q.                                 mm     db                           ,M"""b.  
@@ -156,4 +157,4 @@ MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa.
   `"bmmd"'     `Mbod"YML.`Mbmmd' M9mmmP'   `Mbmo.JMML.`Ybmd9'.JMML  JMML.M9mmmP' db     
       MMb                                                                               
        `bood'
-</pre></span>
+</pre>
