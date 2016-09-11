@@ -105,7 +105,8 @@ MalariaReg <- Malaria %>% na.omit() %>% group_by(region, year) %>%
 # -----------------------
 # Prevalence by Subregion
 # -----------------------
-MalariaSubReg <- Malaria %>% na.omit() %>% group_by(region, sub.region, year) %>%
+MalariaSubReg <- Malaria %>% na.omit() %>% 
+    group_by(region, sub.region, year) %>%
     summarize(cases = sum(SH.STA.MALR), pop = sum(SP.POP.TOTL)) %>% 
     mutate(prevalance.per.100k = 100000 * cases/pop) %>%
     mutate(log.prevalance.per.100k = log(prevalance.per.100k)) %>% 

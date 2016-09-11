@@ -95,8 +95,8 @@ plot_title <- paste('Zika Case Counts in the US by State', '\n',
                     'January 01, 2015 – August 31, 2016', sep='')
 
 # Create the choropleth map with ggplot
-us <- ggplot(df, aes(map_id=region)) + geom_map(aes(fill=cases), map=states_map) + 
-    coord_map(projection = "polyconic") + ggtitle(plot_title) +
+usmap <- ggplot(df, aes(map_id=region)) + ggtitle(plot_title) +
+    geom_map(aes(fill=cases), map=states_map) + coord_map("polyconic") + 
     expand_limits(x = states_map$long, y = states_map$lat) + theme_map() +
     theme(plot.title = element_text(hjust = 0.5),  
           legend.justification = "center", legend.position="bottom") +
@@ -117,19 +117,16 @@ not_mapped %<>% select(region, cases) %>%
 row.names(not_mapped) <- NULL
 
 # Create a graphical object (grob) for this table
-table_not_mapped <- tableGrob(not_mapped, 
-                              theme = ttheme_default(base_size = 8))
+table <- tableGrob(not_mapped, theme = ttheme_default(base_size = 8))
 
 # Create a graphical object (grob) for the citation text
 source_text <- paste("Source: Case Counts in the US", "CDC", 
-                     "http://www.cdc.gov/zika/geo/united-states.html",
-                     sep=", ")
-source_text_grob <- textGrob(source_text, x=0, hjust=-0.2, vjust=0.2, 
+                     "http://www.cdc.gov/zika/geo/united-states.html",sep=", ")
+text <- textGrob(source_text, x=0, hjust=-0.2, vjust=0.2, 
                              gp=gpar(fontface = "italic", fontsize = 8))
 
 # Combine plot elements (map, table, source text) into a "grid"
-g <- arrangeGrob(us, heights=c(8, 1), sub=table_not_mapped, 
-                 bottom = source_text_grob)
+g <- arrangeGrob(usmap, heights=c(8, 1), sub=table, bottom = text)
 
 # View the plot
 #grid::grid.draw(g)
