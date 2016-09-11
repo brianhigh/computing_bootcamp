@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # Plot NDBC Historical Data
 #
-# Last updated by Brian High on Sept. 11, 2016
+# Last updated by Brian High (https://github.com/brianhigh) on Sept. 11, 2016
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 # -----------------------------------------------------------------------------
 
