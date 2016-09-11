@@ -10,6 +10,7 @@ You will learn:
 
 * Where to find the R prompt
 * How the prompt works
+* How to use the output
 * Keyboard Shortcuts
 * How to Restart R
 
@@ -28,6 +29,21 @@ The interactive R prompt is usually found or starting within a "console".
 * You type a command at the prompt and press *Enter* (or *Return*)
 * R will parse your commands and try follow them
 * R will either show an error, show results, or silently complete the task
+
+## How to use the output
+
+How R can return data to you:
+
+* R can show data to the screen
+* R can save data to a variable (in memory)
+* R can save data to a file (on your disk or the network)
+* R can save data to a database (either locally or over the network)
+
+Usually, you manipulate data in memory and then save it to a file or database
+when you are done working with it.
+
+While you could copy text results shown to the screen and paste them elsewhere,
+this method will be of limited use.
 
 ## Keyboard Shortcuts
 
