@@ -1,22 +1,8 @@
----
-title: "How Can I Protect My Computer from Viruses?"
-author: "Jim Hogan"
-date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
-output:
-  ioslides_presentation:
-    fig_caption: yes
-    fig_retina: 1
-    fig_width: 5
-    fig_height: 3
-    keep_md: yes
-    smaller: yes
-    logo: ../images/logo_128.png
----
+# How Can I Protect My Computer from Viruses?
+Jim Hogan  
+![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
-```{r set_knitr_options, echo=FALSE, message=FALSE}
-suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
-```
+
 
 ## Answer: You Can't
 

@@ -1,5 +1,5 @@
 ---
-title: "Basic Hardware and Network Troubleshooting"
+title: "Basic Network Troubleshooting"
 author: "Jim Hogan"
 date: "9/6/2016"
 output:
@@ -26,28 +26,52 @@ eOutage is a very low traffic UW Mailman list read *mostly* by technical staff, 
 
 ## Second, rule out some basics 
 <br>
+
 ### Is yellow patch cord plugged in to wall?
 <br>
+
 ### If connected through new "VoIP" phone, is the phone working?
 <br>
+
 ### Start checking at the computer,  then work your way out.
 
 
 ## Further characterize the problem
 
 ### If in the office, are neighbors having the same problem?
-This will be key for EHIT to know ASAP
+* This will be key for EHIT to know ASAP
 
 ### Does the problem manifest mostly through your browswer?
-Try closiny that browser and opening a different one.
-
-
-
+* Try closing that browser and opening a different one.
 
 ### Does the problem follow *you* or the computer?
 
 ## But you say you are using __wireless__?
 
-## The "Browser Factor"
+### Wireless is convenient but less reliable than wired.
+
+* Our first question is usually "Are you on wireless?"
+<br>
+
+### If working on something important or time-sensitve, look for a wired connection.
+<br>
+
+### Videoconferencing? Don't use wireless.
+
+## Again, The Browser Factor
+
+### Much of the typical work experience now employs a browser.
+<br>
+
+### Many tabs open is typical.
+<br>
+
+### Very common to form an impression that the network is slow when it may be just fine.
+
+## UW Network Reliability?
+
+### After some upgrade pains a few years agon, UW wired networking has been very reliable.
+
+## Questions?
 
 
