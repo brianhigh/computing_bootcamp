@@ -58,9 +58,14 @@ Your computer has various addresses to allow routing of network traffic to and f
 * often used in short form, like "phage" 
 * effective use in networking relies on the "fully qualified" name. example: phage.deohs.washington.edu
 
-### This Depends on what is perhaps the world's largest phonebook:  The Domain Name System
+### This Depends on what is perhaps the world's largest phonebook:  **The Domain Name System**
 
-### (Insert DNS slideshow here)
+<br>
+<br>
+
+### (Cue the Canine....)
+
+## Questions?
 
 
 

@@ -3,6 +3,10 @@ Jim Hogan
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
 
+## First, the User Interface
+* May be referred to as "UI"
+* Add a G for "GUI" to indicate a Graphical User Interface
+
 ## Lingo: a bit about “auth”
 
 ### Authentication:
@@ -21,7 +25,7 @@ Jim Hogan
 
 ### What's Happening?
 	
-This is when you authenticate to a computer	system using your "credentials" (most often an ID and a password.
+This is when you authenticate to a computer	system using your "credentials" (most often an ID and a password).
 
 ## Lingo: “Logging Out”
 
@@ -31,7 +35,7 @@ This is when you authenticate to a computer	system using your "credentials" (mos
 
 ### What's Happening?
 	
-This is when you terminate your authenticated "session" on a computer	system.
+This is when you terminate your authenticated "session" on a computer	system. This is most commonly done with a button in the GUI, but on some systems is achieved by entering a command like "exit".
 
 
 ## Lingo: "Boot" (and "Reboot")
@@ -42,11 +46,15 @@ This is when you terminate your authenticated "session" on a computer	system.
  * A "reboot" completes the same process, but it starts from a state where the computer is already turned on and "booted" 
  
 
-## Lingo: "Shut Down" (and "Power Down" and "Power Off"")
+## Lingo: "Shut Down"
+
+### Also Known as :
+* "Power Down"
+* "Power Off"
 
 ### What's Happening?
 
-* These synonymous terms refer to when you tell the computer to turn off, most frequesntly from a shutdown button on the computer screen.
+* These synonymous terms refer to when you tell the computer to turn off, most frequently from a shutdown button on the computer screen.  Always best if possible to shut down in this way (through the operating system's user interface) so as to achieve an "orderly" or "safe" shutdown.
 
 ## Lingo: "Depower" (rare)
 
@@ -54,9 +62,13 @@ This is when you terminate your authenticated "session" on a computer	system.
 
 * Depowering is what it sounds like: unplugging the computer from its power source. This measure will sometimes bring a computer back from a confused state.
 
-* A good example are the new telephones being installed at UW.  They are in fact a small, specialized computer.  If they become confused or otherwise misbehave, the main measure to resolve the problem is to disconnect the phone from the wall jack and then plug it back in to "boot".
+* A good example are the new telephones being installed at UW.  They are in fact small, specialized computers.  If they become confused or otherwise misbehave, the main measure to resolve the problem is to disconnect the phone from the wall jack and then plug it back in to "boot".
 
 ## Lingo: "Disconnect"
+
+* Some computers, mainly multi-user servers like our Waldo and HAL, allow a user to disconnect from a remote computer without terminating your authenticated session.  These computers will ask you to re-authenticate when you Reconnect
+
+## Questions?
 
 
 

@@ -1,6 +1,5 @@
 ---
 title: Computer Anatomy II
-  
 author: "Jim Hogan"
 date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
 output:
@@ -26,10 +25,53 @@ Other common elements of, or accessories to, general-purpose computers include
 
 * Output Devices (screen/display, speakers, printer)
 
+* Some devices may combine both input and output on a single physical connection
+
+## Video Displays and Connectors
+
+### Mutiple displays possible within certain limits.  Each display requires a distinct connection.
+<br> 
+
+### Video connectors continue to evolve, but common to find 4 types: VGA, DVI, DisplayPort and HDMI.  The last 3 are "digital".
+<br>
+
+### "Mini" variants of some of these used primarily in mobile computers.  Example is "Mini-DisplayPort" (thunderbolt)
+<br>
+
+## More on Connectors 
+
+[Some nice pictures from UC Santa Barbara](https://apps.education.ucsb.edu/wiki/Video_connectors)
+
+* In general, digital output can power analog display input, but not the reverse.
+
+*  This has led to the rise of the Dongle-Indistrial Complex
+
+* Resistance is Futile.  We encourage laptop users to surrender and get more dongles
+
+Our usual source for low-price dongles is [Monoprice](http://www.monoprice.com/)
+
+## USB and Ethernet Connectors
+
+* Universal Serial Bus the most popular way to connect local peripherals
+
+* USB's popularity greatly due to ability to "daisy chain" through USB "hubs".  Hubs may be embedded in other USB peripherals.
+
+* Mobile users with thin devices are most oftem affected by USB port deficits, further feeding the DIC.
+
+## Network Connections
+
+* Typical Ethernet connection in office and home is via an 8-conductor cable with "RJ45" connector.  We call these "patch cords".
+
+* But Ethernet does not always need wires.  So-called "WiFi" is Ethernet over a wireless radio signal.
+
+* While USB can be considered a network in its own right, standards do not exist to carry USB over wireless.
+
+## A Plug for Power Protection
+
+* If uninterrupted function of a computer is required, a UPS (Uninterrubtible Power Supply) is called for. 
+
+* A UPS for every computer is usually not economically feasible, so UPS deployent usually focused on core systems and servers.
+
+* This kind of protection is key to providing the types of remote computing that we'll discuss on Day 3.
 
 
-## Resource Management
-
-### Steps to try when dealing with a slow computer:
-
-* 
