@@ -40,7 +40,23 @@ We use this term to describe actions we commonly take that don't have a very sci
 <br>
 ### Did you recently plug in a new device or peripheral. Disconnect it.
 
+## Reducing the Problem Space
 
-## Reducins the Problem Space
+### Does the problem follow *you* to other computers?
 
-### Does the problem follow *you* or the computer?
+### Or does the problem follow the computer or a device like a keyboard?
+
+### A "possessed" computer may result from something as simple as one stuck key or some scone crumbs.
+
+## Is computer working but performing slowly?
+
+### Does it improve if you close applications?
+
+### Can you associate slowness with one application?
+
+### Bear in mind the "Browser Factor"
+
+* Try disabling browser plug-ins
+* Many tabs open?
+
+
