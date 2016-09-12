@@ -154,7 +154,7 @@ are some of our favorites.
     - by Nicholas J. Horton and Ken Kleinman
 - [R for Stata Users](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71161669170001451)
     - by Robert A. Muenchen and Joseph Hilbe
-- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) First Edition (The UW does not currently have the [second edition](http://shop.oreilly.com/product/0636920022008.do).)
+- [R in a Nutshell](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71155074480001451) First Edition (The UW does not yet provide the [2nd edition](http://shop.oreilly.com/product/0636920022008.do).)
     - by Joseph Adler and M. Eng
 - [R by example](http://alliance-primo.hosted.exlibrisgroup.com/UW:all:CP71109296790001451)
     - by Jim Albert and Maria L. Rizzo
@@ -176,3 +176,21 @@ has been linked to the publisher's website for each book.
     - by Christopher Gandrud ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Reproducible+Research+with+R+and+R+Studio%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1466572841/?tag=5308-0610-7646) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Reproducible+Research+with+R+and+R+Studio%22&Submit=Search) )
 * [Data Science in R](https://www.crcpress.com/Data-Science-in-R-A-Case-Studies-Approach-to-Computational-Reasoning-and/Nolan-Lang/p/book/9781482234817)
     - by Deborah Nolan ( [GOOG](https://www.google.com/search?tbo=p&tbm=bks&q=intitle:%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&num=10&gws_rd=ssl) | [AMZN](http://www.amazon.com/dp/1482234815/?tag=5308-0610-7646) | [SPL](https://seattle.bibliocommons.com/search?t=title&search_category=title&q=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&commit=Search) | [UW](http://alliance-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search&ct=search&vid=UW&vl%28753972432UI0%29=title&vl%281UIStartWith0%29=starts+with&vl%28freeText0%29=%22Data+Science+in+R%3A+A+Case+Studies+Approach+to+Computational+Reasoning+and+Problem+Solving%22&Submit=Search) )
+    
+## 
+
+
+<pre style="color: indigo; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">
+                                                                                        
+                                                  ,,                                    
+  .g8""8q.                                 mm     db                           ,M"""b.  
+.dP'    `YM.                               MM                                  89'  `Mg 
+dM'      `MM `7MM  `7MM  .gP"Ya  ,pP"Ybd mmMMmm `7MM  ,pW"Wq.`7MMpMMMb.  ,pP"Ybd    ,M9 
+MM        MM   MM    MM ,M'   Yb 8I   `"   MM     MM 6W'   `Wb MM    MM  8I   `" mMMY'  
+MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa. MM     
+`Mb.    ,dP'   MM    MM YM.    , L.   I8   MM     MM YA.   ,A9 MM    MM  L.   I8 ,,     
+  `"bmmd"'     `Mbod"YML.`Mbmmd' M9mmmP'   `Mbmo.JMML.`Ybmd9'.JMML  JMML.M9mmmP' db     
+      MMb                                                                               
+       `bood'
+</pre>
+<!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A -->

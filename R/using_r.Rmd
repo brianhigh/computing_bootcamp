@@ -78,3 +78,8 @@ would also like to minimize or avoid writing R code, try one of these:
 * [GraphR](https://cran.r-project.org/web/packages/GrapheR/index.html)
 
 We will not be spending any time with these in this course, however. Sorry.
+
+## 
+
+```{r child = '../questions.html'}
+```

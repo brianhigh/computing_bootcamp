@@ -208,3 +208,8 @@ Clone your fork from exercise #3 into RStudio, make an edit, push your edit to G
 ### Exercise #4 (Extra Credit)
 
 Complete exercises #2 and #3 and then [create a pull request](https://help.github.com/articles/creating-a-pull-request/).
+
+## 
+
+```{r child = '../questions.html'}
+```

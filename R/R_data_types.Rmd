@@ -152,3 +152,8 @@ as.integer('0')
 as.character(0)
 as.logical(0)
 ```
+
+## 
+
+```{r child = '../questions.html'}
+```

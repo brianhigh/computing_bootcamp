@@ -246,3 +246,8 @@ You can navitate to your files and move, copy, rename, and delete them. You can
 create new folders. 
 
 In RStudio Server you can also upload and download files using this tab.
+
+## 
+
+```{r child = '../questions.html'}
+```

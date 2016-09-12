@@ -351,3 +351,8 @@ the converter function. Which approach you choose will depend on whether or not
 you prefer to flatten or retain the structure and attributes of the original 
 object. It will also depend on the types of objects you are using. (Try 
 this with a data frame.)
+
+## 
+
+```{r child = '../questions.html'}
+```

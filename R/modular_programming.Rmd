@@ -377,3 +377,8 @@ package repository.
 
 NOTE: The *stringr* and *stringi* packages also contain string trimming
 functions.
+
+## 
+
+```{r child = '../questions.html'}
+```

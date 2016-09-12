@@ -64,3 +64,21 @@ would also like to minimize or avoid writing R code, try one of these:
 * [GraphR](https://cran.r-project.org/web/packages/GrapheR/index.html)
 
 We will not be spending any time with these in this course, however. Sorry.
+
+## 
+
+
+<pre style="color: indigo; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">
+                                                                                        
+                                                  ,,                                    
+  .g8""8q.                                 mm     db                           ,M"""b.  
+.dP'    `YM.                               MM                                  89'  `Mg 
+dM'      `MM `7MM  `7MM  .gP"Ya  ,pP"Ybd mmMMmm `7MM  ,pW"Wq.`7MMpMMMb.  ,pP"Ybd    ,M9 
+MM        MM   MM    MM ,M'   Yb 8I   `"   MM     MM 6W'   `Wb MM    MM  8I   `" mMMY'  
+MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa. MM     
+`Mb.    ,dP'   MM    MM YM.    , L.   I8   MM     MM YA.   ,A9 MM    MM  L.   I8 ,,     
+  `"bmmd"'     `Mbod"YML.`Mbmmd' M9mmmP'   `Mbmo.JMML.`Ybmd9'.JMML  JMML.M9mmmP' db     
+      MMb                                                                               
+       `bood'
+</pre>
+<!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A -->
