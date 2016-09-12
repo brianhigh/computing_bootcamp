@@ -32,8 +32,8 @@ An R session:
 To start R from the command-line with no profile: 
 
 
-```r
-R --no-init-file --no-restore-history`
+```bash
+R --no-init-file --no-restore-history
 ```
 
 ## Saving and Loading R Sessions
