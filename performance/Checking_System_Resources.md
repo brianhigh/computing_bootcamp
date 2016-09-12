@@ -6,9 +6,15 @@ John Yocum
 
 ## Where to find them?
 
-- System Properties (CPU and Memory)
-- System Information (CPU, Memory, and Storage)
-- Windows Explorer (Storage)
+- System Properties
+    - CPU
+    - Memory
+- System Information
+    - CPU
+    - Memory
+    - Storage
+- Windows Explorer
+    - Storage
 
 ## System Properties
 

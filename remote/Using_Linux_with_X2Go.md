@@ -7,7 +7,10 @@ John Yocum
 ## X2Go
 
 - Remote Desktop (but for Linux servers)
-- Cross platform (clients for Mac, Windows, and Linux)
+- Clients for Several Platforms
+    - Mac
+    - Windows
+    - Linux
 - Works both ON and OFF campus
 
 ## Benefits over SSH
@@ -19,4 +22,4 @@ John Yocum
 - Builtin Tunneling
     - Easier access to servers that are on private addresses
 
-## Questions?
+# Questions?

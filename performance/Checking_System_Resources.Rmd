@@ -20,9 +20,15 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ## Where to find them?
 
-- System Properties (CPU and Memory)
-- System Information (CPU, Memory, and Storage)
-- Windows Explorer (Storage)
+- System Properties
+    - CPU
+    - Memory
+- System Information
+    - CPU
+    - Memory
+    - Storage
+- Windows Explorer
+    - Storage
 
 ## System Properties
 
