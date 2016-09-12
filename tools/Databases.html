@@ -111,22 +111,36 @@
 
 <slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Flat File</h2></hgroup><article  id="flat-file" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons" class="smaller columns-2">
+</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons" class="smaller ">
 
 <p><strong>Pros</strong></p>
 
 <ul>
-<li>Lightweight when small</li>
-<li>Portable</li>
-</ul>
+<li>Lightweight when small
 
-<p><br></p>
+<ul>
+<li>For read/write work loads</li>
+</ul></li>
+<li>Portable
+
+<ul>
+<li>Moving between systems and software</li>
+</ul></li>
+</ul>
 
 <p><strong>Cons</strong></p>
 
 <ul>
-<li>No builtin data validation</li>
-<li>Performance goes down as it grows</li>
+<li>No builtin data validation
+
+<ul>
+<li>Internally the database is unable to make sure column type is correct</li>
+</ul></li>
+<li>Performance goes down as it grows
+
+<ul>
+<li>Write performance suffers first, followed by read performance</li>
+</ul></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Software</h2></hgroup><article  id="software" class="smaller ">
@@ -134,18 +148,34 @@
 <ul>
 <li>Any text editor</li>
 <li>Anything that can parse a CSV</li>
+<li>Any scripting or programming language</li>
 </ul>
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Relational</h2></hgroup><article  id="relational" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons-1" class="smaller columns-2">
+</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons-1" class="smaller ">
 
 <p><strong>Pros</strong></p>
 
 <ul>
-<li>Interfaces with a number of tools (ODBC)</li>
-<li>Data validation</li>
-<li>Can scale to significant size if planned for</li>
+<li>Interfaces with a number of tools
+
+<ul>
+<li>Native drivers</li>
+<li>ODBC</li>
+<li>JDBC</li>
+</ul></li>
+<li>Data validation
+
+<ul>
+<li>Verify column data type</li>
+<li>Prevent orphaned rows/records</li>
+</ul></li>
+<li>Can scale to significant size if planned for
+
+<ul>
+<li>Some engines can handle far more than others</li>
+</ul></li>
 </ul>
 
 <p><strong>Cons</strong></p>
@@ -167,7 +197,7 @@
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>NoSQL</h2></hgroup><article  id="nosql" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons-2" class="smaller columns-2">
+</article></slide><slide class=''><hgroup><h2>Pros and Cons</h2></hgroup><article  id="pros-and-cons-2" class="smaller ">
 
 <p><strong>Pros</strong></p>
 
@@ -175,8 +205,6 @@
 <li>Lots of choices</li>
 <li>Extremely high scalability</li>
 </ul>
-
-<p><br> <br> <br></p>
 
 <p><strong>Cons</strong></p>
 

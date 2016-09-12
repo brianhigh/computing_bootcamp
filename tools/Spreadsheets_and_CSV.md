@@ -6,7 +6,7 @@ John Yocum
 
 # Spreadsheets
 
-## Software {.columns-2}
+## Software
 
 - Microsoft Excel (Mac, Windows)
 - LibreOffice Calc (Mac, Windows, Linux)
@@ -14,15 +14,13 @@ John Yocum
 
 ![](images/Spreadsheets_LibreOffice.png)
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Benefits**
 
 - Easy to use
 - Lots of style/format options
 - Low resource requirements
-
-<br>
 
 **Downsides**
 
@@ -32,7 +30,7 @@ John Yocum
 
 # CSV Files
 
-## Software {.columns-2}
+## Software
 
 - Microsoft Excel (Mac, Windows)
 - LibreOffice Calc (Mac, Windows, Linux)
@@ -40,7 +38,7 @@ John Yocum
 
 ![](images/Spreadsheets_CSV.png)
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Benefits**
 

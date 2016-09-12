@@ -547,3 +547,8 @@ Exercise #2:
 
 Create the `bmi` table in PostgreSQL and query it as described in our SQLite
 example. Extra credit: Run the calculation query from the `psql` command-line utility.
+
+## 
+
+```{r child = '../questions.html'}
+```

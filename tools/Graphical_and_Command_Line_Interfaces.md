@@ -6,6 +6,10 @@ John Yocum
 
 # Graphical User Interface
 
+## Anatomy
+
+![](images/Graphical_Command_Line_GUI_Example.png)
+
 ## Example Applications
 
 - Word
@@ -28,6 +32,10 @@ John Yocum
 - Greater overhead when working via remote desktop
 
 # Command Line Interface
+
+## Anatomy
+
+![](images/Graphical_Command_Line_CMD_Example.png)
 
 ## Example Applications
 

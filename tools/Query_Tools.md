@@ -1,4 +1,4 @@
-# Query Tools
+# Database Query Tools
 John Yocum  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
@@ -21,7 +21,7 @@ John Yocum
 
 - MySQL Workbench
     - Limited to working with MySQL
-    - Supports querying, visual table relationships, and more
+    - Supports querying, visualize table relationships, and more
 - Microsoft Access
     - Can function as a front-end for other database engines
     - Supports both form and report generation
@@ -30,7 +30,7 @@ John Yocum
 
 ![](images/Query_Tools_Report.png)
 
-## Command Line Tools {.columns-2}
+## Command Line Tools
 
 - R
     - Primary function is to perform analysis on data

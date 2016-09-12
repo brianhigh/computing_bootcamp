@@ -1,5 +1,5 @@
 ---
-title: "Query Tools"
+title: "Database Query Tools"
 author: "John Yocum"
 date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
 output:
@@ -35,7 +35,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 - MySQL Workbench
     - Limited to working with MySQL
-    - Supports querying, visual table relationships, and more
+    - Supports querying, visualize table relationships, and more
 - Microsoft Access
     - Can function as a front-end for other database engines
     - Supports both form and report generation
@@ -44,7 +44,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ![](images/Query_Tools_Report.png)
 
-## Command Line Tools {.columns-2}
+## Command Line Tools
 
 - R
     - Primary function is to perform analysis on data

@@ -6,34 +6,43 @@ John Yocum
 
 # Flat File
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Pros**
 
 - Lightweight when small
+    - For read/write work loads
 - Portable
-
-<br>
+    - Moving between systems and software
 
 **Cons**
 
 - No builtin data validation
+    - Internally the database is unable to make sure column type is correct
 - Performance goes down as it grows
+    - Write performance suffers first, followed by read performance
 
 ## Software
 
 - Any text editor
 - Anything that can parse a CSV
+- Any scripting or programming language
 
 # Relational
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Pros**
 
-- Interfaces with a number of tools (ODBC)
+- Interfaces with a number of tools
+    - Native drivers
+    - ODBC
+    - JDBC
 - Data validation
+    - Verify column data type
+    - Prevent orphaned rows/records
 - Can scale to significant size if planned for
+    - Some engines can handle far more than others
 
 **Cons**
 
@@ -50,16 +59,12 @@ John Yocum
 
 # NoSQL
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Pros**
 
 - Lots of choices
 - Extremely high scalability
-
-<br>
-<br>
-<br>
 
 **Cons**
 

@@ -54,17 +54,18 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ## Making the right choice
 
 - Text Editors and IDEs serve different purposes
-   - Pick an editor you prefer the feel of
-   - Pick an IDE based on the language you'll be developing in
+    - Pick an editor you prefer the feel of
+    - Pick an IDE based on the language you'll be developing in
 - If you're using version control, like Git, you may prefer tools with tight integration
-   - Atom
-   - Visual Studio Code
-   - RStudio
+    - Atom
+    - Visual Studio Code
+    - RStudio
 
 ## Conclusion
 
 - The right tools can make your life easier
-- Take the time to tweak and configure them to best fit your needs (most are extensible)
+- Take the time to tweak and configure them to best fit your needs
+    - Most are extensible
 - Language specific tools often have handy features
     - Data exploration (check contents of variables)
     - Better integrated debugging
