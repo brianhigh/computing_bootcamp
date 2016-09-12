@@ -4,9 +4,7 @@ Brian High
 
 
 
-## R Language Basics
-
-### Learning objectives
+## Learning objectives
 
 You will learn:
 
@@ -384,7 +382,7 @@ system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 
 ```
 ##    user  system elapsed 
-##   0.002   0.000   0.002
+##   0.000   0.004   0.002
 ```
 
 ```r
@@ -393,7 +391,7 @@ system.time(for (i in 1:length(wt100k)) bmi[i] <- (wt100k[i] / ht100k[i] ^ 2) * 
 
 ```
 ##    user  system elapsed 
-##   0.241   0.008   0.249
+##   0.221   0.009   0.237
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.
@@ -467,3 +465,22 @@ You can remove a file with `unlink()`.
 ```r
 unlink("df.rda")
 ```
+
+
+##
+
+
+<pre style="color: indigo; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">
+                                                                                        
+                                                  ,,                                    
+  .g8""8q.                                 mm     db                           ,M"""b.  
+.dP'    `YM.                               MM                                  89'  `Mg 
+dM'      `MM `7MM  `7MM  .gP"Ya  ,pP"Ybd mmMMmm `7MM  ,pW"Wq.`7MMpMMMb.  ,pP"Ybd    ,M9 
+MM        MM   MM    MM ,M'   Yb 8I   `"   MM     MM 6W'   `Wb MM    MM  8I   `" mMMY'  
+MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa. MM     
+`Mb.    ,dP'   MM    MM YM.    , L.   I8   MM     MM YA.   ,A9 MM    MM  L.   I8 ,,     
+  `"bmmd"'     `Mbod"YML.`Mbmmd' M9mmmP'   `Mbmo.JMML.`Ybmd9'.JMML  JMML.M9mmmP' db     
+      MMb                                                                               
+       `bood'
+</pre>
+<!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A -->

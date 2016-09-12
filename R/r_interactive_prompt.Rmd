@@ -110,3 +110,8 @@ In any R console:
 
 * Quit the session with `q()` (or from the menu) and start a new session
 * Close the window and launch a new one (you might lose work, though)
+
+##
+
+```{r child = '../questions.html'}
+```

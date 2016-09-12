@@ -109,9 +109,7 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>R Language Basics</h2></hgroup><article  id="r-language-basics" class="smaller ">
-
-<h3>Learning objectives</h3>
+<slide class=''><hgroup><h2>Learning objectives</h2></hgroup><article  id="learning-objectives" class="smaller ">
 
 <p>You will learn:</p>
 
@@ -364,12 +362,12 @@ ht100k &lt;- rnorm(n = 100000, mean = 65, sd = 3)</pre>
 <pre class = 'prettyprint lang-r'>system.time(bmi &lt;- (wt100k / ht100k ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.002   0.000   0.002</pre>
+##   0.000   0.004   0.002</pre>
 
 <pre class = 'prettyprint lang-r'>system.time(for (i in 1:length(wt100k)) bmi[i] &lt;- (wt100k[i] / ht100k[i] ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.241   0.008   0.249</pre>
+##   0.221   0.009   0.237</pre>
 
 <p>Clearly, the loop approach takes longer to run than the vectorized approach.</p>
 
@@ -416,7 +414,25 @@ df</pre>
 
 <p>You can remove a file with <code>unlink()</code>.</p>
 
-<pre class = 'prettyprint lang-r'>unlink(&quot;df.rda&quot;)</pre></article></slide>
+<pre class = 'prettyprint lang-r'>unlink(&quot;df.rda&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
+
+<pre style="color: indigo; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">
+                                                                                        
+                                                  ,,                                    
+  .g8""8q.                                 mm     db                           ,M"""b.  
+.dP'    `YM.                               MM                                  89'  `Mg 
+dM'      `MM `7MM  `7MM  .gP"Ya  ,pP"Ybd mmMMmm `7MM  ,pW"Wq.`7MMpMMMb.  ,pP"Ybd    ,M9 
+MM        MM   MM    MM ,M'   Yb 8I   `"   MM     MM 6W'   `Wb MM    MM  8I   `" mMMY'  
+MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa. MM     
+`Mb.    ,dP'   MM    MM YM.    , L.   I8   MM     MM YA.   ,A9 MM    MM  L.   I8 ,,     
+  `"bmmd"'     `Mbod"YML.`Mbmmd' M9mmmP'   `Mbmo.JMML.`Ybmd9'.JMML  JMML.M9mmmP' db     
+      MMb                                                                               
+       `bood'
+</pre>
+
+<!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A --></article></slide>
 
 
   <slide class="backdrop"></slide>

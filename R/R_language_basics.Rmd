@@ -18,9 +18,7 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
-## R Language Basics
-
-### Learning objectives
+## Learning objectives
 
 You will learn:
 
@@ -333,4 +331,10 @@ You can remove a file with `unlink()`.
 
 ```{r}
 unlink("df.rda")
+```
+
+
+##
+
+```{r child = '../questions.html'}
 ```
