@@ -1,4 +1,4 @@
-# Reference and Bib Tools
+# Reference Managers
 John Yocum  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
@@ -6,8 +6,8 @@ John Yocum
 
 ## Benefits
 
-- Better handling of large numbers of references
-- Extracts reference information from documents
+- Better handling of large numbers of references compared to builtin tools
+- Imports reference information from documents and journals
 - Maintain a database of references for future papers
 - Ability to share references with peers
 
@@ -17,16 +17,27 @@ John Yocum
     - Free, and open source
     - Windows, Mac, and Linux
 - EndNote
-    - $79 per user
+    - $70 per computer
     - Windows and Mac
 - Mendeley
     - Free
     - Windows, Mac, and Linux
-    
+
+## Issues
+
+- Web browser (Firefox, Chrome, etc) no longer shows my reference manager
+    - Check to see if the browser addon is still enabled
+- Word no longer shows my reference manager
+    - When a Word addin crashes, it can become disabled
+- Zotero running slowly
+    - Huge libraries of PDFs (several GB) appear to slow it down
+
 ## Which to choose?
 
 - What are other members of your group using?
+    - Using the same software will improve data sharing
 - Does it support the software or operating system you use?
 - Try them out, and see what feels best to you
+    - There is no one best choice, each has strenghts and weaknesses
 
 ## Questions?

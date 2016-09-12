@@ -20,7 +20,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 # Spreadsheets
 
-## Software {.columns-2}
+## Software
 
 - Microsoft Excel (Mac, Windows)
 - LibreOffice Calc (Mac, Windows, Linux)
@@ -28,15 +28,13 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ![](images/Spreadsheets_LibreOffice.png)
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Benefits**
 
 - Easy to use
 - Lots of style/format options
 - Low resource requirements
-
-<br>
 
 **Downsides**
 
@@ -46,7 +44,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 # CSV Files
 
-## Software {.columns-2}
+## Software
 
 - Microsoft Excel (Mac, Windows)
 - LibreOffice Calc (Mac, Windows, Linux)
@@ -54,7 +52,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ![](images/Spreadsheets_CSV.png)
 
-## Pros and Cons {.columns-2}
+## Pros and Cons
 
 **Benefits**
 

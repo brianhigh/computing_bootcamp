@@ -1,5 +1,5 @@
 ---
-title: "Reference and Bib Tools"
+title: "Reference Managers"
 author: "John Yocum"
 date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
 output:
