@@ -15,7 +15,7 @@ output:
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
 ```
 
 ```{r load_packages, echo=FALSE}
@@ -583,4 +583,9 @@ Or you might want to try the Swirl tutorials for [Getting and Cleaning Data](htt
 library(swirl)
 install_from_swirl("Getting and Cleaning Data")
 swirl()
+```
+
+## 
+
+```{r child = '../questions.html'}
 ```
