@@ -20,6 +20,10 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 # Graphical User Interface
 
+## Anatomy
+
+![](images/Graphical_Command_Line_GUI_Example.png)
+
 ## Example Applications
 
 - Word
@@ -42,6 +46,10 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Greater overhead when working via remote desktop
 
 # Command Line Interface
+
+## Anatomy
+
+![](images/Graphical_Command_Line_CMD_Example.png)
 
 ## Example Applications
 
