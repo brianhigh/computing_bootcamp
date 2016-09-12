@@ -312,3 +312,8 @@ We might want to put our data into a database if:
 We will look at how to create and use databases from R in a later module.
 
 If we have extra time, we also spend some time on R and Big Data.
+
+## 
+
+```{r child = '../questions.html'}
+```
