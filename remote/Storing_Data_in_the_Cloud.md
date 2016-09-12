@@ -10,6 +10,8 @@ John Yocum
     - How long does data transfer take?
 - Local Disk Usage
     - Files may be stored both on cloud and on each persons computer
+- Windows Profile Size
+    - Some services, like Dropbox, by default store files in your Windows profile
 - Security
     - Files may be automatically saved to several computers or mobile devices
 

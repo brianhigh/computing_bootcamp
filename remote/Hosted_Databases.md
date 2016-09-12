@@ -18,14 +18,16 @@ John Yocum
 ## Available Options within DEOHS
 
 **Shared Database Servers**
-    - MySQL
-    - PostgreSQL
+
+- MySQL
+- PostgreSQL
 
 **Dedicated Database Servers**
-    - MongoDB
-    - Apache Cassandra
-    - FileMaker
-    - And, more..
+    
+- MongoDB
+- Apache Cassandra
+- FileMaker
+- And, more..
 
 ## Available Options outside of DEOHS
 

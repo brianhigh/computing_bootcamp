@@ -9,7 +9,11 @@ John Yocum
 - Works both ON and OFF campus
 - Enables access to all your files
 - Works just like a normal Windows desktop
-- Cross platform (Macs and other systems can use it)
+- Clients for Several Platforms
+    - Mac
+    - Windows
+    - Linux
+    - Android, etc.
 
 ## Applications
 
@@ -39,7 +43,11 @@ John Yocum
 ## Tips for a Good Experience
 
 - Logging off vs Disconnecting
+    - It's best to log off when you're done working
+    - If you need to run a process over night, simply disconnect the session
 - Use Gatekeeper (Remote Desktop Gateway)
+    - Provides an additional layer of security
 - Save your work
+    - Don't disconnect without saving your work first
 
 # Questions?

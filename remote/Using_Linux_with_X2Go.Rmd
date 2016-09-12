@@ -21,8 +21,12 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ## X2Go
 
 - Remote Desktop (but for Linux servers)
-- Cross platform (clients for Mac, Windows, and Linux)
+- Clients for Several Platforms
+    - Mac
+    - Windows
+    - Linux
 - Works both ON and OFF campus
+    - Off campus requires whitelisting via Portal
 
 ## Benefits over SSH
 
