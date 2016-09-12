@@ -96,6 +96,8 @@ The default files for your history (`.Rhistory`) and workspace (`.Rdata`) are st
 
 ![](images/environment.png)
 
+**_Summary_**: Where are they stored? *It depends*.
+
 ## R Data Files
 
 The default data file format "native" to R is RData (rda).
