@@ -18,19 +18,37 @@ suppressMessages(library(knitr))
 opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```    
 
+## Windows
+
+ - Windows 10 features
+ - Folder Options
+ - Search
+ - Task manager
+ - Setting default applications
+
+## Mac OS X
+ 
+ - Finder settings
+ - Right click
+ - System Preferences
+ - Utilities
 
 ## Web Browsers
 
 - Built-in PDF readers
-   - Do not always render complex PDFs well or work with forms
-   - Can switch browsers to use Adobe plugin, or download PDFs and open in Adobe apps
+    - Do not always render complex PDFs well or work with forms
+    - Can switch browsers to use Adobe plugin, or download PDFs and open in Adobe apps
   
 - Tabs
-   - Tabs are very useful but take up resources
-   - Especially on intensive pages with Flash or Javascript
+    - Tabs are very useful but take up resources
+    - Especially on intensive pages with Flash or Javascript
   
 - Private browsing and clearing cache
-
+- Add-ons
+    - Ad / flash block
+    - Bulk downloaders
+- Safe mode
+-Set search engine (Firefox)
 
 ## Thunderbird
 
@@ -43,6 +61,8 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 ## Office
 
+- Broken Template files
+- Disabled Add-ins
 - Corrupt documents
     - Copying contents to new document sometimes works
     - Or open in LibreOffice:
@@ -58,12 +78,10 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
     - A pop-up often shows up when JavaScript needs to be enabled
     - Otherwise it can be enabled for a document in the options
 
-
 ## 7-zip
 
 - You can right-click any file and get a 7-zip option
 - When you "add a file to archive" it gives several settings, including password protection (encryption)
-
 
 ## Cloud storage
 
@@ -73,4 +91,4 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 
 - OneDrive & Google Drive
     - Both have UW Branded options
-    - More complient with sesitive data
+    - More complient with sensitive data

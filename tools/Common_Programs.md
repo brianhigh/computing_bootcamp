@@ -4,19 +4,37 @@ Elliot Norwood
 
 
 
+## Windows
+
+ - Windows 10 features
+ - Folder Options
+ - Search
+ - Task manager
+ - Setting default applications
+
+## Mac OS X
+ 
+ - Finder settings
+ - Right click
+ - System Preferences
+ - Utilities
 
 ## Web Browsers
 
 - Built-in PDF readers
-   - Do not always render complex PDFs well or work with forms
-   - Can switch browsers to use Adobe plugin, or download PDFs and open in Adobe apps
+    - Do not always render complex PDFs well or work with forms
+    - Can switch browsers to use Adobe plugin, or download PDFs and open in Adobe apps
   
 - Tabs
-   - Tabs are very useful but take up resources
-   - Especially on intensive pages with Flash or Javascript
+    - Tabs are very useful but take up resources
+    - Especially on intensive pages with Flash or Javascript
   
 - Private browsing and clearing cache
-
+- Add-ons
+    - Ad / flash block
+    - Bulk downloaders
+- Safe mode
+-Set search engine (Firefox)
 
 ## Thunderbird
 
@@ -29,6 +47,8 @@ Elliot Norwood
 
 ## Office
 
+- Broken Template files
+- Disabled Add-ins
 - Corrupt documents
     - Copying contents to new document sometimes works
     - Or open in LibreOffice:
@@ -59,4 +79,4 @@ Elliot Norwood
 
 - OneDrive & Google Drive
     - Both have UW Branded options
-    - More complient with sesitive data
+    - More complient with sensitive data
