@@ -1,0 +1,56 @@
+---
+title: "Literate Programming with R and RStudio"
+author: "Brian High"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
+
+```{r set_knitr_options, echo=FALSE, message=FALSE}
+suppressMessages(library(knitr))
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+```
+
+## Learning Objectives
+
+You will learn:
+
+* What literate programming is
+* Why literate programming matters
+* What tools are available for literate programming
+* How to use R and RStudio for literate programming
+* What kinds of documents RMarkdown supports
+* The basics of formatting documents with RMarkdown
+* The basics of using *knitr* to render RMarkdown documents
+* How to share or publish RMarkdown and rendered documents
+
+## Literate Programming
+
+## Reproducibility
+
+## Automation
+
+## Literate Programming Tools
+
+## R and RStudio for Literate Programming
+
+## RMarkdown
+
+## RMarkdown Syntax
+
+## knitr
+
+## Sharing and Publishing
+
+
+## 
+
+```{r child = '../questions.html'}
+```
