@@ -4,6 +4,8 @@ Brian High
 
 
 
+
+
 ## Learning Objectives
 
 You will learn:
@@ -171,7 +173,7 @@ sqlfile       # This will show the database filename.
 ```
 
 ```
-## [1] "~/file641a5fcc8080.sqlite"
+## [1] "~/file34a23f696ad8.sqlite"
 ```
 
 ```r
