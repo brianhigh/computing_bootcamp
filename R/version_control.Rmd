@@ -78,14 +78,16 @@ Most modern version control systems:
 
 ## Installing Git
 
+* Microsoft Windows does not come with Git installed
+* Apple OS X (macOS) comes with an old version (but it might work okay for you)
 * Installers available from: [https://git-scm.com/](https://git-scm.com/)
-* For Windows installer, _allow changes to the system PATH_
+* For the Windows installer, _allow changes to the system PATH_ (now default)
 * RStudio searches PATH to find "git", or manually configure
 * Git is _already installed_ on most of our departmental servers
 * [Git for Windows](https://git-for-windows.github.io/) provides a *Bash* shell
 * [GitHub Desktop](https://desktop.github.com/) is optional
 
-![On Windows, allow Git to change your PATH](images/install_git.png)
+![](images/install_git.png)
 
 ## Configuring Git
 
