@@ -10,6 +10,7 @@ John Yocum
     - Remote Desktop
     - SFTP
 - Scalable
+    - If you need more capacity, let us know
 - Secure
     - Data is stored in a secure server room, and in UW operated data centers
 - Reliable
