@@ -83,6 +83,31 @@ editor, R, and a few packages such as *knitr*.
 
 These tools are well integrated into RStudio.
 
+## Installing R Markdown and *knitr*
+
+### R Packages
+
+You need the R packages *rmarkdown* and *knitr*.
+
+
+```r
+install.packages(c("rmarkdown", "knitr"), dependencies = TRUE)
+```
+
+### `pdflatex`: PDF Conversion Utility
+
+To generate PDFs, you will need `pdflatex` which comes with...
+
+* **_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex).
+* **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
+
+You will probably need to restart RStudio after these utilities are installed to make
+sure they are found by RStudio.
+
+### `pandoc`: Markup Conversion Utility
+
+Starting with version 0.98.932, RStudio comes with a bundled Pandoc binary.
+
 ## R Markdown Syntax
 
 [R Markdown](http://R Markdown.rstudio.com/) is a "wiki" syntax based on 

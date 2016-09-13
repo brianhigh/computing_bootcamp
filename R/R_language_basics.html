@@ -362,12 +362,12 @@ ht100k &lt;- rnorm(n = 100000, mean = 65, sd = 3)</pre>
 <pre class = 'prettyprint lang-r'>system.time(bmi &lt;- (wt100k / ht100k ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.000   0.004   0.002</pre>
+##   0.001   0.000   0.002</pre>
 
 <pre class = 'prettyprint lang-r'>system.time(for (i in 1:length(wt100k)) bmi[i] &lt;- (wt100k[i] / ht100k[i] ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.221   0.009   0.237</pre>
+##   0.213   0.012   0.224</pre>
 
 <p>Clearly, the loop approach takes longer to run than the vectorized approach.</p>
 

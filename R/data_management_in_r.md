@@ -4,6 +4,8 @@ Brian High
 
 
 
+
+
 ## Learning Objectives
 
 You will learn:
@@ -369,7 +371,7 @@ ggmap(usa) + geom_point(aes(x = lon, y = lat, color = nz), data = diversity) +
     scale_colour_gradient(limits = quantile(diversity$nz, probs = c(.025, .975)))
 ```
 
-![](data_management_in_r_files/figure-html/diversity_map-1.png)
+![](data_management_in_r_files/figure-html/diversity_map-1.png)<!-- -->
 
 ## ETL in a single function
 

@@ -382,7 +382,7 @@ system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 
 ```
 ##    user  system elapsed 
-##   0.000   0.004   0.002
+##   0.001   0.000   0.002
 ```
 
 ```r
@@ -391,7 +391,7 @@ system.time(for (i in 1:length(wt100k)) bmi[i] <- (wt100k[i] / ht100k[i] ^ 2) * 
 
 ```
 ##    user  system elapsed 
-##   0.221   0.009   0.237
+##   0.213   0.012   0.224
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.

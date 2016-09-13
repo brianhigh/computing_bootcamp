@@ -201,7 +201,7 @@ cat('The date was', format(Sys.Date() - 7, '%Y-%m-%d'), 'a week ago.')
 ```
 
 ```
-## The date was 2016-09-04 a week ago.
+## The date was 2016-09-06 a week ago.
 ```
 
 ```r
@@ -219,7 +219,7 @@ cat('It has been', format(since.midnight), 'since midnight.')
 ```
 
 ```
-## It has been 17.5491 hours since midnight.
+## It has been 14.47796 hours since midnight.
 ```
 
 ## Basic Single-Value (Scalar) Data Types

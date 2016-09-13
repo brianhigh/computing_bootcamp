@@ -13,9 +13,25 @@ output:
     logo: ../images/logo_128.png
 ---
 
-```{r set_knitr_options, echo=FALSE, message=FALSE}
+```{r load_packages, echo=FALSE, message=FALSE, warning=FALSE}
+# Load one or more packages into memory, installing as needed.
+# https://github.com/brianhigh/imp ; License: Public Domain (CC0 1.0)
+load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
+    is.installed <- function(x) x %in% installed.packages()[,"Package"]
+    inst.cran <- function(x) install.packages(x, quiet = TRUE, repos = repos)
+    result <- sapply(pkgs, function(x) { 
+        if (! is.installed(x)) inst.cran(x)
+        library(x, character.only = TRUE)
+    })
+}
+
+pkgs <- c("RSQLite", "urltools", "dplyr", "ggplot2", "RPostgreSQL")
+load.pkgs(pkgs)
+```
+
+```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
 ```
 
 ## Learning Objectives

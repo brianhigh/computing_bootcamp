@@ -13,9 +13,9 @@ output:
     logo: ../images/logo_128.png
 ---
 
-```{r set_knitr_options, echo=FALSE, message=FALSE}
+```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
 ```
 
 ## Learning Objectives
@@ -96,6 +96,30 @@ editor, R, and a few packages such as *knitr*.
 ![Markdown document rendered as a webpage. Image by: [RStudio Blog](https://blog.rstudio.org/2014/06/)](images/storms-004.png)
 
 These tools are well integrated into RStudio.
+
+## Installing R Markdown and *knitr*
+
+### R Packages
+
+You need the R packages *rmarkdown* and *knitr*.
+
+```{r, eval=FALSE}
+install.packages(c("rmarkdown", "knitr"), dependencies = TRUE)
+```
+
+### `pdflatex`: PDF Conversion Utility
+
+To generate PDFs, you will need `pdflatex` which comes with...
+
+* **_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex).
+* **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
+
+You will probably need to restart RStudio after these utilities are installed to make
+sure they are found by RStudio.
+
+### `pandoc`: Markup Conversion Utility
+
+Starting with version 0.98.932, RStudio comes with a bundled Pandoc binary.
 
 ## R Markdown Syntax
 
