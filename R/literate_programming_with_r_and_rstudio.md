@@ -126,8 +126,9 @@ choice. This will send the rendered document to the RPubs website, run by RStudi
 
 ## Example: Weather Data Plot
 
-Given this script: [ndbc_plot.R](ndbc_plot.R), covert to R Markdown and render in
-various formats (HTML, PDF, Markdown, and MS-Word).
+Given this script: [ndbc_plot.R](ndbc_plot.R), convert to R Markdown and render in
+various formats (HTML, PDF, Markdown, and MS-Word). Is this "reproducible"? Why 
+or why not?
 
 One version of this script, as rendered from R Markdown, is published on 
 [RPubs](https://rpubs.com/brianhigh/108765).
@@ -136,13 +137,15 @@ One version of this script, as rendered from R Markdown, is published on
 
 ## Exercise #1: Zika Cases US Map
 
-Convert [zika.R](zika.R) (most recent CDC data) or [zika.R](https://github.com/brianhigh/computing_bootcamp/blob/e88a55c4be0b4dc469cc1f3f7f688f03f1a7c35b/R/zika.R) (CDC data as of 2016-08-31) to R Markdown and render as HTML and PDF. 
+Convert [zika.R](zika.R) (most recent CDC data) or [zika.R](https://github.com/brianhigh/computing_bootcamp/blob/e88a55c4be0b4dc469cc1f3f7f688f03f1a7c35b/R/zika.R) (CDC data as of 2016-08-31) to R Markdown and render as HTML and PDF. Which is more
+"reproducible"?
 
 ![](images/zikaplot.png)
 
 ## Exercise #2: World Malaria Prevalence
 
-Convert [malaria.R](malaria.R) to R Markdown and render as HTML and PDF.
+Convert [malaria.R](malaria.R) to R Markdown and render as HTML and PDF. You may 
+choose use only a few sections of the analysis (like "prevalence by subregion").
 
 ![](images/malariaplot.png)
 
