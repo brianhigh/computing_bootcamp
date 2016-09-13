@@ -2,7 +2,10 @@
 # Make a choropleth of "Zika Case Counts in the US by State".
 # (Similar to this map: http://www.cdc.gov/zika/intheus/maps-zika-us.html)
 #
-# Last updated by Brian High (https://github.com/brianhigh) on Sept. 11, 2016
+# "Scrapes" tabular data from "Case Counts in the US" CDC web page.
+# (http://www.cdc.gov/zika/geo/united-states.html)
+#
+# Last updated by Brian High (https://github.com/brianhigh) on Sept. 12, 2016.
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 #:-----------------------------------------------------------------------------:
 
