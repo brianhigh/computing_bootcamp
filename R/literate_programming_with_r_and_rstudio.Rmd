@@ -150,7 +150,7 @@ One version of this script, as rendered from R Markdown, is published on
 
 ## Exercise #1: Zika Cases US Map
 
-Convert [zika.R](zika.R) to R Markdown and render as HTML and PDF.
+Convert [zika.R](zika.R) (most recent CDC data) or [zika.R](https://github.com/brianhigh/computing_bootcamp/blob/e88a55c4be0b4dc469cc1f3f7f688f03f1a7c35b/R/zika.R) (CDC data as of 2016-08-31) to R Markdown and render as HTML and PDF. 
 
 ![](images/zikaplot.png)
 
