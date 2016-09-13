@@ -145,7 +145,8 @@ Convert [zika.R](zika.R) (most recent CDC data) or [zika.R](https://github.com/b
 ## Exercise #2: World Malaria Prevalence
 
 Convert [malaria.R](malaria.R) to R Markdown and render as HTML and PDF. You may 
-choose use only a few sections of the analysis (like "prevalence by subregion").
+choose to use only a few sections of the analysis (like "prevalence by subregion") 
+to save time.
 
 ![](images/malariaplot.png)
 
