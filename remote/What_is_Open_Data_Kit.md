@@ -24,5 +24,26 @@ John Yocum
     - Data is uploaded via wifi (or mobile) when convenient
 - Easy to use
     - Step by step forms walk you through it
+    
+# Alternatives, and Final Thoughts
+
+## Alternatives
+
+- REDCap
+    - Web based application
+    - Mobile app for iPad and Android
+- Custom built solution
+    - Can be expensive to do right
+    - Who will maintain it?
+- Paper forms
+    - Bulky for large studies
+    - Greater chance of data entry errors
+    
+## Final Thoughts
+
+- ODK is easy to use, but limited to Android
+     - If iPad support is required, consider REDCap
+- Custom built solutions may offer a superior experience, but at a significant premium
+- Before making a commitment, be sure to consider your data security requirements
 
 # Questions?
