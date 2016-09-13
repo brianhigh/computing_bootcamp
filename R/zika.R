@@ -123,7 +123,7 @@ gmap <- ggplot(zika, aes(map_id=region)) + ggtitle(plot_title) +
 #:-----------------------------------------------------------------------------:
 
 # Create a table of states (regions) not mapped
-not_mapped <- zika[! zika$region %in% unique(usmap$region), ]
+not_mapped <- zika[! zika$region %in% states$region, ]
 not_mapped %<>% select(region, cases) %>% 
     arrange(cases) %>% mutate(region=toTitleCase(as.character(region))) %>% 
     mutate(region=gsub("^Us ", "US ", region)) %>% t
