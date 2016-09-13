@@ -5,7 +5,7 @@
 # "Scrapes" tabular data from "Case Counts in the US" CDC web page.
 # (http://www.cdc.gov/zika/geo/united-states.html)
 #
-# Last updated by Brian High (https://github.com/brianhigh) on Sept. 12, 2016.
+# Last updated by Brian High (https://github.com/brianhigh) on Sept. 13, 2016.
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 #:-----------------------------------------------------------------------------:
 
@@ -28,7 +28,7 @@ load.pkgs <- function(pkgs, repos = "http://cran.r-project.org") {
 }
 
 # Create a vector of package names for the packages we will need.
-pkgs <- c("dplyr", "tools", "scales", "png", "XML", 
+pkgs <- c("magrittr", "dplyr", "XML", "tools", "scales", "png", 
           "ggthemes", "ggplot2", "gridExtra", "grid")
 
 # Load the packages, installing as needed.
@@ -45,13 +45,17 @@ dir.create(file.path(data.dir),
            recursive = TRUE)
 
 #:-----------------------------------------------------------------------------:
-# Get the data
+# Get the zika case count data
 #:-----------------------------------------------------------------------------:
 
 # Scrape table from CDC web page
 zikaURL <- "http://www.cdc.gov/zika/geo/united-states.html"
 zikaWeb <-readHTMLTable(zikaURL)
 zika <- zikaWeb[[1]]
+
+#:-----------------------------------------------------------------------------:
+# Clean up the zika case count data
+#:-----------------------------------------------------------------------------:
 
 # Clean up state and territory names
 zika <- zika %>% filter(States != "Territories")
@@ -62,37 +66,36 @@ zika$States <- as.factor(as.character(zika$States))
 names(zika) <- c('state_or_territory', 'travel_associated_cases', 
                     'locally_acquired_cases')
 
-# Define function to remove non-digit text from integer data
+# Define a function to remove non-digit text from integer data
 cleanDigits <- function (x){
-    x <- gsub("^([0-9,]+).*$", "\\1", x)
-    x <- gsub(",", "", x)
-    x <- as.integer(x)
+    x %>% gsub("^([0-9,]+).*$", "\\1", .) %>% gsub(",", "", .) %>% as.integer()
 }
 
-# Remove non-digit text from the two cases columns
-zika[, 2:3] <- sapply(2:3, function(x) sapply(zika[, x], 
-                                              function(y) cleanDigits(y)))
+# Remove non-digit text from the two "cases" columns
+zika[, 2:3] %<>% apply(2, cleanDigits)
 
-#:-----------------------------------------------------------------------------:
-# Prepare the data for plotting
-#:-----------------------------------------------------------------------------:
-
-# Convert state names to lower case, add case types to get total cases
+# Convert state names to lower case
 region <- gsub("[^a-z ]", "", tolower(zika$state_or_territory))
-cases <- zika$travel_associated_cases + zika$locally_acquired_cases
-df <- data.frame(region, cases, row.names=NULL)
 
-# Get map data
-states_map <- map_data("state")
+# Add case types to get total cases
+cases <- zika$travel_associated_cases + zika$locally_acquired_cases
+zika <- data.frame(region, cases, row.names=NULL)
+
+#:-----------------------------------------------------------------------------:
+# Merge with map data
+#:-----------------------------------------------------------------------------:
+
+# Get the map data
+usmap <- map_data("state")
 
 # Extract state  names and find center point of each state
-cnames <-aggregate(cbind(long, lat) ~ region, 
-                   data = states_map, 
-                   FUN = function(x) mean(range(x)))
-cnames$angle <- 0
+states <-aggregate(cbind(long, lat) ~ region, usmap, function(x) mean(range(x)))
+
+# Add angle for use with arrangeGrob when producing plot image
+states$angle <- 0
 
 # Combine state data with zika data
-df <- merge(x = df, y = cnames, by = "region", all.x = TRUE)
+zika <- merge(x = zika, y = states, by = "region", all.x = TRUE)
 
 #:-----------------------------------------------------------------------------:
 # Create the choropleth map
@@ -105,14 +108,14 @@ plot_title <- paste('Zika Case Counts in the US by State',
                     'January 01, 2015 to Present', asof.date, sep='\n')
 
 # Create the choropleth map with ggplot
-usmap <- ggplot(df, aes(map_id=region)) + ggtitle(plot_title) +
-    geom_map(aes(fill=cases), map=states_map) + coord_map("polyconic") + 
-    expand_limits(x = states_map$long, y = states_map$lat) + theme_map() +
+gmap <- ggplot(zika, aes(map_id=region)) + ggtitle(plot_title) +
+    geom_map(aes(fill=cases), map=usmap) + coord_map("polyconic") + 
+    expand_limits(x = usmap$long, y = usmap$lat) + theme_map() +
     theme(plot.title = element_text(hjust = 0.5),  
           legend.justification = "center", legend.position="bottom") +
     scale_fill_continuous(limits=c(0, 100), 
                           low = "lightcyan", high = "royalblue", oob=squish) +
-    geom_text(data=df[complete.cases(df$long),], 
+    geom_text(data=zika[complete.cases(zika$long),], 
               aes(long, lat, label = cases, angle=angle), size=2.5)
 
 #:-----------------------------------------------------------------------------:
@@ -120,23 +123,23 @@ usmap <- ggplot(df, aes(map_id=region)) + ggtitle(plot_title) +
 #:-----------------------------------------------------------------------------:
 
 # Create a table of states (regions) not mapped
-not_mapped <- df[! df$region %in% unique(states_map$region), ]
+not_mapped <- zika[! zika$region %in% unique(usmap$region), ]
 not_mapped %<>% select(region, cases) %>% 
     arrange(cases) %>% mutate(region=toTitleCase(as.character(region))) %>% 
     mutate(region=gsub("^Us ", "US ", region)) %>% t
 row.names(not_mapped) <- NULL
 
 # Create a graphical object (grob) for this table
-table <- tableGrob(not_mapped, theme = ttheme_default(base_size = 8))
+gtable <- tableGrob(not_mapped, theme = ttheme_default(base_size = 8))
 
 # Create a graphical object (grob) for the citation text
 source_text <- paste("Source: Case Counts in the US", "CDC", 
                      "http://www.cdc.gov/zika/geo/united-states.html",sep=", ")
-text <- textGrob(source_text, x=0, hjust=-0.2, vjust=0.2, 
-                             gp=gpar(fontface = "italic", fontsize = 8))
+gtext <- textGrob(source_text, x=0, hjust=-0.2, vjust=0.2, 
+                              gp=gpar(fontface = "italic", fontsize = 8))
 
 # Combine plot elements (map, table, source text) into a "grid"
-g <- arrangeGrob(usmap, heights=c(8, 1), sub=table, bottom = text)
+g <- arrangeGrob(gmap, heights=c(8, 1), sub=gtable, bottom = gtext)
 
 # View the plot
 #grid::grid.draw(g)
