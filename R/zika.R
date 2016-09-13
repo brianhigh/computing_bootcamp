@@ -25,7 +25,7 @@ load.pkgs <- function(pkgs, repos = "http://cran.r-project.org") {
 }
 
 # Create a vector of package names for the packages we will need.
-pkgs <- c("dplyr", "tools", "scales", "png", 
+pkgs <- c("dplyr", "tools", "scales", "png", "XML", 
           "ggthemes", "ggplot2", "gridExtra", "grid")
 
 # Load the packages, installing as needed.
@@ -45,26 +45,30 @@ dir.create(file.path(data.dir),
 # Get the data
 #:-----------------------------------------------------------------------------:
 
-# Use cached data files, if present, or download as needed.
-# Note: If you want the script to get all the data directly from the sources
-#       on the web, just delete the "data" folder before running this script.
-# Original data source is: http://www.cdc.gov/zika/geo/united-states.html
-#zika.file <- 'cdc-state-case-counts-latest.csv'
-zika.file <- 'cdc-state-case-counts-2016-08-31.csv'
-data.file <- paste(data.dir, zika.file, sep = '/')
-if (!file.exists(data.file)) {
-    # Download the data.
-    data.host <- 'https://raw.githubusercontent.com'
-    data.repo <- 'BuzzFeedNews/zika-data'
-    data.path <- 'master/data/parsed/cdc'
-    data.url <- paste(data.host, data.repo, data.path, zika.file, sep = '/')
-    if (!file.exists(data.file)) {
-        download.file(data.url, data.file, mode = 'wb')
-    }
+# Scrape table from CDC web page
+zikaURL <- "http://www.cdc.gov/zika/geo/united-states.html"
+zikaWeb <-readHTMLTable(zikaURL)
+zika <- zikaWeb[[1]]
+
+# Clean up state and territory names
+zika <- zika %>% filter(States != "Territories")
+zika <- zika[grepl('[A-Za-z ]+', zika[,1]),]
+zika$States <- as.factor(as.character(zika$States))
+
+# Rename columns (to match https://github.com/BuzzFeedNews/zika-data/ CSV files)
+names(zika) <- c('state_or_territory', 'travel_associated_cases', 
+                    'locally_acquired_cases')
+
+# Define function to remove non-digit text from integer data
+cleanDigits <- function (x){
+    x <- gsub("^([0-9,]+).*$", "\\1", x)
+    x <- gsub(",", "", x)
+    x <- as.integer(x)
 }
 
-# Read data file
-zika <- read.table(data.file, sep = ',', header = TRUE)
+# Remove non-digit text from the two cases columns
+zika[, 2:3] <- sapply(2:3, function(x) sapply(zika[, x], 
+                                              function(y) cleanDigits(y)))
 
 #:-----------------------------------------------------------------------------:
 # Prepare the data for plotting
@@ -91,8 +95,11 @@ df <- merge(x = df, y = cnames, by = "region", all.x = TRUE)
 # Create the choropleth map
 #:-----------------------------------------------------------------------------:
 
-plot_title <- paste('Zika Case Counts in the US by State', '\n', 
-                    'January 01, 2015 – August 31, 2016', sep='')
+# Construct plot title from date of most recent update, as found in CDC web page
+cdcPage <- readLines(zikaURL)
+asof.date <- gsub("<.*?>", "", cdcPage[grepl('As of ', cdcPage)])
+plot_title <- paste('Zika Case Counts in the US by State', 
+                    'January 01, 2015 to Present', asof.date, sep='\n')
 
 # Create the choropleth map with ggplot
 usmap <- ggplot(df, aes(map_id=region)) + ggtitle(plot_title) +
