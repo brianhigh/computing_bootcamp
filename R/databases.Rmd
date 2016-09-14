@@ -20,7 +20,8 @@ pacman::p_load(knitr, RSQLite, urltools, dplyr, ggplot2, RPostgreSQL)
 ```
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
-opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
+# * NOTE: Set eval=FALSE below if you don't have access to SQLite & PostgreSQL!
+opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE, eval=TRUE)
 ```
 
 ## Learning Objectives
