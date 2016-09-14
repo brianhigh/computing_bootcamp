@@ -4,6 +4,8 @@ John Yocum
 
 
 
+# Measuring Usage
+
 ## Tools
 
 **Windows**
@@ -21,6 +23,16 @@ John Yocum
 ## Resource Monitor
 
 ![](images/Measuring_Resource_Monitor.png)
+
+## Demo
+
+1) Open Task Manager
+2) Check current CPU and Memory usage
+3) Launch web browser
+4) Visit Youtube, and play a video
+5) Check CPU and Memory usage while video plays
+
+# Solutions
 
 ## Better Hardware
 
@@ -43,4 +55,4 @@ John Yocum
 - Different operating system
     - Your application may be better optimized on a different operating system
     
-## Questions?
+# Questions?

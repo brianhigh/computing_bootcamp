@@ -33,11 +33,27 @@ John Yocum
 
 **General**
 
+- Check network icon in system tray
+    - Icon may indicate limited or no connectivity
 - Check other shared folders to see if they work.
     - The problem may be unique to one folder, like a quota limit.
 - Nothing seems to work
     - Ask others to see if they are having issues.
     - Try using another computer, and see if things work.
+
+## Tools to Help You
+
+**General Connectivity**
+
+- ping 
+    - If a response is received, the server is "alive". No response could indicate outage or a firewall blocking ping.
+- Network Control Panel
+    - Shows current IP information, network profile, etc
+
+**Websites**
+
+- Multiple Browsers
+- Sites like, isup.me, which test uptime for a site
 
 ## Potential Solutions
 
@@ -54,4 +70,4 @@ John Yocum
 - If you're at home, you can try rebooting your router or modem
     - A router is basically a tiny computer, and it too sometimes needs a reboot
 
-## Questions?
+# Questions?

@@ -30,6 +30,25 @@ John Yocum
 - Lack of memory (RAM)
 - Slow storage
 
+## Determining if a Bottleneck Exists
+
+**Human**
+
+- Observe how they work
+- Survey to determine opinions on how things are done
+
+**Software**
+
+- Review your code looking for redundant loops
+- Look for alternative packages or libraries which use native code for computation
+
+**Resources**
+
+- Check Task Manager (or similar) to determine CPU utilization
+    - Ensure all CPU cores are being utilized
+- Using Task Manager, check memory and page file usage
+    - Heavy page file usage is a sign of memory exhaustion
+
 ## What can be done about them?
 
 **Human**
@@ -59,5 +78,4 @@ John Yocum
 - Monitor resource utilization
     - CPU, Memory, and Storage
 
-
-## Questions?
+# Questions?

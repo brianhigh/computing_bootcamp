@@ -68,4 +68,4 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 - Has the application changed? Perhaps it was updated.
 - Is anyone else seeing similar problems?
 
-## Questions?
+# Questions?
