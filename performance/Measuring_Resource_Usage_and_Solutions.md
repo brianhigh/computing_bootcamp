@@ -24,7 +24,7 @@ John Yocum
 
 ![](images/Measuring_Resource_Monitor.png)
 
-## Demo
+## Resource Utilization Demo
 
 1) Open Task Manager
 2) Check current CPU and Memory usage

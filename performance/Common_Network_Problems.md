@@ -53,7 +53,7 @@ John Yocum
 **Websites**
 
 - Multiple Browsers
-- Sites like, isup.me, which test uptime for a site
+- Services like, isup.me, which test a site's availability
 
 ## Potential Solutions
 
