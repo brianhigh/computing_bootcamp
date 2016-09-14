@@ -40,8 +40,8 @@ John Yocum
 **Software**
 
 - Perform a usability study to see how users work
-- Review your code looking for redundant loops
-- Did you reivent the wheel?
+- Review your code looking for redundant loops, and operations
+- Did you reinvent the wheel?
     - Often times third party packages or libraries use native code which is faster than interpreted code
 
 **Resources**
