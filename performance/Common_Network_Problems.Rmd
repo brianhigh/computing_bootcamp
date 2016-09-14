@@ -67,7 +67,7 @@ opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 **Websites**
 
 - Multiple Browsers
-- Sites like, isup.me, which test uptime for a site
+- Services like, isup.me, which test a site's availability
 
 ## Potential Solutions
 
