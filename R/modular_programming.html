@@ -156,28 +156,27 @@ adultBMI(weight, height)</pre>
 
 <p>It is not difficult to create our own packages and to share them. Here is the absolute minimum of steps needed to create a very &quot;bare bones&quot; package.</p>
 
-<pre class = 'prettyprint lang-r'># Create the package name from the system username to minimize conflicts
+<pre class = 'prettyprint lang-r'># Close connections and clear the workspace
+closeAllConnections(); rm(list = ls())
+
+# Define the adultBMI function for use in the package
+adultBMI &lt;- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
+
+# Create the package directory and file templates
+# Create the package name from the system username to minimize conflicts
+package.skeleton(paste(Sys.info()[&#39;user&#39;], &#39;.&#39;, &#39;bmi&#39;, sep = &#39;&#39;))
+
+# Create the package name from the system username to minimize conflicts
 pkg.name &lt;- paste(Sys.info()[&#39;user&#39;], &#39;.&#39;, &#39;bmi&#39;, sep = &#39;&#39;)
 
-# Create the &quot;bmi&quot; package folder and the &quot;R&quot; subfolder
-dir.create(file.path(pkg.name, &#39;R&#39;), showWarnings = FALSE, recursive = TRUE)
+# Add a title to the function in the &quot;man&quot; documentation
+file.man &lt;- file.path(pkg.name, &quot;man&quot;, &quot;adultBMI.Rd&quot;)
+adultBMI.man &lt;- gsub(&quot;%%  ~~function to do ... ~~&quot;, &quot;Adult BMI Calculator&quot;, 
+                     x = readLines(file.man), fixed = TRUE)
+cat(adultBMI.man, file=file.man, sep=&quot;\n&quot;)
 
-# Create an R script containing just the function definition
-sink(file.path(pkg.name, &#39;R&#39;, &#39;adultBMI.R&#39;))
-cat(&#39;adultBMI &lt;- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }&#39;, sep = &#39;\n&#39;)
-sink()
-
-sink(file.path(pkg.name, &#39;DESCRIPTION&#39;))    # Create a DESCRIPTION text file
-cat(paste(&#39;Package:&#39;, pkg.name), sep = &#39;\n&#39;)
-cat(&#39;Version: 0.1&#39;, sep = &#39;\n&#39;, append = TRUE)
-sink()
-
-sink(file.path(pkg.name, &#39;NAMESPACE&#39;))      # Create a NAMESPACE text file
-cat(&#39;export(adultBMI)&#39;, sep = &#39;\n&#39;)
-sink()
-
-library(devtools)
-build(pkg.name, quiet = TRUE)               # Build the package (as a tarball)</pre>
+# Build the package (as a tarball)
+system(paste(&quot;R CMD build&quot;, pkg.name))   # NOTE: R needs to be in your PATH</pre>
 
 </article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages-1" class="smaller ">
 
@@ -194,14 +193,19 @@ adultBMI(150, 65)                     # Expected result:  24.95858</pre>
 
 <p>If we get the expected result then the package works okay.</p>
 
+</article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages-2" class="smaller ">
+
+<p>The package we just built had default documentation files. These allow an R user to access the <code>help</code> pages for your functions, but they will not be very good.</p>
+
+<pre class = 'prettyprint lang-r'>?adultBMI</pre>
+
 <p>Now we can unload the package and uninstall it.</p>
 
 <pre class = 'prettyprint lang-r'>detach(pos=grep(pkg.name, search()), unload = TRUE)
-remove.packages(pkg.name)             # Remove package when done with example</pre>
+remove.packages(pkg.name)             # Remove package when done with example
+.rs.restartR()                        # Restart R to clear memory</pre>
 
-</article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages-2" class="smaller ">
-
-<p>Next, we will expand on our BMI example by adding documentation (help files) to provide a more complete picture of this process.</p>
+<p>Next, we will expand on our BMI example by customizing the documentation to provide a more complete picture of the package-building process.</p>
 
 </article></slide><slide class=''><hgroup><h2>Creating Packages with Documentation</h2></hgroup><article  id="creating-packages-with-documentation" class="smaller ">
 
@@ -347,7 +351,8 @@ library(high.bmi)</pre>
 
 <pre class = 'prettyprint lang-r'>detach(pos=grep(pkg.name, search()), unload = TRUE)
 remove.packages(pkg.name)             # Remove package when done with example
-unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder</pre>
+unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
+.rs.restartR()                        # Restart R to clear memory</pre>
 
 </article></slide><slide class=''><hgroup><h2>Exercise #1</h2></hgroup><article  id="exercise-1" class="smaller ">
 

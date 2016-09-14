@@ -88,28 +88,27 @@ It is not difficult to create our own packages and to share them. Here is the
 absolute minimum of steps needed to create a very "bare bones" package.
 
 ```{r, eval = FALSE}
+# Close connections and clear the workspace
+closeAllConnections(); rm(list = ls())
+
+# Define the adultBMI function for use in the package
+adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
+
+# Create the package directory and file templates
+# Create the package name from the system username to minimize conflicts
+package.skeleton(paste(Sys.info()['user'], '.', 'bmi', sep = ''))
+
 # Create the package name from the system username to minimize conflicts
 pkg.name <- paste(Sys.info()['user'], '.', 'bmi', sep = '')
 
-# Create the "bmi" package folder and the "R" subfolder
-dir.create(file.path(pkg.name, 'R'), showWarnings = FALSE, recursive = TRUE)
+# Add a title to the function in the "man" documentation
+file.man <- file.path(pkg.name, "man", "adultBMI.Rd")
+adultBMI.man <- gsub("%%  ~~function to do ... ~~", "Adult BMI Calculator", 
+                     x = readLines(file.man), fixed = TRUE)
+cat(adultBMI.man, file=file.man, sep="\n")
 
-# Create an R script containing just the function definition
-sink(file.path(pkg.name, 'R', 'adultBMI.R'))
-cat('adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }', sep = '\n')
-sink()
-
-sink(file.path(pkg.name, 'DESCRIPTION'))    # Create a DESCRIPTION text file
-cat(paste('Package:', pkg.name), sep = '\n')
-cat('Version: 0.1', sep = '\n', append = TRUE)
-sink()
-
-sink(file.path(pkg.name, 'NAMESPACE'))      # Create a NAMESPACE text file
-cat('export(adultBMI)', sep = '\n')
-sink()
-
-library(devtools)
-build(pkg.name, quiet = TRUE)               # Build the package (as a tarball)
+# Build the package (as a tarball)
+system(paste("R CMD build", pkg.name))   # NOTE: R needs to be in your PATH
 ```
 
 ## Creating Packages
@@ -132,17 +131,25 @@ adultBMI(150, 65)                     # Expected result:  24.95858
 
 If we get the expected result then the package works okay.
 
+## Creating Packages
+
+The package we just built had default documentation files. These allow an R
+user to access the `help` pages for your functions, but they will not be very good.
+
+```{r, eval = FALSE}
+?adultBMI
+```
+
 Now we can unload the package and uninstall it.
 
 ```{r, eval = FALSE}
 detach(pos=grep(pkg.name, search()), unload = TRUE)
 remove.packages(pkg.name)             # Remove package when done with example
+.rs.restartR()                        # Restart R to clear memory
 ```
 
-## Creating Packages
-
-Next, we will expand on our BMI example by adding documentation (help files) to 
-provide a more complete picture of this process.
+Next, we will expand on our BMI example by customizing the documentation 
+to provide a more complete picture of the package-building process.
 
 ## Creating Packages with Documentation
 
@@ -324,6 +331,7 @@ and the package from our system.
 detach(pos=grep(pkg.name, search()), unload = TRUE)
 remove.packages(pkg.name)             # Remove package when done with example
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
+.rs.restartR()                        # Restart R to clear memory
 ```
 
 ## Exercise #1
