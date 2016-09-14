@@ -23,5 +23,6 @@ Period     |Activity             |Topic
 1:00-3:00  |**_Afternoon Session_**|(*tentative schedule below*)
 1:00-1:30  |Lab Session 1        |R User Stories and [Data Wrangling in R](https://github.com/brianhigh/computing_bootcamp/blob/master/R/data_wrangling_in_r.md)
 1:30-2:00  |Lab Session 2        |[Working with Databases in R](https://github.com/brianhigh/computing_bootcamp/blob/master/R/databases.md)
-2:00-2:30  |Lab Session 3        |[Version Control with RStudio and Github](https://github.com/brianhigh/computing_bootcamp/blob/master/R/version_control.md)
+2:00-2:30  |Lab Session 3        |[Version Control with RStudio and GitHub](https://github.com/brianhigh/computing_bootcamp/blob/master/R/version_control.md)
 2:30-3:00  |Lab Session 4        |[Modular Programming: Writing Functions and Packages](https://github.com/brianhigh/computing_bootcamp/blob/master/R/modular_programming.md)
+
