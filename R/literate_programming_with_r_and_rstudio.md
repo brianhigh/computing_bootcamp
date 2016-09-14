@@ -87,11 +87,11 @@ These tools are well integrated into RStudio.
 
 ### R Packages
 
-You need the R packages *rmarkdown* and *knitr*.
+You need the R packages *htmltools*, *rmarkdown* and *knitr*.
 
 
 ```r
-install.packages(c("rmarkdown", "knitr"), dependencies = TRUE)
+install.packages(c("htmltools", "rmarkdown", "knitr"), dependencies = TRUE)
 ```
 
 ### `pdflatex`: PDF Conversion Utility
