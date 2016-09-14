@@ -181,7 +181,7 @@ As seen in [this script](malaria.R). Anyone who tries to run the script will
 not have to worry about checking if they have the needed packages and then
 installing them. And you don't need to add the additional `library()` commands.
 
-Here you can see how we solve the "chick and egg" problem of getting a package
+Here you can see how we solve the "chicken and egg" problem of getting a package
 to automate the getting of packages. *pacman* is loaded using an `if()` 
 statement and the traditional "base" R `install.packages()` command. Then
 *pacman* is used to get the rest if of the packages. This is entirely automated
