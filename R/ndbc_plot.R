@@ -61,11 +61,12 @@ plot(ndbcww$DATE, ndbcww$WVHT,
      type="l", col="blue", xaxt="n", yaxt="n", xlab="", ylab="")
 axis(4)
 mtext("Wave Height (m)", side=4, line=3)
-title(main=paste("Wind Gusts and Wave Height, Station", stn.id, "-", stn.name))
+title(main=paste("Wind Gusts and Wave Height, NDBC Station", 
+                 stn.id, "-", stn.name))
 legend("topleft", legend=c("Wind Gusts", "Wave Height"), 
        col=c("red", "blue"), lty=1, cex=0.75)
 mtext(paste(start.date.str, '-', end.date.str), side = 1, line = 3)
-mtext("Source: NOAA NDBC", font=3, side = 1, line = 4)
+mtext("Source: National Data Buoy Center, NOAA", font=3, side = 1, line = 4)
 
 # Close the graphics device
 dev.off()
