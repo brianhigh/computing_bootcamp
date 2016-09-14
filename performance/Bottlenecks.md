@@ -39,8 +39,10 @@ John Yocum
 
 **Software**
 
+- Perform a usability study to see how users work
 - Review your code looking for redundant loops
-- Look for alternative packages or libraries which use native code for computation
+- Did you reivent the wheel?
+    - Often times third party packages or libraries use native code which is faster than interpreted code
 
 **Resources**
 
