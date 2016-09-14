@@ -218,6 +218,37 @@ install.packages(my.packages)</pre>
 
 <p>Otherwise, packages will be removed from the first library listed with <code>.libPaths()</code>.</p>
 
+</article></slide><slide class=''><hgroup><h2><em>pacman</em></h2></hgroup><article  id="pacman" class="smaller ">
+
+<p>There is an additional package called <em>pacman</em> which will make package management much easier for you.</p>
+
+<p>Instead of running <code>install.packages()</code> (if necessary) and <code>library()</code>, you can do it all with:</p>
+
+<pre class = 'prettyprint lang-r'>install.packages(&quot;pacman&quot;)       # (if necessary)
+library(pacman)
+p_load(your, list, of, package, names)</pre>
+
+<p>Now, that may not seem to be any better, because you still have to get <em>pacman</em>. (We will address this issue next.)</p>
+
+<p><em>pacman</em> can handle all aspects of package management previously discussed using the &quot;base&quot; R functions. Usually, <em>pacman&#39;s</em> syntax easier, or involves less typing.</p>
+
+</article></slide><slide class=''><hgroup><h2><em>pacman</em></h2></hgroup><article  id="pacman-1" class="smaller ">
+
+<p>With <em>pacman</em>, you can easily make your scripts more portable. Here&#39;s an example:</p>
+
+<pre class = 'prettyprint lang-r'># Load pacman into memory, installing as needed
+my_preferred_repo &lt;- &#39;http://cran.r-project.org&#39;
+if (!require(&quot;pacman&quot;)) {install.packages(&quot;pacman&quot;, repos = my_preferred_repo)}
+
+# Load the other packages, installing as needed
+pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)</pre>
+
+<p>As seen in <a href='malaria.R' title=''>this script</a>. Anyone who tries to run the script will not have to worry about checking if they have the needed packages and then installing them. And you don&#39;t need to add the additional <code>library()</code> commands.</p>
+
+<p>Here you can see how we solve the &quot;chick and egg&quot; problem of getting a package to automate the getting of packages. <em>pacman</em> is loaded using an <code>if()</code> statement and the traditional &quot;base&quot; R <code>install.packages()</code> command. Then <em>pacman</em> is used to get the rest if of the packages. This is entirely automated by supplying the repository, so that the user will not even get a prompt for that.</p>
+
+<p>Some may not like packages being installed automatically for them, but beginners are often confused when a script calls for a package that they do not already have installed on their systems.</p>
+
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
 
 <pre style="color: indigo; background: linear-gradient(to right, gold, rgba(255,0,0,0)); padding-top: 50px; padding-bottom: 50px;">

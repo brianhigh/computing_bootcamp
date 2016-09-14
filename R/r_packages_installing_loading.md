@@ -142,6 +142,55 @@ You can also supply an additional argument for the library path to remove from.
 
 Otherwise, packages will be removed from the first library listed with `.libPaths()`.
 
+## *pacman*
+
+There is an additional package called *pacman* which will make package 
+management much easier for you.
+
+Instead of running `install.packages()` (if necessary) and `library()`, you
+can do it all with:
+
+
+```r
+install.packages("pacman")       # (if necessary)
+library(pacman)
+p_load(your, list, of, package, names)
+```
+
+Now, that may not seem to be any better, because you still have to get *pacman*. 
+(We will address this issue next.)
+
+*pacman* can handle all aspects of package management previously discussed using
+the "base" R functions. Usually, *pacman's* syntax easier, or involves less typing.
+
+## *pacman*
+
+With *pacman*, you can easily make your scripts more portable. Here's an example:
+
+
+```r
+# Load pacman into memory, installing as needed
+my_preferred_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
+
+# Load the other packages, installing as needed
+pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)
+```
+
+As seen in [this script](malaria.R). Anyone who tries to run the script will
+not have to worry about checking if they have the needed packages and then
+installing them. And you don't need to add the additional `library()` commands.
+
+Here you can see how we solve the "chick and egg" problem of getting a package
+to automate the getting of packages. *pacman* is loaded using an `if()` 
+statement and the traditional "base" R `install.packages()` command. Then
+*pacman* is used to get the rest if of the packages. This is entirely automated
+by supplying the repository, so that the user will not even get a prompt for that.
+
+Some may not like packages being installed automatically for them, but beginners
+are often confused when a script calls for a package that they do not already have 
+installed on their systems.
+
 ## 
 
 
