@@ -16,7 +16,7 @@ output:
 ```{r pre_load_packages, echo=FALSE, message=FALSE, warning=FALSE}
 my_preferred_repo <- 'http://cran.r-project.org'
 if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
-pacman::p_load(knitr, dplyr, tidyr, WDI, WHO, grid, gridExtra)
+pacman::p_load(knitr, dplyr, tidyr, WDI, WHO, ggplot2, grid, gridExtra)
 #pacman::p_load_gh("hadley/ggplot2@2.1.0.9000", install = TRUE)  # For subtitles
 ```
 
