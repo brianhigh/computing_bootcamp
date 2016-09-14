@@ -434,3 +434,12 @@ MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa.
        `bood'
 </pre>
 <!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A -->
+
+## Suggested Reading
+
+You are encouraged to read the following online books and tutorials:
+
+* [R Packages](http://r-pkgs.had.co.nz/) by Hadley Wickham
+* [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) by Hilary Parker
+* [Writing Package Documentation](https://support.rstudio.com/hc/en-us/articles/200532317-Writing-Package-Documentation) by Josh Paulson
+* [Writing documentation with Roxygen2](http://kbroman.org/pkg_primer/pages/docs.html) by Karl Broman
