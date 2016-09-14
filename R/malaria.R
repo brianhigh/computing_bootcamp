@@ -17,20 +17,14 @@ rm(list=ls())
 # -------------
 # Load Packages
 # -------------
-# Load one or more packages into memory, installing as needed.
-# https://github.com/brianhigh/imp ; License: Public Domain (CC0 1.0)
-load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
-    is.installed <- function(x) x %in% installed.packages()[,"Package"]
-    inst.cran <- function(x) install.packages(x, quiet = TRUE, repos = repos)
-    result <- sapply(pkgs, function(x) { 
-        if (! is.installed(x)) inst.cran(x)
-        library(x, character.only = TRUE)
-    })
-}
 
-# Configure the packages to load and then load them
-pkgs <- c("dplyr", "ggplot2", "WDI", "grid", "gridExtra")
-load.pkgs(pkgs)
+# Load pacman into memory, installing as needed
+my_preferred_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
+
+# Load the other packages, installing as needed
+pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)
+
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------

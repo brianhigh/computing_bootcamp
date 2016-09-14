@@ -13,35 +13,25 @@
 # Clear workspace and load packages
 #:-----------------------------------------------------------------------------:
 
-# Clear the workspace, unless you are running in knitr context.
+# Clear the workspace, unless you are running in knitr context
 if (!isTRUE(getOption('knitr.in.progress'))) {
     closeAllConnections()
     rm(list = ls())
 }
 
-# Load one or more packages into memory, installing as needed.
-# https://github.com/brianhigh/imp ; License: Public Domain (CC0 1.0)
-load.pkgs <- function(pkgs, repos = 'http://cran.r-project.org') {
-    is.installed <- function(x) x %in% installed.packages()[,"Package"]
-    inst.cran <- function(x) install.packages(x, quiet = TRUE, repos = repos)
-    result <- sapply(pkgs, function(x) { 
-        if (! is.installed(x)) inst.cran(x)
-        library(x, character.only = TRUE)
-    })
-}
+# Load pacman into memory, installing as needed
+my_preferred_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
 
-# Create a vector of package names for the packages we will need.
-pkgs <- c("magrittr", "dplyr", "XML", "tools", "scales", "png", 
-          "maps", "mapproj", "ggthemes", "ggplot2", "gridExtra", "grid")
-
-# Load the packages, installing as needed.
-load.pkgs(pkgs)
+# Load the other packages, installing as needed
+pacman::p_load(magrittr, dplyr, XML, tools, scales, png, maps, mapproj, 
+               ggthemes, ggplot2, gridExtra, grid)
 
 #:-----------------------------------------------------------------------------:
 # Create the data folder
 #:-----------------------------------------------------------------------------:
 
-# Create the data folder if it does not already exist.
+# Create the data folder if it does not already exist
 data.dir <- "data"
 dir.create(file.path(data.dir),
            showWarnings = FALSE,
