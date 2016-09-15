@@ -158,10 +158,9 @@ We will demonstrate the following [Git operations in RStudio](https://support.rs
 - **Issue:** A GitHub feature/bug tracking "ticket" (and disucssion thread)
 - **Close:** To complete a GitHub Issue or Pull Request workflow
 
-[More details here](https://help.github.com/articles/github-glossary/)
-
-*Thanks to Raphael Gottardo for this slide from his Biostat-578
- [lecture](https://github.com/raphg/Biostat-578/blob/1352ca32c7f12ec8b43f8898cce5cae3831e7a43/Introduction_to_R.Rmd).*
+[More details here](https://help.github.com/articles/github-glossary/). *Thanks 
+to Raphael Gottardo for this 
+[slide](https://github.com/raphg/Biostat-578/blob/1352ca32c7f12ec8b43f8898cce5cae3831e7a43/Introduction_to_R.Rmd).*
  
 ## Typical Git and GitHub Workflow
 
