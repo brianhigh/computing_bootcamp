@@ -11,10 +11,10 @@
 rm(list=ls())
 
 # Configuration
-stn.id   <- '46087'      # ID List: http://www.ndbc.noaa.gov/to_station.shtml
-stn.name <- 'Neah Bay'   # https://www.google.com/search?q=ndbc+neah+bay
-tz.str   <- "US/Pacific" # Convert NDBC date/times from UTC to this timezone
-days     <- 5            # Number of days to plot
+stn.id    <- '46087'      # ID List: http://www.ndbc.noaa.gov/to_station.shtml
+stn.name  <- 'Neah Bay'   # https://www.google.com/search?q=ndbc+neah+bay
+tz.string <- "US/Pacific" # Convert NDBC date/times from UTC to this timezone
+days      <- 5            # Number of days to plot
 
 
 # Retrieve NDBC Data
@@ -26,22 +26,22 @@ site <- "http://www.ndbc.noaa.gov/data/realtime2/"
 ndbc <- read.fwf(
     file=url(paste(site, stn.id, ".txt", sep="")),
     widths=c(4, 3, 3, 3, 3, 4, 5, 5, 6, 6, 6, 4, 7, 6, 6, 6, 5, 5, 6), skip=2,
-    col.names=cols, na.strings=c("MM"), stringsAsFactors=F, strip.white=T)
+    col.names=cols, na.stringings=c("MM"), stringsAsFactors=F, strip.white=T)
 
 
 # Calculate Date Range and Subset Data
 # Convert dates to POSIX date format
 
 # Determine start and end dates and convert dates to strings for use in plot
-end.date <- as.POSIXct(Sys.time(), tz=tz.str)
+end.date <- as.POSIXct(Sys.time(), tz=tz.string)
 start.date <- end.date - as.difftime(days, units = "days")
-end.date.str <- format(end.date, format="%B %d, %Y")
-start.date.str <- format(start.date, format="%B %d, %Y")
+end.date.string <- format(end.date, format="%B %d, %Y")
+start.date.string <- format(start.date, format="%B %d, %Y")
 
 # Convert date components of raw data to a date-time format for calculations
 ndbc$DATE <- as.POSIXct(paste(ndbc$YY, ndbc$MM, ndbc$DD, ndbc$hh, ndbc$mm, 
                               sep="."), format = "%Y.%m.%d.%H.%M", tz="UTC")
-attr(ndbc$DATE, "tzone") <- tz.str
+attr(ndbc$DATE, "tzone") <- tz.string
 ndbcww <- na.exclude(ndbc[ndbc$DATE > start.date, c("DATE", "WVHT", "GST")])
 
 
@@ -65,7 +65,7 @@ title(main=paste("Wind Gusts and Wave Height, NDBC Station",
                  stn.id, "-", stn.name))
 legend("topleft", legend=c("Wind Gusts", "Wave Height"), 
        col=c("red", "blue"), lty=1, cex=0.75)
-mtext(paste(start.date.str, '-', end.date.str), side = 1, line = 3)
+mtext(paste(start.date.string, '-', end.date.string), side = 1, line = 3)
 mtext("Source: National Data Buoy Center, NOAA", font=3, side = 1, line = 4)
 
 # Close the graphics device
