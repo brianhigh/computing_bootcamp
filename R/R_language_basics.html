@@ -119,6 +119,7 @@
 <li>How to use vectorized operations</li>
 <li>How to store, load, and remove data</li>
 <li>How to make comments in R code</li>
+<li>The overall structure of the R language</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Accessing Data</h2></hgroup><article  id="accessing-data" class="smaller ">
@@ -362,12 +363,12 @@ ht100k &lt;- rnorm(n = 100000, mean = 65, sd = 3)</pre>
 <pre class = 'prettyprint lang-r'>system.time(bmi &lt;- (wt100k / ht100k ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.001   0.000   0.002</pre>
+##   0.000   0.000   0.003</pre>
 
 <pre class = 'prettyprint lang-r'>system.time(for (i in 1:length(wt100k)) bmi[i] &lt;- (wt100k[i] / ht100k[i] ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.213   0.012   0.224</pre>
+##   0.300   0.032   0.339</pre>
 
 <p>Clearly, the loop approach takes longer to run than the vectorized approach.</p>
 
@@ -415,6 +416,25 @@ df</pre>
 <p>You can remove a file with <code>unlink()</code>.</p>
 
 <pre class = 'prettyprint lang-r'>unlink(&quot;df.rda&quot;)</pre>
+
+</article></slide><slide class=''><hgroup><h2>The R Language (Some Jargon)</h2></hgroup><article  id="the-r-language-some-jargon" class="smaller ">
+
+<p>R is a language of <strong><em>objects</em></strong>. Everything in R is an object. Even functions, operators, and and variable names are objects. R is an <em>object oriented language</em>.</p>
+
+<p>What does this mean?</p>
+
+<ul>
+<li>You compose R commands as <strong><em>expressions</em></strong> of R objects.</li>
+<li>Some of those objects are <strong><em>functions</em></strong> which perform <strong><em>operations</em></strong>.</li>
+<li>Functions operate on other objects, such as <strong><em>data objects</em></strong>.</li>
+<li>Feeding objects to a function is called <strong><em>calling</em></strong> a function.</li>
+<li>You feed the objects to functions as <strong><em>arguments</em></strong>.</li>
+<li>Based on the arguments you provide, the function will perform operations.</li>
+<li>The operations will <strong><em>return</em></strong> results which returned as objects.</li>
+<li>You can then use these returned objects for further operations.</li>
+</ul>
+
+<p>So, in R you write expressions composed of function calls which perform operations on objects. Even the mathematical <strong><em>operators</em></strong> are actually functions.</p>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
 

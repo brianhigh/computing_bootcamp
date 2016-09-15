@@ -13,6 +13,7 @@ You will learn:
 * How to use vectorized operations
 * How to store, load, and remove data
 * How to make comments in R code
+* The overall structure of the R language
 
 ## Accessing Data
 
@@ -382,7 +383,7 @@ system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 
 ```
 ##    user  system elapsed 
-##   0.001   0.000   0.002
+##   0.000   0.000   0.003
 ```
 
 ```r
@@ -391,7 +392,7 @@ system.time(for (i in 1:length(wt100k)) bmi[i] <- (wt100k[i] / ht100k[i] ^ 2) * 
 
 ```
 ##    user  system elapsed 
-##   0.213   0.012   0.224
+##   0.300   0.032   0.339
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.
@@ -466,6 +467,25 @@ You can remove a file with `unlink()`.
 unlink("df.rda")
 ```
 
+
+## The R Language (Some Jargon)
+
+R is a language of **_objects_**. Everything in R is an object. Even functions,
+operators, and and variable names are objects. R is an *object oriented language*.
+
+What does this mean?
+
+* You compose R commands as **_expressions_** of R objects.
+* Some of those objects are **_functions_** which perform **_operations_**.
+* Functions operate on other objects, such as **_data objects_**.
+* Feeding objects to a function is called **_calling_** a function.
+* You feed the objects to functions as **_arguments_**.
+* Based on the arguments you provide, the function will perform operations.
+* The operations will **_return_** results which returned as objects.
+* You can then use these returned objects for further operations.
+
+So, in R you write expressions composed of function calls which perform 
+operations on objects. Even the mathematical **_operators_** are actually functions.
 
 ##
 
