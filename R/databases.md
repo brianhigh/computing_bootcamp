@@ -6,6 +6,8 @@ Brian High
 
 
 
+
+
 ## Learning Objectives
 
 You will learn:
@@ -161,23 +163,14 @@ install.packages("RSQLite")
 
 ## Store Data in SQLite
 
-We will load the *RSQLite* package, create a temporary database file, and
+We will load the *RSQLite* package, connect to a temporary database file, and
 then store our `bmi` data frame into a new SQL table in our SQLite database.
 
 
 ```r
 library("RSQLite")
 drv <- dbDriver("SQLite")
-sqlfile <- tempfile(tmpdir="~", fileext=".sqlite")
-sqlfile       # This will show the database filename.
-```
-
-```
-## [1] "~/file193069951e44.sqlite"
-```
-
-```r
-con <- dbConnect(drv, dbname = sqlfile)
+con <- dbConnect(drv, dbname = "")   # "" will create a temporary file
 rs <- dbWriteTable(con, "bmi", bmi)
 ```
 
@@ -261,17 +254,6 @@ dbDisconnect(con)
 ```
 ## [1] TRUE
 ```
-
-And, since this was just a temporary database that we no longer need, we will
-go ahead and remove the file.
-
-
-```r
-unlink(sqlfile) 
-```
-
-Of course, you would not remove the file if you still needed it, so be careful
-when using this command.
 
 ## SQLite Example: Firefox History
 
@@ -452,6 +434,28 @@ df
 ## 8      Louisiana   15.4     249                6.2
 ## 9    Mississippi   16.1     259                6.2
 ## 10          Ohio    7.3     120                6.1
+```
+
+## Closing the Connection
+
+When you are done with the database, close the connection.
+
+
+```r
+# close the connection
+dbDisconnect(con)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+dbUnloadDriver(drv)
+```
+
+```
+## [1] TRUE
 ```
 
 ## Using `psql`

@@ -13,6 +13,14 @@ output:
     logo: ../images/logo_128.png
 ---
 
+```{r clear_workspace, echo=FALSE, message=FALSE, warning=FALSE}
+# Clear the workspace, unless you are running in knitr context
+if (!isTRUE(getOption('knitr.in.progress'))) {
+    closeAllConnections()
+    rm(list = ls())
+}
+```
+
 ```{r pre_load_packages, echo=FALSE, message=FALSE, warning=FALSE}
 my_preferred_repo <- 'http://cran.r-project.org'
 if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
@@ -21,7 +29,7 @@ pacman::p_load(knitr, RSQLite, urltools, dplyr, ggplot2, RPostgreSQL)
 
 ```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
 # * NOTE: Set eval=FALSE below if you don't have access to SQLite & PostgreSQL!
-opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE, eval=TRUE)
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE, eval=TRUE)
 ```
 
 ## Learning Objectives
@@ -162,15 +170,13 @@ install.packages("RSQLite")
 
 ## Store Data in SQLite
 
-We will load the *RSQLite* package, create a temporary database file, and
+We will load the *RSQLite* package, connect to a temporary database file, and
 then store our `bmi` data frame into a new SQL table in our SQLite database.
 
 ```{r}
 library("RSQLite")
 drv <- dbDriver("SQLite")
-sqlfile <- tempfile(tmpdir="~", fileext=".sqlite")
-sqlfile       # This will show the database filename.
-con <- dbConnect(drv, dbname = sqlfile)
+con <- dbConnect(drv, dbname = "")   # "" will create a temporary file
 rs <- dbWriteTable(con, "bmi", bmi)
 ```
 
@@ -222,16 +228,6 @@ that you will no longer be locking the file.
 # Disconnect from the database
 dbDisconnect(con)
 ```
-
-And, since this was just a temporary database that we no longer need, we will
-go ahead and remove the file.
-
-```{r}
-unlink(sqlfile) 
-```
-
-Of course, you would not remove the file if you still needed it, so be careful
-when using this command.
 
 ## SQLite Example: Firefox History
 
@@ -384,6 +380,16 @@ LIMIT 10'
 rs <- dbSendQuery(con, sql)
 df <- fetch(rs, n = 10)
 df
+```
+
+## Closing the Connection
+
+When you are done with the database, close the connection.
+
+```{r}
+# close the connection
+dbDisconnect(con)
+dbUnloadDriver(drv)
 ```
 
 ## Using `psql`

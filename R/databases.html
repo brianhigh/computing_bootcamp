@@ -228,16 +228,11 @@ sqlite&gt; .q</pre>
 
 </article></slide><slide class=''><hgroup><h2>Store Data in SQLite</h2></hgroup><article  id="store-data-in-sqlite" class="smaller ">
 
-<p>We will load the <em>RSQLite</em> package, create a temporary database file, and then store our <code>bmi</code> data frame into a new SQL table in our SQLite database.</p>
+<p>We will load the <em>RSQLite</em> package, connect to a temporary database file, and then store our <code>bmi</code> data frame into a new SQL table in our SQLite database.</p>
 
 <pre class = 'prettyprint lang-r'>library(&quot;RSQLite&quot;)
 drv &lt;- dbDriver(&quot;SQLite&quot;)
-sqlfile &lt;- tempfile(tmpdir=&quot;~&quot;, fileext=&quot;.sqlite&quot;)
-sqlfile       # This will show the database filename.</pre>
-
-<pre >## [1] &quot;~/file193069951e44.sqlite&quot;</pre>
-
-<pre class = 'prettyprint lang-r'>con &lt;- dbConnect(drv, dbname = sqlfile)
+con &lt;- dbConnect(drv, dbname = &quot;&quot;)   # &quot;&quot; will create a temporary file
 rs &lt;- dbWriteTable(con, &quot;bmi&quot;, bmi)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Table Structure</h2></hgroup><article  id="table-structure" class="smaller ">
@@ -295,12 +290,6 @@ aBMI.table</pre>
 dbDisconnect(con)</pre>
 
 <pre >## [1] TRUE</pre>
-
-<p>And, since this was just a temporary database that we no longer need, we will go ahead and remove the file.</p>
-
-<pre class = 'prettyprint lang-r'>unlink(sqlfile) </pre>
-
-<p>Of course, you would not remove the file if you still needed it, so be careful when using this command.</p>
 
 </article></slide><slide class=''><hgroup><h2>SQLite Example: Firefox History</h2></hgroup><article  id="sqlite-example-firefox-history" class="smaller ">
 
@@ -439,6 +428,19 @@ df</pre>
 ## 8      Louisiana   15.4     249                6.2
 ## 9    Mississippi   16.1     259                6.2
 ## 10          Ohio    7.3     120                6.1</pre>
+
+</article></slide><slide class=''><hgroup><h2>Closing the Connection</h2></hgroup><article  id="closing-the-connection" class="smaller ">
+
+<p>When you are done with the database, close the connection.</p>
+
+<pre class = 'prettyprint lang-r'># close the connection
+dbDisconnect(con)</pre>
+
+<pre >## [1] TRUE</pre>
+
+<pre class = 'prettyprint lang-r'>dbUnloadDriver(drv)</pre>
+
+<pre >## [1] TRUE</pre>
 
 </article></slide><slide class=''><hgroup><h2>Using <code>psql</code></h2></hgroup><article  id="using-psql" class="smaller ">
 
