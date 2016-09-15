@@ -152,7 +152,7 @@ adultBMI(weight, height)</pre>
 
 <p>This approach is called <em>modular programming</em>.</p>
 
-</article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Creating Packages with <code>package.skeleton</code></h2></hgroup><article  id="creating-packages-with-package.skeleton" class="smaller ">
 
 <p>It is not difficult to create our own packages and to share them. Here is the absolute minimum of steps needed to create a very &quot;bare bones&quot; package.</p>
 
@@ -178,11 +178,13 @@ cat(adultBMI.man, file=file.man, sep=&quot;\n&quot;)
 # Build the package (as a tarball)
 system(paste(&quot;R CMD build&quot;, pkg.name))   # NOTE: R needs to be in your PATH</pre>
 
-</article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages-1" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Creating Packages - Testing</h2></hgroup><article  id="creating-packages---testing" class="smaller ">
 
 <p>We can install the <em>bmi</em> package we just built and verify that it installed.</p>
 
-<pre class = 'prettyprint lang-r'>install(pkg.name)                     # Install the package
+<pre class = 'prettyprint lang-r'>source_tarball &lt;- paste(pkg.name, &#39;1.0.tar.gz&#39;, sep = &#39;_&#39;)
+install.packages(source_tarball, repos = NULL, type=&quot;source&quot;)
+unlink(source_tarball)                # Remove the package file
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
 packageDescription(pkg.name)          # View package description to confirm</pre>
 
@@ -193,7 +195,7 @@ adultBMI(150, 65)                     # Expected result:  24.95858</pre>
 
 <p>If we get the expected result then the package works okay.</p>
 
-</article></slide><slide class=''><hgroup><h2>Creating Packages</h2></hgroup><article  id="creating-packages-2" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Creating Packages - Testing</h2></hgroup><article  id="creating-packages---testing-1" class="smaller ">
 
 <p>The package we just built had default documentation files. These allow an R user to access the <code>help</code> pages for your functions, but they will not be very good.</p>
 
@@ -207,7 +209,7 @@ remove.packages(pkg.name)             # Remove package when done with example
 
 <p>Next, we will expand on our BMI example by customizing the documentation to provide a more complete picture of the package-building process.</p>
 
-</article></slide><slide class=''><hgroup><h2>Creating Packages with Documentation</h2></hgroup><article  id="creating-packages-with-documentation" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Creating Packages with <em>devtools</em></h2></hgroup><article  id="creating-packages-with-devtools" class="smaller ">
 
 <p>We will be using some additional packages to make the task of generating the package files and documentation easier.</p>
 
@@ -331,6 +333,13 @@ cd ..</pre>
 <pre class = 'prettyprint lang-r'>library(&quot;devtools&quot;)
 install_github(&#39;brianhigh/high.bmi&#39;)
 library(high.bmi)</pre>
+
+<p>Or even:</p>
+
+<pre class = 'prettyprint lang-r'>library(pacman)
+p_load_gh(brianhigh/high.bmi, install = TRUE)</pre>
+
+<p>Again, you would use the actual names of your own repo and package instead of those shown in this example.</p>
 
 </article></slide><slide class=''><hgroup><h2>Publishing your Package on CRAN</h2></hgroup><article  id="publishing-your-package-on-cran" class="smaller ">
 

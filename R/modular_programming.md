@@ -60,7 +60,7 @@ share functions, documentation, and example data.
 
 This approach is called *modular programming*.
 
-## Creating Packages
+## Creating Packages with `package.skeleton`
 
 It is not difficult to create our own packages and to share them. Here is the 
 absolute minimum of steps needed to create a very "bare bones" package.
@@ -90,13 +90,15 @@ cat(adultBMI.man, file=file.man, sep="\n")
 system(paste("R CMD build", pkg.name))   # NOTE: R needs to be in your PATH
 ```
 
-## Creating Packages
+## Creating Packages - Testing
 
 We can install the *bmi* package we just built and verify that it installed.
 
 
 ```r
-install(pkg.name)                     # Install the package
+source_tarball <- paste(pkg.name, '1.0.tar.gz', sep = '_')
+install.packages(source_tarball, repos = NULL, type="source")
+unlink(source_tarball)                # Remove the package file
 unlink(pkg.name, recursive = TRUE)    # Remove the temporary build folder
 packageDescription(pkg.name)          # View package description to confirm
 ```
@@ -112,7 +114,7 @@ adultBMI(150, 65)                     # Expected result:  24.95858
 
 If we get the expected result then the package works okay.
 
-## Creating Packages
+## Creating Packages - Testing
 
 The package we just built had default documentation files. These allow an R
 user to access the `help` pages for your functions, but they will not be very good.
@@ -134,7 +136,7 @@ remove.packages(pkg.name)             # Remove package when done with example
 Next, we will expand on our BMI example by customizing the documentation 
 to provide a more complete picture of the package-building process.
 
-## Creating Packages with Documentation
+## Creating Packages with *devtools*
 
 We will be using some additional packages to make the task of generating 
 the package files and documentation easier.
@@ -302,6 +304,17 @@ library("devtools")
 install_github('brianhigh/high.bmi')
 library(high.bmi)
 ```
+
+Or even:
+
+
+```r
+library(pacman)
+p_load_gh(brianhigh/high.bmi, install = TRUE)
+```
+
+Again, you would use the actual names of your own repo and package instead of
+those shown in this example.
 
 ## Publishing your Package on CRAN
 
