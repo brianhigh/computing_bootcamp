@@ -14,9 +14,9 @@ Brian High
 
     <span>https://github.com/brianhigh/computing_bootcamp</span>  
     
-3. Go to **_Phage_** and log in with your DEOHS password:  
+3. Go to **_Plasmid_** and log in with your DEOHS password:  
 
-    <span>https://phage.deohs.washington.edu/</span>  
+    <span>https://plasmid.deohs.washington.edu/</span>  
 
 ## After-class Gathering
 
