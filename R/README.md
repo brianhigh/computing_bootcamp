@@ -1,5 +1,6 @@
 # Introduction to R, RStudio, Markdown and Git
 DEOHS Computing Bootcamp 2016  
+![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
 ## Day Five Schedule
 
