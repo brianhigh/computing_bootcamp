@@ -13,6 +13,7 @@ You will learn:
 * How to use vectorized operations
 * How to store, load, and remove data
 * How to make comments in R code
+* What is unusual about R
 * The overall structure of the R language
 
 ## Accessing Data
@@ -383,7 +384,7 @@ system.time(bmi <- (wt100k / ht100k ^ 2) * 703)
 
 ```
 ##    user  system elapsed 
-##   0.000   0.000   0.003
+##   0.001   0.000   0.002
 ```
 
 ```r
@@ -392,7 +393,7 @@ system.time(for (i in 1:length(wt100k)) bmi[i] <- (wt100k[i] / ht100k[i] ^ 2) * 
 
 ```
 ##    user  system elapsed 
-##   0.300   0.032   0.339
+##   0.213   0.012   0.224
 ```
 
 Clearly, the loop approach takes longer to run than the vectorized approach.
@@ -467,6 +468,29 @@ You can remove a file with `unlink()`.
 unlink("df.rda")
 ```
 
+## What is unusual about R
+
+Compared to other popular computer languages, R has some quirks.
+
+**_Assignment_**
+
+* R's assignment operator is `<-` not `=` (though `=` will usually work anyway)
+* But most R users still seem to prefer `<-`
+* Except within a function call, where you would use `=`
+
+**_The Period:_**
+
+* The `.` is often used to separate words in a variable name
+* Many other languages use the `.` to refer to the properties of a variable
+
+**_Vectors:_**
+
+* A set of values of the same type is called a "vector" (not an "array", etc.)
+* Many common functions and operators work directly on vectors ("vectorized")
+
+**_Usage:_**
+
+* R is often used for interactive data analysis at a command prompt
 
 ## The R Language (Some Jargon)
 
@@ -486,6 +510,74 @@ What does this mean?
 
 So, in R you write expressions composed of function calls which perform 
 operations on objects. Even the mathematical **_operators_** are actually functions.
+
+## What's an object?
+
+An object is:
+
+* an instance of a "class"
+* data (attributes)
+* functions (methods)
+
+Analogy:
+
+* "my car" is in instance of class "car" or even the class "Toyota Echo"
+* it's size, weight, color, etc. are attributes it's attributes
+* my car can go can start, go forward, backward, stop, etc. (it's functions)
+
+Example:
+
+* the data frame "df" is an instance of the class "data.frame"
+* attributes are row names, column names, dimensions, and data values
+* methods are summary, subset, rownames, print, plot, etc.
+
+## What's an object?
+
+Example:
+
+
+```r
+A <- data.frame(runif(10))
+class(A)
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+attributes(A)
+```
+
+```
+## $names
+## [1] "runif.10."
+## 
+## $row.names
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $class
+## [1] "data.frame"
+```
+
+```r
+methods(class=class(A))
+```
+
+```
+##  [1] aggregate     anyDuplicated as.data.frame as.list       as.matrix    
+##  [6] by            cbind         coerce        [<-           [            
+## [11] [[<-          [[            $<-           $             dim          
+## [16] dimnames<-    dimnames      droplevels    duplicated    edit         
+## [21] format        formula       head          initialize    is.na        
+## [26] Math          merge         na.exclude    na.omit       Ops          
+## [31] plot          print         prompt        rbind         row.names<-  
+## [36] row.names     rowsum        show          slotsFromS3   split<-      
+## [41] split         stack         str           subset        summary      
+## [46] Summary       tail          t             transform     unique       
+## [51] unstack       within       
+## see '?methods' for accessing help and source code
+```
 
 ##
 

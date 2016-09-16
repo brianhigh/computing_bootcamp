@@ -119,6 +119,7 @@
 <li>How to use vectorized operations</li>
 <li>How to store, load, and remove data</li>
 <li>How to make comments in R code</li>
+<li>What is unusual about R</li>
 <li>The overall structure of the R language</li>
 </ul>
 
@@ -363,12 +364,12 @@ ht100k &lt;- rnorm(n = 100000, mean = 65, sd = 3)</pre>
 <pre class = 'prettyprint lang-r'>system.time(bmi &lt;- (wt100k / ht100k ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.000   0.000   0.003</pre>
+##   0.001   0.000   0.002</pre>
 
 <pre class = 'prettyprint lang-r'>system.time(for (i in 1:length(wt100k)) bmi[i] &lt;- (wt100k[i] / ht100k[i] ^ 2) * 703)</pre>
 
 <pre >##    user  system elapsed 
-##   0.300   0.032   0.339</pre>
+##   0.213   0.012   0.224</pre>
 
 <p>Clearly, the loop approach takes longer to run than the vectorized approach.</p>
 
@@ -417,6 +418,38 @@ df</pre>
 
 <pre class = 'prettyprint lang-r'>unlink(&quot;df.rda&quot;)</pre>
 
+</article></slide><slide class=''><hgroup><h2>What is unusual about R</h2></hgroup><article  id="what-is-unusual-about-r" class="smaller ">
+
+<p>Compared to other popular computer languages, R has some quirks.</p>
+
+<p><strong><em>Assignment</em></strong></p>
+
+<ul>
+<li>R&#39;s assignment operator is <code>&lt;-</code> not <code>=</code> (though <code>=</code> will usually work anyway)</li>
+<li>But most R users still seem to prefer <code>&lt;-</code></li>
+<li>Except within a function call, where you would use <code>=</code></li>
+</ul>
+
+<p><strong><em>The Period:</em></strong></p>
+
+<ul>
+<li>The <code>.</code> is often used to separate words in a variable name</li>
+<li>Many other languages use the <code>.</code> to refer to the properties of a variable</li>
+</ul>
+
+<p><strong><em>Vectors:</em></strong></p>
+
+<ul>
+<li>A set of values of the same type is called a &quot;vector&quot; (not an &quot;array&quot;, etc.)</li>
+<li>Many common functions and operators work directly on vectors (&quot;vectorized&quot;)</li>
+</ul>
+
+<p><strong><em>Usage:</em></strong></p>
+
+<ul>
+<li>R is often used for interactive data analysis at a command prompt</li>
+</ul>
+
 </article></slide><slide class=''><hgroup><h2>The R Language (Some Jargon)</h2></hgroup><article  id="the-r-language-some-jargon" class="smaller ">
 
 <p>R is a language of <strong><em>objects</em></strong>. Everything in R is an object. Even functions, operators, and and variable names are objects. R is an <em>object oriented language</em>.</p>
@@ -435,6 +468,67 @@ df</pre>
 </ul>
 
 <p>So, in R you write expressions composed of function calls which perform operations on objects. Even the mathematical <strong><em>operators</em></strong> are actually functions.</p>
+
+</article></slide><slide class=''><hgroup><h2>What&#39;s an object?</h2></hgroup><article  id="whats-an-object" class="smaller ">
+
+<p>An object is:</p>
+
+<ul>
+<li>an instance of a &quot;class&quot;</li>
+<li>data (attributes)</li>
+<li>functions (methods)</li>
+</ul>
+
+<p>Analogy:</p>
+
+<ul>
+<li>&quot;my car&quot; is in instance of class &quot;car&quot; or even the class &quot;Toyota Echo&quot;</li>
+<li>it&#39;s size, weight, color, etc. are attributes it&#39;s attributes</li>
+<li>my car can go can start, go forward, backward, stop, etc. (it&#39;s functions)</li>
+</ul>
+
+<p>Example:</p>
+
+<ul>
+<li>the data frame &quot;df&quot; is an instance of the class &quot;data.frame&quot;</li>
+<li>attributes are row names, column names, dimensions, and data values</li>
+<li>methods are summary, subset, rownames, print, plot, etc.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>What&#39;s an object?</h2></hgroup><article  id="whats-an-object-1" class="smaller ">
+
+<p>Example:</p>
+
+<pre class = 'prettyprint lang-r'>A &lt;- data.frame(runif(10))
+class(A)</pre>
+
+<pre >## [1] &quot;data.frame&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>attributes(A)</pre>
+
+<pre >## $names
+## [1] &quot;runif.10.&quot;
+## 
+## $row.names
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $class
+## [1] &quot;data.frame&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>methods(class=class(A))</pre>
+
+<pre >##  [1] aggregate     anyDuplicated as.data.frame as.list       as.matrix    
+##  [6] by            cbind         coerce        [&lt;-           [            
+## [11] [[&lt;-          [[            $&lt;-           $             dim          
+## [16] dimnames&lt;-    dimnames      droplevels    duplicated    edit         
+## [21] format        formula       head          initialize    is.na        
+## [26] Math          merge         na.exclude    na.omit       Ops          
+## [31] plot          print         prompt        rbind         row.names&lt;-  
+## [36] row.names     rowsum        show          slotsFromS3   split&lt;-      
+## [41] split         stack         str           subset        summary      
+## [46] Summary       tail          t             transform     unique       
+## [51] unstack       within       
+## see &#39;?methods&#39; for accessing help and source code</pre>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="smaller ">
 
