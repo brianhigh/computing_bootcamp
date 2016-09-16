@@ -2,22 +2,14 @@
 Brian High  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
-<style>
-span {font-size:30px;}
-body { float:left;}
-.green { color: indigo; background: #ccffcc; padding-top: 25px; padding-bottom: 25px; }
-</style>
-
 ## Please log into a computer and ...
 
 1. **_Take the survey_** before we begin:  
 
     <span>http://tinyurl.com/deohs-rboot1</span>  
     
-    <p class="green">
     **_Complete the survey to be entered into the prize drawing!_**
-    </p>
-    
+
 2. Open up the **_course materials_** in your web browser:  
 
     <span>https://github.com/brianhigh/computing_bootcamp</span>  
