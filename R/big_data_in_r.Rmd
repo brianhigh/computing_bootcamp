@@ -87,7 +87,17 @@ need to know how to access it, transfer data to and from it, adjust to it's
 environment (like it's operating system), etc. Most people adapt quickly as
 learning how to access a remote server is far easier than learning how to code.
 
-## Packages
+A server will often have much more RAM and CPUs that your own workstation and 
+may also have larger and faster storage capabilities. To use the extra CPUs, 
+you will need to parallelize your R.
+
+See:
+
+* [A gentle introduction to parallel computing in R](http://www.win-vector.com/blog/2016/01/parallel-computing-in-r/)
+* [How-to go parallel in R – basics + tips](https://www.r-bloggers.com/how-to-go-parallel-in-r-basics-tips/)
+* [The Benefits of Multithreaded Performance with Microsoft R Open ](https://mran.microsoft.com/documents/rro/multithread/)
+
+## High-Performance R Packages
 
 A few R projects are devoted to producing new replacements for standard R 
 data objects (data frame) and operations (subsetting,reading files, etc.)
