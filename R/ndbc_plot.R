@@ -26,7 +26,7 @@ site <- "http://www.ndbc.noaa.gov/data/realtime2/"
 ndbc <- read.fwf(
     file=url(paste(site, stn.id, ".txt", sep="")),
     widths=c(4, 3, 3, 3, 3, 4, 5, 5, 6, 6, 6, 4, 7, 6, 6, 6, 5, 5, 6), skip=2,
-    col.names=cols, na.stringings=c("MM"), stringsAsFactors=F, strip.white=T)
+    col.names=cols, na.strings=c("MM"), stringsAsFactors=F, strip.white=T)
 
 
 # Calculate Date Range and Subset Data

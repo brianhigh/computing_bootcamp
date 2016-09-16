@@ -76,7 +76,7 @@ people even prefer the standard R console that comes with R. (It's simpler.)
     - Requires UW NetID and special group membership
     - Access world-wide
     - Easily access your "U Drive"
-* [Plasmid](https://phage.deohs.washington.edu)
+* [Plasmid](https://plasmid.deohs.washington.edu)
     - Requires UW NetID and DEOHS account
     - UW Campus only (or through "VPN", etc.)
     - Easily access your departmental storage (network "drives")
