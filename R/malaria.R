@@ -175,8 +175,9 @@ plot.new()
 xs <- split(MalariaSubReg, f = MalariaSubReg$region)
 p1 <- ggplot(xs$Africa, aes(x=year, y=log.prevalance.per.100k, 
                             group=sub.region, color=sub.region)) + 
-    geom_smooth(method="lm") + facet_wrap(~region, ncol=1) + 
-    scale_x_continuous(breaks = c(2004, 2009, 2014))
+      geom_point() + geom_smooth(method="lm") + 
+      facet_wrap(~region, ncol=1) + 
+      scale_x_continuous(breaks = c(2004, 2009, 2014))
 p2 <- p1 %+% xs$Americas
 p3 <- p1 %+% xs$Asia
 p4 <- p1 %+% xs$Oceania
