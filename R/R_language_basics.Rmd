@@ -341,19 +341,19 @@ Compared to other popular computer languages, R has some quirks.
 
 **_Assignment_**
 
-* R's assignment operator is `<-` not `=` (though `=` will usually work anyway)
-* But most R users still seem to prefer `<-`
-* Except within a function call, where you would use `=`
+* R's assignment operator is `<-` not `=` (except within a function call)
+* But most R users still seem to prefer `<-` (though `=` will usually work)
 
 **_The Period:_**
 
 * The `.` is often used to separate words in a variable name
-* Many other languages use the `.` to refer to the properties of a variable
+* Many other languages use the `.` to refer to "properties" -- R uses `$`
 
 **_Vectors:_**
 
 * A set of values of the same type is called a "vector" (not an "array", etc.)
 * Many common functions and operators work directly on vectors ("vectorized")
+* Vectors in R are indexed starting from `1` not `0`
 
 **_Usage:_**
 
@@ -394,9 +394,9 @@ Analogy:
 
 Example:
 
-* the data frame "df" is an instance of the class "data.frame"
-* attributes are row names, column names, dimensions, and data values
-* methods are summary, subset, rownames, print, plot, etc.
+* the data frame `df` is an instance of the class `data.frame`
+* attributes are `$row.names`, column `$names`, etc. and its `$class`
+* methods are `summary`, `subset`, `rownames`, `print`, `plot`, etc.
 
 ## What's an object?
 

@@ -425,16 +425,15 @@ df</pre>
 <p><strong><em>Assignment</em></strong></p>
 
 <ul>
-<li>R&#39;s assignment operator is <code>&lt;-</code> not <code>=</code> (though <code>=</code> will usually work anyway)</li>
-<li>But most R users still seem to prefer <code>&lt;-</code></li>
-<li>Except within a function call, where you would use <code>=</code></li>
+<li>R&#39;s assignment operator is <code>&lt;-</code> not <code>=</code> (except within a function call)</li>
+<li>But most R users still seem to prefer <code>&lt;-</code> (though <code>=</code> will usually work)</li>
 </ul>
 
 <p><strong><em>The Period:</em></strong></p>
 
 <ul>
 <li>The <code>.</code> is often used to separate words in a variable name</li>
-<li>Many other languages use the <code>.</code> to refer to the properties of a variable</li>
+<li>Many other languages use the <code>.</code> to refer to &quot;properties&quot; &#8211; R uses <code>$</code></li>
 </ul>
 
 <p><strong><em>Vectors:</em></strong></p>
@@ -442,6 +441,7 @@ df</pre>
 <ul>
 <li>A set of values of the same type is called a &quot;vector&quot; (not an &quot;array&quot;, etc.)</li>
 <li>Many common functions and operators work directly on vectors (&quot;vectorized&quot;)</li>
+<li>Vectors in R are indexed starting from <code>1</code> not <code>0</code></li>
 </ul>
 
 <p><strong><em>Usage:</em></strong></p>
@@ -490,9 +490,9 @@ df</pre>
 <p>Example:</p>
 
 <ul>
-<li>the data frame &quot;df&quot; is an instance of the class &quot;data.frame&quot;</li>
-<li>attributes are row names, column names, dimensions, and data values</li>
-<li>methods are summary, subset, rownames, print, plot, etc.</li>
+<li>the data frame <code>df</code> is an instance of the class <code>data.frame</code></li>
+<li>attributes are <code>$row.names</code>, column <code>$names</code>, etc. and its <code>$class</code></li>
+<li>methods are <code>summary</code>, <code>subset</code>, <code>rownames</code>, <code>print</code>, <code>plot</code>, etc.</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>What&#39;s an object?</h2></hgroup><article  id="whats-an-object-1" class="smaller ">
