@@ -13,13 +13,13 @@ output:
     logo: ../images/logo_128.png
 ---
 
-## Please log into a computer and ...
-
 <style>
 span {font-size:30px;}
 body { float:left;}
 .green { color: indigo; background: #ccffcc; padding-top: 25px; padding-bottom: 25px; }
 </style>
+
+## Please log into a computer and ...
 
 1. **_Take the survey_** before we begin:  
 

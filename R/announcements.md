@@ -2,13 +2,13 @@
 Brian High  
 ![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
 
-## Please log into a computer and ...
-
 <style>
 span {font-size:30px;}
 body { float:left;}
 .green { color: indigo; background: #ccffcc; padding-top: 25px; padding-bottom: 25px; }
 </style>
+
+## Please log into a computer and ...
 
 1. **_Take the survey_** before we begin:  
 
