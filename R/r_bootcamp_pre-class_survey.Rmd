@@ -105,7 +105,7 @@ for (file in c(raw.data.file.path, questions.file.path)) {
 ```
 * Read the data file(s), count respondents, and set column names.
 ```{r}
-df <- read.csv(raw.data.file.path, header=FALSE, stringsAsFactors = FALSE, skip = 7)
+df <- read.csv(raw.data.file.path, header=FALSE, stringsAsFactors = FALSE)
 
 num_respondents <- nrow(df)
 
