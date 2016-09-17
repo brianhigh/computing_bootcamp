@@ -112,6 +112,8 @@ num_respondents <- nrow(df)
 names(df) <- c('start.date', 'finish.date', 'blank', 'q01.dept.role.mc', 
                'q02.r.usage.mc', 'q03.r.script.yn', 'q04.other.lang.yn', 
                'q05.class.goal', 'q06.discussion.group.yn')
+df$q02.r.usage.mc <- factor(df$q02.r.usage.mc, 
+    levels=c("None", "Minimal", "Occasional", "Moderate", "Frequent"))
 ```
 * Read the questions from a text file.
 ```{r}
@@ -215,6 +217,8 @@ ggplot(data=role, aes(x=Role, y=`% of Respondents`, fill=Role)) +
 
 ```{r, results='asis'}
 usage <- count.frequency(tolower(df$q02.r.usage.mc), num_respondents, 'Usage')
+usage$Usage <- factor(usage$Usage)
+levels(usage$Usage) <- c("None", "Minimal", "Occasional", "Moderate", "Frequent")
 ```
 
 ```{r, results='asis'}
