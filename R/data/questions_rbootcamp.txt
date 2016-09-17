@@ -1,0 +1,13 @@
+Username
+Last Name
+First Name
+Email Address
+Participant ID
+Start Date
+Finish Date
+What is your primary role in DEOHS?
+How would you describe your R usage over the past year?
+Have you ever written an R script?
+Have you ever used another programming language other than R?
+What do you hope to get out of this class?
+Would you like to be added to our discussion group deohs-informatics@u.washington.edu where we discuss R and other data science topics (like R) within our department?

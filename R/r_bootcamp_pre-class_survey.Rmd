@@ -1,0 +1,268 @@
+---
+title: "R Bootcamp: Pre-Class Survey"
+author: "DEOHS Bootcamp 2016"
+date: "Sept. 16, 2016"
+linkcolor: blue
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    fig_height: 3
+---
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+# Initial Setup
+
+* Install and load R packages as needed.
+```{r pre_load_packages, echo=FALSE, message=FALSE, warning=FALSE}
+my_preferred_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
+pacman::p_load(knitr, plyr, pander, ggplot2)
+```
+* Disable the code display. The embedded R code will not be echoed in the report.
+```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=FALSE)
+```
+* Create the `data` folder. It will be created if it does not already exist.
+```{r}
+# Create the data and image folders, if necessary.
+datadir <- "data"
+dir.create(file.path(datadir), showWarnings=FALSE, recursive=TRUE)
+imagedir <- "images"
+dir.create(file.path(imagedir), showWarnings=FALSE, recursive=TRUE)
+```
+* User-defined functions will be used to help parse the text of survey results.
+```{r}
+# Define utility functions.
+
+# Count the number of times a regular expression matches items in a vector.
+cnt.re <- function(re, v) {
+    length(which(grepl(re, v, ignore.case = TRUE)))
+}
+
+# Search the text of the responses for specific choices and count the hits.
+cnt.choices <- function(choices, re, v, respondents, 
+                        colname1='Choice', 
+                        colname4='% of Respondents') {
+    cnt.df <- ldply(re, function(re) cnt.re(re, v))
+    df <- data.frame(Choice=choices, cnt.df)
+    names(df) = c(colname1, 'Count')
+    df$`% of Counts` <- df$Count / sum(df$Count) * 100
+    df$pct_resp <- df$Count / respondents * 100
+    names(df)[4] <- colname4
+    df <- df[order(df$Count, decreasing = TRUE),]
+    row.names(df) <- NULL
+    df
+}
+
+# Split strings and combine one-word results into a new vector.
+parse.responses <- function(v) {
+    tolower(gsub('^.*\\s?([A-Z]{3,})\\?? .*$', '\\1', 
+         unlist(strsplit(v, '(?:(?:,|\\.|\\band\\b)\\s?)+')), perl=TRUE))
+}
+
+# Generate a table of Yes/No response data.
+yn.table <- function(content) {
+    row.names(content) <- NULL
+    pandoc.table(content, justify = c('left', rep('right', 6)), 
+             style='multiline', round = 0)
+}
+
+# Generate a table of frequency counts for multiple choice data.
+count.frequency <- function(x, n, title = "") {
+    choice <- unique(unlist(strsplit(x, ',\\s?')))
+    cnt.choices(choice, choice, x, n, title)
+}
+
+# Calculate the answer rate for a question.
+ar <- function(q) round(answer.rate[q] * 100, 0)
+```
+
+# Data Import and Cleanup
+
+Data source: [DEOHS Bootcamp - R](http://tinyurl.com/deohs-rboot1), UW Catalyst 
+(CSV file)
+
+## Data Import
+
+The steps to read in the data files(s) are as follows:
+
+* Check for existence of data file(s). Abort if they are not found.
+```{r}
+raw.data.file.name <- 'survey_data.csv'
+raw.data.file.path <- file.path(datadir, raw.data.file.name)
+
+questions.file.name <- 'questions_rbootcamp.txt'
+questions.file.path <- file.path(datadir, questions.file.name)
+
+for (file in c(raw.data.file.path, questions.file.path)) {
+    if (! file.exists(file)) {
+        stop(paste("Can't find", file, "!", sep=" "))
+    }
+}
+```
+* Read the data file(s), count respondents, and set column names.
+```{r}
+df <- read.csv(raw.data.file.path, header=FALSE, stringsAsFactors = FALSE, skip = 7)
+
+num_respondents <- nrow(df)
+
+names(df) <- c('start.date', 'finish.date', 'blank', 'q01.dept.role.mc', 
+               'q02.r.usage.mc', 'q03.r.script.yn', 'q04.other.lang.yn', 
+               'q05.class.goal', 'q06.discussion.group.yn')
+```
+* Read the questions from a text file.
+```{r}
+# Make a vector of questions by reading them in from a text file.
+questions <- readLines(questions.file.path)
+```
+
+The survey had a total of `r nrow(df)` respondents.
+
+## Data Clean-up
+
+The steps to prepare the data for analysis are as follows:
+
+* Replace missing values ('999', 'N/A', 'n/a', 'not applicable', and '') with NA.
+```{r}
+df[ df == '999' | df == 'N/A' | df == 'n/a' | df == 'not applicable' | df == '' ] <- NA
+```
+* Calculate the answer rate (AR) for all questions.
+```{r}
+answer.rate <- sapply(names(df), 
+                      function(q) {
+                          length(df[complete.cases(df[q]), q]) / num_respondents
+                      })
+```
+* Remove the 'blank' (empty) column included in the original data file.
+```{r}
+df$blank <- NULL
+```
+
+
+# Additional Processing
+
+## Yes/No Questions
+
+The results for the Yes/No questions are further processed as follows:
+
+* Count the frequency of answers for each of the Yes/No questions.
+```{r}
+# Count the frequency of answers for each of the Yes/No questions.
+yn <- names(df)[grepl( "\\.yn" , names(df))]
+yn.df <- data.frame(t(as.data.frame(sapply(df[,yn], table))))
+yn.df$id <- row.names(yn.df)
+```
+* Link the question text to the responses by question ID.
+```{r}
+# Link the question text to the responses by question ID.
+names(questions) <- names(df)
+yn.df <- merge(
+    data.frame(id = yn, q = questions[yn], stringsAsFactors = FALSE), yn.df)
+```
+* Clean up row and column names.
+```{r}
+# Set friendly column names.
+names(yn.df) <- c('id', 'Question', 'No', 'Yes')
+
+# Remove row names.
+row.names(yn.df) <- NULL
+```
+* Calculate percentages of response counts per number of responses.
+```{r}
+# Calculate percentages.
+yn.df$Sum <- yn.df$Yes + yn.df$No
+yn.df$'% AR' <- yn.df$Sum / num_respondents * 100
+yn.df['% Yes'] <- yn.df$Yes / yn.df$Sum * 100
+yn.df['% No'] <- yn.df$No / yn.df$Sum * 100
+yn.cols <- c('Question', 'Yes', 'No', 'Sum', '% AR', '% Yes', '% No')
+```
+* Format question column for better display.
+```{r}
+# Format question column for emphasis Add extra line for better row spacing.
+yn.df$Question <- paste('*', yn.df$Question, '*', '\\\n', sep='')
+```
+
+# Results
+
+## Primary DEOHS Role
+
+**Question**: *`r questions['q01.dept.role.mc']`*
+
+```{r, results='asis'}
+role <- count.frequency(tolower(df$q01.dept.role.mc), num_respondents, 'Role')
+```
+
+```{r, results='asis'}
+set.caption('Primary DEOHS role frequency counts.')
+pandoc.table(role, round = 0, justify = c('left', rep('right', 3)))
+```
+
+```{r}
+# http://www.cookbook-r.com/Graphs/Bar_and_line_graphs_(ggplot2)/
+# No legend, since the information is redundant
+ggplot(data=role, aes(x=Role, y=`% of Respondents`, fill=Role)) +
+    geom_bar(colour="black", stat="identity") + ggtitle("Primary DEOHS Role") +
+    guides(fill=FALSE) + theme_light() + scale_fill_brewer(palette="Set2")
+```
+
+
+## R Usage
+
+**Question**: *`r questions['q02.r.usage.mc']`*
+
+```{r, results='asis'}
+usage <- count.frequency(tolower(df$q02.r.usage.mc), num_respondents, 'Usage')
+```
+
+```{r, results='asis'}
+set.caption('R usage frequency counts.')
+pandoc.table(usage, round = 0, justify = c('left', rep('right', 3)))
+```
+
+```{r}
+# http://www.cookbook-r.com/Graphs/Bar_and_line_graphs_(ggplot2)/
+# No legend, since the information is redundant
+ggplot(data=usage, aes(x=Usage, y=`% of Respondents`, fill=Usage)) +
+    geom_bar(colour="black", stat="identity") + ggtitle("R Usage") +
+    guides(fill=FALSE) + theme_light() + 
+    scale_fill_brewer(palette="Set2")
+```
+
+## Programming Experience
+
+```{r, results='asis'}
+content <- yn.df[yn.df$id == 'q03.r.script.yn' | 
+                 yn.df$id == 'q04.other.lang.yn', yn.cols]
+set.caption('R scripting and other programming languages')
+yn.table(content)
+```
+
+```{r}
+bp <- c('Wrtten R Scripts', 'Used Other Language')
+yn.bp <- data.frame(Experience=bp, 'Prevalence.Percent'=yn.df[c(1:2), '% Yes'])
+mean.prev <- mean(yn.bp$Prevalence.Percent, round=0)
+sd.prev <- sd(yn.bp$Prevalence.Percent)
+ggplot(data=yn.bp, aes(x=reorder(Experience, Prevalence.Percent), 
+                       y=Prevalence.Percent, fill=Experience)) + 
+    geom_bar(stat = "identity", color="black") + coord_flip() + 
+    ggtitle("Programming Experience") + theme_light() +
+    labs(y = "% Experienced", x = 'Experience') + guides(fill=FALSE) +
+    scale_fill_brewer(palette="Set2")
+```
+
+
+## Participant Goals
+
+**Question**: *`r questions['q05.class.goal']`*
+
+These are all of the responses for this question:
+
+```{r, results='asis'}
+response <- data.frame(
+    Response=df$q05.class.goal[complete.cases(df$q05.class.goal)])
+set.caption('Class goals, all responses.')
+pandoc.table(response, style='rmarkdown', justify='left')
+```
