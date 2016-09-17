@@ -215,7 +215,7 @@ ggplot(data=role, aes(x=Role, y=`% of Respondents`, fill=Role)) +
 
 **Question**: *`r questions['q02.r.usage.mc']`*
 
-```{r, results='asis'}
+```{r}
 usage <- count.frequency(tolower(df$q02.r.usage.mc), num_respondents, 'Usage')
 usage$Usage <- factor(usage$Usage)
 levels(usage$Usage) <- c("None", "Minimal", "Occasional", "Moderate", "Frequent")
