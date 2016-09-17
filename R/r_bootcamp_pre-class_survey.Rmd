@@ -270,3 +270,13 @@ response <- data.frame(
 set.caption('Class goals, all responses.')
 pandoc.table(response, style='rmarkdown', justify='left')
 ```
+
+## Discussion Group
+
+**Question**: *`r questions['q06.discussion.group.yn']`*
+
+```{r, results='asis'}
+content <- yn.df[yn.df$id == 'q06.discussion.group.yn', yn.cols]
+set.caption('Interested in joining a discussion group.')
+yn.table(content)
+```

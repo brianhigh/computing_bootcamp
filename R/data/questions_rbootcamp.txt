@@ -1,8 +1,3 @@
-Username
-Last Name
-First Name
-Email Address
-Participant ID
 Start Date
 Finish Date
 What is your primary role in DEOHS?
