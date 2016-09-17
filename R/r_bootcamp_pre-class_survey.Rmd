@@ -19,7 +19,7 @@ output:
 ```{r pre_load_packages, echo=FALSE, message=FALSE, warning=FALSE}
 my_preferred_repo <- 'http://cran.r-project.org'
 if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
-pacman::p_load(knitr, plyr, pander, ggplot2)
+pacman::p_load(knitr, plyr, pander, ggplot2, magrittr)
 ```
 * Disable the code display. The embedded R code will not be echoed in the report.
 ```{r set_knitr_options, echo=FALSE, message=FALSE, warning=FALSE}
@@ -219,6 +219,7 @@ ggplot(data=role, aes(x=Role, y=`% of Respondents`, fill=Role)) +
 usage <- count.frequency(tolower(df$q02.r.usage.mc), num_respondents, 'Usage')
 usage$Usage <- factor(usage$Usage)
 levels(usage$Usage) <- c("None", "Minimal", "Occasional", "Moderate", "Frequent")
+usage %<>% arrange(Usage)
 ```
 
 ```{r, results='asis'}
