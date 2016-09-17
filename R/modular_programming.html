@@ -191,7 +191,7 @@ packageDescription(pkg.name)          # View package description to confirm</pre
 <p>If we see a listing of the package description, then the package has been installed okay. Now we can load the package and use the function it contains.</p>
 
 <pre class = 'prettyprint lang-r'>library(pkg.name, character.only = TRUE)
-adultBMI(150, 65)                     # Expected result:  24.95858</pre>
+adultBMI(150, 65)     # Expected result:  24.95858</pre>
 
 <p>If we get the expected result then the package works okay.</p>
 
@@ -272,13 +272,13 @@ sink()</pre>
 &quot;#&#39; Adult BMI Calculator
 #&#39;
 #&#39; Calculates the adult BMI given weight in pounds and height in inches.
-#&#39; See: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html.
+#&#39; See: \\url{https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html}.
 #&#39; @param wt.lbs Weight in pounds
 #&#39; @param ht.in Height in inches
 #&#39; @keywords bmi
 #&#39; @export
 #&#39; @examples
-#&#39; adultBMI(150, 65)                  # Expected result:  24.95858 
+#&#39; adultBMI(150, 65)     # Expected result:  24.95858 
 
 adultBMI &lt;- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 &quot;

@@ -117,7 +117,7 @@ installed okay. Now we can load the package and use the function it contains.
 
 ```{r, eval = FALSE}
 library(pkg.name, character.only = TRUE)
-adultBMI(150, 65)                     # Expected result:  24.95858
+adultBMI(150, 65)     # Expected result:  24.95858
 ```
 
 If we get the expected result then the package works okay.
@@ -222,13 +222,13 @@ my.function <-
 "#' Adult BMI Calculator
 #'
 #' Calculates the adult BMI given weight in pounds and height in inches.
-#' See: https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html.
+#' See: \\url{https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html}.
 #' @param wt.lbs Weight in pounds
 #' @param ht.in Height in inches
 #' @keywords bmi
 #' @export
 #' @examples
-#' adultBMI(150, 65)                  # Expected result:  24.95858 
+#' adultBMI(150, 65)     # Expected result:  24.95858 
 
 adultBMI <- function(wt.lb, ht.in) { (wt.lb / ht.in ^ 2) * 703 }
 "
