@@ -71,7 +71,7 @@ share functions, documentation, and example data.
 
 This approach is called *modular programming*.
 
-## Creating Packages with `package.skeleton`
+## Creating a `package.skeleton`
 
 It is not difficult to create our own packages and to share them. Here is the 
 absolute minimum of steps needed to create a very "bare bones" package.
