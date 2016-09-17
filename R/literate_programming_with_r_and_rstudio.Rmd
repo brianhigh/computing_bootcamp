@@ -88,14 +88,13 @@ Image by: [opensource.com](https://opensource.com/education/15/11/project-jupyte
 ## R Markdown and *knitr*
 
 To use R Markdown and *knitr* for Literate Programming, all you need is a text
-editor, R, and a few packages such as *knitr*.
+editor, R, and a few packages such as *knitr*. These tools are well integrated into 
+RStudio.
 
 * R Markdown: The text notation you use for formatting, based on Markdown
 * *knitr*: A package by Yihui Xie used to render R Markdown documents
 
 ![Markdown document rendered as a webpage. Image by: [RStudio Blog](https://blog.rstudio.org/2014/06/)](images/storms-004.png)
-
-These tools are well integrated into RStudio.
 
 ## Installing R Markdown and *knitr*
 
@@ -111,8 +110,7 @@ install.packages(c("htmltools", "rmarkdown", "knitr"), dependencies = TRUE)
 
 To generate PDFs, you will need `pdflatex` which comes with...
 
-* **_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex).
-* **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
+**_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex) -- **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
 
 You will probably need to restart RStudio after these utilities are installed to make
 sure they are found by RStudio.
