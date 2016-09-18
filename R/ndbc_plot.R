@@ -3,7 +3,7 @@
 #
 # Formatted report based on this script: http://rpubs.com/brianhigh/210190
 #
-# Last updated by Brian High (https://github.com/brianhigh) on Sept. 16, 2018
+# Last updated by Brian High (https://github.com/brianhigh) on Sept. 18, 2018
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 # -----------------------------------------------------------------------------
 
