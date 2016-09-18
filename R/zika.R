@@ -5,7 +5,7 @@
 # "Scrapes" tabular data from "Case Counts in the US" CDC web page.
 # (http://www.cdc.gov/zika/geo/united-states.html)
 #
-# Last updated by Brian High (https://github.com/brianhigh) on Sept. 13, 2016.
+# Last updated by Brian High (https://github.com/brianhigh) on Sept. 17, 2016.
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 #:-----------------------------------------------------------------------------:
 
