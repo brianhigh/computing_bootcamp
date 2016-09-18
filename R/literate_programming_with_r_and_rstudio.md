@@ -116,7 +116,7 @@ example:
 
 ## R Markdown Cheatsheet
 
-![[R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/R Markdown-cheatsheet-2.0.pdf)](images/cheatsheet.png)
+![[R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)](images/cheatsheet.png)
 
 ## *knitr*
 
