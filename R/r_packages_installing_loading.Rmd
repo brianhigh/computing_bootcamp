@@ -132,10 +132,10 @@ Unlike, `install.packages` and `update.packages`:
 There is a similar command called `require()` that is meant to be used inside
 of functions. Most of the time, you will use `library()` instead.
 
-You can unload a package with `detach`, as in `detach(foo)`.
+`detach()` unloads packages. Example: `detach("package:foo", unload=TRUE)`
 
 The see the list of currently loaded packages, type `(.packages())` and include
-all of those parenthesis.
+all of those parenthesis. Or you can use `search()`.
 
 ## Uninstall a package
 
