@@ -213,3 +213,20 @@ MM.      ,MP   MM    MM 8M"""""" `YMMMa.   MM     MM 8M     M8 MM    MM  `YMMMa.
        `bood'
 </pre>
 <!-- http://patorjk.com/software/taag/#p=display&f=Georgia11&t=Questions%3F%0A -->
+
+## Suggested Reading
+
+You are encouraged to study the following online resources:
+
+* [Why you need version control](http://ellisp.github.io/blog/2016/09/16/version-control) by Peter Ellis
+* [A Quick Introduction to Version Control with Git and GitHub](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4718703/) by John D. Blischak, Emily R. Davenport, and Greg Wilson
+* [Git can facilitate greater reproducibility and increased transparency in science](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3639880/) by Karthik Ram
+* [Best Practices for Scientific Computing](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745) by Greg Wilson, et al.
+* [An introduction to Git and how to use it with RStudio](http://r-bio.github.io/intro-git-rstudio/) by François Michonneau
+* [Version Control With Git, 2nd Edition](http://seattle.bibliocommons.com/item/show/2847665030_version_control_with_git,_2nd_edition) eBook
+* [Git - Version Control for Everyone](http://seattle.bibliocommons.com/item/show/2937299030_git_-_version_control_for_everyone) eBook
+* [Git Magic](http://www-cs-students.stanford.edu/~blynn/gitmagic/) eBook
+* [Code School - Try Git](https://try.github.io/levels/1/challenges/1) - 15 minute online Git tutorial
+* [Git Cheat Sheet](http://www.cheat-sheets.org/saved-copy/git-cheat-sheet.pdf)
+* [Introduction • GitHub & Git Foundations](https://www.youtube.com/watch?v=FyfwLX4HAxM) - video
+* [Getting Started with GitHub + Git](https://www.youtube.com/watch?v=DVDLoe_2MBc) video
