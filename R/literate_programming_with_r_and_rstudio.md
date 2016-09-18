@@ -145,7 +145,7 @@ and other related files on an online repository, such as GitHub.
 You may also use the *Publish* button or *File* -> *Publish...* menu
 choice. This will send the rendered document to the RPubs website, run by RStudio.
 
-![[NDBC document](https://rpubs.com/brianhigh/108765)](images/ndbc_rpubs.png)
+![[NDBC document](http://rpubs.com/brianhigh/210190)](images/ndbc_rpubs.png)
 
 ## Example: Weather Data Plot
 
@@ -154,7 +154,7 @@ various formats (HTML, PDF, Markdown, and MS-Word). Is this "reproducible"? Why
 or why not?
 
 One version of this script, as rendered from R Markdown, is published on 
-[RPubs](https://rpubs.com/brianhigh/108765).
+[RPubs](http://rpubs.com/brianhigh/210190).
 
 ![](images/ndbcplot.png)
 
