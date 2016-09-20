@@ -43,7 +43,7 @@ How do you save an R session?
 * answer 'yes' when prompted, upon quitting your session
 * save your command history and workspace with R commands or menu choices
 
-Example: Save your command history to the current folder (as `Rhistory`):
+Example: Save your command history to the current folder (as `.Rhistory`):
 
 
 ```r
