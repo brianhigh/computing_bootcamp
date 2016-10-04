@@ -64,7 +64,7 @@ mtext("Wave Height (m)", side=4, line=3)
 title(main=paste("Wind Gusts and Wave Height, NDBC Station", 
                  stn.id, "-", stn.name))
 legend("topleft", legend=c("Wind Gusts", "Wave Height"), 
-       col=c("red", "blue"), lty=1, cex=0.75)
+       col=c("red", "blue"), lty=1, cex=1)
 mtext(paste(start.date.string, '-', end.date.string), side = 1, line = 3)
 mtext("Source: National Data Buoy Center, NOAA", font=3, side = 1, line = 4)
 
