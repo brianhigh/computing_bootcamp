@@ -224,7 +224,7 @@ my.function <-
 #'
 #' Calculates the adult BMI given weight in pounds and height in inches.
 #' See: \\url{https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html}.
-#' @param wt.lbs Weight in pounds
+#' @param wt.lb Weight in pounds
 #' @param ht.in Height in inches
 #' @keywords bmi
 #' @export
