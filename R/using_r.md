@@ -1,6 +1,17 @@
-# Using R
-Brian High  
-![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
+---
+title: "Using R"
+author: "Brian High"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
 
 
 
