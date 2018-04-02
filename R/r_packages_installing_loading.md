@@ -1,6 +1,17 @@
-# R Packages: Installing and Loading
-Brian High  
-![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
+---
+title: "R Packages: Installing and Loading"
+author: "Brian High"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
 
 
 
@@ -26,7 +37,7 @@ You will learn:
 * Almost 10,000 packages on [CRAN](https://cran.r-project.org/web/packages/)
 * Most packages are written by statisticians (for better or worse)
 * Most popular packages are very well documented
-* In other language, a "package" is called a "module", "class", or "library"
+* In other languages, a "package" is called a "module", "class", or "library"
 
 ## R Package Libraries
 

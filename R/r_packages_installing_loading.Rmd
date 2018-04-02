@@ -40,7 +40,7 @@ You will learn:
 * Almost 10,000 packages on [CRAN](https://cran.r-project.org/web/packages/)
 * Most packages are written by statisticians (for better or worse)
 * Most popular packages are very well documented
-* In other language, a "package" is called a "module", "class", or "library"
+* In other languages, a "package" is called a "module", "class", or "library"
 
 ## R Package Libraries
 
