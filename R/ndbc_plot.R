@@ -11,10 +11,10 @@
 rm(list=ls())
 
 # Configuration
-stn.id    <- '46087'      # ID List: http://www.ndbc.noaa.gov/to_station.shtml
-stn.name  <- 'Neah Bay'   # https://www.google.com/search?q=ndbc+neah+bay
-tz.string <- "US/Pacific" # Convert NDBC date/times from UTC to this timezone
-days      <- 5            # Number of days to plot
+stn.id    <- '46041'            # ID List: http://www.ndbc.noaa.gov/to_station.shtml
+stn.name  <- 'Cape Elizabeth'   # https://www.google.com/search?q=ndbc+neah+bay
+tz.string <- "US/Pacific"       # Convert NDBC date/times from UTC to this timezone
+days      <- 3                  # Number of days to plot
 
 
 # Retrieve NDBC Data
@@ -53,14 +53,17 @@ plot.file <- paste(stn.id, '_', plot.date, ".png", sep='')
 png(plot.file, width=640, height=480, units="px")
 
 # Plot the data using base R graphics
+
 par(mar=c(5, 4, 4, 5) + .1)
-plot(ndbcww$DATE, ndbcww$GST, 
+# Plot wind gusts with conversion from meters per second (m/s) to kt
+plot(ndbcww$DATE, ndbcww$GST*1.943844, 
      type="l", col="red", ylab="Wind Gusts (kt)", xlab="")
 par(new=T)
-plot(ndbcww$DATE, ndbcww$WVHT, 
+# Plot wave height, with conversion from meters (m) to feet (ft)
+plot(ndbcww$DATE, ndbcww$WVHT*3.28084, 
      type="l", col="blue", xaxt="n", yaxt="n", xlab="", ylab="")
 axis(4)
-mtext("Wave Height (m)", side=4, line=3)
+mtext("Wave Height (ft)", side=4, line=3)
 title(main=paste("Wind Gusts and Wave Height, NDBC Station", 
                  stn.id, "-", stn.name))
 legend("topleft", legend=c("Wind Gusts", "Wave Height"), 
