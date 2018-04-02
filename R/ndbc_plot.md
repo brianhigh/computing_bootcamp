@@ -1,6 +1,12 @@
-# NDBC Historical Data
-Brian High  
-`r format(Sys.Date(), "%B %d, %Y")`  
+---
+title: "NDBC Historical Data"
+author: "Brian High"
+date: 'April 02, 2018'
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
 
 ## Clear Workspace
 
@@ -20,7 +26,7 @@ Configure settings for the rendering of this document.
 
 ```r
 suppressMessages(library(knitr))
-opts_chunk$set(tidy=FALSE, cache=TRUE, echo=TRUE, message=FALSE)
+opts_chunk$set(tidy=FALSE, cache=FALSE, echo=TRUE, message=FALSE)
 ```
 
 Configure the NDBC Station ID, Station Name, local timezone and number of days 
@@ -28,15 +34,15 @@ of weather observations to plot.
 
 
 ```r
-stn.id    <- '46087'      # ID List: http://www.ndbc.noaa.gov/to_station.shtml
-stn.name  <- 'Neah Bay'   # https://www.google.com/search?q=ndbc+neah+bay
-tz.string <- "US/Pacific" # Convert NDBC date/times from UTC to this timezone
-days      <- 5            # Number of days to plot
+stn.id    <- '46041'            # ID List: http://www.ndbc.noaa.gov/to_station.shtml
+stn.name  <- 'Cape Elizabeth'   # https://www.google.com/search?q=ndbc+neah+bay
+tz.string <- "US/Pacific"       # Convert NDBC date/times from UTC to this timezone
+days      <- 3                  # Number of days to plot
 ```
 
 ## Retrieve NDBC Data
 
-Download the text data file for NOAA NDBC Station ID 46087 (Neah Bay).
+Download the text data file for NOAA NDBC Station ID 46041 (Cape Elizabeth).
 
 
 ```r
@@ -51,7 +57,7 @@ ndbc <- read.fwf(
 
 ## Calculate Date Range and Subset Data
 
-Convert dates to POSIX date format and select only last 5 days of wind 
+Convert dates to POSIX date format and select only last 3 days of wind 
 gusts and wave height.
 
 
@@ -78,9 +84,11 @@ Plot wind gusts and wave height by date using base R graphics.
 
 ```r
 par(mar=c(5, 4, 4, 5) + .1)
-plot(ndbcww$DATE, ndbcww$GST, 
+# Plot wind gusts with conversion from meters per second (m/s) to kt
+plot(ndbcww$DATE, ndbcww$GST*1.943844, 
      type="l", col="red", ylab="Wind Gusts (kt)", xlab="")
 par(new=T)
+# Plot wave height in meters (m)
 plot(ndbcww$DATE, ndbcww$WVHT, 
      type="l", col="blue", xaxt="n", yaxt="n", xlab="", ylab="")
 axis(4)
