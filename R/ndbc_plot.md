@@ -88,11 +88,11 @@ par(mar=c(5, 4, 4, 5) + .1)
 plot(ndbcww$DATE, ndbcww$GST*1.943844, 
      type="l", col="red", ylab="Wind Gusts (kt)", xlab="")
 par(new=T)
-# Plot wave height in meters (m)
-plot(ndbcww$DATE, ndbcww$WVHT, 
+# Plot wave height, with conversion from meters (m) to feet (ft)
+plot(ndbcww$DATE, ndbcww$WVHT*3.28084, 
      type="l", col="blue", xaxt="n", yaxt="n", xlab="", ylab="")
 axis(4)
-mtext("Wave Height (m)", side=4, line=3)
+mtext("Wave Height (ft)", side=4, line=3)
 title(main=paste("Wind Gusts and Wave Height, NDBC Station", 
                  stn.id, "-", stn.name))
 legend("topleft", legend=c("Wind Gusts", "Wave Height"), 

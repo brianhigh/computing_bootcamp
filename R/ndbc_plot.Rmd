@@ -3,9 +3,9 @@ title: "NDBC Historical Data"
 author: "Brian High"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
 ---
 
 ## Clear Workspace
