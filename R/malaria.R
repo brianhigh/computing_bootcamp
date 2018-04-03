@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------------
 # Malaria prevalence per year by world region and subregion
 # 
-# Last updated by Brian High (https://github.com/brianhigh) on Sept. 12, 2016
+# Last updated by Brian High (https://github.com/brianhigh) on Apr. 02, 2018
 # License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
 # ----------------------------------------------------------------------------
 
@@ -19,8 +19,8 @@ rm(list=ls())
 # -------------
 
 # Load pacman into memory, installing as needed
-my_preferred_repo <- 'http://cran.r-project.org'
-if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
+my_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_repo)}
 
 # Load the other packages, installing as needed
 pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)
