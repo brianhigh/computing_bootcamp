@@ -114,7 +114,8 @@ Tip: Restart RStudio after these utilities are installed.
 
 **_Or on any system_**: [TinyTeX](https://yihui.name/tinytex/)
 
-```
+
+```r
 install.packages("tinytex"))
 tinytex::install_tinytex()
 ```
