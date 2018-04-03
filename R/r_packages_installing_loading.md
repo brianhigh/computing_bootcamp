@@ -181,8 +181,8 @@ With *pacman*, you can easily make your scripts more portable. Here's an example
 
 ```r
 # Load pacman into memory, installing as needed
-my_preferred_repo <- 'http://cran.r-project.org'
-if (!require("pacman")) {install.packages("pacman", repos = my_preferred_repo)}
+my_repo <- 'http://cran.r-project.org'
+if (!require("pacman")) {install.packages("pacman", repos = my_repo)}
 
 # Load the other packages, installing as needed
 pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)

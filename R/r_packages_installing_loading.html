@@ -242,8 +242,8 @@ p_load(your, list, of, package, names)</pre>
 <p>With <em>pacman</em>, you can easily make your scripts more portable. Here&#39;s an example:</p>
 
 <pre class = 'prettyprint lang-r'># Load pacman into memory, installing as needed
-my_preferred_repo &lt;- &#39;http://cran.r-project.org&#39;
-if (!require(&quot;pacman&quot;)) {install.packages(&quot;pacman&quot;, repos = my_preferred_repo)}
+my_repo &lt;- &#39;http://cran.r-project.org&#39;
+if (!require(&quot;pacman&quot;)) {install.packages(&quot;pacman&quot;, repos = my_repo)}
 
 # Load the other packages, installing as needed
 pacman::p_load(dplyr, ggplot2, WDI, grid, gridExtra)</pre>
