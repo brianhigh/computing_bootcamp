@@ -112,12 +112,14 @@ To generate PDFs, you will need `pdflatex` which comes with...
 
 **_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex) -- **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
 
-You will probably need to restart RStudio after these utilities are installed to make
-sure they are found by RStudio.
+Tip: Restart RStudio after these utilities are installed.
 
-### `pandoc`: Markup Conversion Utility
+**_Or on any system_**: [TinyTeX](https://yihui.name/tinytex/)
 
-Starting with version 0.98.932, RStudio comes with a bundled Pandoc binary.
+```
+install.packages("tinytex"))
+tinytex::install_tinytex()
+```
 
 ## R Markdown Syntax
 

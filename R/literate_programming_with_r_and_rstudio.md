@@ -1,6 +1,17 @@
-# Literate Programming with R and RStudio
-Brian High  
-![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
+---
+title: "Literate Programming with R and RStudio"
+author: "Brian High"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
 
 
 
@@ -99,12 +110,14 @@ To generate PDFs, you will need `pdflatex` which comes with...
 
 **_Windows_**: [Basic MiKTeX](http://miktex.org/howto/install-miktex) -- **_OS X (macOS)_**: [Basic MacTeX](http://www.tug.org/mactex/morepackages.html)
 
-You will probably need to restart RStudio after these utilities are installed to make
-sure they are found by RStudio.
+Tip: Restart RStudio after these utilities are installed.
 
-### `pandoc`: Markup Conversion Utility
+**_Or on any system_**: [TinyTeX](https://yihui.name/tinytex/)
 
-Starting with version 0.98.932, RStudio comes with a bundled Pandoc binary.
+```
+install.packages("tinytex"))
+tinytex::install_tinytex()
+```
 
 ## R Markdown Syntax
 
