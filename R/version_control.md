@@ -1,6 +1,17 @@
-# Version Control with RStudio and GitHub
-Brian High  
-![CC BY-SA 4.0](../images/cc_by-sa_4.png)  
+---
+title: "Version Control with RStudio and GitHub"
+author: "Brian High"
+date: "![CC BY-SA 4.0](../images/cc_by-sa_4.png)"
+output:
+  ioslides_presentation:
+    fig_caption: yes
+    fig_retina: 1
+    fig_width: 5
+    fig_height: 3
+    keep_md: yes
+    smaller: yes
+    logo: ../images/logo_128.png
+---
 
 
 
@@ -52,8 +63,8 @@ Most modern version control systems:
 ## GitHub: Social Coding
 
 * The most popular web-based ([github.com](http://github.com)) host of Git repositories
-* Free account for public repositories
-* Accounts for educational use ([education.github.com](http://education.github.com) and [classroom.github.com](http://classroom.github.com))
+* Free personal account for public and private repositories
+* Free team accounts for [educators and researchers](https://help.github.com/en/articles/applying-for-an-educator-or-researcher-discount) work
 * Repository browser with syntax highlighting and text editing
 * Integrated issue tracking, stats, and wiki
 * Offers "forking" and "pull requests" for collaboration workflow
@@ -67,8 +78,8 @@ Most modern version control systems:
 * Microsoft Windows does not come with Git installed
 * Apple OS X (macOS) comes with an old version (but it might work okay for you)
 * Installers available from: [https://git-scm.com/](https://git-scm.com/)
-* For the Windows installer, _allow changes to the system PATH_ (now default)
-* RStudio searches PATH to find "git", or manually configure
+* For the Windows installer, _allow changes to the system PATH_
+* RStudio searches PATH to find "git", or manually configure its path
 * Git is _already installed_ on most of our departmental servers
 * [Git for Windows](https://git-for-windows.github.io/) provides a *Bash* shell
 * [GitHub Desktop](https://desktop.github.com/) is optional
@@ -138,6 +149,7 @@ We will demonstrate the following [Git operations in RStudio](https://support.rs
 |----------|----------------------------------------------
 | `clone`  | Copy a repository into a new folder
 | `pull`   | Fetch and integrate changes
+| `add`    | Stage (designate) files to be committed
 | `commit` | Record changes to the repository
 | `push`   | Send changes to remote repository (server)
 | `diff`   | Show changes between commits
